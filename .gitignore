@@ -1,0 +1,68 @@
+# Flutter/Dart/Pub related
+**/doc/api/
+.dart_tool/
+.svn/
+build/
+coverage/
+.idea/
+.packages
+.pub-cache/
+.pub/
+/android/.gradle
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+/android/local.properties
+/ios/.generated/
+packages
+generated_plugin_registrant.dart
+# Misc
+*.DS_Store
+*.class
+*.lock
+*.log
+*.pyc
+*.swp
+*.orig
+*.rej
+*.so
+*.sublime-workspace
+# Project specific
+*.iml
+.idea/*
+*.ipr
+*.iws
+# IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+# VS Code
+.vscode/*
+# VS Code - Session history
+.history/*
+# Files and directories created by the Flutter plugin
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+.flutter-sdk
+.flutter-settings
+# Flutter/Dart/VS Code settings
+.vscode/
+.idea/
+*.iml
+*.metadata
+.packages
+*.flutter-plugins
+*.flutter-plugins-dependencies
+*.flutter-versions
+*.flutter-settings
+.dart_tool/
+# Web related
+.dart_tool/
+# Specific for IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+# End of https://www.gitignore.io/api/flutter
