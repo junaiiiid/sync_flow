@@ -1,3 +1,4 @@
+import 'package:flow_sync/constants/numeric_constants.dart';
 import 'package:flow_sync/services/route_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
@@ -20,7 +21,7 @@ class Start extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(430, 932),
+        designSize: NumericConstants.artBoardSize,
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
