@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomAppBar {
   CustomAppBar._();
 
-  static PreferredSize myAppBar() {
+  static PreferredSize myAppBar({required String title}) {
     return PreferredSize(
       preferredSize: Size.fromHeight(80.h),
       child: Container(
@@ -20,8 +20,8 @@ class CustomAppBar {
             Align(
                 alignment: Alignment.center,
                 child: Text(
-                  "Hello",
-                  style: AppTextStyles.titleLarge
+                  title,
+                  style: AppTextStyles.labelLarge
                       ?.copyWith(color: AppColors.lightGrey),
                 )),
             Row(
@@ -31,11 +31,11 @@ class CustomAppBar {
                 AppButtons.customIconButton(
                     iconPath: AppAssets.userIcon,
                     onTap: () {},
-                    scaleFactor: 1.5),
+                    scaleFactor: NumericConstants.appBarElementsScaleFactor),
                 AppButtons.customIconButton(
                     iconPath: AppAssets.notificationEmptyIcon,
                     onTap: () {},
-                    scaleFactor: 1.5),
+                    scaleFactor: NumericConstants.appBarElementsScaleFactor),
               ],
             ),
           ],

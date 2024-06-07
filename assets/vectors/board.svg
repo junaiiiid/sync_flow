@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>board</title>
+    <g id="board" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu-board.2" transform="translate(5, 5.8001)" stroke="#EAEAEA" stroke-width="1.5">
+            <path d="M20.9330537,4.70996 L17.5630537,18.23995 C17.3230537,19.24995 16.4230537,19.94995 15.3830537,19.94995 L2.24306366,19.94995 C0.733063663,19.94995 -0.346923337,18.46985 0.103073663,17.01985 L4.31306366,3.5 C4.60306366,2.56 5.47308366,1.90991 6.45308366,1.90991 L18.7530537,1.90991 C19.7030537,1.90991 20.4930537,2.48992 20.8230537,3.28992 C21.0130537,3.71992 21.0530537,4.20996 20.9330537,4.70996 Z" id="Path"></path>
+            <path d="M15.0030537,19.94995 L19.7830537,19.94995 C21.0730537,19.94995 22.0830537,18.85995 21.9930537,17.56995 L21.0030537,3.94995" id="Path" stroke-linecap="round" stroke-linejoin="round"></path>
+            <line x1="8.68304366" y1="4.32995" x2="9.72305366" y2="0.01001" id="Path" stroke-linecap="round" stroke-linejoin="round"></line>
+            <line x1="15.3830537" y1="4.33996" x2="16.3230537" y2="-4.4408921e-16" id="Path" stroke-linecap="round" stroke-linejoin="round"></line>
+            <line x1="6.70306366" y1="9.94995" x2="14.7030537" y2="9.94995" id="Path" stroke-linecap="round" stroke-linejoin="round"></line>
+            <line x1="5.70306366" y1="13.94995" x2="13.7030537" y2="13.94995" id="Path" stroke-linecap="round" stroke-linejoin="round"></line>
+        </g>
+    </g>
+</svg>
