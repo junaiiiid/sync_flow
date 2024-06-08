@@ -21,7 +21,7 @@ class CustomAppBar {
                 alignment: Alignment.center,
                 child: Text(
                   title,
-                  style: AppTextStyles.labelLarge
+                  style: AppTextStyles.titleMedium
                       ?.copyWith(color: AppColors.lightGrey),
                 )),
             Row(
