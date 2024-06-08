@@ -44,7 +44,7 @@ class ExtraBottomSheet extends ConsumerWidget {
       initialChildSize: 0,
       minChildSize: 0,
       maxChildSize: 0.60,
-      snapSizes: const [0,0.60],
+      snapSizes: const [0, 0.60],
       builder: (BuildContext context, ScrollController scrollController) {
         return SingleChildScrollView(
           controller: scrollController,
@@ -60,7 +60,7 @@ class ExtraBottomSheet extends ConsumerWidget {
                       borderRadius:
                           BorderRadius.vertical(top: Radius.circular(40.r)),
                     ),
-                    padding: EdgeInsets.only(top: 50.h,bottom: 50.h),
+                    padding: EdgeInsets.only(top: 50.h, bottom: 50.h),
                     child: Column(
                       children: viewModel.extrasMenuItems
                           .map<Widget>((item) => extrasItemCard(model: item))
