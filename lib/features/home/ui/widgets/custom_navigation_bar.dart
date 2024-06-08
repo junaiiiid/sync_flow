@@ -18,25 +18,37 @@ class CustomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200.h,
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: NavigationBar(
-                selectedIndex: viewModel.navigationBarItems.indexOf(viewModel.selectedItem),
-                backgroundColor: AppColors.darkGrey,
-                destinations: viewModel.navigationBarItems
-                    .map<Widget>((item) => navigationBarItems(model: item))
-                    .toList()),
+    return Stack(
+      children: [
+        const ExtraBottomSheet(),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: SizedBox(
+            height: 200.h,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: NavigationBar(
+                    selectedIndex: viewModel.navigationBarItems
+                        .indexOf(viewModel.selectedItem),
+                    backgroundColor: AppColors.darkGrey,
+                    destinations: viewModel.navigationBarItems
+                        .map<Widget>((item) => navigationBarItems(model: item))
+                        .toList(),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: ExtrasWidget(
+                    viewModel: viewModel,
+                  ),
+                ),
+              ],
+            ),
           ),
-          const Align(
-            alignment: Alignment.center,
-            child: ExtrasWidget(),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -45,7 +57,8 @@ class CustomNavigationBar extends StatelessWidget {
       highlightColor: AppColors.transparent,
       splashColor: AppColors.transparent,
       onTap: () {
-        StateService.context.read(ProviderService.homeProvider).selectedItem = model;
+        StateService.context.read(ProviderService.homeProvider).selectedItem =
+            model;
       },
       child: SvgPicture.asset(
         model.icon,

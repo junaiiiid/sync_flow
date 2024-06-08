@@ -13,4 +13,7 @@ class AppAssets {
   static const String projects = "assets/vectors/projects.svg";
   static const String board = "assets/vectors/board.svg";
   static const String home = "assets/vectors/home.svg";
+  static const String todo ="assets/vectors/todo.svg";
+  static const String inProgress = "assets/vectors/inprogress.svg";
+  static const String completed = "assets/vectors/completed.svg";
 }
