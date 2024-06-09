@@ -1,4 +1,5 @@
 import 'package:flow_sync/architecture/app_parent_widget.dart';
+import 'package:flow_sync/features/dashboard/ui/dashboard_screen.dart';
 import 'package:flow_sync/features/home/ui/widgets/custom_app_bar.dart';
 import 'package:flow_sync/features/home/ui/widgets/custom_navigation_bar.dart';
 import 'package:flow_sync/services/provider_service.dart';
@@ -21,10 +22,19 @@ class HomeScreen extends ConsumerWidget {
             child: SafeArea(
               child: Scaffold(
                 backgroundColor: AppColors.lightGrey,
-                appBar: CustomAppBar.myAppBar(title: viewModel.selectedItem.label),
-                bottomNavigationBar: CustomNavigationBar(
-                  viewModel: viewModel,
+                body: Stack(
+                  children: [
+                    IndexedStack(
+                      children: [
+                        DashboardScreen(),
+                      ],
+                    ),
+                    Align(alignment: Alignment.bottomCenter,child: CustomNavigationBar(
+                      viewModel: viewModel,
+                    ),)
+                  ],
                 ),
+                appBar: CustomAppBar.myAppBar(title: viewModel.selectedItem.label),
               ),
             ),
           );

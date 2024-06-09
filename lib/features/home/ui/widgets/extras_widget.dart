@@ -43,8 +43,8 @@ class ExtraBottomSheet extends ConsumerWidget {
       controller: viewModel.draggableScrollableController,
       initialChildSize: 0,
       minChildSize: 0,
-      maxChildSize: 0.60,
-      snapSizes: const [0, 0.60],
+      maxChildSize: 0.65,
+      snapSizes: const [0, 0.65],
       builder: (BuildContext context, ScrollController scrollController) {
         return SingleChildScrollView(
           controller: scrollController,

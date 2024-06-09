@@ -12,7 +12,7 @@ class HomeViewModel extends BaseViewModel {
 
   void toggleExtraWidget() {
     isExtrasOpened = !isExtrasOpened;
-    double value = _isExtrasOpened ? 0.60 : 0;
+    double value = _isExtrasOpened ? 0.65 : 0;
     draggableScrollableController.animateTo(
       value,
       duration: const Duration(milliseconds: 100),
