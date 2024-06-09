@@ -1,4 +1,5 @@
 import 'package:flow_sync/architecture/app_parent_widget.dart';
+import 'package:flow_sync/features/board/ui/board_screen.dart';
 import 'package:flow_sync/features/dashboard/ui/dashboard_screen.dart';
 import 'package:flow_sync/features/home/ui/widgets/custom_app_bar.dart';
 import 'package:flow_sync/features/home/ui/widgets/custom_navigation_bar.dart';
@@ -25,16 +26,23 @@ class HomeScreen extends ConsumerWidget {
                 body: Stack(
                   children: [
                     IndexedStack(
-                      children: [
+                      index: viewModel.navigationBarItems
+                          .indexOf(viewModel.selectedItem),
+                      children: const [
                         DashboardScreen(),
+                        BoardScreen(),
                       ],
                     ),
-                    Align(alignment: Alignment.bottomCenter,child: CustomNavigationBar(
-                      viewModel: viewModel,
-                    ),)
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: CustomNavigationBar(
+                        viewModel: viewModel,
+                      ),
+                    )
                   ],
                 ),
-                appBar: CustomAppBar.myAppBar(title: viewModel.selectedItem.label),
+                appBar:
+                    CustomAppBar.myAppBar(title: viewModel.selectedItem.label),
               ),
             ),
           );

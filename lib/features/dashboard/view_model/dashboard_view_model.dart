@@ -1,11 +1,15 @@
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/app_assets.dart';
+import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/dashboard/model/comment_model.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/network_service.dart';
 
+import '../../../services/provider_service.dart';
+import '../../../services/state_service.dart';
 import '../model/dashboard_items_model.dart';
 import '../model/task_model.dart';
 
@@ -53,6 +57,7 @@ class DashboardViewModel extends BaseViewModel{
     dashboardItems.add(DashboardItemsModel(iconPath: AppAssets.comments, label: "Total Comments", length: commentsLength));
     dashboardItems.add(DashboardItemsModel(iconPath: AppAssets.labels, label: "Active Tasks", length: listOfTasks.length));
     dashboardItems.add(DashboardItemsModel(iconPath: AppAssets.personalLabels, label: "Labels", length: listOfPersonalLabels.length));
+    StateService.context.read(ProviderService.boardProvider).selectedProject = listOfProjects.first;
     notifyListeners();
   }
 

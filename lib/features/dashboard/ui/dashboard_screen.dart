@@ -5,6 +5,7 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/dashboard_items_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
+import 'package:flow_sync/global_widgets/skeleton_effect_widget.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/dependency_injection/locator_service.dart';
 import 'package:flow_sync/services/network_service.dart';
@@ -87,22 +88,16 @@ class DashboardScreen extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Shimmer.fromColors(
-              baseColor: AppColors.cherryRed,
-              highlightColor: AppColors.darkGrey,
+            SkeletonEffectWidget(
               child: Text(
                 model.label,
                 style:
                     AppTextStyles.labelLarge?.copyWith(color: AppColors.white),
               ),
             ),
-            Shimmer.fromColors(
-                baseColor: AppColors.cherryRed,
-                highlightColor: AppColors.darkGrey,
+            SkeletonEffectWidget(
                 child: SvgPicture.asset(model.iconPath)),
-            Shimmer.fromColors(
-              baseColor: AppColors.cherryRed,
-              highlightColor: AppColors.darkGrey,
+            SkeletonEffectWidget(
               child: Text(
                 model.length.toPaddedString(),
                 style: AppTextStyles.displayLarge
