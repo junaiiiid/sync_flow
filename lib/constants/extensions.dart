@@ -25,7 +25,8 @@ extension APITypeExtension on ApiType {
         return '/comments';
       case ApiType.getAllPersonalLabels:
         return '/labels';
-    // Add more cases here as needed
+      case ApiType.getActiveTasks:
+        return '/tasks';
       default:
         return '/pp2e';
     }

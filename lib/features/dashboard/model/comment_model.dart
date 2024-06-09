@@ -75,9 +75,12 @@ class Comment {
 }
 
 // Function to parse a list of Comment objects from JSON
-List<Comment> parseComments(String jsonResponse) {
-  final List<dynamic> parsed = json.decode(jsonResponse);
-  return parsed.map<Comment>((json) => Comment.fromJson(json)).toList();
+List<Comment> parseComments(List<dynamic> jsonResponse) {
+  List<Comment> listOfComment = [];
+  for (var object in jsonResponse) {
+    listOfComment.add(Comment.fromJson(object));
+  }
+  return listOfComment;
 }
 
 // Function to convert a list of Comment objects to JSON

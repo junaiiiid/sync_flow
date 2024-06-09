@@ -39,9 +39,12 @@ class Label {
 }
 
 // Function to parse a list of Task objects from JSON
-List<Label> parseTasks(String jsonResponse) {
-  final List<dynamic> parsed = json.decode(jsonResponse);
-  return parsed.map<Label>((json) => Label.fromJson(json)).toList();
+List<Label> parseLabels(List<dynamic>  jsonResponse) {
+  List<Label> listOfLabels = [];
+  for (var object in jsonResponse) {
+    listOfLabels.add(Label.fromJson(object));
+  }
+  return listOfLabels;
 }
 
 // Function to convert a list of Task objects to JSON

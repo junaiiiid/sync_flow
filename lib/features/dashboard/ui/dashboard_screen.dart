@@ -4,6 +4,7 @@ import 'package:flow_sync/constants/enums.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/dashboard_items_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
+import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/dependency_injection/locator_service.dart';
 import 'package:flow_sync/services/network_service.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shimmer/shimmer.dart';
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
@@ -21,16 +23,25 @@ class DashboardScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(ProviderService.dashboardProvider);
+    bool condition = viewModel.dashboardItems.isEmpty;
+    List<DashboardItemsModel> conditionalList =
+        condition ? viewModel.dashboardItemsSkeleton : viewModel.dashboardItems;
     return AppParentWidget(
       viewModel: viewModel,
       buildMethod: (context, ref) {
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 10.h),
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
           child: GridView(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, crossAxisSpacing: 10.w, mainAxisSpacing: 10.h),
-            children: viewModel.dashboardItems
-                .map<Widget>((item) => dashboardItemCard(model: item))
+                crossAxisCount: 2,
+                crossAxisSpacing: 10.w,
+                mainAxisSpacing: 10.h),
+            children: conditionalList
+                .map<Widget>(
+                  (item) => (condition)
+                      ? dashboardItemSkeleton(model: item)
+                      : dashboardItemCard(model: item),
+                )
                 .toList(),
           ),
         );
@@ -40,12 +51,7 @@ class DashboardScreen extends ConsumerWidget {
 
   Widget dashboardItemCard({required DashboardItemsModel model}) {
     return InkWell(
-      onTap: () async{
-        List<Project> projects = await locator<NetworkService>().getAllProjects();
-        for(Project element in projects){
-          print(element.name);
-        }
-      },
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
             color: AppColors.darkGrey,
@@ -56,7 +62,8 @@ class DashboardScreen extends ConsumerWidget {
             children: [
               Text(
                 model.label,
-                style: AppTextStyles.labelLarge?.copyWith(color: AppColors.white),
+                style:
+                    AppTextStyles.labelLarge?.copyWith(color: AppColors.white),
               ),
               SvgPicture.asset(model.iconPath),
               Text(
@@ -66,6 +73,43 @@ class DashboardScreen extends ConsumerWidget {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget dashboardItemSkeleton({required DashboardItemsModel model}) {
+    return Container(
+      decoration: BoxDecoration(
+          color: AppColors.darkGrey,
+          borderRadius: BorderRadius.all(Radius.circular(10.r))),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Shimmer.fromColors(
+              baseColor: AppColors.cherryRed,
+              highlightColor: AppColors.darkGrey,
+              child: Text(
+                model.label,
+                style:
+                    AppTextStyles.labelLarge?.copyWith(color: AppColors.white),
+              ),
+            ),
+            Shimmer.fromColors(
+                baseColor: AppColors.cherryRed,
+                highlightColor: AppColors.darkGrey,
+                child: SvgPicture.asset(model.iconPath)),
+            Shimmer.fromColors(
+              baseColor: AppColors.cherryRed,
+              highlightColor: AppColors.darkGrey,
+              child: Text(
+                model.length.toPaddedString(),
+                style: AppTextStyles.displayLarge
+                    ?.copyWith(color: AppColors.cherryRed),
+              ),
+            )
+          ],
         ),
       ),
     );
