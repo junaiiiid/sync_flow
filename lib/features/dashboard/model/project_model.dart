@@ -67,9 +67,12 @@ class Project {
 }
 
 // Function to parse a list of Project objects from JSON
-List<Project> parseProjects(String jsonResponse) {
-  final parsed = json.decode(jsonResponse).cast<Map<String, dynamic>>();
-  return parsed.map<Project>((json) => Project.fromJson(json)).toList();
+List<Project> parseProjects(List<dynamic> jsonResponse) {
+  List<Project> listOfProjects = [];
+  for(var object in jsonResponse){
+    listOfProjects.add(Project.fromJson(object));
+  }
+  return listOfProjects;
 }
 
 // Function to convert a list of Project objects to JSON

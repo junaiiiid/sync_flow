@@ -1,4 +1,5 @@
 import 'package:flow_sync/constants/numeric_constants.dart';
+import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/route_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+  setupLocator();
   runApp(
     const ProviderScope(
       child: Start(),
