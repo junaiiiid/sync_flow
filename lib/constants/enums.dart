@@ -39,3 +39,10 @@ enum ApiType {
 }
 
 enum ProjectCardElementType { comments, tasks }
+
+enum DashboardItemType {
+  totalProjects,
+  totalComments,
+  activeTasks,
+  labels,
+}

@@ -10,6 +10,7 @@ import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/dependency_injection/locator_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
+import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +53,9 @@ class DashboardScreen extends ConsumerWidget {
 
   Widget dashboardItemCard({required DashboardItemsModel model}) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        StateService.context.read(ProviderService.dashboardProvider).handleDashBoardIconTap(type: model.type);
+      },
       child: Container(
         decoration: BoxDecoration(
             color: AppColors.darkGrey,

@@ -12,7 +12,11 @@ class StateService {
   static BuildContext get context => navigatorKey.currentState!.context;
 
   static void pushNamed({required String routeName}){
-    context.go(routeName);
+    context.push(routeName);
+  }
+
+  static void pop(){
+    context.pop();
   }
 
   static void navigateAfterSplash(){

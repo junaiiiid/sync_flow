@@ -1,3 +1,4 @@
+import 'package:flow_sync/features/comments/ui/comments_screen.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
@@ -13,7 +14,9 @@ class RouteService {
       RouteNames.getRoute(
           routeName: SplashScreen.id, page: const SplashScreen()),
       RouteNames.getRoute(
-          routeName: HomeScreen.id, page: const HomeScreen())
+          routeName: HomeScreen.id, page: const HomeScreen()),
+      RouteNames.getRoute(
+          routeName: CommentsScreen.id, page: const CommentsScreen()),
     ],
   );
 }
