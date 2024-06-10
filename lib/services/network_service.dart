@@ -30,6 +30,7 @@ class NetworkService {
   Future<List<Comment>> getCommentByTaskId({required String taskId}) async{
     final String requestUrl = "${ApiConstants.baseUrl}${ApiType.getAllComments.getUrl()}?task_id=$taskId";
     final response = await _dio.get(requestUrl,options: Options(headers: ApiConstants.authHeader));
+    print(response.data);
     return parseComments(response.data);
   }
 

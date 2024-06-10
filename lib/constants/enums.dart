@@ -46,3 +46,8 @@ enum DashboardItemType {
   activeTasks,
   labels,
 }
+
+enum CommentActionType{
+  viewAttachment,
+  editComment
+}

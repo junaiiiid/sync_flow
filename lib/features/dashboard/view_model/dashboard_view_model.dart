@@ -20,7 +20,6 @@ import '../model/task_model.dart';
 class DashboardViewModel extends BaseViewModel {
   List<Project> listOfProjects = [];
   List<Task> listOfTasks = [];
-  List<List<Comment>> listOfComments = [];
   List<Label> listOfPersonalLabels = [];
 
   List<DashboardItemsModel> dashboardItems = [];
@@ -52,7 +51,6 @@ class DashboardViewModel extends BaseViewModel {
   void callDispose() {
     listOfProjects = [];
     listOfTasks = [];
-    listOfComments = [];
     listOfPersonalLabels = [];
     dashboardItems = [];
   }
@@ -67,16 +65,14 @@ class DashboardViewModel extends BaseViewModel {
     listOfProjects = await networkService.getAllProjects();
     listOfProjects.removeWhere((element) => element.viewStyle == 'list');
     listOfTasks = await networkService.getAllActiveTasks();
+    int commentsCount = 0;
     for (var task in listOfTasks) {
-      listOfComments
-          .add(await networkService.getCommentByTaskId(taskId: task.id));
+      commentsCount = commentsCount + task.commentCount;
     }
     listOfPersonalLabels = await networkService.getAllPersonalLabels();
     StateService.context
         .read(ProviderService.projectProvider)
         .generateProjectCards();
-    int commentsLength =
-        listOfComments.map((list) => list.length).toList().length;
     dashboardItems.add(DashboardItemsModel(
         iconPath: AppAssets.allProjects,
         label: "Total Projects",
@@ -85,7 +81,7 @@ class DashboardViewModel extends BaseViewModel {
     dashboardItems.add(DashboardItemsModel(
         iconPath: AppAssets.comments,
         label: "Total Comments",
-        length: commentsLength,
+        length: commentsCount,
         type: DashboardItemType.totalComments));
     dashboardItems.add(DashboardItemsModel(
         iconPath: AppAssets.labels,
