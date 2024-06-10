@@ -20,5 +20,6 @@ class AppAssets {
   static const String comments = 'assets/vectors/comments.svg';
   static const String labels = 'assets/vectors/labels.svg';
   static const String personalLabels = 'assets/vectors/personal_labels.svg';
+  static const String section = 'assets/vectors/section.svg';
   static const String loaderAnimation = 'assets/animations/loader_animation.json';
 }

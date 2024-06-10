@@ -27,6 +27,8 @@ extension APITypeExtension on ApiType {
         return '/labels';
       case ApiType.getActiveTasks:
         return '/tasks';
+      case ApiType.getAllSections:
+        return '/sections';
       default:
         return '/pp2e';
     }

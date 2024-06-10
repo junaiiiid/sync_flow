@@ -8,10 +8,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../dashboard/model/project_model.dart';
 
-class ProjectDropDown extends StatelessWidget {
+class ProjectDropDown extends StatefulWidget {
   final BoardViewModel viewModel;
   const ProjectDropDown({super.key, required this.viewModel});
 
+  @override
+  State<ProjectDropDown> createState() => _ProjectDropDownState();
+}
+
+class _ProjectDropDownState extends State<ProjectDropDown> {
+  Project? selectedValue;
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -22,16 +28,25 @@ class ProjectDropDown extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 25.w),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<Project>(
+          hint: Text(
+            "Select a Project",
+            style: AppTextStyles.labelLarge
+                ?.copyWith(color: AppColors.lightGrey),
+          ),
           dropdownColor: AppColors.cherryRed,
-          value: viewModel.selectedProject,
-          onChanged: (Project? newValue) {
-            viewModel.selectedProject = newValue!;
+          value: selectedValue,
+          onChanged: (Project? newValue) async{
+            widget.viewModel.selectedProject = newValue!;
+            setState(() {
+              selectedValue = newValue;
+            });
+            await widget.viewModel.getSectionsOfSelectedProject();
           },
           icon: const Icon(
             CupertinoIcons.arrowtriangle_down_circle_fill,
             color: AppColors.lightGrey,
           ),
-          items: viewModel.listOfProjects
+          items: widget.viewModel.listOfProjects
               .map<DropdownMenuItem<Project>>((Project value) {
             return DropdownMenuItem<Project>(
               value: value,

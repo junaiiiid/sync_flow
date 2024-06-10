@@ -1,5 +1,7 @@
 import 'package:flow_sync/architecture/app_parent_widget.dart';
 import 'package:flow_sync/features/board/ui/widgets/project_drop_down.dart';
+import 'package:flow_sync/features/board/ui/widgets/projects_tab_bar.dart';
+import 'package:flow_sync/global_widgets/loader_widget.dart';
 import 'package:flow_sync/global_widgets/skeleton_effect_widget.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
@@ -14,6 +16,7 @@ class BoardScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(ProviderService.boardProvider);
+    final dashboardViewModel = ref.watch(ProviderService.dashboardProvider);
     return AppParentWidget(
         viewModel: viewModel,
         buildMethod: (context, ref) {
@@ -21,17 +24,40 @@ class BoardScreen extends ConsumerWidget {
             padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
             child: Scaffold(
               backgroundColor: AppColors.lightGrey,
-              body: ListView(
-                children: (viewModel.selectedProject.id == "id")?skeletonBoard():[
-                  Center(
-                      child: Text(
-                    "Please Select Your Project",
-                    style: AppTextStyles.titleSmall,
-                  )),
-                  ProjectDropDown(
-                    viewModel: viewModel,
-                  ),
-                ],
+              body: Flex(
+                direction: Axis.vertical,
+                children: (dashboardViewModel.listOfProjects.isEmpty)
+                    ? skeletonBoard()
+                    : [
+                        Expanded(
+                          flex: 0,
+                          child: Flex(
+                            direction: Axis.vertical,
+                            children: [
+                              Center(
+                                child: Text(
+                                  (viewModel.selectedProject.id=="id")
+                                      ? "Please Select Your Project"
+                                      : 'Selected Project "${viewModel.selectedProject.name}"',
+                                  style: AppTextStyles.titleSmall,
+                                ),
+                              ),
+                              ProjectDropDown(
+                                viewModel: viewModel,
+                              ),
+                            ],
+                          ),
+                        ),
+                        if (viewModel.selectedProject.id != "id")
+                          (viewModel.listOfSections.isEmpty)
+                              ? const LoaderWidget()
+                              : Expanded(
+                                  flex: 3,
+                                  child: ProjectsTabBar(
+                                    viewModel: viewModel,
+                                  ),
+                                ),
+                      ],
               ),
             ),
           );
@@ -43,7 +69,7 @@ class BoardScreen extends ConsumerWidget {
       Center(
           child: SkeletonEffectWidget(
               child: Text(
-        "Loading",
+        "Loading...",
         style: AppTextStyles.titleSmall,
       ))),
       const ProjectDropDownSkeleton(),
