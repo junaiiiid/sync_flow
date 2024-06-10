@@ -37,3 +37,5 @@ enum ApiType {
   renameASharedLabel,
   removeASharedLabel
 }
+
+enum ProjectCardElementType { comments, tasks }

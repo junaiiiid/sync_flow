@@ -1,6 +1,7 @@
 import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dart';
 import 'package:flow_sync/features/home/view_model/home_view_model.dart';
+import 'package:flow_sync/features/projects/view_model/project_view_model.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,4 +21,7 @@ class ProviderService {
 
   static ChangeNotifierProvider<BoardViewModel> boardProvider =
   StateService.createProvider(() => BoardViewModel());
+
+  static ChangeNotifierProvider<ProjectViewModel> projectProvider =
+  StateService.createProvider(() => ProjectViewModel());
 }

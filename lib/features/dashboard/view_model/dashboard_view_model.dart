@@ -5,6 +5,7 @@ import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/dashboard/model/comment_model.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
+import 'package:flow_sync/features/projects/view_model/project_view_model.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/dependency_injection/locator_service.dart';
 import 'package:flow_sync/services/network_service.dart';
@@ -54,6 +55,7 @@ class DashboardViewModel extends BaseViewModel{
       listOfComments.add(await networkService.getCommentByTaskId(taskId: task.id));
     }
     listOfPersonalLabels = await networkService.getAllPersonalLabels();
+    StateService.context.read(ProviderService.projectProvider).generateProjectCards();
     int commentsLength = listOfComments.map((list) => list.length).toList().length;
     dashboardItems.add(DashboardItemsModel(iconPath: AppAssets.allProjects, label: "Total Projects", length: listOfProjects.length));
     dashboardItems.add(DashboardItemsModel(iconPath: AppAssets.comments, label: "Total Comments", length: commentsLength));

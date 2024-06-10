@@ -8,6 +8,9 @@ import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../projects/ui/projects_screen.dart';
+import '../../settings/ui/settings_screen.dart';
+
 class HomeScreen extends ConsumerWidget {
   static const String id = "/home";
   const HomeScreen({super.key});
@@ -31,6 +34,8 @@ class HomeScreen extends ConsumerWidget {
                       children: const [
                         DashboardScreen(),
                         BoardScreen(),
+                        ProjectsScreen(),
+                        SettingsScreen(),
                       ],
                     ),
                     Align(
