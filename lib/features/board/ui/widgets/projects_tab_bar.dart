@@ -1,4 +1,5 @@
 import 'package:flow_sync/constants/app_assets.dart';
+import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/model/tabs_model.dart';
 import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dart';
@@ -7,6 +8,8 @@ import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../dashboard/model/task_model.dart';
 
 class ProjectsTabBar extends StatefulWidget {
   final BoardViewModel viewModel;
@@ -22,7 +25,8 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
 
   @override
   void initState() {
-    _tabController = TabController(length: widget.viewModel.listOfSections.length, vsync: this);
+    _tabController = TabController(
+        length: widget.viewModel.listOfSections.length, vsync: this);
     super.initState();
   }
 
@@ -56,12 +60,16 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
         Expanded(
           flex: 3,
           child: TabBarView(
-            children: [
-              Container(child: Center(child: Text('people'))),
-              Text('Person'),
-              Text('hello'),
-            ],
             controller: _tabController,
+            children: widget.viewModel
+                .getTabModel()
+                .map<Widget>(
+                  (item) => ListView(
+                    physics: const BouncingScrollPhysics(),
+                    children: getTabBarView(model: item),
+                  ),
+                )
+                .toList(),
           ),
         ),
       ],
@@ -83,6 +91,52 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
                 AppTextStyles.labelSmall?.copyWith(color: AppColors.darkGrey),
           )
         ],
+      ),
+    );
+  }
+
+  List<Widget> getTabBarView({required TabsModel model}) {
+    List<Widget> tabBarChildren = [];
+    final List<Task> filteredTasks =
+        widget.viewModel.filterTasksBySectionId(sectionId: model.sectionId);
+    for (Task task in filteredTasks) {
+      tabBarChildren.add(
+        boardCard(
+          taskName: task.content,
+          iconPath: model.iconPath,
+          createdAt: task.createdAt.toString().toFormattedDate(),
+        ),
+      );
+    }
+    return tabBarChildren;
+  }
+
+  Widget boardCard(
+      {required String taskName,
+      required String iconPath,
+      required String createdAt}) {
+    return Container(
+      decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.r),
+          ),
+          border: Border.all(color: AppColors.lightGrey)),
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
+      child: ListTile(
+        leading: SvgPicture.asset(
+          iconPath,
+          color: AppColors.darkGrey,
+        ),
+        title: Text(
+          taskName,
+          style: AppTextStyles.labelLarge,
+        ),
+        subtitle: Text(
+          createdAt,
+          style: AppTextStyles.labelSmall,
+        ),
       ),
     );
   }
