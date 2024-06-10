@@ -15,13 +15,14 @@ class CommentViewModel extends BaseViewModel {
 
   List<Task> get listOfTasks => StateService.context.read(ProviderService.dashboardProvider).listOfTasks;
 
-/*  Project getProjectById({required String id}) {
-    List<Project> listOfProjects = List.from(StateService.context
-        .read(ProviderService.dashboardProvider)
-        .listOfProjects);
-    Project filteredProject = listOfProjects.firstWhere((element)=>element.id==id);
+  List<Project> get listOfProjects => StateService.context.read(ProviderService.dashboardProvider).listOfProjects;
+
+  Project getProjectByTaskId({required String id}){
+    Task task = getTaskById(id: id);
+    List<Project> allProjects = List.from(listOfProjects);
+    Project filteredProject = allProjects.firstWhere((element)=>element.id==task.projectId);
     return filteredProject;
-  }*/
+  }
 
     Task getTaskById({required String id}) {
     List<Task> allTasks = List.from(listOfTasks);

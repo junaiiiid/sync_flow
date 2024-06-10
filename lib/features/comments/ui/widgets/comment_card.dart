@@ -41,10 +41,7 @@ class CommentCard extends StatelessWidget {
                     child: Row(
                       children: [
                         CircleAvatar(
-                          /*backgroundColor: viewModel
-                              .getProjectById(id: model.id)
-                              .color
-                              .toColor(),*/
+                          backgroundColor: viewModel.getProjectByTaskId(id: model.taskId).color.toColor(),
                           radius: 10.r,
                         ),
                         SizedBox(
