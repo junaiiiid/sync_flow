@@ -103,8 +103,13 @@ class CommentCard extends StatelessWidget {
                   Visibility(
                       visible: (model.attachment != null),
                       child: commentAction(
-                          type: CommentActionType.viewAttachment, model: model, viewModel: viewModel)),
-                  commentAction(type: CommentActionType.editComment, model: model, viewModel: viewModel),
+                          type: CommentActionType.viewAttachment,
+                          model: model,
+                          viewModel: viewModel)),
+                  commentAction(
+                      type: CommentActionType.editComment,
+                      model: model,
+                      viewModel: viewModel),
                 ],
               ),
             ],
@@ -116,8 +121,8 @@ class CommentCard extends StatelessWidget {
 
   Widget commentAction(
       {required CommentActionType type,
-        required Comment model,
-        required CommentViewModel viewModel}) {
+      required Comment model,
+      required CommentViewModel viewModel}) {
     late IconData iconData;
     late String title;
     late Function() onTap;
@@ -189,7 +194,7 @@ class CommentCardSkeleton extends StatelessWidget {
                         ),
                         SkeletonEffectWidget(
                           child: Text(
-                            "Loading...", 
+                            "Loading...",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             softWrap: true,
@@ -233,8 +238,9 @@ class CommentCardSkeleton extends StatelessWidget {
                       const Expanded(
                           flex: 3,
                           child: SkeletonEffectWidget(
-                            child: Bubble(  
-                                text: "Please Wait...", color: AppColors.lightGrey),
+                            child: Bubble(
+                                text: "Please Wait...",
+                                color: AppColors.lightGrey),
                           )),
                     ],
                   ),
@@ -260,11 +266,11 @@ class CommentCardSkeleton extends StatelessWidget {
                   Row(
                     children: [
                       const SkeletonEffectWidget(child: Icon(Icons.edit)),
-                      SizedBox( 
+                      SizedBox(
                         width: 5.w,
                       ),
                       SkeletonEffectWidget(
-                        child: Text( 
+                        child: Text(
                           "Loading...",
                           style: AppTextStyles.labelSmall,
                         ),
@@ -280,5 +286,3 @@ class CommentCardSkeleton extends StatelessWidget {
     );
   }
 }
-
-

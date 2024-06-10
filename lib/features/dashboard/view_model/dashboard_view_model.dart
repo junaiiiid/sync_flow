@@ -85,7 +85,7 @@ class DashboardViewModel extends BaseViewModel {
         type: DashboardItemType.totalComments));
     dashboardItems.add(DashboardItemsModel(
         iconPath: AppAssets.labels,
-        label: "Active Tasks",
+        label: "Total Tasks",
         length: listOfTasks.length,
         type: DashboardItemType.activeTasks));
     dashboardItems.add(DashboardItemsModel(
@@ -104,7 +104,7 @@ class DashboardViewModel extends BaseViewModel {
       case DashboardItemType.totalComments:
       StateService.pushNamed(routeName: CommentsScreen.id);
       case DashboardItemType.activeTasks:
-      // TODO: Handle this case.
+        homeProvider.selectedItem = homeProvider.navigationBarItems[1];
       case DashboardItemType.labels:
       // TODO: Handle this case.
     }
