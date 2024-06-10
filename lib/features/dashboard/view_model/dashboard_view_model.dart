@@ -21,7 +21,7 @@ import '../model/task_model.dart';
 class DashboardViewModel extends BaseViewModel {
   List<Project> listOfProjects = [];
   List<Task> listOfTasks = [];
-  List<Label> listOfPersonalLabels = [];
+  List<Label> listOfLabels = [];
 
   List<DashboardItemsModel> dashboardItems = [];
 
@@ -52,7 +52,7 @@ class DashboardViewModel extends BaseViewModel {
   void callDispose() {
     listOfProjects = [];
     listOfTasks = [];
-    listOfPersonalLabels = [];
+    listOfLabels = [];
     dashboardItems = [];
   }
 
@@ -70,7 +70,7 @@ class DashboardViewModel extends BaseViewModel {
     for (var task in listOfTasks) {
       commentsCount = commentsCount + task.commentCount;
     }
-    listOfPersonalLabels = await networkService.getAllPersonalLabels();
+    listOfLabels = await networkService.getAllPersonalLabels();
     StateService.context
         .read(ProviderService.projectProvider)
         .generateProjectCards();
@@ -92,7 +92,7 @@ class DashboardViewModel extends BaseViewModel {
     dashboardItems.add(DashboardItemsModel(
         iconPath: AppAssets.personalLabels,
         label: "Labels",
-        length: listOfPersonalLabels.length,
+        length: listOfLabels.length,
         type: DashboardItemType.labels));
     notifyListeners();
   }
