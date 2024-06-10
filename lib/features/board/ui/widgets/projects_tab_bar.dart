@@ -42,6 +42,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
           child: TabBar(
             indicatorColor: AppColors.cherryRed,
             isScrollable: true,
+            physics: const BouncingScrollPhysics(),
             unselectedLabelColor: AppColors.lightGrey,
             labelColor: AppColors.cherryRed,
             tabs: widget.viewModel

@@ -36,14 +36,17 @@ class BoardScreen extends ConsumerWidget {
                             children: [
                               Center(
                                 child: Text(
-                                  (viewModel.selectedProject.id=="id")
+                                  (viewModel.selectedProject.id == "id")
                                       ? "Please Select Your Project"
                                       : 'Selected Project "${viewModel.selectedProject.name}"',
                                   style: AppTextStyles.titleSmall,
                                 ),
                               ),
-                              ProjectDropDown(
-                                viewModel: viewModel,
+                              SizedBox(
+                                width: double.infinity,
+                                child: ProjectDropDown(
+                                  viewModel: viewModel,
+                                ),
                               ),
                             ],
                           ),

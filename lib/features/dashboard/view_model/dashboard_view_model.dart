@@ -48,6 +48,7 @@ class DashboardViewModel extends BaseViewModel{
   Future<void> initialize() async{
     final networkService = LocatorService.networkServiceLocator;
     listOfProjects = await networkService.getAllProjects();
+    listOfProjects.removeWhere((element)=>element.viewStyle=='list');
     listOfTasks = await networkService.getAllActiveTasks();
     for (var task in listOfTasks) {
       listOfComments.add(await networkService.getCommentByTaskId(taskId: task.id));
