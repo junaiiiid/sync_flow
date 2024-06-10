@@ -22,7 +22,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
 
   @override
   void initState() {
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: widget.viewModel.listOfSections.length, vsync: this);
     super.initState();
   }
 
@@ -58,7 +58,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
             children: [
               Container(child: Center(child: Text('people'))),
               Text('Person'),
-              Text('Person'),
+              Text('hello'),
             ],
             controller: _tabController,
           ),
