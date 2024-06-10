@@ -30,7 +30,7 @@ class CommentsScreen extends ConsumerWidget {
           child: SafeArea(
             child: Scaffold(
               backgroundColor: AppColors.lightGrey,
-              appBar: CustomAppBar.appBarWithBackButton(title: "Comments"),
+              appBar: CustomAppBar.appBarWithBackButton(title: "Total Comments"),
               body: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
                 child: ListView(

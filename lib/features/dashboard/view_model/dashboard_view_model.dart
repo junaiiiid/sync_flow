@@ -6,6 +6,7 @@ import 'package:flow_sync/features/comments/ui/comments_screen.dart';
 import 'package:flow_sync/features/dashboard/model/comment_model.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
+import 'package:flow_sync/features/labels/ui/labels_screen.dart';
 import 'package:flow_sync/features/projects/view_model/project_view_model.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/dependency_injection/locator_service.dart';
@@ -106,7 +107,7 @@ class DashboardViewModel extends BaseViewModel {
       case DashboardItemType.activeTasks:
         homeProvider.selectedItem = homeProvider.navigationBarItems[1];
       case DashboardItemType.labels:
-      // TODO: Handle this case.
+      StateService.pushNamed(routeName: LabelsScreen.id);
     }
   }
 }

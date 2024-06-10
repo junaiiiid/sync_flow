@@ -38,8 +38,8 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
 
   @override
   Widget build(BuildContext context) {
-    return Flex(
-      direction: Axis.vertical,
+    return Column(
+      //direction: Axis.vertical,
       children: [
         Expanded(
           flex: 0,
