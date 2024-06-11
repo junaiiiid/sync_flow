@@ -4,6 +4,7 @@ import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dar
 import 'package:flow_sync/features/home/view_model/home_view_model.dart';
 import 'package:flow_sync/features/labels/view_model/labels_view_model.dart';
 import 'package:flow_sync/features/projects/view_model/project_view_model.dart';
+import 'package:flow_sync/features/settings/view_model/settings_view_model.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -32,4 +33,7 @@ class ProviderService {
 
   static ChangeNotifierProvider<LabelsViewModel> labelsProvider =
   StateService.createProvider(() => LabelsViewModel());
+
+  static ChangeNotifierProvider<SettingsViewModel> settingsProvider =
+  StateService.createProvider(() => SettingsViewModel());
 }

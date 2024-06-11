@@ -51,3 +51,8 @@ enum CommentActionType{
   viewAttachment,
   editComment
 }
+
+enum SettingType{
+  boolean,
+  multiOption,
+}
