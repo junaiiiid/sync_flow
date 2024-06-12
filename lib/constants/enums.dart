@@ -61,3 +61,8 @@ enum ViewStyles{
   list,
   board
 }
+
+enum SnackBarTypes{
+  error,
+  success,
+}

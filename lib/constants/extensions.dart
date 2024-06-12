@@ -21,6 +21,7 @@ extension APITypeExtension on ApiType {
   String getUrl() {
     switch (this) {
       case ApiType.getAUsersProject:
+      case ApiType.addANewProject:
         return '/projects';
       case ApiType.getAllComments:
         return '/comments';

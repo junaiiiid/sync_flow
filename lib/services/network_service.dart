@@ -7,6 +7,7 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
+import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'dart:developer' as dev;
 import '../constants/custom_types.dart';
 import '../features/dashboard/model/comment_model.dart';
@@ -59,12 +60,17 @@ class NetworkService {
 
   Future<void> createNewProject({required Project projectModel}) async {
     final String requestUrl =
-        "${ApiConstants.baseUrl}${ApiType.addANewProject}";
+        "${ApiConstants.baseUrl}${ApiType.addANewProject.getUrl()}";
     try {
       final response = await _dio.post(
         requestUrl,
-        options: Options(headers: ApiConstants.authHeader),
-        data: projectModel.toJson(),
+        options: Options(
+            headers: ApiConstants.authHeader),
+        data: {
+          "color": projectModel.color,
+          "name": projectModel.name,
+          "view_style": projectModel.viewStyle,
+        }
       );
 
       // Handle different response statuses
@@ -72,6 +78,7 @@ class NetworkService {
         case 200:
         case 201:
         case 204:
+          AppPopups.showSnackBar(type: SnackBarTypes.success,content: "Project created successfully.");
           dev.log('Project created successfully');
           break;
         case 400:
@@ -97,8 +104,10 @@ class NetworkService {
           break;
         default:
           dev.log('Unexpected error: ${response.statusCode}');
+          AppPopups.showSnackBar(type: SnackBarTypes.error,content: "There was an Error.");
       }
     } on DioError catch (dioError) {
+      AppPopups.showSnackBar(type: SnackBarTypes.error,content: "There was an Error.");
       // Handle Dio errors
       if (dioError.response != null) {
         dev.log('Dio error! Status: ${dioError.response?.statusCode}');

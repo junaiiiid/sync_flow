@@ -2,6 +2,7 @@ import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/enums.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
+import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
@@ -53,20 +54,15 @@ class CreateNewProjectViewModel extends BaseViewModel {
 
   Future<void> createNewProject() async {
     if (formKey.currentState?.validate() ?? false) {
+      AppPopups.showLoader();
       project = Project(
           color: selectedColor ?? "",
           name: projectNameController.text,
           viewStyle: ViewStyles.board.toShortString());
       await locator<NetworkService>().createNewProject(projectModel: project);
+      StateService.pop();
     } else {
-      ScaffoldMessenger.of(StateService.context).showSnackBar(
-        SnackBar(
-          backgroundColor: AppColors.cherryRed,
-            content: Text(
-          'Fields Can Not Be Empty',
-          style: AppTextStyles.labelLarge?.copyWith(color: AppColors.white),
-        )),
-      );
+      AppPopups.showSnackBar(type: SnackBarTypes.error, content: "The fields can not be empty.");
     }
   }
 

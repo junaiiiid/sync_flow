@@ -5,5 +5,5 @@ class ApiConstants{
 
   static const String baseUrl = 'https://api.todoist.com/rest/v2';
 
-  static Map<String,dynamic> get authHeader => {"Authorization":authToken};
+  static Map<String,dynamic> get authHeader => {"Authorization":authToken,"Content-Type":"application/json"};
 }

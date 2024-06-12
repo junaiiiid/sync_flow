@@ -17,52 +17,55 @@ class ProjectCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: model.projectData.color.toColor(),
-      child: Column(
-        children: [
-          ListTile(
-            leading: CircleAvatar(
-              backgroundColor: model.projectData.color.toColor().lighten(0.1),
-              child: SvgPicture.asset(AppAssets.projectThumbnail),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10.h),
+      child: Card(
+        color: model.projectData.color.toColor(),
+        child: Column(
+          children: [
+            ListTile(
+              leading: CircleAvatar(
+                backgroundColor: model.projectData.color.toColor().lighten(0.1),
+                child: SvgPicture.asset(AppAssets.projectThumbnail),
+              ),
+              title: Text(
+                model.projectData.name,
+                style: AppTextStyles.labelLarge,
+              ),
+              subtitle: Text(
+                "#${model.projectData.id}",
+                style: AppTextStyles.labelMedium,
+              ),
+              trailing: Icon(
+                (model.projectData.isFavorite ?? false)
+                    ? CupertinoIcons.heart_fill
+                    : CupertinoIcons.heart,
+                color: (model.projectData.isFavorite?? false)
+                    ? AppColors.cherryRed
+                    : AppColors.darkGrey,
+              ),
             ),
-            title: Text(
-              model.projectData.name,
-              style: AppTextStyles.labelLarge,
+            Container(
+              decoration: BoxDecoration(
+                color: model.projectData.color.toColor().lighten(0.1),
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(10.r),
+                    bottomLeft: Radius.circular(10.r)),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ProjectElements(
+                      count: model.projectData.commentCount??0,
+                      type: ProjectCardElementType.comments),
+                  ProjectElements(
+                      count: model.taskCount, type: ProjectCardElementType.tasks),
+                ],
+              ),
             ),
-            subtitle: Text(
-              "#${model.projectData.id}",
-              style: AppTextStyles.labelMedium,
-            ),
-            trailing: Icon(
-              (model.projectData.isFavorite ?? false)
-                  ? CupertinoIcons.heart_fill
-                  : CupertinoIcons.heart,
-              color: (model.projectData.isFavorite ?? false)
-                  ? AppColors.cherryRed
-                  : AppColors.darkGrey,
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: model.projectData.color.toColor().lighten(0.1),
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(10.r),
-                  bottomLeft: Radius.circular(10.r)),
-            ),
-            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ProjectElements(
-                    count: model.projectData.commentCount ?? 0,
-                    type: ProjectCardElementType.comments),
-                ProjectElements(
-                    count: model.taskCount, type: ProjectCardElementType.tasks),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -88,7 +91,8 @@ class ProjectElements extends StatelessWidget {
         ),
         Text(
           count.toPaddedString(),
-          style: AppTextStyles.displayLarge,
+          style:
+          AppTextStyles.displayLarge,
         ),
       ],
     );

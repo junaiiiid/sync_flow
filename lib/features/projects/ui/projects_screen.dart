@@ -40,11 +40,12 @@ class ProjectsScreen extends ConsumerWidget {
                               routeName: CreateProjectsScreen.id);
                         },
                       ),
-                      ...viewModel.listOfProjectCards
-                          .map<Widget>(
-                            (element) => ProjectCards(model: element),
-                          )
-                          .toList()
+                      ...viewModel.listOfProjectCards.map<Widget>(
+                        (element) => ProjectCards(model: element),
+                      ),
+                      SizedBox(
+                        height: 300.h,
+                      ),
                     ],
             ),
           );

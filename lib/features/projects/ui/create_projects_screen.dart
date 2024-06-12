@@ -36,6 +36,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                         AppTextFields.basicTextField(
                           title: "Enter Project Name:",
                           hintText: "eg My Project",
+                          maxLength: 30,
                           controller: viewModel.projectNameController,
                         ),
                         AppDropDowns.customDropDown<String>(
