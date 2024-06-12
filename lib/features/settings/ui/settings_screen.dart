@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../constants/enums.dart';
+import '../model/settings_model.dart';
+
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
@@ -13,35 +16,36 @@ class SettingsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(ProviderService.settingsProvider);
     return AppParentWidget(
-        viewModel: viewModel, buildMethod: (context, ref) {
+        viewModel: viewModel,
+        buildMethod: (context, ref) {
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
+            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
             child: ListView(
               physics: const BouncingScrollPhysics(),
-              children: [
-                Card(
-                  margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
-                    child: ListTile(
-                      leading: Text("Dark Theme",style: AppTextStyles.titleMedium,),
-                      trailing: CupertinoSwitch(value: true, onChanged: (_){}),
-                    ),
-                  ),
-                ),
-                Card(
-                  margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
-                    child: ListTile(
-                      leading: Text("Dark Theme",style: AppTextStyles.titleMedium,),
-                      trailing: CupertinoSwitch(value: true, onChanged: (_){}),
-                    ),
-                  ),
-                ),
-              ],
+              children: viewModel.settingsMenuItems
+                  .map<Widget>((item) => settingsTile(model: item))
+                  .toList(),
             ),
           );
-    });
+        });
+  }
+
+  Widget settingsTile({required SettingsModel model}) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+        child: ListTile(
+          leading: Text(
+            model.title,
+            style: AppTextStyles.titleMedium,
+          ),
+          trailing: (model.type == SettingType.boolean)
+              ? CupertinoSwitch(value: model.value ?? false, onChanged: (_) {})
+              : Text(model.possibleValues?.first ?? "",
+                  style: AppTextStyles.titleSmall),
+        ),
+      ),
+    );
   }
 }
