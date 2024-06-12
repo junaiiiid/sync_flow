@@ -47,13 +47,22 @@ class ProjectCards extends StatelessWidget {
                   "#${model.projectData.id}",
                   style: AppTextStyles.labelMedium,
                 ),
-                trailing: Icon(
-                  (model.projectData.isFavorite ?? false)
-                      ? CupertinoIcons.heart_fill
-                      : CupertinoIcons.heart,
-                  color: (model.projectData.isFavorite ?? false)
-                      ? AppColors.cherryRed
-                      : AppColors.darkGrey,
+                trailing: InkWell(
+                  onTap: () async {
+                    await StateService.context
+                        .read(ProviderService.projectProvider)
+                        .projectFavouriteToggle(
+                            projectId: model.projectData.id ?? "",
+                            isFavourite: model.projectData.isFavorite ?? false);
+                  },
+                  child: Icon(
+                    (model.projectData.isFavorite ?? false)
+                        ? CupertinoIcons.heart_fill
+                        : CupertinoIcons.heart,
+                    color: (model.projectData.isFavorite ?? false)
+                        ? AppColors.cherryRed
+                        : AppColors.darkGrey,
+                  ),
                 ),
               ),
               Container(

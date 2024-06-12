@@ -34,16 +34,29 @@ class ProjectViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  Future<void> deleteProject({required String projectId}) async{
-    final dashboardProvider = StateService.context.read(ProviderService.dashboardProvider);
+  Future<void> deleteProject({required String projectId}) async {
+    final dashboardProvider =
+        StateService.context.read(ProviderService.dashboardProvider);
     AppPopups.showLoader();
     await locator<NetworkService>().deleteProjectById(projectId: projectId);
     listOfProjectCards = [];
     await dashboardProvider.refresh();
     StateService.pop();
+/*    notifyListeners();*/
   }
 
-
+  Future<void> projectFavouriteToggle(
+      {required String projectId, required bool isFavourite}) async {
+    final dashboardProvider =
+        StateService.context.read(ProviderService.dashboardProvider);
+    AppPopups.showLoader();
+    await locator<NetworkService>().updateAProjectById(
+        projectId: projectId, requestBody: {"is_favorite": !isFavourite});
+    listOfProjectCards = [];
+    await dashboardProvider.refresh();
+    StateService.pop();
+/*    notifyListeners();*/
+  }
 
   @override
   void callDispose() {

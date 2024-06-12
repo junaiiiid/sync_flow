@@ -23,6 +23,7 @@ extension APITypeExtension on ApiType {
       case ApiType.getAUsersProject:
       case ApiType.addANewProject:
       case ApiType.deleteAProject:
+      case ApiType.updateProject:
         return '/projects';
       case ApiType.getAllComments:
         return '/comments';

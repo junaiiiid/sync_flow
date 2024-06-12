@@ -4,6 +4,7 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/services/network_service.dart';
+import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
@@ -15,8 +16,18 @@ import '../../board/model/section_model.dart';
 class CreateNewProjectViewModel extends BaseViewModel {
   final formKey = GlobalKey<FormState>();
 
-  late Project project;
-  late List<Section> sections;
+  Project project = Project(
+      id: "id",
+      order: 0,
+      color: "",
+      name: "",
+      commentCount: 0,
+      isShared: false,
+      isFavorite: false,
+      isInboxProject: false,
+      isTeamInbox: false,
+      url: "",
+      viewStyle: "");
 
   final TextEditingController projectNameController = TextEditingController();
 
@@ -53,22 +64,38 @@ class CreateNewProjectViewModel extends BaseViewModel {
   ];
 
   Future<void> createNewProject() async {
+    final dashboardProvider = StateService.context.read(ProviderService.dashboardProvider);
     if (formKey.currentState?.validate() ?? false) {
       AppPopups.showLoader();
-      project = Project(
-          color: selectedColor ?? "",
-          name: projectNameController.text,
-          viewStyle: ViewStyles.board.toShortString());
+      project.color = selectedColor ?? "";
+      project.name = projectNameController.text;
+      project.viewStyle = ViewStyles.board.toShortString();
       await locator<NetworkService>().createNewProject(projectModel: project);
+      await dashboardProvider.refresh();
       StateService.pop();
+      callDispose();
     } else {
-      AppPopups.showSnackBar(type: SnackBarTypes.error, content: "The fields can not be empty.");
+      AppPopups.showSnackBar(
+          type: SnackBarTypes.error, content: "The fields can not be empty.");
     }
   }
 
   @override
   void callDispose() {
-    // TODO: implement callDispose
+    project = Project(
+        id: "id",
+        order: 0,
+        color: "",
+        name: "",
+        commentCount: 0,
+        isShared: false,
+        isFavorite: false,
+        isInboxProject: false,
+        isTeamInbox: false,
+        url: "",
+        viewStyle: "");
+    projectNameController.clear();
+    _selectedColor = null;
   }
 
   @override
