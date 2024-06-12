@@ -36,7 +36,8 @@ class ProjectsScreen extends ConsumerWidget {
                       AppButtons.scaffoldIconButton(
                         title: 'CREATE NEW',
                         onTap: () {
-                          StateService.pushNamed(routeName: CreateProjectsScreen.id);
+                          StateService.pushNamed(
+                              routeName: CreateProjectsScreen.id);
                         },
                       ),
                       ...viewModel.listOfProjectCards

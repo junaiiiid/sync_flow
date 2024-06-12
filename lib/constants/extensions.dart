@@ -36,7 +36,6 @@ extension APITypeExtension on ApiType {
   }
 }
 
-
 extension DateTimeFormatting on String {
   String toFormattedDate() {
     // Parse the date string into a DateTime object
@@ -99,11 +98,61 @@ extension StringToColor on String {
   }
 }
 
+extension StringToColorName on String {
+  String toColorName() {
+    switch (this) {
+      case 'berry_red':
+        return 'Berry Red';
+      case 'red':
+        return 'Red';
+      case 'orange':
+        return 'Orange';
+      case 'yellow':
+        return 'Yellow';
+      case 'olive_green':
+        return 'Olive Green';
+      case 'lime_green':
+        return 'Lime Green';
+      case 'green':
+        return 'Green';
+      case 'mint_green':
+        return 'Mint Green';
+      case 'teal':
+        return 'Teal';
+      case 'sky_blue':
+        return 'Sky Blue';
+      case 'light_blue':
+        return 'Light Blue';
+      case 'blue':
+        return 'Blue';
+      case 'grape':
+        return 'Grape';
+      case 'violet':
+        return 'Violet';
+      case 'lavender':
+        return 'Lavender';
+      case 'magenta':
+        return 'Magenta';
+      case 'salmon':
+        return 'Salmon';
+      case 'charcoal':
+        return 'Charcoal';
+      case 'grey':
+        return 'Grey';
+      case 'taupe':
+        return 'Taupe';
+      default:
+        return 'Unknown Color';
+    }
+  }
+}
+
 extension LightenColor on Color {
   Color lighten([double amount = 0.1]) {
     assert(amount >= 0 && amount <= 1, 'amount should be between 0 and 1');
     final hsl = HSLColor.fromColor(this);
-    final hslLight = hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
+    final hslLight =
+        hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
     return hslLight.toColor();
   }
 }
