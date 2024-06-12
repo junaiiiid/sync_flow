@@ -2,6 +2,9 @@ import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/comment_model.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
+import 'package:flow_sync/global_widgets/app_popups.dart';
+import 'package:flow_sync/services/dependency_injection/locator.dart';
+import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 
@@ -30,6 +33,17 @@ class ProjectViewModel extends BaseViewModel {
     }
     notifyListeners();
   }
+
+  Future<void> deleteProject({required String projectId}) async{
+    final dashboardProvider = StateService.context.read(ProviderService.dashboardProvider);
+    AppPopups.showLoader();
+    await locator<NetworkService>().deleteProjectById(projectId: projectId);
+    listOfProjectCards = [];
+    await dashboardProvider.refresh();
+    StateService.pop();
+  }
+
+
 
   @override
   void callDispose() {

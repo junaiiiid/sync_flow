@@ -1,32 +1,36 @@
 import 'package:flutter/material.dart';
 import 'dart:developer' as dev;
 
-abstract class BaseViewModel extends ChangeNotifier{
-  void callCreateState(){
+abstract class BaseViewModel extends ChangeNotifier {
+  void callCreateState() {
     dev.log("callCreateState");
   }
 
   void callInitState();
 
-  void callDidChangeDependencies(){
+  void callDidChangeDependencies() {
     dev.log("callDidChangeDependencies");
   }
 
-  void callBuild(){
+  void callBuild() {
     dev.log("callBuild");
   }
 
-  void callDidUpdateWidget(){
+  void callDidUpdateWidget() {
     dev.log("callDidUpdateWidget");
   }
 
-  void callSetState(){
+  void callSetState() {
     dev.log("callSetState");
   }
 
-  void callDeactivate(){
+  void callDeactivate() {
     dev.log("callDeactivate");
   }
 
   void callDispose();
+
+  void setState() {
+    notifyListeners();
+  }
 }

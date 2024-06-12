@@ -22,6 +22,7 @@ extension APITypeExtension on ApiType {
     switch (this) {
       case ApiType.getAUsersProject:
       case ApiType.addANewProject:
+      case ApiType.deleteAProject:
         return '/projects';
       case ApiType.getAllComments:
         return '/comments';

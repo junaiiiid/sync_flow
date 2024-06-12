@@ -110,4 +110,9 @@ class DashboardViewModel extends BaseViewModel {
       StateService.pushNamed(routeName: LabelsScreen.id);
     }
   }
+
+  Future<void> refresh() async{
+    callDispose();
+    await initialize();
+  }
 }

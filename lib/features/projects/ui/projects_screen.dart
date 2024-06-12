@@ -31,6 +31,7 @@ class ProjectsScreen extends ConsumerWidget {
             child: Flex(
               direction: Axis.vertical,
               children: [
+                if(viewModel.listOfProjectCards.isNotEmpty)
                 AppButtons.scaffoldIconButton(
                   title: 'CREATE NEW',
                   onTap: () {
