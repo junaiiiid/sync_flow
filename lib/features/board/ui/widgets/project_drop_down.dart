@@ -71,6 +71,7 @@ class ProjectDropDownSkeleton extends StatelessWidget {
     return AbsorbPointer(
       absorbing: true,
       child: Container(
+        width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.cherryRed,
           borderRadius: BorderRadius.all(Radius.circular(10.r)),

@@ -1,4 +1,3 @@
-
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/extensions.dart';
@@ -42,7 +41,7 @@ class BoardViewModel extends BaseViewModel {
     listOfSections = [];
     final networkService = LocatorService.networkServiceLocator;
     listOfSections = await networkService.getAllSectionsOfProjectById(
-        projectId: selectedProject.id);
+        projectId: selectedProject.id ?? "");
     notifyListeners();
   }
 
@@ -51,27 +50,36 @@ class BoardViewModel extends BaseViewModel {
     for (Section section in listOfSections) {
       String sectionName = section.name.toLowerCase();
       if (sectionName.contains("to") || sectionName.contains("do")) {
-        tabsModel
-            .add(TabsModel(tabName: section.name, iconPath: AppAssets.todo, sectionId: section.id));
+        tabsModel.add(TabsModel(
+            tabName: section.name,
+            iconPath: AppAssets.todo,
+            sectionId: section.id));
       } else if (sectionName.contains("progress")) {
-        tabsModel
-            .add(TabsModel(tabName: section.name, iconPath: AppAssets.inProgress, sectionId: section.id));
-      }
-      else if (sectionName.contains("complete")){
-        tabsModel.add(TabsModel(tabName: section.name, iconPath: AppAssets.completed, sectionId: section.id));
-      }
-      else{
-        tabsModel.add(TabsModel(tabName: section.name, iconPath: AppAssets.section, sectionId: section.id));
+        tabsModel.add(TabsModel(
+            tabName: section.name,
+            iconPath: AppAssets.inProgress,
+            sectionId: section.id));
+      } else if (sectionName.contains("complete")) {
+        tabsModel.add(TabsModel(
+            tabName: section.name,
+            iconPath: AppAssets.completed,
+            sectionId: section.id));
+      } else {
+        tabsModel.add(TabsModel(
+            tabName: section.name,
+            iconPath: AppAssets.section,
+            sectionId: section.id));
       }
     }
     return tabsModel;
   }
 
-  List<Task> get tasksList => StateService.context.read(ProviderService.dashboardProvider).listOfTasks;
+  List<Task> get tasksList =>
+      StateService.context.read(ProviderService.dashboardProvider).listOfTasks;
 
-  List<Task> filterTasksBySectionId({required String sectionId}){
+  List<Task> filterTasksBySectionId({required String sectionId}) {
     List<Task> filteredTasksList = List.from(tasksList);
-    filteredTasksList.removeWhere((element)=>element.sectionId!=sectionId);
+    filteredTasksList.removeWhere((element) => element.sectionId != sectionId);
     return filteredTasksList;
   }
 

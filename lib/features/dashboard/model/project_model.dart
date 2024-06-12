@@ -1,31 +1,31 @@
 import 'dart:convert';
 
 class Project {
-  String id;
+  String? id;
   String? parentId;
-  int order;
+  int? order;
   String color;
   String name;
-  int commentCount;
-  bool isShared;
-  bool isFavorite;
-  bool isInboxProject;
-  bool isTeamInbox;
-  String url;
+  int? commentCount;
+  bool? isShared;
+  bool? isFavorite;
+  bool? isInboxProject;
+  bool? isTeamInbox;
+  String? url;
   String viewStyle;
 
   Project({
-    required this.id,
+    this.id,
     this.parentId,
-    required this.order,
+    this.order,
     required this.color,
     required this.name,
-    required this.commentCount,
-    required this.isShared,
-    required this.isFavorite,
-    required this.isInboxProject,
-    required this.isTeamInbox,
-    required this.url,
+    this.commentCount,
+    this.isShared,
+    this.isFavorite,
+    this.isInboxProject,
+    this.isTeamInbox,
+    this.url,
     required this.viewStyle,
   });
 

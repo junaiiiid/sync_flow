@@ -56,3 +56,8 @@ enum SettingType{
   boolean,
   multiOption,
 }
+
+enum ViewStyles{
+  list,
+  board
+}

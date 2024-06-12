@@ -35,10 +35,10 @@ class ProjectCards extends StatelessWidget {
               style: AppTextStyles.labelMedium,
             ),
             trailing: Icon(
-              (model.projectData.isFavorite)
+              (model.projectData.isFavorite ?? false)
                   ? CupertinoIcons.heart_fill
                   : CupertinoIcons.heart,
-              color: (model.projectData.isFavorite)
+              color: (model.projectData.isFavorite ?? false)
                   ? AppColors.cherryRed
                   : AppColors.darkGrey,
             ),
@@ -55,7 +55,7 @@ class ProjectCards extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ProjectElements(
-                    count: model.projectData.commentCount,
+                    count: model.projectData.commentCount ?? 0,
                     type: ProjectCardElementType.comments),
                 ProjectElements(
                     count: model.taskCount, type: ProjectCardElementType.tasks),
@@ -88,8 +88,7 @@ class ProjectElements extends StatelessWidget {
         ),
         Text(
           count.toPaddedString(),
-          style:
-          AppTextStyles.displayLarge,
+          style: AppTextStyles.displayLarge,
         ),
       ],
     );

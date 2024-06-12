@@ -52,4 +52,30 @@ class AppButtons {
       ),
     );
   }
+
+  static Widget customButton(
+      {required String title,
+      required Function() onTap,
+      Color? buttonColor,
+      TextStyle? textStyle}) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: buttonColor ?? AppColors.cherryRed,
+          borderRadius: BorderRadius.all(
+            Radius.circular(20.r),
+          ),
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
+        margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+        child: Center(
+          child: Text(
+            title,
+            style: textStyle ?? AppTextStyles.displayLarge,
+          ),
+        ),
+      ),
+    );
+  }
 }

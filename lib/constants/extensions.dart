@@ -156,3 +156,16 @@ extension LightenColor on Color {
     return hslLight.toColor();
   }
 }
+
+extension ViewStylesExtension on ViewStyles {
+  String toShortString() {
+    switch (this) {
+      case ViewStyles.list:
+        return 'list';
+      case ViewStyles.board:
+        return 'board';
+      default:
+        return '';
+    }
+  }
+}

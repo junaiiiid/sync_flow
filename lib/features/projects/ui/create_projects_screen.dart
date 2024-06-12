@@ -1,6 +1,7 @@
 import 'package:flow_sync/architecture/app_parent_widget.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/home/ui/widgets/custom_app_bar.dart';
+import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/app_text_fields.dart';
 import 'package:flow_sync/global_widgets/app_drop_downs.dart';
 import 'package:flow_sync/services/provider_service.dart';
@@ -15,56 +16,65 @@ class CreateProjectsScreen extends ConsumerWidget {
   const CreateProjectsScreen({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(ProviderService.createNewProjectProvider);
-    return AppParentWidget(viewModel: viewModel, buildMethod: (context,ref){
-      return Container(
-        color: AppColors.darkGrey,
-        child: SafeArea(
-          child: Scaffold(
-            appBar: CustomAppBar.appBarWithBackButton(title: "NEW PROJECT"),
-            body: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-              child: ListView(
-                children: [
-                  AppTextFields.basicTextField(
-                    title: "Enter Project Name:",
-                    hintText: "eg My Project",
-                    controller: TextEditingController(),
+    return AppParentWidget(
+        viewModel: viewModel,
+        buildMethod: (context, ref) {
+          return Container(
+            color: AppColors.darkGrey,
+            child: SafeArea(
+              child: Scaffold(
+                appBar: CustomAppBar.appBarWithBackButton(title: "NEW PROJECT"),
+                body: Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+                  child: Form(
+                    key: viewModel.formKey,
+                    child: ListView(
+                      children: [
+                        AppTextFields.basicTextField(
+                          title: "Enter Project Name:",
+                          hintText: "eg My Project",
+                          controller: viewModel.projectNameController,
+                        ),
+                        AppDropDowns.customDropDown<String>(
+                            title: "Select Project Color",
+                            items: viewModel.colorNames,
+                            onChanged: (value) {
+                              viewModel.selectedColor = value;
+                            },
+                            hint: "eg red",
+                            itemBuilder: (value) {
+                              return Row(
+                                children: [
+                                  Container(
+                                    height: 20.h,
+                                    width: 20.w,
+                                    color: value?.toColor(),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 25.w),
+                                    child: Text(
+                                      value?.toColorName() ?? "",
+                                      style: AppTextStyles.displaySmall?.copyWith(
+                                        color: AppColors.darkGrey,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              );
+                            }),
+                        AppButtons.customButton(title: "Create", onTap: ()async{
+                          await viewModel.createNewProject();
+                        }),
+                      ],
+                    ),
                   ),
-                  AppTextFields.basicTextField(
-                    title: "Enter Project Name:",
-                    hintText: "eg My Project",
-                    controller: TextEditingController(),
-                  ),
-                  AppDropDowns.customDropDown<String>(
-                      title: "Select Project Color",
-                      items: viewModel.colorNames,
-                      onChanged: (value){
-                        viewModel.selectedColor = value;
-                      },
-                      hint: "eg red",
-                      itemBuilder: (value){
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              height: 20.h,
-                              width: 20.w,
-                              color: value?.toColor(),
-                            ),
-                            Text(value?.toColorName()??"",style: AppTextStyles.displaySmall?.copyWith(
-                              color: AppColors.darkGrey,
-                            ),)
-                          ],
-                        );
-                      }),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-      );
-    });
+          );
+        });
   }
 }

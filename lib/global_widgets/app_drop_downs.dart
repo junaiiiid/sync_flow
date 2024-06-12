@@ -15,6 +15,7 @@ class AppDropDowns {
     required Function(T?) onChanged,
     required String hint,
     required Widget Function(T?) itemBuilder,
+    String? Function(T?)? validator,
     Color? color,
     Color? iconColor,
     TextStyle? textStyle,
@@ -27,11 +28,12 @@ class AppDropDowns {
         children: [
           Text(
             title,
-            style: titleTextStyle??AppTextStyles.labelLarge,
+            style: titleTextStyle ?? AppTextStyles.labelLarge,
           ),
           SizedBox(
             width: double.infinity,
             child: DynamicDropDown<T>(
+                validator: validator,
                 items: items,
                 selectedValue: selectedItem,
                 onChanged: onChanged,
@@ -58,6 +60,7 @@ class DynamicDropDown<T> extends StatefulWidget {
   final Color? color;
   final Color? iconColor;
   final TextStyle? hintStyle;
+  final String? Function(T?)? validator;
   final Widget Function(T) itemBuilder;
 
   const DynamicDropDown({
@@ -70,6 +73,7 @@ class DynamicDropDown<T> extends StatefulWidget {
     this.hintStyle,
     required this.itemBuilder,
     this.iconColor,
+    this.validator,
   });
 
   @override
@@ -92,10 +96,24 @@ class _DynamicDropDownState<T> extends State<DynamicDropDown<T>> {
         color: widget.color ?? AppColors.cherryRed,
         borderRadius: BorderRadius.all(Radius.circular(10.r)),
       ),
-      margin: EdgeInsets.symmetric(vertical: 10.h,),
+      margin: EdgeInsets.symmetric(
+        vertical: 10.h,
+      ),
       padding: EdgeInsets.symmetric(horizontal: 25.w),
       child: DropdownButtonHideUnderline(
-        child: DropdownButton<T>(
+        child: DropdownButtonFormField<T>(
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            errorBorder: InputBorder.none,
+          ),
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: widget.validator ??
+              (value) {
+                if (selectedValue == null) {
+                  return 'Please select an option';
+                }
+                return null;
+              },
           hint: Text(
             widget.hint,
             style: widget.hintStyle ??

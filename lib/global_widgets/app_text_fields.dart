@@ -10,8 +10,10 @@ class AppTextFields {
   static Widget basicTextField(
       {required String title,
       required String hintText,
+      String? Function(String?)? validator,
       required TextEditingController controller,
-      EdgeInsetsGeometry? padding,int? maxLength}) {
+      EdgeInsetsGeometry? padding,
+      int? maxLength}) {
     return Padding(
       padding:
           padding ?? EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
@@ -32,15 +34,23 @@ class AppTextFields {
               padding: padding ??
                   EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.h),
               margin: EdgeInsets.symmetric(vertical: 10.h),
-              child: TextField(
+              child: TextFormField(
+                validator: validator ??
+                    (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'This field can not be empty';
+                      }
+                      return null;
+                    },
                 controller: controller,
                 style: AppTextStyles.displaySmall,
                 decoration: InputDecoration.collapsed(
-                    hintStyle: AppTextStyles.displaySmall?.copyWith(
-                      color: AppColors.darkGrey.withOpacity(0.5),
-                    ),
-                    hintText: hintText),
-                maxLength: maxLength??15,
+                  hintStyle: AppTextStyles.displaySmall?.copyWith(
+                    color: AppColors.darkGrey.withOpacity(0.5),
+                  ),
+                  hintText: hintText,
+                ),
+                maxLength: maxLength ?? 15,
               )),
         ],
       ),
