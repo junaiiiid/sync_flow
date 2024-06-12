@@ -47,7 +47,7 @@ class AppPopups {
           backgroundColor: color,
           content: Text(
             text,
-            style: AppTextStyles.labelLarge?.copyWith(color: AppColors.white),
+            style: AppTextStyles.labelLarge?.copyWith(color: AppColors.darkGrey),
           )),
     );
   }

@@ -14,6 +14,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../global_widgets/app_buttons.dart';
+import '../../../global_widgets/list_spacer.dart';
 import '../../../services/state_service.dart';
 
 class ProjectsScreen extends ConsumerWidget {
@@ -27,26 +28,30 @@ class ProjectsScreen extends ConsumerWidget {
         buildMethod: (context, ref) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-            child: ListView(
-              children: (viewModel.listOfProjectCards.isEmpty)
-                  ? [
-                      const ProjectCardsSkeleton(),
-                    ]
-                  : [
-                      AppButtons.scaffoldIconButton(
-                        title: 'CREATE NEW',
-                        onTap: () {
-                          StateService.pushNamed(
-                              routeName: CreateProjectsScreen.id);
-                        },
-                      ),
-                      ...viewModel.listOfProjectCards.map<Widget>(
-                        (element) => ProjectCards(model: element),
-                      ),
-                      SizedBox(
-                        height: 300.h,
-                      ),
-                    ],
+            child: Flex(
+              direction: Axis.vertical,
+              children: [
+                AppButtons.scaffoldIconButton(
+                  title: 'CREATE NEW',
+                  onTap: () {
+                    StateService.pushNamed(routeName: CreateProjectsScreen.id);
+                  },
+                ),
+                Expanded(
+                  child: ListView(
+                    children: (viewModel.listOfProjectCards.isEmpty)
+                        ? [
+                            const ProjectCardsSkeleton(),
+                          ]
+                        : [
+                            ...viewModel.listOfProjectCards.map<Widget>(
+                              (element) => ProjectCards(model: element),
+                            ),
+                            const ListSpacer(),
+                          ],
+                  ),
+                ),
+              ],
             ),
           );
         });
