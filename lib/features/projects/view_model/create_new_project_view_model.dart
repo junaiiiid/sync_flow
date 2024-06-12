@@ -65,12 +65,14 @@ class CreateNewProjectViewModel extends BaseViewModel {
 
   Future<void> createNewProject() async {
     final dashboardProvider = StateService.context.read(ProviderService.dashboardProvider);
+    final projectProvider = StateService.context.read(ProviderService.projectProvider);
     if (formKey.currentState?.validate() ?? false) {
       AppPopups.showLoader();
       project.color = selectedColor ?? "";
       project.name = projectNameController.text;
       project.viewStyle = ViewStyles.board.toShortString();
       await locator<NetworkService>().createNewProject(projectModel: project);
+      projectProvider.callDispose();
       await dashboardProvider.refresh();
       StateService.pop();
       callDispose();

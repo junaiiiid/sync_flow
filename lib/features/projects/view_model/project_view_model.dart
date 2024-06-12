@@ -39,7 +39,7 @@ class ProjectViewModel extends BaseViewModel {
         StateService.context.read(ProviderService.dashboardProvider);
     AppPopups.showLoader();
     await locator<NetworkService>().deleteProjectById(projectId: projectId);
-    listOfProjectCards = [];
+    callDispose();
     await dashboardProvider.refresh();
     StateService.pop();
 /*    notifyListeners();*/
@@ -51,8 +51,8 @@ class ProjectViewModel extends BaseViewModel {
         StateService.context.read(ProviderService.dashboardProvider);
     AppPopups.showLoader();
     await locator<NetworkService>().updateAProjectById(
-        projectId: projectId, requestBody: {"is_favorite": !isFavourite});
-    listOfProjectCards = [];
+        projectId: projectId, requestBody: {"is_favorite": "${!isFavourite}"});
+    callDispose();
     await dashboardProvider.refresh();
     StateService.pop();
 /*    notifyListeners();*/
@@ -60,7 +60,7 @@ class ProjectViewModel extends BaseViewModel {
 
   @override
   void callDispose() {
-    // TODO: implement callDispose
+    listOfProjectCards = [];
   }
 
   @override
