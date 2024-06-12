@@ -8,6 +8,7 @@ import 'package:flow_sync/features/settings/view_model/settings_view_model.dart'
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../features/projects/view_model/create_new_project_view_model.dart';
 import '../features/splash/view_model/splash_view_model.dart';
 
 class ProviderService {
@@ -36,4 +37,9 @@ class ProviderService {
 
   static ChangeNotifierProvider<SettingsViewModel> settingsProvider =
   StateService.createProvider(() => SettingsViewModel());
+
+  static ChangeNotifierProvider<CreateNewProjectViewModel> createNewProjectProvider =
+  StateService.createProvider(() => CreateNewProjectViewModel());
 }
+
+

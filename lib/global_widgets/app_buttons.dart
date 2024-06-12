@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../styles_and_themes/app_colors.dart';
+import '../styles_and_themes/app_text_styles.dart';
 
 class AppButtons {
   AppButtons._();
@@ -14,9 +17,39 @@ class AppButtons {
       highlightColor: AppColors.transparent,
       splashColor: AppColors.transparent,
       onTap: onTap,
-      child: Center(child: Transform.scale(
-          scale: scaleFactor??1,
-          child: SvgPicture.asset(iconPath))),
+      child: Center(
+          child: Transform.scale(
+              scale: scaleFactor ?? 1, child: SvgPicture.asset(iconPath))),
+    );
+  }
+
+  static Widget scaffoldIconButton(
+      {IconData? iconData, required String title, required Function() onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.cherryRed,
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.r),
+          ),
+        ),
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+        margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              iconData ?? Icons.add,
+              size: 30.h,
+            ),
+            Text(
+              title,
+              style: AppTextStyles.displayMedium,
+            )
+          ],
+        ),
+      ),
     );
   }
 }

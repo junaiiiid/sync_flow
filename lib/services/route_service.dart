@@ -1,5 +1,6 @@
 import 'package:flow_sync/features/comments/ui/comments_screen.dart';
 import 'package:flow_sync/features/labels/ui/labels_screen.dart';
+import 'package:flow_sync/features/projects/ui/create_projects_screen.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
@@ -20,6 +21,8 @@ class RouteService {
           routeName: CommentsScreen.id, page: const CommentsScreen()),
       RouteNames.getRoute(
           routeName: LabelsScreen.id, page: const LabelsScreen()),
+      RouteNames.getRoute(
+          routeName: CreateProjectsScreen.id, page: const CreateProjectsScreen()),
     ],
   );
 }
