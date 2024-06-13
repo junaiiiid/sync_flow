@@ -5,7 +5,7 @@ class Label {
   final String name;
   final int order;
   final String color;
-  final bool isFavorite;
+  bool isFavorite;
 
   Label({
     required this.id,

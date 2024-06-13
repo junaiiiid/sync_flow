@@ -16,7 +16,7 @@ class LabelsViewModel extends BaseViewModel{
 
   set listOfLabels(List<Label> value) {
     _listOfLabels = value;
-    notifyListeners();
+    setState();
   }
 
   @override
@@ -35,10 +35,10 @@ class LabelsViewModel extends BaseViewModel{
     await locator<NetworkService>().updateALabelById(labelId: labelId, requestBody: {
       "is_favorite":(!isFavourite)?true:"false",
     });
-    callDispose();
-    dashBoardProvider.refresh(action: (){
-      listOfLabels = dashBoardProvider.listOfLabels;
-    });
+    final Label selectedLabel = dashBoardProvider.listOfLabels.firstWhere((element)=>element.id==labelId);
+    selectedLabel.isFavorite = !isFavourite;
+    dashBoardProvider.listOfLabels[dashBoardProvider.listOfLabels.indexOf(dashBoardProvider.listOfLabels.firstWhere((element)=>element.id==labelId))] = selectedLabel;
+    setState();
     StateService.pop();
   }
 
