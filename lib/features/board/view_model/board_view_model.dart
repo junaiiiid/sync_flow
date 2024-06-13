@@ -11,7 +11,7 @@ import 'package:flow_sync/services/state_service.dart';
 import '../model/tabs_model.dart';
 
 class BoardViewModel extends BaseViewModel {
-  List<Section> listOfSections = [];
+  List<Section> listOfSections = [Section(id: "id", projectId: "projectId", order: 0, name: "name")];
 
   Project _selectedProject = Project(
       id: "id",
@@ -38,10 +38,12 @@ class BoardViewModel extends BaseViewModel {
       .listOfProjects;
 
   Future<void> getSectionsOfSelectedProject() async {
-    listOfSections = [];
     final networkService = LocatorService.networkServiceLocator;
     listOfSections = await networkService.getAllSectionsOfProjectById(
         projectId: selectedProject.id ?? "");
+    if(listOfSections.isNotEmpty){
+      listOfSections.removeWhere((element)=>element.id=="id");
+    }
     notifyListeners();
   }
 

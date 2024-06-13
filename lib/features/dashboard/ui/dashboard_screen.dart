@@ -25,7 +25,8 @@ class DashboardScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(ProviderService.dashboardProvider);
-    bool condition = viewModel.dashboardItems.isEmpty;
+    bool condition = ((viewModel.dashboardItems.length == 1) &&
+        (viewModel.dashboardItems.first.type == DashboardItemType.dummy));
     List<DashboardItemsModel> conditionalList =
         condition ? viewModel.dashboardItemsSkeleton : viewModel.dashboardItems;
     return AppParentWidget(
@@ -54,7 +55,9 @@ class DashboardScreen extends ConsumerWidget {
   Widget dashboardItemCard({required DashboardItemsModel model}) {
     return InkWell(
       onTap: () {
-        StateService.context.read(ProviderService.dashboardProvider).handleDashBoardIconTap(type: model.type);
+        StateService.context
+            .read(ProviderService.dashboardProvider)
+            .handleDashBoardIconTap(type: model.type);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -98,8 +101,7 @@ class DashboardScreen extends ConsumerWidget {
                     AppTextStyles.labelLarge?.copyWith(color: AppColors.white),
               ),
             ),
-            SkeletonEffectWidget(
-                child: SvgPicture.asset(model.iconPath)),
+            SkeletonEffectWidget(child: SvgPicture.asset(model.iconPath)),
             SkeletonEffectWidget(
               child: Text(
                 model.length.toPaddedString(),

@@ -1,6 +1,7 @@
 import 'package:flow_sync/architecture/app_parent_widget.dart';
 import 'package:flow_sync/features/labels/ui/create_new_label_screen.dart';
 import 'package:flow_sync/features/labels/ui/widgets/label_cards.dart';
+import 'package:flow_sync/global_widgets/no_data_widget.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
@@ -35,21 +36,29 @@ class LabelsScreen extends ConsumerWidget {
                 child: Flex(
                   direction: Axis.vertical,
                   children: [
-                    AppButtons.scaffoldIconButton(
-                      title: 'CREATE NEW',
-                      onTap: () {
-                        StateService.pushNamed(routeName: CreateNewLabelScreen.id);
-                      },
-                    ),
+                    if (viewModel.listOfLabels.isEmpty)
+                      AppButtons.scaffoldIconButton(
+                        title: 'CREATE NEW',
+                        onTap: () {
+                          StateService.pushNamed(
+                              routeName: CreateNewLabelScreen.id);
+                        },
+                      ),
                     Expanded(
                       child: ListView(
-                        children: (viewModel.listOfLabels.isEmpty)
+                        children: (viewModel.listOfLabels.length == 1 &&
+                                viewModel.listOfLabels.first.id == "id")
                             ? [const LabelCardSkeleton()]
-                            : [
-                                ...viewModel.listOfLabels.map<Widget>(
-                                    (label) => LabelCard(model: label)),
-                                const ListSpacer(),
-                              ],
+                            : (viewModel.listOfLabels.isEmpty)
+                                ? [
+                                    const NoDataWidget(
+                                        content: "NO LABELS FOUND"),
+                                  ]
+                                : [
+                                    ...viewModel.listOfLabels.map<Widget>(
+                                        (label) => LabelCard(model: label)),
+                                    const ListSpacer(),
+                                  ],
                       ),
                     ),
                   ],

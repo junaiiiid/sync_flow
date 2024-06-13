@@ -11,7 +11,7 @@ import '../../dashboard/model/label_model.dart';
 
 class LabelsViewModel extends BaseViewModel{
 
-  List<Label> _listOfLabels = [];
+  List<Label> _listOfLabels = [Label(id: "id", name: "name", order: 0, color: "color", isFavorite: false)];
 
   List<Label> get listOfLabels => _listOfLabels;
 
@@ -27,6 +27,7 @@ class LabelsViewModel extends BaseViewModel{
 
   @override
   void callInitState() {
+    _listOfLabels.clear();
     _listOfLabels = StateService.context.read(ProviderService.dashboardProvider).listOfLabels;
   }
 

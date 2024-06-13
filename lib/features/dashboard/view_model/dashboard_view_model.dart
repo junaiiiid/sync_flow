@@ -21,11 +21,30 @@ import '../model/dashboard_items_model.dart';
 import '../model/task_model.dart';
 
 class DashboardViewModel extends BaseViewModel {
-  List<Project> listOfProjects = [];
+  List<Project> listOfProjects = [
+    Project(
+        id: "id",
+        order: 0,
+        color: "color",
+        name: "name",
+        commentCount: 0,
+        isShared: false,
+        isFavorite: false,
+        isInboxProject: false,
+        isTeamInbox: false,
+        url: "url",
+        viewStyle: "viewStyle"),
+  ];
   List<Task> listOfTasks = [];
   List<Label> listOfLabels = [];
 
-  List<DashboardItemsModel> dashboardItems = [];
+  List<DashboardItemsModel> dashboardItems = [
+    DashboardItemsModel(
+        iconPath: AppAssets.allProjects,
+        label: "Loading...",
+        length: 0,
+        type: DashboardItemType.dummy),
+  ];
 
   List<DashboardItemsModel> get dashboardItemsSkeleton => [
         DashboardItemsModel(
@@ -64,18 +83,21 @@ class DashboardViewModel extends BaseViewModel {
   }
 
   Future<void> initialize() async {
+    final projectProvider =
+        StateService.context.read(ProviderService.projectProvider);
     final networkService = LocatorService.networkServiceLocator;
     listOfProjects = await networkService.getAllProjects();
     listOfProjects.removeWhere((element) => element.viewStyle == 'list');
+    listOfProjects.removeWhere((element) => element.id == 'id');
     listOfTasks = await networkService.getAllActiveTasks();
     int commentsCount = 0;
     for (var task in listOfTasks) {
       commentsCount = commentsCount + task.commentCount;
     }
     listOfLabels = await networkService.getAllPersonalLabels();
-    StateService.context
-        .read(ProviderService.projectProvider)
-        .generateProjectCards();
+
+    projectProvider.generateProjectCards();
+    dashboardItems.clear();
     dashboardItems.add(DashboardItemsModel(
         iconPath: AppAssets.allProjects,
         label: "Total Projects",
@@ -100,23 +122,26 @@ class DashboardViewModel extends BaseViewModel {
   }
 
   void handleDashBoardIconTap({required DashboardItemType type}) {
-    final homeProvider = StateService.context.read(ProviderService.homeProvider);
+    final homeProvider =
+        StateService.context.read(ProviderService.homeProvider);
     switch (type) {
       case DashboardItemType.totalProjects:
         homeProvider.selectedItem = homeProvider.navigationBarItems[2];
       case DashboardItemType.totalComments:
-      StateService.pushNamed(routeName: CommentsScreen.id);
+        StateService.pushNamed(routeName: CommentsScreen.id);
       case DashboardItemType.activeTasks:
         homeProvider.selectedItem = homeProvider.navigationBarItems[1];
       case DashboardItemType.labels:
-      StateService.pushNamed(routeName: LabelsScreen.id);
+        StateService.pushNamed(routeName: LabelsScreen.id);
+      case DashboardItemType.dummy:
+      // TODO: Handle this case.
     }
   }
 
-  Future<void> refresh({VoidCallback? action}) async{
+  Future<void> refresh({VoidCallback? action}) async {
     callDispose();
     await initialize();
-    if(action!=null){
+    if (action != null) {
       action;
     }
   }

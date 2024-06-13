@@ -7,6 +7,7 @@ import 'package:flow_sync/features/comments/ui/widgets/comment_card.dart';
 import 'package:flow_sync/features/comments/view_model/comment_view_model.dart';
 import 'package:flow_sync/features/dashboard/model/comment_model.dart';
 import 'package:flow_sync/features/home/ui/widgets/custom_app_bar.dart';
+import 'package:flow_sync/global_widgets/no_data_widget.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -35,9 +36,11 @@ class CommentsScreen extends ConsumerWidget {
                 padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
-                  children: (viewModel.allComments.isEmpty)
+                  children: (viewModel.allComments.length==1 && viewModel.allComments.first.id=="id")
                       ? [const CommentCardSkeleton()]
-                      : viewModel.allComments
+                      :(viewModel.allComments.isEmpty)?[
+                        const NoDataWidget(content: "NO COMMENTS FOUND"),
+                  ]: viewModel.allComments
                           .map<Widget>((comment) =>
                               CommentCard(model: comment, viewModel: viewModel))
                           .toList(),

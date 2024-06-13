@@ -45,6 +45,7 @@ enum DashboardItemType {
   totalComments,
   activeTasks,
   labels,
+  dummy
 }
 
 enum CommentActionType{

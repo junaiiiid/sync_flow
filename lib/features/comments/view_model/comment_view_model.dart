@@ -11,7 +11,7 @@ import '../../dashboard/model/comment_model.dart';
 import '../../dashboard/model/project_model.dart';
 
 class CommentViewModel extends BaseViewModel {
-  List<Comment> allComments = [];
+  List<Comment> allComments = [Comment(id: "id", taskId: "taskId", content: "content", postedAt: DateTime.now())];
 
   List<Task> get listOfTasks => StateService.context.read(ProviderService.dashboardProvider).listOfTasks;
 
@@ -51,5 +51,6 @@ class CommentViewModel extends BaseViewModel {
       List<Comment> comments = await locator<NetworkService>().getCommentByTaskId(taskId: task.id);
       allComments.addAll(comments);
     }
+    allComments.removeWhere((element)=>element.id=="id");
   }
 }

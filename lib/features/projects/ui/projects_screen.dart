@@ -4,6 +4,7 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/projects/model/project_card_model.dart';
 import 'package:flow_sync/features/projects/ui/create_projects_screen.dart';
 import 'package:flow_sync/features/projects/ui/widgets/project_cards.dart';
+import 'package:flow_sync/global_widgets/no_data_widget.dart';
 import 'package:flow_sync/global_widgets/skeleton_effect_widget.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
@@ -31,7 +32,7 @@ class ProjectsScreen extends ConsumerWidget {
             child: Flex(
               direction: Axis.vertical,
               children: [
-                if(viewModel.listOfProjectCards.isNotEmpty)
+                if(!(viewModel.listOfProjectCards.length==1 && viewModel.listOfProjectCards.first.projectData.id=="id"))
                 AppButtons.scaffoldIconButton(
                   title: 'CREATE NEW',
                   onTap: () {
@@ -40,11 +41,13 @@ class ProjectsScreen extends ConsumerWidget {
                 ),
                 Expanded(
                   child: ListView(
-                    children: (viewModel.listOfProjectCards.isEmpty)
+                    children: (viewModel.listOfProjectCards.length==1 && viewModel.listOfProjectCards.first.projectData.id=="id")
                         ? [
                             const ProjectCardsSkeleton(),
                           ]
-                        : [
+                        :(viewModel.listOfProjectCards.isEmpty)?[
+                          const NoDataWidget(content: "NO PROJECTS FOUND"),
+                    ]: [
                             ...viewModel.listOfProjectCards.map<Widget>(
                               (element) => ProjectCards(model: element),
                             ),

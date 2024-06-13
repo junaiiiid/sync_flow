@@ -19,7 +19,22 @@ class ProjectViewModel extends BaseViewModel {
   List<Task> get tasksList =>
       StateService.context.read(ProviderService.dashboardProvider).listOfTasks;
 
-  List<ProjectCardModel> listOfProjectCards = [];
+  List<ProjectCardModel> listOfProjectCards = [
+    ProjectCardModel(
+        projectData: Project(
+            id: "id",
+            order: 0,
+            color: "color",
+            name: "name",
+            commentCount: 0,
+            isShared: false,
+            isFavorite: false,
+            isInboxProject: false,
+            isTeamInbox: false,
+            url: "url",
+            viewStyle: "viewStyle"),
+        taskCount: 0)
+  ];
 
   void generateProjectCards() {
     for (Project project in projectsList) {
@@ -31,7 +46,8 @@ class ProjectViewModel extends BaseViewModel {
         taskCount: tasks.length,
       ));
     }
-    notifyListeners();
+    listOfProjectCards.removeWhere((element)=>element.projectData.id=="id");
+    setState();
   }
 
   Future<void> deleteProject({required String projectId}) async {
@@ -42,7 +58,6 @@ class ProjectViewModel extends BaseViewModel {
     callDispose();
     await dashboardProvider.refresh();
     StateService.pop();
-/*    notifyListeners();*/
   }
 
   Future<void> projectFavouriteToggle(
@@ -55,7 +70,6 @@ class ProjectViewModel extends BaseViewModel {
     callDispose();
     await dashboardProvider.refresh();
     StateService.pop();
-/*    notifyListeners();*/
   }
 
   @override
