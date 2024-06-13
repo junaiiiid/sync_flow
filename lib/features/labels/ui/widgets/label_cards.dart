@@ -20,7 +20,9 @@ class LabelCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5.h),
       child: AppDismissible(
-        onDismiss: (_) {},
+        onDismiss: (_) {
+          StateService.context.read(ProviderService.labelsProvider).deleteALabel(labelId: model.id);
+        },
         child: Card(
           color: model.color.toColor(),
           child: Container(

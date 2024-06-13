@@ -30,6 +30,7 @@ extension APITypeExtension on ApiType {
       case ApiType.getAllPersonalLabels:
       case ApiType.updateAPersonalLabel:
       case ApiType.createNewPersonalLabel:
+      case ApiType.deleteAPersonalLabel:
         return '/labels';
       case ApiType.getActiveTasks:
         return '/tasks';

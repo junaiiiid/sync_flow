@@ -1,3 +1,4 @@
+
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
@@ -38,6 +39,16 @@ class LabelsViewModel extends BaseViewModel{
     final Label selectedLabel = dashBoardProvider.listOfLabels.firstWhere((element)=>element.id==labelId);
     selectedLabel.isFavorite = !isFavourite;
     dashBoardProvider.listOfLabels[dashBoardProvider.listOfLabels.indexOf(dashBoardProvider.listOfLabels.firstWhere((element)=>element.id==labelId))] = selectedLabel;
+    setState();
+    StateService.pop();
+  }
+
+  Future<void> deleteALabel({required String labelId}) async{
+    final dashBoardProvider = StateService.context.read(ProviderService.dashboardProvider);
+    AppPopups.showLoader();
+    await locator<NetworkService>().deleteLabelById(labelId: labelId);
+    dashBoardProvider.refresh();
+    listOfLabels.removeWhere((element)=>element.id==labelId);
     setState();
     StateService.pop();
   }
