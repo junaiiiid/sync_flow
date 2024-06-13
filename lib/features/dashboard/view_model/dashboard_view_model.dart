@@ -71,10 +71,29 @@ class DashboardViewModel extends BaseViewModel {
 
   @override
   void callDispose() {
-    listOfProjects = [];
+    listOfProjects = [
+      Project(
+          id: "id",
+          order: 0,
+          color: "color",
+          name: "name",
+          commentCount: 0,
+          isShared: false,
+          isFavorite: false,
+          isInboxProject: false,
+          isTeamInbox: false,
+          url: "url",
+          viewStyle: "viewStyle"),
+    ];
     listOfTasks = [];
     listOfLabels = [];
-    dashboardItems = [];
+    dashboardItems = [
+      DashboardItemsModel(
+          iconPath: AppAssets.allProjects,
+          label: "Loading...",
+          length: 0,
+          type: DashboardItemType.dummy),
+    ];
   }
 
   @override

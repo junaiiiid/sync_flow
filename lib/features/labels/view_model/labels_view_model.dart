@@ -22,7 +22,7 @@ class LabelsViewModel extends BaseViewModel{
 
   @override
   void callDispose() {
-    _listOfLabels = [];
+    _listOfLabels = [Label(id: "id", name: "name", order: 0, color: "color", isFavorite: false)];
   }
 
   @override

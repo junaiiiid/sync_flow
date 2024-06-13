@@ -38,7 +38,7 @@ class CommentViewModel extends BaseViewModel {
 
   @override
   void callDispose() {
-    allComments = [];
+    allComments = [Comment(id: "id", taskId: "taskId", content: "content", postedAt: DateTime.now())];
   }
 
   @override

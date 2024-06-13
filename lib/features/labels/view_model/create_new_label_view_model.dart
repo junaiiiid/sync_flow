@@ -22,7 +22,7 @@ class CreateNewLabelViewModel extends BaseViewModel{
     notifyListeners();
   }
 
-  List<String> colorNames = [
+  final List<String> colorNames = [
     'berry_red',
     'red',
     'orange',

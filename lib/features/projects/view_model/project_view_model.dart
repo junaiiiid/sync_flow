@@ -74,7 +74,22 @@ class ProjectViewModel extends BaseViewModel {
 
   @override
   void callDispose() {
-    listOfProjectCards = [];
+    listOfProjectCards = [
+      ProjectCardModel(
+          projectData: Project(
+              id: "id",
+              order: 0,
+              color: "color",
+              name: "name",
+              commentCount: 0,
+              isShared: false,
+              isFavorite: false,
+              isInboxProject: false,
+              isTeamInbox: false,
+              url: "url",
+              viewStyle: "viewStyle"),
+          taskCount: 0)
+    ];
   }
 
   @override

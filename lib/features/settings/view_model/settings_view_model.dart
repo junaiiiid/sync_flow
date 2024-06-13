@@ -13,7 +13,14 @@ class SettingsViewModel extends BaseViewModel {
   ];
   @override
   void callDispose() {
-    // TODO: implement callDispose
+    settingsMenuItems = [
+      SettingsModel(title: "Dark Theme", type: SettingType.boolean, value: false),
+      SettingsModel(
+        title: "App Type",
+        type: SettingType.multiOption,
+        possibleValues: ['Simple', 'Advanced'],
+      ),
+    ];
   }
 
   @override
