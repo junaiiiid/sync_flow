@@ -10,10 +10,12 @@ import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../constants/enums.dart';
 import '../../dashboard/model/comment_model.dart';
 import '../../dashboard/model/project_model.dart';
 
 class CommentViewModel extends BaseViewModel {
+  final formKey = GlobalKey<FormState>();
 
   TextEditingController commentController = TextEditingController();
 
@@ -49,13 +51,19 @@ class CommentViewModel extends BaseViewModel {
   }
 
   Future<void> editComment({required String id}) async{
-    AppPopups.showLoader();
-    await locator<NetworkService>().updateACommentById(commentId: id, requestBody: {
-      "content": commentController.text,
-      "posted_at": DateTime.now().toIso8601WithMillis(),
-    });
-    await refresh();
-    StateService.pop();
+    if(formKey.currentState?.validate()??false){
+      StateService.pop();
+      AppPopups.showLoader();
+      await locator<NetworkService>().updateACommentById(commentId: id, requestBody: {
+        "content": commentController.text,
+        "posted_at": DateTime.now().toIso8601WithMillis(),
+      });
+      await refresh();
+      StateService.pop();
+    }else{
+      AppPopups.showSnackBar(
+          type: SnackBarTypes.error, content: "Comment can not be empty.");
+    }
   }
 
   @override

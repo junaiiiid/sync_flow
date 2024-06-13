@@ -28,29 +28,31 @@ class EditCommentView extends StatelessWidget {
         bottom: viewInsets.bottom > 0 ? viewInsets.bottom : 50.h,
       ),
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              radius: 25.h,
-              backgroundColor: AppColors.darkGrey,
-              child: SvgPicture.asset(AppAssets.userIcon),
-            ),
-            AppTextFields.basicTextField(
-                title: "Comment# ${model.id}",
-                hintText: "",
-                controller: viewModel
-                    .commentController,
-                maxLength: 500,
-                maxLines: 5),
-            AppButtons.customButton(
-                title: "PUBLISH",
-                onTap: () async{
-                  StateService.pop();
-                  await viewModel.editComment(id: model.id);
-                }),
-          ],
+        child: Form(
+          key: viewModel.formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                radius: 25.h,
+                backgroundColor: AppColors.darkGrey,
+                child: SvgPicture.asset(AppAssets.userIcon),
+              ),
+              AppTextFields.basicTextField(
+                  title: "Comment# ${model.id}",
+                  hintText: "",
+                  controller: viewModel
+                      .commentController,
+                  maxLength: 500,
+                  maxLines: 5),
+              AppButtons.customButton(
+                  title: "PUBLISH",
+                  onTap: () async{
+                    await viewModel.editComment(id: model.id);
+                  }),
+            ],
+          ),
         ),
       ),
     );
