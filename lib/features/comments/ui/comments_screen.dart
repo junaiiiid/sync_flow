@@ -2,13 +2,16 @@ import 'package:flow_sync/architecture/app_parent_widget.dart';
 import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/enums.dart';
 import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/features/comments/ui/add_comment_screen.dart';
 import 'package:flow_sync/features/comments/ui/widgets/bubble.dart';
 import 'package:flow_sync/features/comments/ui/widgets/comment_card.dart';
 import 'package:flow_sync/features/comments/view_model/comment_view_model.dart';
 import 'package:flow_sync/features/dashboard/model/comment_model.dart';
 import 'package:flow_sync/features/home/ui/widgets/custom_app_bar.dart';
+import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/no_data_widget.dart';
 import 'package:flow_sync/services/provider_service.dart';
+import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,16 +37,28 @@ class CommentsScreen extends ConsumerWidget {
               appBar: CustomAppBar.appBarWithBackButton(title: "Total Comments"),
               body: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                child: ListView(
-                  physics: const BouncingScrollPhysics(),
-                  children: (viewModel.allComments.length==1 && viewModel.allComments.first.id=="id")
-                      ? [const CommentCardSkeleton()]
-                      :(viewModel.allComments.isEmpty)?[
-                        const NoDataWidget(content: "NO COMMENTS FOUND"),
-                  ]: viewModel.allComments
-                          .map<Widget>((comment) =>
-                              CommentCard(model: comment, viewModel: viewModel))
-                          .toList(),
+                child: Flex(
+                  direction: Axis.vertical,
+                  children: [
+                    if(!(viewModel.allComments.length==1 && viewModel.allComments.first.id=="id"))
+                    AppButtons.scaffoldIconButton(title: "ADD A COMMENT", onTap: (){
+                      StateService.pushNamed(routeName: AddCommentScreen.id);
+                    }),
+                    Expanded(
+                      flex: 3,
+                      child: ListView(
+                        physics: const BouncingScrollPhysics(),
+                        children: (viewModel.allComments.length==1 && viewModel.allComments.first.id=="id")
+                            ? [const CommentCardSkeleton()]
+                            :(viewModel.allComments.isEmpty)?[
+                              const NoDataWidget(content: "NO COMMENTS FOUND"),
+                        ]: viewModel.allComments
+                                .map<Widget>((comment) =>
+                                    CommentCard(model: comment, viewModel: viewModel))
+                                .toList(),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

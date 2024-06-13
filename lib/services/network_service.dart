@@ -37,7 +37,6 @@ class NetworkService {
         "${ApiConstants.baseUrl}${ApiType.getAllComments.getUrl()}?task_id=$taskId";
     final response = await _dio.get(requestUrl,
         options: Options(headers: ApiConstants.authHeader));
-    dev.log(response.data);
     return parseComments(response.data);
   }
 

@@ -44,23 +44,23 @@ class Task {
   // Factory method to create a Task instance from JSON
   factory Task.fromJson(Map<String, dynamic> json) {
     return Task(
-      id: json['id'],
+      id: json['id'] ?? 'default_id',
       assignerId: json['assigner_id'],
       assigneeId: json['assignee_id'],
-      projectId: json['project_id'],
-      sectionId: json['section_id'],
+      projectId: json['project_id'] ?? 'default_project_id',
+      sectionId: json['section_id'] ?? 'default_section_id',
       parentId: json['parent_id'],
-      order: json['order'],
-      content: json['content'],
-      description: json['description'],
-      isCompleted: json['is_completed'],
-      labels: List<String>.from(json['labels']),
-      priority: json['priority'],
-      commentCount: json['comment_count'],
-      creatorId: json['creator_id'],
-      createdAt: DateTime.parse(json['created_at']),
+      order: json['order'] ?? 0,
+      content: json['content'] ?? 'default_content',
+      description: json['description'] ?? 'default_description',
+      isCompleted: json['is_completed'] ?? false,
+      labels: json['labels'] != null ? List<String>.from(json['labels']) : [],
+      priority: json['priority'] ?? 1,
+      commentCount: json['comment_count'] ?? 0,
+      creatorId: json['creator_id'] ?? 'default_creator_id',
+      createdAt: DateTime.parse(json['created_at'] ?? DateTime.now().toIso8601String()),
       due: json['due'] != null ? DateTime.parse(json['due']) : null,
-      url: json['url'],
+      url: json['url'] ?? 'default_url',
       duration: json['duration'],
     );
   }
@@ -92,11 +92,7 @@ class Task {
 
 // Function to parse a list of Task objects from JSON
 List<Task> parseTasks(List<dynamic> jsonResponse) {
-  List<Task> listOfTasks = [];
-  for (var object in jsonResponse) {
-    listOfTasks.add(Task.fromJson(object));
-  }
-  return listOfTasks;
+  return jsonResponse.map((object) => Task.fromJson(object)).toList();
 }
 
 // Function to convert a list of Task objects to JSON
