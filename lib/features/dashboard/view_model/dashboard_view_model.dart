@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/extensions.dart';
@@ -111,8 +113,11 @@ class DashboardViewModel extends BaseViewModel {
     }
   }
 
-  Future<void> refresh() async{
+  Future<void> refresh({VoidCallback? action}) async{
     callDispose();
     await initialize();
+    if(action!=null){
+      action;
+    }
   }
 }

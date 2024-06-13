@@ -23,7 +23,6 @@ class ProjectCards extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.h),
       child: AppDismissible(
-        id: model.projectData.id ?? "",
         onDismiss: (_) async {
           await StateService.context
               .read(ProviderService.projectProvider)

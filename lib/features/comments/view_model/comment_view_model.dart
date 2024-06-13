@@ -51,6 +51,5 @@ class CommentViewModel extends BaseViewModel {
       List<Comment> comments = await locator<NetworkService>().getCommentByTaskId(taskId: task.id);
       allComments.addAll(comments);
     }
-    notifyListeners();
   }
 }

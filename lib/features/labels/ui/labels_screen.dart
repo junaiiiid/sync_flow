@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../global_widgets/app_buttons.dart';
+import '../../../global_widgets/list_spacer.dart';
 import '../../../styles_and_themes/app_colors.dart';
 import '../../home/ui/widgets/custom_app_bar.dart';
 
@@ -28,12 +30,25 @@ class LabelsScreen extends ConsumerWidget {
               appBar: CustomAppBar.appBarWithBackButton(title: "Labels"),
               body: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                child: ListView(
-                  children: (viewModel.listOfLabels.isEmpty)
-                      ? [const LabelCardSkeleton()]
-                      : viewModel.listOfLabels
-                          .map<Widget>((label) => LabelCard(model: label))
-                          .toList(),
+                child: Flex(
+                  direction: Axis.vertical,
+                  children: [
+                    AppButtons.scaffoldIconButton(
+                      title: 'CREATE NEW',
+                      onTap: () {},
+                    ),
+                    Expanded(
+                      child: ListView(
+                        children: (viewModel.listOfLabels.isEmpty)
+                            ? [const LabelCardSkeleton()]
+                            : [
+                                ...viewModel.listOfLabels.map<Widget>(
+                                    (label) => LabelCard(model: label)),
+                                const ListSpacer(),
+                              ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

@@ -4,10 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../styles_and_themes/app_colors.dart';
 
 class AppDismissible extends StatelessWidget {
-  final String id;
   final Widget child;
   final Function(DismissDirection)? onDismiss;
-  const AppDismissible({super.key, required this.id, required this.child, this.onDismiss});
+  const AppDismissible({super.key, required this.child, this.onDismiss});
 
   @override
   Widget build(BuildContext context) {
