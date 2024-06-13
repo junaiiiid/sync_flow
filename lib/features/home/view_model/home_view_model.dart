@@ -26,7 +26,7 @@ class HomeViewModel extends BaseViewModel {
 
   set isExtrasOpened(bool value) {
     _isExtrasOpened = value;
-    notifyListeners();
+    setState();
   }
 
   List<NavigationBarModel> navigationBarItems = [
@@ -69,7 +69,7 @@ class HomeViewModel extends BaseViewModel {
         element.isActive = false;
       }
     }
-    notifyListeners();
+    setState();
   }
 
   List<ExtrasItemModel> extrasMenuItems = [

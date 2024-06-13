@@ -30,7 +30,7 @@ class BoardViewModel extends BaseViewModel {
 
   set selectedProject(Project value) {
     _selectedProject = value;
-    notifyListeners();
+    setState();
   }
 
   List<Project> get listOfProjects => StateService.context
@@ -44,7 +44,7 @@ class BoardViewModel extends BaseViewModel {
     if(listOfSections.isNotEmpty){
       listOfSections.removeWhere((element)=>element.id=="id");
     }
-    notifyListeners();
+    setState();
   }
 
   List<TabsModel> getTabModel() {

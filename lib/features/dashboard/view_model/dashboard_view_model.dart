@@ -137,7 +137,7 @@ class DashboardViewModel extends BaseViewModel {
         label: "Labels",
         length: listOfLabels.length,
         type: DashboardItemType.labels));
-    notifyListeners();
+    setState();
   }
 
   void handleDashBoardIconTap({required DashboardItemType type}) {

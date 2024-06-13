@@ -19,7 +19,7 @@ class CreateNewLabelViewModel extends BaseViewModel{
 
   set selectedColor(String? value) {
     _selectedColor = value;
-    notifyListeners();
+    setState();
   }
 
   final List<String> colorNames = [
