@@ -26,6 +26,7 @@ extension APITypeExtension on ApiType {
       case ApiType.updateProject:
         return '/projects';
       case ApiType.getAllComments:
+      case ApiType.updateAComment:
         return '/comments';
       case ApiType.getAllPersonalLabels:
       case ApiType.updateAPersonalLabel:
@@ -173,5 +174,20 @@ extension ViewStylesExtension on ViewStyles {
       default:
         return '';
     }
+  }
+}
+
+extension DateTimeExtension on DateTime {
+  String toIso8601WithMillis() {
+    final String year = this.year.toString().padLeft(4, '0');
+    final String month = this.month.toString().padLeft(2, '0');
+    final String day = this.day.toString().padLeft(2, '0');
+    final String hour = this.hour.toString().padLeft(2, '0');
+    final String minute = this.minute.toString().padLeft(2, '0');
+    final String second = this.second.toString().padLeft(2, '0');
+    final String millisecond = this.millisecond.toString().padLeft(3, '0');
+    final String microsecond = this.microsecond.toString().padLeft(3, '0');
+
+    return '$year-$month-${day}T$hour:$minute:$second.$millisecond${microsecond}Z';
   }
 }

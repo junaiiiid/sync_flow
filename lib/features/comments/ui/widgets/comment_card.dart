@@ -1,7 +1,9 @@
 import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/features/comments/ui/widgets/edit_comment_view.dart';
 import 'package:flow_sync/features/comments/view_model/comment_view_model.dart';
 import 'package:flow_sync/features/dashboard/model/comment_model.dart';
 import 'package:flow_sync/global_widgets/skeleton_effect_widget.dart';
+import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -111,11 +113,11 @@ class CommentCard extends StatelessWidget {
                 children: [
                   Visibility(
                       visible: (model.attachment != null),
-                      child: commentAction(
+                      child: CommentAction(
                           type: CommentActionType.viewAttachment,
                           model: model,
                           viewModel: viewModel)),
-                  commentAction(
+                  CommentAction(
                       type: CommentActionType.editComment,
                       model: model,
                       viewModel: viewModel),
@@ -124,42 +126,6 @@ class CommentCard extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget commentAction(
-      {required CommentActionType type,
-      required Comment model,
-      required CommentViewModel viewModel}) {
-    late IconData iconData;
-    late String title;
-    late Function() onTap;
-    switch (type) {
-      case CommentActionType.viewAttachment:
-        iconData = Icons.link;
-        title = "View Attachment";
-        onTap = () {
-          viewModel.openAttachment(url: model.attachment?.fileUrl ?? "");
-        };
-      case CommentActionType.editComment:
-        iconData = Icons.edit;
-        title = "Edit Comment";
-        onTap = () {};
-    }
-    return InkWell(
-      onTap: onTap,
-      child: Row(
-        children: [
-          Icon(iconData),
-          SizedBox(
-            width: 5.w,
-          ),
-          Text(
-            title,
-            style: AppTextStyles.labelSmall,
-          )
-        ],
       ),
     );
   }
@@ -291,6 +257,52 @@ class CommentCardSkeleton extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CommentAction extends StatelessWidget {
+  final CommentActionType type;
+  final Comment model;
+  final CommentViewModel viewModel;
+  const CommentAction({super.key, required this.type, required this.model, required this.viewModel});
+
+  @override
+  Widget build(BuildContext context) {
+    late IconData iconData;
+    late String title;
+    late Function() onTap;
+    switch (type) {
+      case CommentActionType.viewAttachment:
+        iconData = Icons.link;
+        title = "View Attachment";
+        onTap = () {
+          viewModel.openAttachment(url: model.attachment?.fileUrl ?? "");
+        };
+      case CommentActionType.editComment:
+        iconData = Icons.edit;
+        title = "Edit Comment";
+        onTap = () {
+          viewModel.commentController.text = model.content;
+          showModalBottomSheet(isScrollControlled:true,context: StateService.context, builder: (context){
+            return EditCommentView(model: model);
+          });
+        };
+    }
+    return InkWell(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Icon(iconData),
+          SizedBox(
+            width: 5.w,
+          ),
+          Text(
+            title,
+            style: AppTextStyles.labelSmall,
+          )
+        ],
       ),
     );
   }

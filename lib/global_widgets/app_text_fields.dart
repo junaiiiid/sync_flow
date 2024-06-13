@@ -13,7 +13,7 @@ class AppTextFields {
       String? Function(String?)? validator,
       required TextEditingController controller,
       EdgeInsetsGeometry? padding,
-      int? maxLength}) {
+      int? maxLength,int? maxLines}) {
     return Padding(
       padding:
           padding ?? EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
@@ -51,6 +51,7 @@ class AppTextFields {
                   hintText: hintText,
                 ),
                 maxLength: maxLength ?? 15,
+                maxLines: maxLines??1,
               )),
         ],
       ),

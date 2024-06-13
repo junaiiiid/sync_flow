@@ -33,4 +33,8 @@ abstract class BaseViewModel extends ChangeNotifier {
   void setState() {
     notifyListeners();
   }
+
+  Future<void> refresh() async {
+    dev.log("call Refresh");
+  }
 }
