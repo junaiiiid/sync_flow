@@ -1,6 +1,8 @@
 import 'package:flow_sync/architecture/app_parent_widget.dart';
+import 'package:flow_sync/features/labels/ui/create_new_label_screen.dart';
 import 'package:flow_sync/features/labels/ui/widgets/label_cards.dart';
 import 'package:flow_sync/services/provider_service.dart';
+import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +37,9 @@ class LabelsScreen extends ConsumerWidget {
                   children: [
                     AppButtons.scaffoldIconButton(
                       title: 'CREATE NEW',
-                      onTap: () {},
+                      onTap: () {
+                        StateService.pushNamed(routeName: CreateNewLabelScreen.id);
+                      },
                     ),
                     Expanded(
                       child: ListView(

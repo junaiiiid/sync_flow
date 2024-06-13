@@ -1,4 +1,5 @@
 import 'package:flow_sync/features/comments/ui/comments_screen.dart';
+import 'package:flow_sync/features/labels/ui/create_new_label_screen.dart';
 import 'package:flow_sync/features/labels/ui/labels_screen.dart';
 import 'package:flow_sync/features/projects/ui/create_projects_screen.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -23,6 +24,8 @@ class RouteService {
           routeName: LabelsScreen.id, page: const LabelsScreen()),
       RouteNames.getRoute(
           routeName: CreateProjectsScreen.id, page: const CreateProjectsScreen()),
+      RouteNames.getRoute(
+          routeName: CreateNewLabelScreen.id, page: const CreateNewLabelScreen()),
     ],
   );
 }

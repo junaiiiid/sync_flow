@@ -29,6 +29,7 @@ extension APITypeExtension on ApiType {
         return '/comments';
       case ApiType.getAllPersonalLabels:
       case ApiType.updateAPersonalLabel:
+      case ApiType.createNewPersonalLabel:
         return '/labels';
       case ApiType.getActiveTasks:
         return '/tasks';

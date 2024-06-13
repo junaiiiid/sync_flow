@@ -2,6 +2,7 @@ import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/comments/view_model/comment_view_model.dart';
 import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dart';
 import 'package:flow_sync/features/home/view_model/home_view_model.dart';
+import 'package:flow_sync/features/labels/view_model/create_new_label_view_model.dart';
 import 'package:flow_sync/features/labels/view_model/labels_view_model.dart';
 import 'package:flow_sync/features/projects/view_model/project_view_model.dart';
 import 'package:flow_sync/features/settings/view_model/settings_view_model.dart';
@@ -40,6 +41,9 @@ class ProviderService {
 
   static ChangeNotifierProvider<CreateNewProjectViewModel> createNewProjectProvider =
   StateService.createProvider(() => CreateNewProjectViewModel());
+
+  static ChangeNotifierProvider<CreateNewLabelViewModel> createNewLabelProvider =
+  StateService.createProvider(() => CreateNewLabelViewModel());
 }
 
 
