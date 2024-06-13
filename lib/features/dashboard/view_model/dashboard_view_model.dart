@@ -160,6 +160,7 @@ class DashboardViewModel extends BaseViewModel {
     }
   }
 
+  @override
   Future<void> refresh({VoidCallback? action}) async {
     callDispose();
     await initialize();

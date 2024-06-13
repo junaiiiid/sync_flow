@@ -66,6 +66,14 @@ class CommentViewModel extends BaseViewModel {
     }
   }
 
+  Future<void> deleteComment({required String id}) async{
+    AppPopups.showLoader();
+    await locator<NetworkService>().deleteACommentById(commentId: id);
+    await refresh();
+    StateService.pop();
+    setState();
+  }
+
   @override
   Future<void> refresh() async{
     callDispose();

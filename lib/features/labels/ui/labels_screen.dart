@@ -36,7 +36,8 @@ class LabelsScreen extends ConsumerWidget {
                 child: Flex(
                   direction: Axis.vertical,
                   children: [
-                    if (viewModel.listOfLabels.isEmpty)
+                    if (!(viewModel.listOfLabels.length == 1 &&
+                        viewModel.listOfLabels.first.id == "id"))
                       AppButtons.scaffoldIconButton(
                         title: 'CREATE NEW',
                         onTap: () {

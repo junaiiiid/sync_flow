@@ -48,8 +48,8 @@ class LabelsViewModel extends BaseViewModel{
     final dashBoardProvider = StateService.context.read(ProviderService.dashboardProvider);
     AppPopups.showLoader();
     await locator<NetworkService>().deleteLabelById(labelId: labelId);
-    dashBoardProvider.refresh();
     listOfLabels.removeWhere((element)=>element.id==labelId);
+    dashBoardProvider.refresh();
     setState();
     StateService.pop();
   }
