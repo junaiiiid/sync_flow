@@ -14,9 +14,9 @@ class Attachment {
   // Factory method to create an Attachment instance from JSON
   factory Attachment.fromJson(Map<String, dynamic> json) {
     return Attachment(
-      fileName: json['file_name'],
-      fileType: json['file_type'],
-      fileUrl: json['file_url'],
+      fileName: json['file_name'] ?? 'default_file_name',
+      fileType: json['file_type'] ?? 'default_file_type',
+      fileUrl: json['file_url'] ?? 'default_file_url',
     );
   }
 
@@ -50,11 +50,11 @@ class Comment {
   // Factory method to create a Comment instance from JSON
   factory Comment.fromJson(Map<String, dynamic> json) {
     return Comment(
-      id: json['id'],
-      taskId: json['task_id'],
+      id: json['id'] ?? 'default_id',
+      taskId: json['task_id'] ?? 'default_task_id',
       projectId: json['project_id'],
-      content: json['content'],
-      postedAt: DateTime.parse(json['posted_at']),
+      content: json['content'] ?? 'default_content',
+      postedAt: DateTime.parse(json['posted_at'] ?? DateTime.now().toIso8601String()),
       attachment: json['attachment'] != null
           ? Attachment.fromJson(json['attachment'])
           : null,

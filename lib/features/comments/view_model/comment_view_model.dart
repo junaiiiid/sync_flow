@@ -30,6 +30,12 @@ class CommentViewModel extends BaseViewModel {
     return filteredTasks;
   }
 
+  Project getProjectById({required String id}){
+    List<Project> allProjects = List.from(listOfProjects);
+    Project filteredProject = allProjects.firstWhere((element)=>element.id==id);
+    return filteredProject;
+  }
+
   Future<void> openAttachment({required String url}) async {
     if (!await launchUrl(Uri.parse(url))) {
       throw Exception('Could not launch $url');
@@ -51,6 +57,11 @@ class CommentViewModel extends BaseViewModel {
       List<Comment> comments = await locator<NetworkService>().getCommentByTaskId(taskId: task.id);
       allComments.addAll(comments);
     }
+    for(Project project in listOfProjects){
+      List<Comment> comments = await locator<NetworkService>().getCommentByProjectId(projectId: project.id);
+      allComments.addAll(comments);
+    }
     allComments.removeWhere((element)=>element.id=="id");
+    setState();
   }
 }

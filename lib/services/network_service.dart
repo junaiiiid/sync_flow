@@ -41,6 +41,14 @@ class NetworkService {
     return parseComments(response.data);
   }
 
+  Future<List<Comment>> getCommentByProjectId({required String projectId}) async {
+    final String requestUrl =
+        "${ApiConstants.baseUrl}${ApiType.getAllComments.getUrl()}?project_id=$projectId";
+    final response = await _dio.get(requestUrl,
+        options: Options(headers: ApiConstants.authHeader));
+    return parseComments(response.data);
+  }
+
   Future<List<Label>> getAllPersonalLabels() async {
     final String requestUrl =
         "${ApiConstants.baseUrl}${ApiType.getAllPersonalLabels.getUrl()}";

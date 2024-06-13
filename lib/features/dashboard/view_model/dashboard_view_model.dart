@@ -113,6 +113,9 @@ class DashboardViewModel extends BaseViewModel {
     for (var task in listOfTasks) {
       commentsCount = commentsCount + task.commentCount;
     }
+    for (var project in listOfProjects) {
+      commentsCount = commentsCount + project.commentCount;
+    }
     listOfLabels = await networkService.getAllPersonalLabels();
 
     projectProvider.generateProjectCards();
