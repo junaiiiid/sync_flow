@@ -3,6 +3,7 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/model/tabs_model.dart';
 import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dart';
+import 'package:flow_sync/global_widgets/no_data_widget.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -38,42 +39,44 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      //direction: Axis.vertical,
-      children: [
-        Expanded(
-          flex: 0,
-          child: TabBar(
-            indicatorColor: AppColors.cherryRed,
-            isScrollable: true,
-            physics: const BouncingScrollPhysics(),
-            unselectedLabelColor: AppColors.lightGrey,
-            labelColor: AppColors.cherryRed,
-            tabs: widget.viewModel
-                .getTabModel()
-                .map<Widget>((item) => getTab(model: item))
-                .toList(),
-            controller: _tabController,
-            indicatorSize: TabBarIndicatorSize.tab,
-          ),
-        ),
-        Expanded(
-          flex: 3,
-          child: TabBarView(
-            controller: _tabController,
-            children: widget.viewModel
-                .getTabModel()
-                .map<Widget>(
-                  (item) => ListView(
-                    physics: const BouncingScrollPhysics(),
-                    children: getTabBarView(model: item),
-                  ),
-                )
-                .toList(),
-          ),
-        ),
-      ],
-    );
+    return (widget.viewModel.listOfSections.isEmpty)
+        ? const NoDataWidget(content: "NO TASKS FOUND")
+        : Column(
+            //direction: Axis.vertical,
+            children: [
+              Expanded(
+                flex: 0,
+                child: TabBar(
+                  indicatorColor: AppColors.cherryRed,
+                  isScrollable: true,
+                  physics: const BouncingScrollPhysics(),
+                  unselectedLabelColor: AppColors.lightGrey,
+                  labelColor: AppColors.cherryRed,
+                  tabs: widget.viewModel
+                      .getTabModel()
+                      .map<Widget>((item) => getTab(model: item))
+                      .toList(),
+                  controller: _tabController,
+                  indicatorSize: TabBarIndicatorSize.tab,
+                ),
+              ),
+              Expanded(
+                flex: 3,
+                child: TabBarView(
+                  controller: _tabController,
+                  children: widget.viewModel
+                      .getTabModel()
+                      .map<Widget>(
+                        (item) => ListView(
+                          physics: const BouncingScrollPhysics(),
+                          children: getTabBarView(model: item),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
+            ],
+          );
   }
 
   Widget getTab({required TabsModel model}) {

@@ -2,6 +2,7 @@ import 'package:flow_sync/architecture/app_parent_widget.dart';
 import 'package:flow_sync/features/board/ui/widgets/project_drop_down.dart';
 import 'package:flow_sync/features/board/ui/widgets/projects_tab_bar.dart';
 import 'package:flow_sync/global_widgets/loader_widget.dart';
+import 'package:flow_sync/global_widgets/no_data_widget.dart';
 import 'package:flow_sync/global_widgets/skeleton_effect_widget.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
@@ -26,41 +27,46 @@ class BoardScreen extends ConsumerWidget {
               backgroundColor: AppColors.lightGrey,
               body: Flex(
                 direction: Axis.vertical,
-                children: (dashboardViewModel.listOfProjects.isEmpty)
+                children: (dashboardViewModel.listOfProjects.length == 1 &&
+                        dashboardViewModel.listOfProjects.first.id == "id")
                     ? skeletonBoard()
-                    : [
-                        Expanded(
-                          flex: 0,
-                          child: Flex(
-                            direction: Axis.vertical,
-                            children: [
-                              Center(
-                                child: Text(
-                                  (viewModel.selectedProject.id == "id")
-                                      ? "Please Select Your Project"
-                                      : 'Selected Project "${viewModel.selectedProject.name}"',
-                                  style: AppTextStyles.titleSmall,
-                                ),
-                              ),
-                              SizedBox(
-                                width: double.infinity,
-                                child: ProjectDropDown(
-                                  viewModel: viewModel,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        if (viewModel.selectedProject.id != "id")
-                          (viewModel.listOfSections.isEmpty)
-                              ? const LoaderWidget()
-                              : Expanded(
-                                  flex: 3,
-                                  child: ProjectsTabBar(
-                                    viewModel: viewModel,
+                    : (dashboardViewModel.listOfProjects.isEmpty)
+                        ? [
+                            const NoDataWidget(content: "NO PROJECTS FOUND"),
+                          ]
+                        : [
+                            Expanded(
+                              flex: 0,
+                              child: Flex(
+                                direction: Axis.vertical,
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      (viewModel.selectedProject.id == "id")
+                                          ? "Please Select Your Project"
+                                          : 'Selected Project "${viewModel.selectedProject.name}"',
+                                      style: AppTextStyles.titleSmall,
+                                    ),
                                   ),
-                                ),
-                      ],
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: ProjectDropDown(
+                                      viewModel: viewModel,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            if (viewModel.selectedProject.id != "id")
+                              (viewModel.listOfSections.length == 1 && viewModel.listOfSections.first.id =="id")
+                                  ? const LoaderWidget()
+                                  : Expanded(
+                                      flex: 3,
+                                      child: ProjectsTabBar(
+                                        viewModel: viewModel,
+                                      ),
+                                    ),
+                          ],
               ),
             ),
           );
