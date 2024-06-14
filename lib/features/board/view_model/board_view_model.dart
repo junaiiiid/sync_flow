@@ -55,22 +55,22 @@ class BoardViewModel extends BaseViewModel {
         tabsModel.add(TabsModel(
             tabName: section.name,
             iconPath: AppAssets.todo,
-            sectionId: section.id));
+            sectionId: section.id!));
       } else if (sectionName.contains("progress")) {
         tabsModel.add(TabsModel(
             tabName: section.name,
             iconPath: AppAssets.inProgress,
-            sectionId: section.id));
+            sectionId: section.id!));
       } else if (sectionName.contains("complete")) {
         tabsModel.add(TabsModel(
             tabName: section.name,
             iconPath: AppAssets.completed,
-            sectionId: section.id));
+            sectionId: section.id!));
       } else {
         tabsModel.add(TabsModel(
             tabName: section.name,
             iconPath: AppAssets.section,
-            sectionId: section.id));
+            sectionId: section.id!));
       }
     }
     return tabsModel;

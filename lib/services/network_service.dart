@@ -40,7 +40,8 @@ class NetworkService {
     return parseComments(response.data);
   }
 
-  Future<List<Comment>> getCommentByProjectId({required String projectId}) async {
+  Future<List<Comment>> getCommentByProjectId(
+      {required String projectId}) async {
     final String requestUrl =
         "${ApiConstants.baseUrl}${ApiType.getAllComments.getUrl()}?project_id=$projectId";
     final response = await _dio.get(requestUrl,
@@ -65,7 +66,7 @@ class NetworkService {
     return parseSections(response.data);
   }
 
-  Future<void> createNewProject({required Project projectModel}) async {
+  Future<Project?> createNewProject({required Project projectModel}) async {
     final String requestUrl =
         "${ApiConstants.baseUrl}${ApiType.addANewProject.getUrl()}";
     try {
@@ -86,7 +87,69 @@ class NetworkService {
               type: SnackBarTypes.success,
               content: "Project created successfully.");
           dev.log('Project created successfully');
+          return Project.fromJson(response.data);
+        case 400:
+          dev.log('Bad request');
           break;
+        case 401:
+          dev.log('Unauthorized');
+          break;
+        case 403:
+          dev.log('Forbidden');
+          break;
+        case 404:
+          dev.log('Not found');
+          break;
+        case 429:
+          dev.log('Too many requests');
+          break;
+        case 500:
+        case 502:
+        case 503:
+        case 504:
+          dev.log('Server error');
+          break;
+        default:
+          dev.log('Unexpected error: ${response.statusCode}');
+          AppPopups.showSnackBar(
+              type: SnackBarTypes.error, content: "There was an Error.");
+      }
+    } on DioError catch (dioError) {
+      AppPopups.showSnackBar(
+          type: SnackBarTypes.error, content: "There was an Error.");
+      // Handle Dio errors
+      if (dioError.response != null) {
+        dev.log('Dio error! Status: ${dioError.response?.statusCode}');
+        dev.log('Data: ${dioError.response?.data}');
+        dev.log('Headers: ${dioError.response?.headers}');
+      } else {
+        // Error due to setting up or sending the request
+        dev.log('Error sending request!');
+        dev.log(dioError.message.toString());
+      }
+    } catch (e) {
+      // Handle other errors
+      dev.log('Unexpected error: $e');
+    }
+  }
+
+  Future<void> createNewSection({required Section sectionModel}) async {
+    final String requestUrl =
+        "${ApiConstants.baseUrl}${ApiType.createANewSection.getUrl()}";
+    try {
+      final response = await _dio.post(requestUrl,
+          options: Options(headers: ApiConstants.authHeader),
+          data: Section.fromJson(sectionModel.toJson()));
+
+      // Handle different response statuses
+      switch (response.statusCode) {
+        case 200:
+        case 201:
+        case 204:
+          AppPopups.showSnackBar(
+              type: SnackBarTypes.success,
+              content: "Section created successfully.");
+          dev.log('Section created successfully');
         case 400:
           dev.log('Bad request');
           break;
@@ -330,9 +393,7 @@ class NetworkService {
     }
   }
 
-  Future<void> createALabel(
-      {
-        required Map<String, dynamic> requestBody}) async {
+  Future<void> createALabel({required Map<String, dynamic> requestBody}) async {
     final String requestUrl =
         "${ApiConstants.baseUrl}${ApiType.createNewPersonalLabel.getUrl()}";
     try {
@@ -463,7 +524,7 @@ class NetworkService {
 
   Future<void> updateACommentById(
       {required String commentId,
-        required Map<String, dynamic> requestBody}) async {
+      required Map<String, dynamic> requestBody}) async {
     final String requestUrl =
         "${ApiConstants.baseUrl}${ApiType.updateAComment.getUrl()}/$commentId";
     try {
@@ -592,7 +653,8 @@ class NetworkService {
     }
   }
 
-  Future<void> createAComment({required Map<String, dynamic> requestBody}) async {
+  Future<void> createAComment(
+      {required Map<String, dynamic> requestBody}) async {
     final String requestUrl =
         "${ApiConstants.baseUrl}${ApiType.createANewComment.getUrl()}";
     try {

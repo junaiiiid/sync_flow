@@ -38,6 +38,7 @@ extension APITypeExtension on ApiType {
       case ApiType.getActiveTasks:
         return '/tasks';
       case ApiType.getAllSections:
+      case ApiType.createANewSection:
         return '/sections';
       default:
         return '/pp2e';

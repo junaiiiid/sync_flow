@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 class Section {
-  final String id;
-  final String projectId;
-  final int order;
-  final String name;
+  String? id;
+  String projectId;
+  int order;
+  String name;
 
   Section({
-    required this.id,
+    this.id,
     required this.projectId,
     required this.order,
     required this.name,

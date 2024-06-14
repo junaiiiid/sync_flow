@@ -67,3 +67,8 @@ enum SnackBarTypes{
   error,
   success,
 }
+
+enum SectionType{
+  defaultSections,
+  fromLabels,
+}
