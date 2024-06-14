@@ -48,9 +48,9 @@ class CommentCard extends StatelessWidget {
                       child: Row(
                         children: [
                           CircleAvatar(
-                            backgroundColor: (viewModel.listOfTasks.isNotEmpty)
+                            backgroundColor: (model.taskId!=null)
                                 ? viewModel
-                                    .getProjectByTaskId(id: model.taskId)
+                                    .getProjectByTaskId(id: model.taskId!)
                                     .color
                                     .toColor()
                                 : viewModel
@@ -63,8 +63,8 @@ class CommentCard extends StatelessWidget {
                             width: 10.w,
                           ),
                           Text(
-                            (viewModel.listOfTasks.isNotEmpty)
-                                ? viewModel.getTaskById(id: model.taskId).content
+                            (model.taskId!=null)
+                                ? viewModel.getTaskById(id: model.taskId!).content
                                 : viewModel
                                     .getProjectById(id: model.projectId ?? '')
                                     .name,

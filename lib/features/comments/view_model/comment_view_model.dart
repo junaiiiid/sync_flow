@@ -19,7 +19,7 @@ class CommentViewModel extends BaseViewModel {
 
   TextEditingController commentController = TextEditingController();
 
-  List<Comment> allComments = [Comment(id: "id", taskId: "taskId", content: "content", postedAt: DateTime.now())];
+  List<Comment> allComments = [Comment(id: "id", taskId: "taskId", content: "content", postedAt: DateTime.now(), projectId: '')];
 
   List<Task> get listOfTasks => StateService.context.read(ProviderService.dashboardProvider).listOfTasks;
 
@@ -82,7 +82,7 @@ class CommentViewModel extends BaseViewModel {
 
   @override
   void callDispose() {
-    allComments = [Comment(id: "id", taskId: "taskId", content: "content", postedAt: DateTime.now())];
+    allComments = [Comment(id: "id", taskId: "taskId", content: "content", postedAt: DateTime.now(), projectId: '')];
     commentController.clear();
   }
 

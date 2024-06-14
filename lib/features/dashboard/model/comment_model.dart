@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 class Attachment {
-  final String fileName;
-  final String fileType;
-  final String fileUrl;
+  String fileName;
+  String fileType;
+  String fileUrl;
 
   Attachment({
     required this.fileName,
@@ -11,16 +11,14 @@ class Attachment {
     required this.fileUrl,
   });
 
-  // Factory method to create an Attachment instance from JSON
   factory Attachment.fromJson(Map<String, dynamic> json) {
     return Attachment(
-      fileName: json['file_name'] ?? 'default_file_name',
-      fileType: json['file_type'] ?? 'default_file_type',
-      fileUrl: json['file_url'] ?? 'default_file_url',
+      fileName: json['file_name'],
+      fileType: json['file_type'],
+      fileUrl: json['file_url'],
     );
   }
 
-  // Method to convert an Attachment instance to JSON
   Map<String, dynamic> toJson() {
     return {
       'file_name': fileName,
@@ -31,37 +29,33 @@ class Attachment {
 }
 
 class Comment {
-  final String id;
-  final String taskId;
-  final String? projectId;
-  final String content;
-  final DateTime postedAt;
-  final Attachment? attachment;
+  String id;
+  String? taskId;
+  String? projectId;
+  String content;
+  DateTime postedAt;
+  Attachment? attachment;
 
   Comment({
     required this.id,
-    required this.taskId,
-    this.projectId,
+    this.taskId,
+    required this.projectId,
     required this.content,
     required this.postedAt,
     this.attachment,
   });
 
-  // Factory method to create a Comment instance from JSON
   factory Comment.fromJson(Map<String, dynamic> json) {
     return Comment(
-      id: json['id'] ?? 'default_id',
-      taskId: json['task_id'] ?? 'default_task_id',
+      id: json['id'],
+      taskId: json['task_id'],
       projectId: json['project_id'],
-      content: json['content'] ?? 'default_content',
-      postedAt: DateTime.parse(json['posted_at'] ?? DateTime.now().toIso8601String()),
-      attachment: json['attachment'] != null
-          ? Attachment.fromJson(json['attachment'])
-          : null,
+      content: json['content'],
+      postedAt: DateTime.parse(json['posted_at']),
+      attachment: json['attachment'] != null ? Attachment.fromJson(json['attachment']) : null,
     );
   }
 
-  // Method to convert a Comment instance to JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,
