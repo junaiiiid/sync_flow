@@ -1,5 +1,6 @@
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/dashboard/model/comment_model.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
@@ -19,6 +20,9 @@ class ProjectViewModel extends BaseViewModel {
   List<Task> get tasksList =>
       StateService.context.read(ProviderService.dashboardProvider).listOfTasks;
 
+  List<Section> get sectionList =>
+      StateService.context.read(ProviderService.dashboardProvider).listOfSections;
+
   List<ProjectCardModel> listOfProjectCards = [
     ProjectCardModel(
         projectData: Project(
@@ -33,7 +37,7 @@ class ProjectViewModel extends BaseViewModel {
             isTeamInbox: false,
             url: "url",
             viewStyle: "viewStyle"),
-        taskCount: 0)
+        taskCount: 0, sectionCount: 0)
   ];
 
   void generateProjectCards() {
@@ -41,10 +45,11 @@ class ProjectViewModel extends BaseViewModel {
       List<Task> tasks = List.from(tasksList);
       tasks =
           tasks.where((element) => element.projectId == project.id).toList();
+
       listOfProjectCards.add(ProjectCardModel(
         projectData: project,
-        taskCount: tasks.length,
-      ));
+        taskCount: tasks.length, sectionCount: sectionList.where((element) => element.projectId == project.id).toList().length),
+      );
     }
     listOfProjectCards.removeWhere((element)=>element.projectData.id=="id");
     setState();
@@ -88,7 +93,7 @@ class ProjectViewModel extends BaseViewModel {
               isTeamInbox: false,
               url: "url",
               viewStyle: "viewStyle"),
-          taskCount: 0)
+          taskCount: 0, sectionCount: 0)
     ];
   }
 

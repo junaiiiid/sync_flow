@@ -3,9 +3,10 @@ import '../../../constants/enums.dart';
 
 class ProjectCardModel {
   Project projectData;
+  int sectionCount;
   int taskCount;
 
   ProjectCardModel(
       {required this.projectData,
-      required this.taskCount,});
+      required this.taskCount,required this.sectionCount});
 }

@@ -81,6 +81,9 @@ class ProjectCards extends StatelessWidget {
                     ProjectElements(
                         count: model.taskCount,
                         type: ProjectCardElementType.tasks),
+                    ProjectElements(
+                        count: model.sectionCount,
+                        type: ProjectCardElementType.sections),
                   ],
                 ),
               ),
@@ -99,12 +102,20 @@ class ProjectElements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late String assetName;
+    switch(type){
+
+      case ProjectCardElementType.comments:
+        assetName = AppAssets.comments;
+      case ProjectCardElementType.tasks:
+        assetName = AppAssets.labels;
+      case ProjectCardElementType.sections:
+        assetName = AppAssets.personalLabels;
+    }
     return Row(
       children: [
         SvgPicture.asset(
-          (type == ProjectCardElementType.comments)
-              ? AppAssets.comments
-              : AppAssets.personalLabels,
+          assetName,
           height: 50.h,
         ),
         SizedBox(

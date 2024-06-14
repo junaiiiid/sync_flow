@@ -38,7 +38,7 @@ enum ApiType {
   removeASharedLabel
 }
 
-enum ProjectCardElementType { comments, tasks }
+enum ProjectCardElementType { comments, tasks ,sections}
 
 enum DashboardItemType {
   totalProjects,

@@ -57,6 +57,14 @@ class NetworkService {
     return parseLabels(response.data);
   }
 
+  Future<List<Section>> getAllSections() async {
+    final String requestUrl =
+        "${ApiConstants.baseUrl}${ApiType.getAllSections.getUrl()}";
+    final response = await _dio.get(requestUrl,
+        options: Options(headers: ApiConstants.authHeader));
+    return parseSections(response.data);
+  }
+
   Future<List<Section>> getAllSectionsOfProjectById(
       {required String projectId}) async {
     final String requestUrl =

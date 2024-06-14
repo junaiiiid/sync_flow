@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/comments/ui/comments_screen.dart';
 import 'package:flow_sync/features/dashboard/model/comment_model.dart';
@@ -37,6 +38,7 @@ class DashboardViewModel extends BaseViewModel {
   ];
   List<Task> listOfTasks = [];
   List<Label> listOfLabels = [];
+  List<Section> listOfSections = [];
 
   List<DashboardItemsModel> dashboardItems = [
     DashboardItemsModel(
@@ -94,6 +96,7 @@ class DashboardViewModel extends BaseViewModel {
           length: 0,
           type: DashboardItemType.dummy),
     ];
+    listOfSections = [];
   }
 
   @override
@@ -109,6 +112,7 @@ class DashboardViewModel extends BaseViewModel {
     listOfProjects.removeWhere((element) => element.viewStyle == 'list');
     listOfProjects.removeWhere((element) => element.id == 'id');
     listOfTasks = await networkService.getAllActiveTasks();
+    listOfSections = await networkService.getAllSections();
     int commentsCount = 0;
     for (var task in listOfTasks) {
       commentsCount = commentsCount + task.commentCount;
