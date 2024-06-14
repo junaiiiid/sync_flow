@@ -1,9 +1,12 @@
 import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/model/tabs_model.dart';
+import 'package:flow_sync/features/board/ui/create_task_screen.dart';
 import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dart';
+import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/no_data_widget.dart';
+import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -67,9 +70,24 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
                   children: widget.viewModel
                       .getTabModel()
                       .map<Widget>(
-                        (item) => ListView(
-                          physics: const BouncingScrollPhysics(),
-                          children: getTabBarView(model: item),
+                        (item) => Flex(
+                          direction: Axis.vertical,
+                          children: [
+                            Expanded(
+                              flex: 0,
+                              child: AppButtons.scaffoldIconButton(
+                                  title: "CREATE NEW TASK", onTap: () {
+                                    StateService.pushNamed(routeName: CreateTaskScreen.id);
+                              }),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: ListView(
+                                physics: const BouncingScrollPhysics(),
+                                children: getTabBarView(model: item),
+                              ),
+                            ),
+                          ],
                         ),
                       )
                       .toList(),
