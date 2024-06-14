@@ -28,6 +28,7 @@ extension APITypeExtension on ApiType {
       case ApiType.getAllComments:
       case ApiType.updateAComment:
       case ApiType.deleteAComment:
+      case ApiType.createANewComment:
         return '/comments';
       case ApiType.getAllPersonalLabels:
       case ApiType.updateAPersonalLabel:

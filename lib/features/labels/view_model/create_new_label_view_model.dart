@@ -8,7 +8,9 @@ import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
 
-class CreateNewLabelViewModel extends BaseViewModel{
+import '../../../constants/enums.dart';
+
+class CreateNewLabelViewModel extends BaseViewModel {
   final formKey = GlobalKey<FormState>();
 
   final TextEditingController labelNameController = TextEditingController();
@@ -45,18 +47,25 @@ class CreateNewLabelViewModel extends BaseViewModel{
     'taupe',
   ];
 
-  Future<void> createNewLabel() async{
-    final dashBoardProvider = StateService.context.read(ProviderService.dashboardProvider);
-    final labelsProvider = StateService.context.read(ProviderService.labelsProvider);
-    AppPopups.showLoader();
-     await locator<NetworkService>().createALabel(requestBody: {
-       "name": labelNameController.text,
-       "color": selectedColor,
-     });
-     await dashBoardProvider.refresh();
-    labelsProvider.listOfLabels = dashBoardProvider.listOfLabels;
-     callDispose();
-     StateService.pop();
+  Future<void> createNewLabel() async {
+    if (formKey.currentState?.validate() ?? false) {
+      final dashBoardProvider =
+          StateService.context.read(ProviderService.dashboardProvider);
+      final labelsProvider =
+          StateService.context.read(ProviderService.labelsProvider);
+      AppPopups.showLoader();
+      await locator<NetworkService>().createALabel(requestBody: {
+        "name": labelNameController.text,
+        "color": selectedColor,
+      });
+      await dashBoardProvider.refresh();
+      labelsProvider.listOfLabels = dashBoardProvider.listOfLabels;
+      callDispose();
+      StateService.pop();
+    } else {
+      AppPopups.showSnackBar(
+          type: SnackBarTypes.error, content: "The fields can not be empty.");
+    }
   }
 
   @override
@@ -69,5 +78,4 @@ class CreateNewLabelViewModel extends BaseViewModel{
   void callInitState() {
     // TODO: implement callInitState
   }
-
 }

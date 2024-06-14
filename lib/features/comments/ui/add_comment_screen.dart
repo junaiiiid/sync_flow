@@ -1,6 +1,8 @@
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
+import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/app_drop_downs.dart';
+import 'package:flow_sync/global_widgets/app_text_fields.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,39 +37,44 @@ class AddCommentScreen extends ConsumerWidget {
                     key: viewModel.formKey,
                     child: ListView(
                       children: [
-                        if(viewModel.listOfProjects.isNotEmpty)
-                        AppDropDowns.customDropDown<Project>(
-                            title: "Select Your Project",
-                            items: viewModel.listOfProjects,
-                            onChanged: (value){},
-                            hint: "eg My Project",
-                            itemBuilder: (value){
-                              return Row(
-                                children: [
-                                  Container(
-                                    height: 20.h,
-                                    width: 20.w,
-                                    color: value?.color.toColor(),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 10.w),
-                                    child: Text(
-                                      "ID# ${value?.id} (${value?.name})",
-                                      style: AppTextStyles.displaySmall?.copyWith(
-                                        color: AppColors.darkGrey,
+                        if (viewModel.listOfProjects.isNotEmpty)
+                          AppDropDowns.customDropDown<Project>(
+                              title: "Select Your Project",
+                              items: viewModel.listOfProjects,
+                              onChanged: (value) {
+                                viewModel.selectedProject = value;
+                              },
+                              hint: "eg My Project",
+                              itemBuilder: (value) {
+                                return Row(
+                                  children: [
+                                    Container(
+                                      height: 20.h,
+                                      width: 20.w,
+                                      color: value?.color.toColor(),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 10.w),
+                                      child: Text(
+                                        "ID# ${value?.id} (${value?.name})",
+                                        style: AppTextStyles.displaySmall
+                                            ?.copyWith(
+                                          color: AppColors.darkGrey,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              );
-                            }),
-                        if(viewModel.listOfTasks.isNotEmpty)
+                                  ],
+                                );
+                              }),
+                        if (viewModel.listOfTasks.isNotEmpty)
                           AppDropDowns.customDropDown<Task>(
                               title: "Select Your Task",
                               items: viewModel.listOfTasks,
-                              onChanged: (value){},
+                              onChanged: (value) {
+                                viewModel.selectedTask = value;
+                              },
                               hint: "eg My Project",
-                              itemBuilder: (value){
+                              itemBuilder: (value) {
                                 return Text(
                                   "ID# ${value?.id} (${value?.content})",
                                   style: AppTextStyles.displaySmall?.copyWith(
@@ -75,6 +82,17 @@ class AddCommentScreen extends ConsumerWidget {
                                   ),
                                 );
                               }),
+                        AppTextFields.basicTextField(
+                            title: "Add Your Comment",
+                            hintText: "eg This is a comment.",
+                            controller: viewModel.commentController,
+                            maxLength: 500,
+                            maxLines: 5),
+                        AppButtons.customButton(
+                            title: "PUBLISH",
+                            onTap: () async {
+                              await viewModel.addAComment();
+                            }),
                       ],
                     ),
                   ),
