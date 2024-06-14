@@ -41,8 +41,8 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
   Widget build(BuildContext context) {
     return (widget.viewModel.listOfSections.isEmpty)
         ? const NoDataWidget(content: "NO TASKS FOUND")
-        : Column(
-            //direction: Axis.vertical,
+        : Flex(
+            direction: Axis.vertical,
             children: [
               Expanded(
                 flex: 0,
@@ -111,7 +111,9 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
         ),
       );
     }
-    return tabBarChildren;
+    return (tabBarChildren.isEmpty)
+        ? [const NoDataWidget(content: "NO TASKS FOUND")]
+        : tabBarChildren;
   }
 
   Widget boardCard(
