@@ -1,5 +1,7 @@
+import 'package:flow_sync/features/board/ui/edit_task_screen.dart';
 import 'package:flow_sync/features/comments/ui/add_comment_screen.dart';
 import 'package:flow_sync/features/comments/ui/comments_screen.dart';
+import 'package:flow_sync/features/dashboard/model/task_model.dart';
 import 'package:flow_sync/features/labels/ui/create_new_label_screen.dart';
 import 'package:flow_sync/features/labels/ui/labels_screen.dart';
 import 'package:flow_sync/features/projects/ui/create_projects_screen.dart';
@@ -34,13 +36,18 @@ class RouteService {
           page: const CreateNewLabelScreen()),
       RouteNames.getRoute(
           routeName: AddCommentScreen.id, page: const AddCommentScreen()),
-      /*RouteNames.getRoute(
-          routeName: CreateTaskScreen.id, page: const CreateTaskScreen()),*/
       GoRoute(
         path: CreateTaskScreen.id,
         builder: (context, state) {
           final sectionId = state.extra as String;
           return CreateTaskScreen(sectionId: sectionId);
+        },
+      ),
+      GoRoute(
+        path: EditTaskScreen.id,
+        builder: (context, state) {
+          final taskModel = state.extra as Task;
+          return EditTaskScreen(taskModel: taskModel);
         },
       ),
     ],

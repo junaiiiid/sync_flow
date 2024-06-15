@@ -11,6 +11,7 @@ import 'package:flow_sync/features/settings/view_model/settings_view_model.dart'
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../features/board/view_model/edit_task_screen_view_model.dart';
 import '../features/projects/view_model/create_new_project_view_model.dart';
 import '../features/splash/view_model/splash_view_model.dart';
 
@@ -52,6 +53,9 @@ class ProviderService {
 
   static ChangeNotifierProvider<CreateNewTaskViewModel> createTaskProvider =
   StateService.createProvider(() => CreateNewTaskViewModel());
+
+  static ChangeNotifierProvider<EditTaskScreenViewModel> editTaskProvider =
+  StateService.createProvider(() => EditTaskScreenViewModel());
 }
 
 

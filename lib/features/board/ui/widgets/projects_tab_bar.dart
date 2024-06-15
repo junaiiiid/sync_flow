@@ -3,6 +3,7 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/board/model/tabs_model.dart';
 import 'package:flow_sync/features/board/ui/create_task_screen.dart';
+import 'package:flow_sync/features/board/ui/edit_task_screen.dart';
 import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dart';
 import 'package:flow_sync/global_widgets/app_buttons.dart';
@@ -79,9 +80,12 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
                             Expanded(
                               flex: 0,
                               child: AppButtons.scaffoldIconButton(
-                                  title: "CREATE NEW TASK", onTap: () {
-                                    StateService.pushNamedWithArguments<String>(routeName: CreateTaskScreen.id, argument: item.sectionId);
-                              }),
+                                  title: "CREATE NEW TASK",
+                                  onTap: () {
+                                    StateService.pushNamedWithArguments<String>(
+                                        routeName: CreateTaskScreen.id,
+                                        argument: item.sectionId);
+                                  }),
                             ),
                             Expanded(
                               flex: 3,
@@ -126,20 +130,26 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
     for (Task task in filteredTasks) {
       tabBarChildren.add(
         AppDismissible(
-          onDismiss: (_){
+          onDismiss: (_) {
             widget.viewModel.deleteTasks(taskId: task.id!);
           },
-          child: boardCard(
-            taskName: task.content,
-            iconPath: model.iconPath,
-            createdAt: task.createdAt.toString().toFormattedDate(),
+          child: InkWell(
+            onTap: () {
+              StateService.pushNamedWithArguments<Task>(
+                  routeName: EditTaskScreen.id, argument: task);
+            },
+            child: boardCard(
+              taskName: task.content,
+              iconPath: model.iconPath,
+              createdAt: task.createdAt.toString().toFormattedDate(),
+            ),
           ),
         ),
       );
     }
     return (tabBarChildren.isEmpty)
         ? [const NoDataWidget(content: "NO TASKS FOUND")]
-        : [...tabBarChildren,const ListSpacer()];
+        : [...tabBarChildren, const ListSpacer()];
   }
 
   Widget boardCard(
