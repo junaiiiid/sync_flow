@@ -600,7 +600,7 @@ class NetworkService {
 
   Future<void> deleteACommentById({required String commentId}) async {
     final String requestUrl =
-        "${ApiConstants.baseUrl}${ApiType.deleteAProject.getUrl()}/$commentId";
+        "${ApiConstants.baseUrl}${ApiType.deleteAComment.getUrl()}/$commentId";
     try {
       final response = await _dio.delete(
         requestUrl,
@@ -662,7 +662,7 @@ class NetworkService {
     }
   }
 
-  Future<void> createAComment(
+  Future<Comment?> createAComment(
       {required Map<String, dynamic> requestBody}) async {
     final String requestUrl =
         "${ApiConstants.baseUrl}${ApiType.createANewComment.getUrl()}";
@@ -682,7 +682,7 @@ class NetworkService {
               type: SnackBarTypes.success,
               content: "Comment added successfully.");
           dev.log('Comment added successfully');
-          break;
+          return Comment.fromJson(response.data);
         case 400:
           dev.log('Bad request');
           break;

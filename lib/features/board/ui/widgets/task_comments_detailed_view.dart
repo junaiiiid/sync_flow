@@ -37,10 +37,15 @@ class TaskCommentsDetailedView extends ConsumerWidget {
         ),
         Expanded(
           flex: 0,
-          child: AppTextFields.chatTextField(
-              hintText: "write something...",
-              controller: viewModel.commentController,
-              onSend: () {}),
+          child: Form(
+            key: viewModel.formKey,
+            child: AppTextFields.chatTextField(
+                hintText: "write something...",
+                controller: viewModel.commentController,
+                onSend: () async{
+                  await viewModel.addAComment();
+                }),
+          ),
         ),
       ],
     );

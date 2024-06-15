@@ -143,6 +143,35 @@ class EditTaskScreenViewModel extends BaseViewModel {
     }
   }
 
+  Future<void> deleteComment({required String id}) async{
+    AppPopups.showLoader();
+    await locator<NetworkService>().deleteACommentById(commentId: id);
+    allComments.removeWhere((element)=>element.id==id);
+    StateService.pop();
+    setState();
+  }
+
+  Future<void> addAComment() async{
+    if(formKey.currentState?.validate() ?? false){
+      AppPopups.showLoader();
+      final Comment? newComment = await locator<NetworkService>().createAComment(requestBody: {
+        "content":commentController.text,
+        "task_id": taskModel?.id??'',
+        "project_id": taskModel?.projectId??'',
+      });
+      if(newComment!=null){
+        allComments.add(newComment);
+        commentController.clear();
+      }
+      setState();
+      StateService.pop();
+    }
+    else{
+      AppPopups.showSnackBar(
+          type: SnackBarTypes.error, content: "The fields can not be empty.");
+    }
+  }
+
   @override
   void callDispose() {
     taskTitleController.clear();

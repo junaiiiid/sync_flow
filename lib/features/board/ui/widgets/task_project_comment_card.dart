@@ -25,7 +25,7 @@ class TaskProjectCommentCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10.h),
       child: AppDismissible(
         onDismiss: (_) async {
-          //await viewModel.deleteComment(id: model.id);
+          await StateService.context.read(ProviderService.editTaskProvider).deleteComment(id: model.id);
         },
         child: Card(
           child: Container(
