@@ -1,4 +1,3 @@
-
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/model/section_model.dart';
@@ -31,7 +30,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
   Task? taskModel;
 
   void initialize({required Task model}) {
-    if(taskModel==null){
+    if (taskModel == null) {
       taskModel = model;
       taskTitleController.text = taskModel?.content ?? '';
       taskDescriptionController.text = taskModel?.description ?? '';
@@ -51,7 +50,8 @@ class EditTaskScreenViewModel extends BaseViewModel {
         labelController.text = label;
         labelControllers.add(labelController);
       }
-      labelControllers.removeWhere((element)=>element.text==taskModel?.sectionId);
+      labelControllers
+          .removeWhere((element) => element.text == taskModel?.sectionId);
       selectedSection = sectionsList
           .firstWhere((element) => element.id == taskModel?.sectionId);
     }
@@ -59,32 +59,35 @@ class EditTaskScreenViewModel extends BaseViewModel {
 
   Future<void> modifyTask({required String taskId}) async {
     AppPopups.showLoader();
-    final dashBoardProvider = StateService.context.read(ProviderService.dashboardProvider);
-    final boardProvider = StateService.context.read(ProviderService.boardProvider);
-    List<String> labels = labelControllers.map<String>((element)=>element.text).toList();
-    if(selectedSection!=null){
+    final dashBoardProvider =
+        StateService.context.read(ProviderService.dashboardProvider);
+    final boardProvider =
+        StateService.context.read(ProviderService.boardProvider);
+    List<String> labels =
+        labelControllers.map<String>((element) => element.text).toList();
+    if (selectedSection != null) {
       labels.add(selectedSection!.id!);
     }
-    if(formKey.currentState?.validate() ?? false){
+    if (formKey.currentState?.validate() ?? false) {
       Task? updatedTask = await locator<NetworkService>().updateATaskById(
         taskId: taskId,
         requestBody: {
-          "section_id":selectedSection?.id,
+          "section_id": selectedSection?.id,
           "content": taskTitleController.text,
           "description": taskDescriptionController.text,
           "labels": labels,
           "due_date": dateTimeFormat,
         },
       );
-      if(updatedTask!=null){
-        dashBoardProvider.listOfTasks.removeWhere((element)=>element.id==taskId);
+      if (updatedTask != null) {
+        dashBoardProvider.listOfTasks
+            .removeWhere((element) => element.id == taskId);
         dashBoardProvider.listOfTasks.add(updatedTask);
         boardProvider.selectedProject = boardProvider.selectedProject;
         taskModel = updatedTask;
         setState();
       }
-    }
-    else{
+    } else {
       AppPopups.showSnackBar(
           type: SnackBarTypes.error, content: "The fields can not be empty.");
     }
