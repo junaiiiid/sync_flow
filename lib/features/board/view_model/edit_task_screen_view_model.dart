@@ -51,6 +51,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
         labelController.text = label;
         labelControllers.add(labelController);
       }
+      labelControllers.removeWhere((element)=>element.text==taskModel?.sectionId);
       selectedSection = sectionsList
           .firstWhere((element) => element.id == taskModel?.sectionId);
     }
@@ -60,6 +61,10 @@ class EditTaskScreenViewModel extends BaseViewModel {
     AppPopups.showLoader();
     final dashBoardProvider = StateService.context.read(ProviderService.dashboardProvider);
     final boardProvider = StateService.context.read(ProviderService.boardProvider);
+    List<String> labels = labelControllers.map<String>((element)=>element.text).toList();
+    if(selectedSection!=null){
+      labels.add(selectedSection!.id!);
+    }
     if(formKey.currentState?.validate() ?? false){
       Task? updatedTask = await locator<NetworkService>().updateATaskById(
         taskId: taskId,
@@ -67,7 +72,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
           "section_id":selectedSection?.id,
           "content": taskTitleController.text,
           "description": taskDescriptionController.text,
-          "labels": labelControllers.map<String>((element)=>element.text).toList(),
+          "labels": labels,
           "due_date": dateTimeFormat,
         },
       );

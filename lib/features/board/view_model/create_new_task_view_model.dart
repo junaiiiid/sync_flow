@@ -43,11 +43,12 @@ class CreateNewTaskViewModel extends BaseViewModel {
     StateService.context.read(ProviderService.dashboardProvider);
     if (formKey.currentState?.validate() ?? false) {
       AppPopups.showLoader();
+      List<String> labels = [labelController.text,sectionId??''];
       final Task taskModel = Task(
           projectId: projectId!,
           content: taskTitleController.text,
           description: taskDescriptionController.text,
-          labels: [labelController.text],
+          labels: labels,
           sectionId: sectionId??'',
           due: dueDateController.text.toDateTime().toString(),
           createdAt: DateTime.now());
