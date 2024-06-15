@@ -1,4 +1,6 @@
 import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/services/provider_service.dart';
+import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +12,7 @@ import '../../../../styles_and_themes/app_colors.dart';
 import '../../../../styles_and_themes/app_text_styles.dart';
 import '../../../comments/ui/widgets/bubble.dart';
 import '../../../comments/ui/widgets/comment_card.dart';
+import '../../../comments/ui/widgets/edit_comment_view.dart';
 import '../../../dashboard/model/comment_model.dart';
 
 class TaskProjectCommentCard extends StatelessWidget {
@@ -21,7 +24,7 @@ class TaskProjectCommentCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.h),
       child: AppDismissible(
-        onDismiss: (_)async{
+        onDismiss: (_) async {
           //await viewModel.deleteComment(id: model.id);
         },
         child: Card(
@@ -71,7 +74,8 @@ class TaskProjectCommentCard extends StatelessWidget {
                         Expanded(
                             flex: 3,
                             child: Bubble(
-                                text: model.content, color: AppColors.lightGrey)),
+                                text: model.content,
+                                color: AppColors.lightGrey)),
                       ],
                     ),
                   ),
@@ -82,11 +86,13 @@ class TaskProjectCommentCard extends StatelessWidget {
                     Visibility(
                         visible: (model.attachment != null),
                         child: TaskProjectCommentAction(
-                            type: CommentActionType.viewAttachment,
-                            model: model,)),
+                          type: CommentActionType.viewAttachment,
+                          model: model,
+                        )),
                     TaskProjectCommentAction(
-                        type: CommentActionType.editComment,
-                        model: model,),
+                      type: CommentActionType.editComment,
+                      model: model,
+                    ),
                   ],
                 ),
               ],
@@ -101,10 +107,13 @@ class TaskProjectCommentCard extends StatelessWidget {
 class TaskProjectCommentAction extends StatelessWidget {
   final CommentActionType type;
   final Comment model;
-  const TaskProjectCommentAction({super.key, required this.type, required this.model});
+  const TaskProjectCommentAction(
+      {super.key, required this.type, required this.model});
 
   @override
   Widget build(BuildContext context) {
+    final viewModel =
+        StateService.context.read(ProviderService.editTaskProvider);
     late IconData iconData;
     late String title;
     late Function() onTap;
@@ -113,16 +122,22 @@ class TaskProjectCommentAction extends StatelessWidget {
         iconData = Icons.link;
         title = "View Attachment";
         onTap = () {
-          //viewModel.openAttachment(url: model.attachment?.fileUrl ?? "");
+          viewModel.openAttachment(url: model.attachment?.fileUrl ?? "");
         };
       case CommentActionType.editComment:
         iconData = Icons.edit;
         title = "Edit Comment";
         onTap = () {
-          /*viewModel.commentController.text = model.content;
-          showModalBottomSheet(isScrollControlled:true,context: StateService.context, builder: (context){
-            return EditCommentView(model: model);
-          });*/
+          viewModel.commentController.text = model.content;
+          showModalBottomSheet(
+              isScrollControlled: true,
+              context: StateService.context,
+              builder: (context) {
+                return EditCommentView(
+                  model: model,
+                  viewModel: viewModel,
+                );
+              });
         };
     }
     return InkWell(

@@ -8,6 +8,7 @@ import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constants/enums.dart';
 import '../../../global_widgets/app_popups.dart';
@@ -15,9 +16,11 @@ import '../../dashboard/model/comment_model.dart';
 import '../../dashboard/model/task_model.dart';
 
 class EditTaskScreenViewModel extends BaseViewModel {
+  final taskFormKey = GlobalKey<FormState>();
   final formKey = GlobalKey<FormState>();
 
   final TextEditingController taskTitleController = TextEditingController();
+  final TextEditingController commentController = TextEditingController();
   final TextEditingController taskDescriptionController =
       TextEditingController();
   final TextEditingController dueDateController = TextEditingController();
@@ -66,6 +69,12 @@ class EditTaskScreenViewModel extends BaseViewModel {
     }
   }
 
+  Future<void> openAttachment({required String url}) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   // Function to check if a string is numeric
   bool _isNumeric(String s) {
     return double.tryParse(s) != null;
@@ -82,7 +91,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
     if (selectedSection != null) {
       labels.add(selectedSection!.id!);
     }
-    if (formKey.currentState?.validate() ?? false) {
+    if (taskFormKey.currentState?.validate() ?? false) {
       Task? updatedTask = await locator<NetworkService>().updateATaskById(
         taskId: taskId,
         requestBody: {
@@ -113,6 +122,26 @@ class EditTaskScreenViewModel extends BaseViewModel {
         await locator<NetworkService>().getCommentByTaskId(taskId: taskId);
   }
 
+  Future<void> editComment({required String id}) async{
+    if(formKey.currentState?.validate()??false){
+      StateService.pop();
+      AppPopups.showLoader();
+      final Comment? editedComment = await locator<NetworkService>().updateACommentById(commentId: id, requestBody: {
+        "content": commentController.text,
+        "posted_at": DateTime.now().toIso8601WithMillis(),
+      });
+      if(editedComment!=null){
+        allComments.removeWhere((element)=>element.id==id);
+        allComments.add(editedComment);
+      }
+      setState();
+      StateService.pop();
+    }else{
+      AppPopups.showSnackBar(
+          type: SnackBarTypes.error, content: "Comment can not be empty.");
+    }
+  }
+
   @override
   void callDispose() {
     taskTitleController.clear();
@@ -123,7 +152,14 @@ class EditTaskScreenViewModel extends BaseViewModel {
     taskModel = null;
     labelControllers = [];
     dateTimeFormat = null;
-    allComments = [];
+    allComments = [
+      Comment(
+          id: "id",
+          projectId: "projectId",
+          content: "content",
+          postedAt: DateTime.now())
+    ];
+    commentController.clear();
   }
 
   @override

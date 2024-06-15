@@ -12,14 +12,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class EditCommentView extends StatelessWidget {
   final Comment model;
-  const EditCommentView({super.key, required this.model});
+  final dynamic viewModel;
+  const EditCommentView({super.key, required this.model, this.viewModel});
 
   @override
   Widget build(BuildContext context) {
     // Get the view insets, which include the keyboard height when visible
     final viewInsets = MediaQuery.of(context).viewInsets;
-    final viewModel =
-        StateService.context.read(ProviderService.commentProvider);
+    final vm =
+        viewModel ?? StateService.context.read(ProviderService.commentProvider);
     return Padding(
       padding: EdgeInsets.only(
         left: 25.w,
@@ -29,7 +30,7 @@ class EditCommentView extends StatelessWidget {
       ),
       child: SingleChildScrollView(
         child: Form(
-          key: viewModel.formKey,
+          key: vm.formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,14 +43,13 @@ class EditCommentView extends StatelessWidget {
               AppTextFields.basicTextField(
                   title: "Comment# ${model.id}",
                   hintText: "",
-                  controller: viewModel
-                      .commentController,
+                  controller: vm.commentController,
                   maxLength: 500,
                   maxLines: 5),
               AppButtons.customButton(
                   title: "PUBLISH",
-                  onTap: () async{
-                    await viewModel.editComment(id: model.id);
+                  onTap: () async {
+                    await vm.editComment(id: model.id);
                   }),
             ],
           ),

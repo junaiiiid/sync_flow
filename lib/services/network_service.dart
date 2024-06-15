@@ -530,7 +530,7 @@ class NetworkService {
     }
   }
 
-  Future<void> updateACommentById(
+  Future<Comment?> updateACommentById(
       {required String commentId,
       required Map<String, dynamic> requestBody}) async {
     final String requestUrl =
@@ -551,6 +551,7 @@ class NetworkService {
               type: SnackBarTypes.success,
               content: "Comment edited successfully.");
           dev.log('Comment edited successfully');
+          return Comment.fromJson(response.data);
           break;
         case 400:
           dev.log('Bad request');

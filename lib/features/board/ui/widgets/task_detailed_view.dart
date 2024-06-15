@@ -25,7 +25,7 @@ class TaskDetailedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: viewModel.formKey,
+      key: viewModel.taskFormKey,
       child: ListView(
         children: [
           AppTextFields.basicTextField(
