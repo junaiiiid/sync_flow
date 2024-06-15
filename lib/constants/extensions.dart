@@ -37,6 +37,7 @@ extension APITypeExtension on ApiType {
         return '/labels';
       case ApiType.getActiveTasks:
       case ApiType.createANewTask:
+      case ApiType.deleteATask:
         return '/tasks';
       case ApiType.getAllSections:
       case ApiType.createANewSection:

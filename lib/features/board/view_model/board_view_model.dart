@@ -4,14 +4,20 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
+import 'package:flow_sync/global_widgets/app_popups.dart';
+import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/dependency_injection/locator_service.dart';
+import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
+import 'package:go_router/go_router.dart';
 
 import '../model/tabs_model.dart';
 
 class BoardViewModel extends BaseViewModel {
-  List<Section> listOfSections = [Section(id: "id", projectId: "projectId", order: 0, name: "name")];
+  List<Section> listOfSections = [
+    Section(id: "id", projectId: "projectId", order: 0, name: "name")
+  ];
 
   Project _selectedProject = Project(
       id: "id",
@@ -41,8 +47,8 @@ class BoardViewModel extends BaseViewModel {
     final networkService = LocatorService.networkServiceLocator;
     listOfSections = await networkService.getAllSectionsOfProjectById(
         projectId: selectedProject.id ?? "");
-    if(listOfSections.isNotEmpty){
-      listOfSections.removeWhere((element)=>element.id=="id");
+    if (listOfSections.isNotEmpty) {
+      listOfSections.removeWhere((element) => element.id == "id");
     }
     setState();
   }
@@ -85,6 +91,17 @@ class BoardViewModel extends BaseViewModel {
     return filteredTasksList;
   }
 
+  Future<void> deleteTasks({required String taskId}) async {
+    final dashboardProvider =
+        StateService.context.read(ProviderService.dashboardProvider);
+    AppPopups.showLoader();
+    await locator<NetworkService>().deleteATaskById(taskId: taskId);
+    dashboardProvider.listOfTasks
+        .removeWhere((element) => element.id == taskId);
+    setState();
+    StateService.context.pop();
+  }
+
   @override
   void callDispose() {
     _selectedProject = Project(
@@ -99,7 +116,9 @@ class BoardViewModel extends BaseViewModel {
         isTeamInbox: false,
         url: "url",
         viewStyle: "viewStyle");
-    listOfSections = [Section(id: "id", projectId: "projectId", order: 0, name: "name")];
+    listOfSections = [
+      Section(id: "id", projectId: "projectId", order: 0, name: "name")
+    ];
   }
 
   @override

@@ -6,6 +6,7 @@ import 'package:flow_sync/features/board/ui/create_task_screen.dart';
 import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dart';
 import 'package:flow_sync/global_widgets/app_buttons.dart';
+import 'package:flow_sync/global_widgets/app_dismissible.dart';
 import 'package:flow_sync/global_widgets/list_spacer.dart';
 import 'package:flow_sync/global_widgets/no_data_widget.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -124,10 +125,15 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
         widget.viewModel.filterTasksBySectionId(sectionId: model.sectionId);
     for (Task task in filteredTasks) {
       tabBarChildren.add(
-        boardCard(
-          taskName: task.content,
-          iconPath: model.iconPath,
-          createdAt: task.createdAt.toString().toFormattedDate(),
+        AppDismissible(
+          onDismiss: (_){
+            widget.viewModel.deleteTasks(taskId: task.id!);
+          },
+          child: boardCard(
+            taskName: task.content,
+            iconPath: model.iconPath,
+            createdAt: task.createdAt.toString().toFormattedDate(),
+          ),
         ),
       );
     }
