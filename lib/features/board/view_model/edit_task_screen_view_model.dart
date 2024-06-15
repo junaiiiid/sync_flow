@@ -25,7 +25,17 @@ class EditTaskScreenViewModel extends BaseViewModel {
     taskModel = model;
     taskTitleController.text = taskModel?.content ?? '';
     taskDescriptionController.text = taskModel?.description ?? '';
-    dueDateController.text = taskModel?.due?.toFormattedDate() ?? '';
+    if(taskModel?.due is String){
+      dueDateController.text = taskModel?.due?.toFormattedDate() ?? '';
+    }
+    else if(taskModel?.due is Due){
+      final Due dueModel = taskModel?.due;
+      final DateTime? object = dueModel.datetime;
+      dueDateController.text = object.toString().toFormattedDate();
+    }
+    else{
+      dueDateController.text = "";
+    }
     for(String label in taskModel?.labels ?? []){
       final labelController = TextEditingController();
       labelController.text = label;

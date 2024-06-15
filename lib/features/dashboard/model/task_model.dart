@@ -100,12 +100,14 @@ class Due {
   String string;
   String lang;
   bool isRecurring;
+  DateTime? datetime;
 
   Due({
     required this.date,
     required this.string,
     required this.lang,
     required this.isRecurring,
+    this.datetime,
   });
 
   factory Due.fromJson(Map<String, dynamic> json) {
@@ -114,6 +116,7 @@ class Due {
       string: json['string'],
       lang: json['lang'],
       isRecurring: json['is_recurring'],
+      datetime: json['datetime'] != null ? DateTime.parse(json['datetime']) : null,
     );
   }
 
@@ -123,6 +126,9 @@ class Due {
     data['string'] = string;
     data['lang'] = lang;
     data['is_recurring'] = isRecurring;
+    if (datetime != null) {
+      data['datetime'] = datetime!.toIso8601String();
+    }
     return data;
   }
 }

@@ -57,16 +57,19 @@ extension StringToDateTime on String {
   }
 }
 
-extension DateTimeFormatting on String {
+extension StringExtensions on String {
   String toFormattedDate() {
-    // Parse the date string into a DateTime object
-    DateTime dateTime = DateTime.parse(this);
+    // Define the input format
+    DateFormat inputFormat = DateFormat('yyyy-MM-dd HH:mm');
 
-    // Define the desired format
+    // Parse the date string into a DateTime object
+    DateTime dateTime = inputFormat.parse(this);
+
+    // Define the desired output format
     DateFormat formatter = DateFormat('EEEE, MMM d, yyyy h:mm a');
 
     // Format the DateTime object into the desired format
-    return formatter.format(dateTime.toLocal());
+    return formatter.format(dateTime);
   }
 }
 
