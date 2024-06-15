@@ -1,4 +1,5 @@
 import 'package:flow_sync/features/board/view_model/board_view_model.dart';
+import 'package:flow_sync/features/board/view_model/create_new_task_view_model.dart';
 import 'package:flow_sync/features/comments/view_model/add_comment_view_model.dart';
 import 'package:flow_sync/features/comments/view_model/comment_view_model.dart';
 import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dart';
@@ -48,6 +49,9 @@ class ProviderService {
 
   static ChangeNotifierProvider<AddCommentViewModel> addCommentProvider =
   StateService.createProvider(() => AddCommentViewModel());
+
+  static ChangeNotifierProvider<CreateNewTaskViewModel> createTaskProvider =
+  StateService.createProvider(() => CreateNewTaskViewModel());
 }
 
 

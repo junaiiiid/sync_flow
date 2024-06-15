@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../features/board/model/section_model.dart';
 import '../features/board/ui/create_task_screen.dart';
 import '../features/home/ui/home_screen.dart';
 import '../features/splash/ui/splash_screen.dart';
@@ -33,8 +34,15 @@ class RouteService {
           page: const CreateNewLabelScreen()),
       RouteNames.getRoute(
           routeName: AddCommentScreen.id, page: const AddCommentScreen()),
-      RouteNames.getRoute(
-          routeName: CreateTaskScreen.id, page: const CreateTaskScreen()),
+      /*RouteNames.getRoute(
+          routeName: CreateTaskScreen.id, page: const CreateTaskScreen()),*/
+      GoRoute(
+        path: CreateTaskScreen.id,
+        builder: (context, state) {
+          final sectionId = state.extra as String;
+          return CreateTaskScreen(sectionId: sectionId);
+        },
+      ),
     ],
   );
 }

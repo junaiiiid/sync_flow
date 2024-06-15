@@ -36,6 +36,7 @@ extension APITypeExtension on ApiType {
       case ApiType.deleteAPersonalLabel:
         return '/labels';
       case ApiType.getActiveTasks:
+      case ApiType.createANewTask:
         return '/tasks';
       case ApiType.getAllSections:
       case ApiType.createANewSection:
@@ -43,6 +44,13 @@ extension APITypeExtension on ApiType {
       default:
         return '/pp2e';
     }
+  }
+}
+
+extension StringToDateTime on String {
+  DateTime toDateTime() {
+    DateFormat inputFormat = DateFormat('EEEE, MMM d, y h:mm a');
+    return inputFormat.parse(this);
   }
 }
 

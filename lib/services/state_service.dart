@@ -15,6 +15,13 @@ class StateService {
     context.push(routeName);
   }
 
+  static void pushNamedWithArguments<T>({required String routeName,required T argument}){
+    GoRouter.of(context).go(
+      routeName,
+      extra: argument,
+    );
+  }
+
   static void pop(){
     context.pop();
   }

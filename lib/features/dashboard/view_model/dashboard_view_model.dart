@@ -115,7 +115,7 @@ class DashboardViewModel extends BaseViewModel {
     listOfSections = await networkService.getAllSections();
     int commentsCount = 0;
     for (var task in listOfTasks) {
-      commentsCount = commentsCount + task.commentCount;
+      commentsCount = commentsCount + (task.commentCount ?? 0);
     }
     for (var project in listOfProjects) {
       commentsCount = commentsCount + project.commentCount;

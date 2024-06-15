@@ -726,4 +726,71 @@ class NetworkService {
       dev.log('Unexpected error: $e');
     }
   }
+
+  Future<Task?> createATask(
+      {required Map<String, dynamic> requestBody}) async {
+    final String requestUrl =
+        "${ApiConstants.baseUrl}${ApiType.createANewTask.getUrl()}";
+    try {
+      final response = await _dio.post(
+        requestUrl,
+        options: Options(headers: ApiConstants.authHeader),
+        data: requestBody,
+      );
+
+      // Handle different response statuses
+      switch (response.statusCode) {
+        case 200:
+        case 201:
+        case 204:
+          AppPopups.showSnackBar(
+              type: SnackBarTypes.success,
+              content: "Task created successfully.");
+          dev.log('Task created successfully');
+          return Task.fromJson(response.data);
+          break;
+        case 400:
+          dev.log('Bad request');
+          break;
+        case 401:
+          dev.log('Unauthorized');
+          break;
+        case 403:
+          dev.log('Forbidden');
+          break;
+        case 404:
+          dev.log('Not found');
+          break;
+        case 429:
+          dev.log('Too many requests');
+          break;
+        case 500:
+        case 502:
+        case 503:
+        case 504:
+          dev.log('Server error');
+          break;
+        default:
+          dev.log('Unexpected error: ${response.statusCode}');
+          AppPopups.showSnackBar(
+              type: SnackBarTypes.error, content: "There was an Error.");
+      }
+    } on DioError catch (dioError) {
+      AppPopups.showSnackBar(
+          type: SnackBarTypes.error, content: "There was an Error.");
+      // Handle Dio errors
+      if (dioError.response != null) {
+        dev.log('Dio error! Status: ${dioError.response?.statusCode}');
+        dev.log('Data: ${dioError.response?.data}');
+        dev.log('Headers: ${dioError.response?.headers}');
+      } else {
+        // Error due to setting up or sending the request
+        dev.log('Error sending request!');
+        dev.log(dioError.message.toString());
+      }
+    } catch (e) {
+      // Handle other errors
+      dev.log('Unexpected error: $e');
+    }
+  }
 }

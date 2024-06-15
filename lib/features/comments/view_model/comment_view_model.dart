@@ -93,7 +93,7 @@ class CommentViewModel extends BaseViewModel {
 
   Future<void> initialize() async{
     for(Task task in listOfTasks){
-      List<Comment> comments = await locator<NetworkService>().getCommentByTaskId(taskId: task.id);
+      List<Comment> comments = await locator<NetworkService>().getCommentByTaskId(taskId: task.id!);
       allComments.addAll(comments);
     }
     for(Project project in listOfProjects){

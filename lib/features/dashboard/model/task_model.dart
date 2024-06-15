@@ -1,43 +1,43 @@
 import 'dart:convert';
 
 class Task {
-  String id;
+  String? id;
   String? assignerId;
   String? assigneeId;
   String projectId;
   String? sectionId;
   String? parentId;
-  int order;
+  int? order;
   String content;
   String description;
-  bool isCompleted;
+  bool? isCompleted;
   List<String> labels;
-  int priority;
-  int commentCount;
-  String creatorId;
+  int? priority;
+  int? commentCount;
+  String? creatorId;
   DateTime createdAt;
   String? due;
-  String url;
+  String? url;
   String? duration;
 
   Task({
-    required this.id,
+    this.id,
     this.assignerId,
     this.assigneeId,
     required this.projectId,
     this.sectionId,
     this.parentId,
-    required this.order,
+    this.order,
     required this.content,
     required this.description,
-    required this.isCompleted,
+    this.isCompleted,
     required this.labels,
-    required this.priority,
-    required this.commentCount,
-    required this.creatorId,
+    this.priority,
+    this.commentCount,
+    this.creatorId,
     required this.createdAt,
     this.due,
-    required this.url,
+    this.url,
     this.duration,
   });
 

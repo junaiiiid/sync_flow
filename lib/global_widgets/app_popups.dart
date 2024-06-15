@@ -51,4 +51,14 @@ class AppPopups {
           )),
     );
   }
+
+  static Future<DateTime?> dateTimeDialog() async {
+    final DateTime? picked = await showDatePicker(
+      context: StateService.context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2101),
+    );
+    return picked;
+  }
 }

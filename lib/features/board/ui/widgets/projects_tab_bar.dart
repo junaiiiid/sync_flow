@@ -1,5 +1,6 @@
 import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/board/model/tabs_model.dart';
 import 'package:flow_sync/features/board/ui/create_task_screen.dart';
 import 'package:flow_sync/features/board/view_model/board_view_model.dart';
@@ -77,7 +78,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
                               flex: 0,
                               child: AppButtons.scaffoldIconButton(
                                   title: "CREATE NEW TASK", onTap: () {
-                                    StateService.pushNamed(routeName: CreateTaskScreen.id);
+                                    StateService.pushNamedWithArguments<String>(routeName: CreateTaskScreen.id, argument: item.sectionId);
                               }),
                             ),
                             Expanded(
