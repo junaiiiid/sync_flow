@@ -136,7 +136,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
           child: InkWell(
             onTap: () {
               StateService.pushNamedWithArguments<Task>(
-                  routeName: EditTaskScreen.id, argument: task);
+                  routeName: EditTaskScreen.id, argument: task.copyWith());
             },
             child: boardCard(
               taskName: task.content,

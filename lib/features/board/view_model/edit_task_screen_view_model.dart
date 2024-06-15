@@ -1,47 +1,89 @@
+
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
+import 'package:flow_sync/services/dependency_injection/locator.dart';
+import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../constants/enums.dart';
+import '../../../global_widgets/app_popups.dart';
 import '../../dashboard/model/task_model.dart';
 
 class EditTaskScreenViewModel extends BaseViewModel {
   final formKey = GlobalKey<FormState>();
 
   final TextEditingController taskTitleController = TextEditingController();
-  final TextEditingController taskDescriptionController = TextEditingController();
+  final TextEditingController taskDescriptionController =
+      TextEditingController();
   final TextEditingController dueDateController = TextEditingController();
   List<TextEditingController> labelControllers = [];
-  List<Section> get sectionsList => StateService.context.read(ProviderService.dashboardProvider).listOfSections;
+  List<Section> get sectionsList => StateService.context
+      .read(ProviderService.dashboardProvider)
+      .listOfSections;
   Label? selectedLabel;
   Section? selectedSection;
-
+  String? dateTimeFormat;
   Task? taskModel;
 
-  void initialize({required Task model}){
-    taskModel = model;
-    taskTitleController.text = taskModel?.content ?? '';
-    taskDescriptionController.text = taskModel?.description ?? '';
-    if(taskModel?.due is String){
-      dueDateController.text = taskModel?.due?.toFormattedDate() ?? '';
+  void initialize({required Task model}) {
+    if(taskModel==null){
+      taskModel = model;
+      taskTitleController.text = taskModel?.content ?? '';
+      taskDescriptionController.text = taskModel?.description ?? '';
+      if (taskModel?.due is String) {
+        dueDateController.text = taskModel?.due?.toFormattedDate() ?? '';
+        dateTimeFormat = dueDateController.text.toDateTime().toString();
+      } else if (taskModel?.due is Due) {
+        final Due dueModel = taskModel?.due;
+        final DateTime? object = dueModel.datetime;
+        dueDateController.text = object.toString().toFormattedDate();
+        dateTimeFormat = dueDateController.text.toDateTime().toString();
+      } else {
+        dueDateController.text = "";
+      }
+      for (String label in taskModel?.labels ?? []) {
+        final labelController = TextEditingController();
+        labelController.text = label;
+        labelControllers.add(labelController);
+      }
+      selectedSection = sectionsList
+          .firstWhere((element) => element.id == taskModel?.sectionId);
     }
-    else if(taskModel?.due is Due){
-      final Due dueModel = taskModel?.due;
-      final DateTime? object = dueModel.datetime;
-      dueDateController.text = object.toString().toFormattedDate();
+  }
+
+  Future<void> modifyTask({required String taskId}) async {
+    AppPopups.showLoader();
+    final dashBoardProvider = StateService.context.read(ProviderService.dashboardProvider);
+    final boardProvider = StateService.context.read(ProviderService.boardProvider);
+    if(formKey.currentState?.validate() ?? false){
+      Task? updatedTask = await locator<NetworkService>().updateATaskById(
+        taskId: taskId,
+        requestBody: {
+          "section_id":selectedSection?.id,
+          "content": taskTitleController.text,
+          "description": taskDescriptionController.text,
+          "labels": labelControllers.map<String>((element)=>element.text).toList(),
+          "due_date": dateTimeFormat,
+        },
+      );
+      if(updatedTask!=null){
+        dashBoardProvider.listOfTasks.removeWhere((element)=>element.id==taskId);
+        dashBoardProvider.listOfTasks.add(updatedTask);
+        boardProvider.selectedProject = boardProvider.selectedProject;
+        taskModel = updatedTask;
+        setState();
+      }
     }
     else{
-      dueDateController.text = "";
+      AppPopups.showSnackBar(
+          type: SnackBarTypes.error, content: "The fields can not be empty.");
     }
-    for(String label in taskModel?.labels ?? []){
-      final labelController = TextEditingController();
-      labelController.text = label;
-      labelControllers.add(labelController);
-    }
-    selectedSection = sectionsList.firstWhere((element)=>element.id==taskModel?.sectionId);
+    StateService.context.pop();
   }
 
   @override
@@ -53,6 +95,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
     selectedSection = null;
     taskModel = null;
     labelControllers = [];
+    dateTimeFormat = null;
   }
 
   @override

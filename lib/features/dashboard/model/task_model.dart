@@ -20,6 +20,48 @@ class Task {
   String? url;
   String? duration;
 
+  Task copyWith({
+    String? id,
+    String? assignerId,
+    String? assigneeId,
+    String? projectId,
+    String? sectionId,
+    String? parentId,
+    int? order,
+    String? content,
+    String? description,
+    bool? isCompleted,
+    List<String>? labels,
+    int? priority,
+    int? commentCount,
+    String? creatorId,
+    DateTime? createdAt,
+    dynamic due,
+    String? url,
+    String? duration,
+  }) {
+    return Task(
+      id: id ?? this.id,
+      assignerId: assignerId ?? this.assignerId,
+      assigneeId: assigneeId ?? this.assigneeId,
+      projectId: projectId ?? this.projectId,
+      sectionId: sectionId ?? this.sectionId,
+      parentId: parentId ?? this.parentId,
+      order: order ?? this.order,
+      content: content ?? this.content,
+      description: description ?? this.description,
+      isCompleted: isCompleted ?? this.isCompleted,
+      labels: labels ?? this.labels,
+      priority: priority ?? this.priority,
+      commentCount: commentCount ?? this.commentCount,
+      creatorId: creatorId ?? this.creatorId,
+      createdAt: createdAt ?? this.createdAt,
+      due: due ?? this.due,
+      url: url ?? this.url,
+      duration: duration ?? this.duration,
+    );
+  }
+
   Task({
     this.id,
     this.assignerId,
