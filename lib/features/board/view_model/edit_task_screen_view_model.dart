@@ -50,11 +50,15 @@ class EditTaskScreenViewModel extends BaseViewModel {
         labelController.text = label;
         labelControllers.add(labelController);
       }
-      labelControllers
-          .removeWhere((element) => element.text == taskModel?.sectionId);
+      labelControllers.removeWhere((element) => _isNumeric(element.text));
       selectedSection = sectionsList
-          .firstWhere((element) => element.id == taskModel?.sectionId);
+          .firstWhere((element) => taskModel?.labels?.contains(element.id)??false);
     }
+  }
+
+  // Function to check if a string is numeric
+  bool _isNumeric(String s) {
+    return double.tryParse(s) != null;
   }
 
   Future<void> modifyTask({required String taskId}) async {

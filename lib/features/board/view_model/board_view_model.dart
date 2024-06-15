@@ -87,7 +87,8 @@ class BoardViewModel extends BaseViewModel {
 
   List<Task> filterTasksBySectionId({required String sectionId}) {
     List<Task> filteredTasksList = List.from(tasksList);
-    filteredTasksList.removeWhere((element) => element.sectionId != sectionId);
+    filteredTasksList.removeWhere((element) =>
+    element.labels == null || !element.labels!.contains(sectionId));
     return filteredTasksList;
   }
 
