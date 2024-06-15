@@ -6,6 +6,7 @@ import 'package:flow_sync/features/board/ui/create_task_screen.dart';
 import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dart';
 import 'package:flow_sync/global_widgets/app_buttons.dart';
+import 'package:flow_sync/global_widgets/list_spacer.dart';
 import 'package:flow_sync/global_widgets/no_data_widget.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
@@ -132,7 +133,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
     }
     return (tabBarChildren.isEmpty)
         ? [const NoDataWidget(content: "NO TASKS FOUND")]
-        : tabBarChildren;
+        : [...tabBarChildren,const ListSpacer()];
   }
 
   Widget boardCard(

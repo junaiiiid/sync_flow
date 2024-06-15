@@ -11,22 +11,23 @@ class StateService {
 
   static BuildContext get context => navigatorKey.currentState!.context;
 
-  static void pushNamed({required String routeName}){
+  static void pushNamed({required String routeName}) {
     context.push(routeName);
   }
 
-  static void pushNamedWithArguments<T>({required String routeName,required T argument}){
-    GoRouter.of(context).go(
+  static void pushNamedWithArguments<T>(
+      {required String routeName, required T argument}) {
+    GoRouter.of(context).push(
       routeName,
       extra: argument,
     );
   }
 
-  static void pop(){
+  static void pop() {
     context.pop();
   }
 
-  static void navigateAfterSplash(){
+  static void navigateAfterSplash() {
     context.go(HomeScreen.id);
   }
 

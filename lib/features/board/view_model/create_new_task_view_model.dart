@@ -38,6 +38,9 @@ class CreateNewTaskViewModel extends BaseViewModel {
   Future<void> createNewTask() async {
     final dashBoardProvider =
         StateService.context.read(ProviderService.dashboardProvider);
+    final boardProvider =
+    StateService.context.read(ProviderService.boardProvider);
+    StateService.context.read(ProviderService.dashboardProvider);
     if (formKey.currentState?.validate() ?? false) {
       AppPopups.showLoader();
       final Task taskModel = Task(
@@ -61,7 +64,8 @@ class CreateNewTaskViewModel extends BaseViewModel {
       if (newTask != null) {
         dashBoardProvider.listOfTasks.add(newTask);
       }
-      await dashBoardProvider.refresh();
+      boardProvider.selectedProject = boardProvider.selectedProject;
+      setState();
       callDispose();
       StateService.pop();
     } else {
