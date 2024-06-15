@@ -23,4 +23,6 @@ class AppAssets {
   static const String section = 'assets/vectors/section.svg';
   static const String projectThumbnail = 'assets/vectors/projects_thumbnail.svg';
   static const String loaderAnimation = 'assets/animations/loader_animation.json';
+  static const String commentsTab = "assets/vectors/comments_tab.svg";
+  static const String taskTab = "assets/vectors/task_tab.svg";
 }

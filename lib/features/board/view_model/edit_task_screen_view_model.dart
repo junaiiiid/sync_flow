@@ -11,6 +11,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../constants/enums.dart';
 import '../../../global_widgets/app_popups.dart';
+import '../../dashboard/model/comment_model.dart';
 import '../../dashboard/model/task_model.dart';
 
 class EditTaskScreenViewModel extends BaseViewModel {
@@ -29,7 +30,15 @@ class EditTaskScreenViewModel extends BaseViewModel {
   String? dateTimeFormat;
   Task? taskModel;
 
-  void initialize({required Task model}) {
+  List<Comment> allComments = [
+    Comment(
+        id: "id",
+        projectId: "projectId",
+        content: "content",
+        postedAt: DateTime.now())
+  ];
+
+  void initialize({required Task model}) async {
     if (taskModel == null) {
       taskModel = model;
       taskTitleController.text = taskModel?.content ?? '';
@@ -51,8 +60,9 @@ class EditTaskScreenViewModel extends BaseViewModel {
         labelControllers.add(labelController);
       }
       labelControllers.removeWhere((element) => _isNumeric(element.text));
-      selectedSection = sectionsList
-          .firstWhere((element) => taskModel?.labels?.contains(element.id)??false);
+      selectedSection = sectionsList.firstWhere(
+          (element) => taskModel?.labels?.contains(element.id) ?? false);
+      await getAllCommentsByTaskId(taskId: model.id ?? '');
     }
   }
 
@@ -98,6 +108,11 @@ class EditTaskScreenViewModel extends BaseViewModel {
     StateService.context.pop();
   }
 
+  Future<void> getAllCommentsByTaskId({required String taskId}) async {
+    allComments =
+        await locator<NetworkService>().getCommentByTaskId(taskId: taskId);
+  }
+
   @override
   void callDispose() {
     taskTitleController.clear();
@@ -108,6 +123,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
     taskModel = null;
     labelControllers = [];
     dateTimeFormat = null;
+    allComments = [];
   }
 
   @override

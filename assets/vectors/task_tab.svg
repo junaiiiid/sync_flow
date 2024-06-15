@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>task_tab</title>
+    <g id="task_tab" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="hashtag-down.3" transform="translate(6, 6)" stroke="#EAEAEA" stroke-width="1.5">
+            <path d="M20,11 L20,7 C20,2 18,0 13,0 L7,0 C2,0 0,2 0,7 L0,13 C0,18 2,20 7,20 L12,20" id="Path"></path>
+            <polyline id="Path" points="17 14 17 20 19 18"></polyline>
+            <line x1="17" y1="20" x2="15" y2="18" id="Path"></line>
+            <line x1="7.95002" y1="4.26001" x2="6.90002" y2="13.73" id="Path"></line>
+            <line x1="11.1101" y1="4.26001" x2="10.0601" y2="13.73" id="Path"></line>
+            <line x1="4.53003" y1="7.41992" x2="14" y2="7.41992" id="Path"></line>
+            <line x1="4" y1="10.5801" x2="13.47" y2="10.5801" id="Path"></line>
+        </g>
+    </g>
+</svg>
