@@ -46,11 +46,11 @@ class CustomAppBar {
     );
   }
 
-  static PreferredSize appBarWithBackButton({required String title}) {
+  static PreferredSize appBarWithBackButton({required String title,Color? color}) {
     return PreferredSize(
       preferredSize: Size.fromHeight(80.h),
       child: Container(
-        color: AppColors.darkGrey,
+        color: color??AppColors.darkGrey,
         padding: NumericConstants.appBarPadding,
         child: Stack(
           children: [

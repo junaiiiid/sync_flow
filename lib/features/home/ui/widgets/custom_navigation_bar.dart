@@ -24,7 +24,7 @@ class CustomNavigationBar extends StatelessWidget {
         Align(
           alignment: Alignment.bottomCenter,
           child: SizedBox(
-            height: 200.h,
+            //height: 200.h,
             child: Stack(
               children: [
                 Align(
@@ -38,12 +38,15 @@ class CustomNavigationBar extends StatelessWidget {
                         .toList(),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.center,
-                  child: ExtrasWidget(
-                    viewModel: viewModel,
+                /*Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 60.h),
+                    child: ExtrasWidget(
+                      viewModel: viewModel,
+                    ),
                   ),
-                ),
+                ),*/
               ],
             ),
           ),

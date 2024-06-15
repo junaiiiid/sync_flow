@@ -1,38 +1,26 @@
-
-import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/extensions.dart';
-import 'package:flow_sync/features/board/model/section_model.dart';
-import 'package:flow_sync/features/board/ui/widgets/task_comments_detailed_view.dart';
-import 'package:flow_sync/features/board/ui/widgets/task_detailed_view.dart';
-import 'package:flow_sync/features/board/view_model/edit_task_screen_view_model.dart';
-import 'package:flow_sync/features/dashboard/model/task_model.dart';
-import 'package:flow_sync/global_widgets/app_drop_downs.dart';
-import 'package:flow_sync/global_widgets/list_spacer.dart';
-import 'package:flow_sync/services/provider_service.dart';
+import 'package:flow_sync/features/dashboard/model/project_model.dart';
+import 'package:flow_sync/features/projects/ui/widgets/project_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../architecture/app_parent_widget.dart';
-import '../../../global_widgets/app_buttons.dart';
-import '../../../global_widgets/app_popups.dart';
-import '../../../global_widgets/app_text_fields.dart';
+import '../../../constants/app_assets.dart';
+import '../../../services/provider_service.dart';
 import '../../../styles_and_themes/app_colors.dart';
-import '../../../styles_and_themes/app_text_styles.dart';
 import '../../home/ui/widgets/custom_app_bar.dart';
-import '../../projects/ui/widgets/project_tabs.dart';
 
-class EditTaskScreen extends ConsumerStatefulWidget {
-  static const String id = '/edit_task';
-  final Task taskModel;
-  const EditTaskScreen({super.key, required this.taskModel});
+class ProjectDetailedScreen extends ConsumerStatefulWidget {
+  static const String id = '/project_details';
+  final Project model;
+  const ProjectDetailedScreen({super.key,required this.model});
 
   @override
-  ConsumerState<EditTaskScreen> createState() => _EditTaskScreenState();
+  ConsumerState<ProjectDetailedScreen> createState() => _ProjectDetailedScreenState();
 }
 
-class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTickerProviderStateMixin{
+class _ProjectDetailedScreenState extends ConsumerState<ProjectDetailedScreen> with SingleTickerProviderStateMixin{
   late TabController _tabController;
 
   @override
@@ -44,8 +32,8 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTick
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = ref.watch(ProviderService.editTaskProvider);
-    viewModel.initialize(model: widget.taskModel);
+    final viewModel = ref.watch(ProviderService.projectDetailsProvider);
+    //viewModel.initialize(model: widget.taskModel);
     return AppParentWidget(
       viewModel: viewModel,
       buildMethod: (context, ref) {
@@ -53,9 +41,9 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTick
           color: AppColors.darkGrey,
           child: SafeArea(
             child: Scaffold(
-              backgroundColor: AppColors.white,
+              backgroundColor: AppColors.lightGrey,
               appBar:
-              CustomAppBar.appBarWithBackButton(title: "#${widget.taskModel.id}"),
+              CustomAppBar.appBarWithBackButton(title: "#${widget.model.name}"),
               body: Flex(
                 direction: Axis.vertical,
                 children: [
@@ -67,7 +55,7 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTick
                       unselectedLabelColor: AppColors.lightGrey,
                       labelColor: AppColors.cherryRed,
                       tabs: const [
-                        ProjectTabs(assetName: AppAssets.taskTab, title: "TASK"),
+                        ProjectTabs(assetName: AppAssets.projectTab, title: "Board"),
                         ProjectTabs(assetName: AppAssets.commentsTab, title: "Comments"),
                       ],
                       controller: _tabController,
@@ -81,8 +69,8 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTick
                       child: TabBarView(
                         controller: _tabController,
                         children: [
-                          TaskDetailedView(viewModel: viewModel, taskModel: widget.taskModel),
-                          const TaskCommentsDetailedView(),
+                          /*TaskDetailedView(viewModel: viewModel, taskModel: widget.taskModel),
+                          TaskCommentsDetailedView(),*/
                         ],
                       ),
                     ),
@@ -96,5 +84,4 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTick
     );
   }
 }
-
 

@@ -25,4 +25,5 @@ class AppAssets {
   static const String loaderAnimation = 'assets/animations/loader_animation.json';
   static const String commentsTab = "assets/vectors/comments_tab.svg";
   static const String taskTab = "assets/vectors/task_tab.svg";
+  static const String projectTab = 'assets/vectors/project_tab.svg';
 }

@@ -6,6 +6,7 @@ import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dar
 import 'package:flow_sync/features/home/view_model/home_view_model.dart';
 import 'package:flow_sync/features/labels/view_model/create_new_label_view_model.dart';
 import 'package:flow_sync/features/labels/view_model/labels_view_model.dart';
+import 'package:flow_sync/features/projects/view_model/project_details_view_model.dart';
 import 'package:flow_sync/features/projects/view_model/project_view_model.dart';
 import 'package:flow_sync/features/settings/view_model/settings_view_model.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -56,6 +57,9 @@ class ProviderService {
 
   static ChangeNotifierProvider<EditTaskScreenViewModel> editTaskProvider =
   StateService.createProvider(() => EditTaskScreenViewModel());
+
+  static ChangeNotifierProvider<ProjectDetailsViewModel> projectDetailsProvider =
+  StateService.createProvider(() => ProjectDetailsViewModel());
 }
 
 

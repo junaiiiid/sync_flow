@@ -1,4 +1,5 @@
 import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/features/projects/ui/project_detailed_screen.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,66 +29,71 @@ class ProjectCards extends StatelessWidget {
               .read(ProviderService.projectProvider)
               .deleteProject(projectId: model.projectData.id ?? "");
         },
-        child: Card(
-          color: model.projectData.color.toColor(),
-          child: Column(
-            children: [
-              ListTile(
-                leading: CircleAvatar(
-                  backgroundColor:
-                      model.projectData.color.toColor().lighten(0.1),
-                  child: SvgPicture.asset(AppAssets.projectThumbnail),
-                ),
-                title: Text(
-                  model.projectData.name,
-                  style: AppTextStyles.labelLarge,
-                ),
-                subtitle: Text(
-                  "#${model.projectData.id}",
-                  style: AppTextStyles.labelMedium,
-                ),
-                trailing: InkWell(
-                  onTap: () async {
-                    await StateService.context
-                        .read(ProviderService.projectProvider)
-                        .projectFavouriteToggle(
-                            projectId: model.projectData.id ?? "",
-                            isFavourite: model.projectData.isFavorite ?? false);
-                  },
-                  child: Icon(
-                    (model.projectData.isFavorite ?? false)
-                        ? CupertinoIcons.heart_fill
-                        : CupertinoIcons.heart,
-                    color: (model.projectData.isFavorite ?? false)
-                        ? AppColors.cherryRed
-                        : AppColors.darkGrey,
+        child: InkWell(
+          onTap: (){
+            StateService.pushNamedWithArguments(routeName: ProjectDetailedScreen.id, argument: model.projectData);
+          },
+          child: Card(
+            color: model.projectData.color.toColor(),
+            child: Column(
+              children: [
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor:
+                        model.projectData.color.toColor().lighten(0.1),
+                    child: SvgPicture.asset(AppAssets.projectThumbnail),
+                  ),
+                  title: Text(
+                    model.projectData.name,
+                    style: AppTextStyles.labelLarge,
+                  ),
+                  subtitle: Text(
+                    "#${model.projectData.id}",
+                    style: AppTextStyles.labelMedium,
+                  ),
+                  trailing: InkWell(
+                    onTap: () async {
+                      await StateService.context
+                          .read(ProviderService.projectProvider)
+                          .projectFavouriteToggle(
+                              projectId: model.projectData.id ?? "",
+                              isFavourite: model.projectData.isFavorite ?? false);
+                    },
+                    child: Icon(
+                      (model.projectData.isFavorite ?? false)
+                          ? CupertinoIcons.heart_fill
+                          : CupertinoIcons.heart,
+                      color: (model.projectData.isFavorite ?? false)
+                          ? AppColors.cherryRed
+                          : AppColors.darkGrey,
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  color: model.projectData.color.toColor().lighten(0.1),
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(10.r),
-                      bottomLeft: Radius.circular(10.r)),
+                Container(
+                  decoration: BoxDecoration(
+                    color: model.projectData.color.toColor().lighten(0.1),
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(10.r),
+                        bottomLeft: Radius.circular(10.r)),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ProjectElements(
+                          count: model.projectData.commentCount ?? 0,
+                          type: ProjectCardElementType.comments),
+                      ProjectElements(
+                          count: model.taskCount,
+                          type: ProjectCardElementType.tasks),
+                      ProjectElements(
+                          count: model.sectionCount,
+                          type: ProjectCardElementType.sections),
+                    ],
+                  ),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ProjectElements(
-                        count: model.projectData.commentCount ?? 0,
-                        type: ProjectCardElementType.comments),
-                    ProjectElements(
-                        count: model.taskCount,
-                        type: ProjectCardElementType.tasks),
-                    ProjectElements(
-                        count: model.sectionCount,
-                        type: ProjectCardElementType.sections),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

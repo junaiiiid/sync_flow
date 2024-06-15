@@ -1,10 +1,12 @@
 import 'package:flow_sync/features/board/ui/edit_task_screen.dart';
 import 'package:flow_sync/features/comments/ui/add_comment_screen.dart';
 import 'package:flow_sync/features/comments/ui/comments_screen.dart';
+import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
 import 'package:flow_sync/features/labels/ui/create_new_label_screen.dart';
 import 'package:flow_sync/features/labels/ui/labels_screen.dart';
 import 'package:flow_sync/features/projects/ui/create_projects_screen.dart';
+import 'package:flow_sync/features/projects/ui/project_detailed_screen.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +50,15 @@ class RouteService {
         builder: (context, state) {
           final taskModel = state.extra as Task;
           return EditTaskScreen(taskModel: taskModel);
+        },
+      ),
+      GoRoute(
+        path: ProjectDetailedScreen.id,
+        builder: (context, state) {
+          final projectModel = state.extra as Project;
+          return ProjectDetailedScreen(
+            model: projectModel,
+          );
         },
       ),
     ],
