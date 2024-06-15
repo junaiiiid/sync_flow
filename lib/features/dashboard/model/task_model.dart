@@ -5,18 +5,18 @@ class Task {
   String? assignerId;
   String? assigneeId;
   String projectId;
-  String? sectionId;
+  String sectionId;
   String? parentId;
   int? order;
   String content;
   String description;
   bool? isCompleted;
-  List<String> labels;
+  List<String>? labels;
   int? priority;
   int? commentCount;
   String? creatorId;
   DateTime createdAt;
-  String? due;
+  dynamic due;
   String? url;
   String? duration;
 
@@ -25,13 +25,13 @@ class Task {
     this.assignerId,
     this.assigneeId,
     required this.projectId,
-    this.sectionId,
+    required this.sectionId,
     this.parentId,
     this.order,
     required this.content,
     required this.description,
     this.isCompleted,
-    required this.labels,
+    this.labels,
     this.priority,
     this.commentCount,
     this.creatorId,
@@ -58,33 +58,72 @@ class Task {
       commentCount: json['comment_count'],
       creatorId: json['creator_id'],
       createdAt: DateTime.parse(json['created_at']),
-      due: json['due'],
+      due: (json['due']!=null)?json['due'] is String ? Due(date: json['due'], string: '', lang: '', isRecurring: false) : Due.fromJson(json['due']):"null",
       url: json['url'],
       duration: json['duration'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'assigner_id': assignerId,
-      'assignee_id': assigneeId,
-      'project_id': projectId,
-      'section_id': sectionId,
-      'parent_id': parentId,
-      'order': order,
-      'content': content,
-      'description': description,
-      'is_completed': isCompleted,
-      'labels': labels,
-      'priority': priority,
-      'comment_count': commentCount,
-      'creator_id': creatorId,
-      'created_at': createdAt.toIso8601String(),
-      'due': due,
-      'url': url,
-      'duration': duration,
-    };
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['assigner_id'] = assignerId;
+    data['assignee_id'] = assigneeId;
+    data['project_id'] = projectId;
+    data['section_id'] = sectionId;
+    data['parent_id'] = parentId;
+    data['order'] = order;
+    data['content'] = content;
+    data['description'] = description;
+    data['is_completed'] = isCompleted;
+    data['labels'] = labels;
+    data['priority'] = priority;
+    data['comment_count'] = commentCount;
+    data['creator_id'] = creatorId;
+    data['created_at'] = createdAt.toIso8601String();
+    if (due != null) {
+      // Check if due is a Due object or a String
+      if (due is Due) {
+        data['due'] = due!.toJson();
+      } else {
+        data['due'] = due; // Assuming due is a String
+      }
+    }
+    data['url'] = url;
+    data['duration'] = duration;
+    return data;
+  }
+}
+
+class Due {
+  String date;
+  String string;
+  String lang;
+  bool isRecurring;
+
+  Due({
+    required this.date,
+    required this.string,
+    required this.lang,
+    required this.isRecurring,
+  });
+
+  factory Due.fromJson(Map<String, dynamic> json) {
+    return Due(
+      date: json['date'],
+      string: json['string'],
+      lang: json['lang'],
+      isRecurring: json['is_recurring'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['date'] = date;
+    data['string'] = string;
+    data['lang'] = lang;
+    data['is_recurring'] = isRecurring;
+    return data;
   }
 }
 

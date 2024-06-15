@@ -48,8 +48,8 @@ class CreateNewTaskViewModel extends BaseViewModel {
           content: taskTitleController.text,
           description: taskDescriptionController.text,
           labels: [labelController.text],
-          sectionId: sectionId,
-          due: dueDateController.text,
+          sectionId: sectionId??'',
+          due: dueDateController.text.toDateTime().toString(),
           createdAt: DateTime.now());
       final Task? newTask =
           await locator<NetworkService>().createATask(requestBody: {
@@ -58,7 +58,7 @@ class CreateNewTaskViewModel extends BaseViewModel {
         "content": taskModel.content,
         "labels": taskModel.labels,
         "description": taskModel.description,
-        "due": taskModel.due!.toDateTime().toIso8601WithMillis(),
+        "due_date": taskModel.due,
         "created_at": taskModel.createdAt.toIso8601WithMillis(),
       });
       if (newTask != null) {

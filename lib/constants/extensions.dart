@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../features/dashboard/model/task_model.dart';
 import 'enums.dart';
 
 extension Context on BuildContext {
@@ -38,6 +39,7 @@ extension APITypeExtension on ApiType {
       case ApiType.getActiveTasks:
       case ApiType.createANewTask:
       case ApiType.deleteATask:
+      case ApiType.updateATask:
         return '/tasks';
       case ApiType.getAllSections:
       case ApiType.createANewSection:
@@ -67,6 +69,21 @@ extension DateTimeFormatting on String {
     return formatter.format(dateTime.toLocal());
   }
 }
+
+extension DueExtension on DateTime {
+  Due toDue() {
+    String formattedDate = toIso8601String().split('T').first; // Format as YYYY-MM-DD
+    String dateString = formattedDate;
+
+    return Due(
+      date: formattedDate,
+      string: dateString,
+      lang: 'en',
+      isRecurring: false,
+    );
+  }
+}
+
 
 extension StringToColor on String {
   Color toColor() {

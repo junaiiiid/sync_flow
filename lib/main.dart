@@ -1,3 +1,4 @@
+import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/constants/numeric_constants.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/route_service.dart';
