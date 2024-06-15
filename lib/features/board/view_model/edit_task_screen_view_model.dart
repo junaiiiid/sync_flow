@@ -118,8 +118,9 @@ class EditTaskScreenViewModel extends BaseViewModel {
   }
 
   Future<void> getAllCommentsByTaskId({required String taskId}) async {
-    allComments =
-        await locator<NetworkService>().getCommentByTaskId(taskId: taskId);
+    List<Comment> comments = await locator<NetworkService>().getCommentByTaskId(taskId: taskId);
+    allComments = comments;
+    setState();
   }
 
   Future<void> editComment({required String id}) async{
