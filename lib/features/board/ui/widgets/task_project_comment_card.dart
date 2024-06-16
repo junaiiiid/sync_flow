@@ -11,7 +11,6 @@ import '../../../../global_widgets/app_dismissible.dart';
 import '../../../../styles_and_themes/app_colors.dart';
 import '../../../../styles_and_themes/app_text_styles.dart';
 import '../../../comments/ui/widgets/bubble.dart';
-import '../../../comments/ui/widgets/comment_card.dart';
 import '../../../comments/ui/widgets/edit_comment_view.dart';
 import '../../../dashboard/model/comment_model.dart';
 

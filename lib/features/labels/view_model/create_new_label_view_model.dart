@@ -1,6 +1,5 @@
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/extensions.dart';
-import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/network_service.dart';

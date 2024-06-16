@@ -1,4 +1,3 @@
-
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';

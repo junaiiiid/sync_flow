@@ -4,7 +4,6 @@ import 'package:flow_sync/features/labels/ui/widgets/label_cards.dart';
 import 'package:flow_sync/global_widgets/no_data_widget.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
-import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

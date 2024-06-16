@@ -4,17 +4,11 @@ import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/model/section_model.dart';
-import 'package:flow_sync/features/board/view_model/board_view_model.dart';
 import 'package:flow_sync/features/comments/ui/comments_screen.dart';
-import 'package:flow_sync/features/dashboard/model/comment_model.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/features/labels/ui/labels_screen.dart';
-import 'package:flow_sync/features/projects/view_model/project_view_model.dart';
-import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/dependency_injection/locator_service.dart';
-import 'package:flow_sync/services/network_service.dart';
-
 import '../../../constants/enums.dart';
 import '../../../services/provider_service.dart';
 import '../../../services/state_service.dart';

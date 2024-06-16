@@ -1,4 +1,3 @@
-import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/ui/widgets/task_comments_detailed_view.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/features/projects/ui/widgets/project_tabs.dart';

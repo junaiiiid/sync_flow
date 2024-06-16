@@ -1,14 +1,8 @@
 import 'package:flow_sync/architecture/app_parent_widget.dart';
-import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/enums.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/dashboard_items_model.dart';
-import 'package:flow_sync/features/dashboard/model/project_model.dart';
-import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/global_widgets/skeleton_effect_widget.dart';
-import 'package:flow_sync/services/dependency_injection/locator.dart';
-import 'package:flow_sync/services/dependency_injection/locator_service.dart';
-import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
@@ -17,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shimmer/shimmer.dart';
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});

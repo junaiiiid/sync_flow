@@ -1,25 +1,14 @@
-
 import 'package:flow_sync/constants/app_assets.dart';
-import 'package:flow_sync/constants/extensions.dart';
-import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/board/ui/widgets/task_comments_detailed_view.dart';
 import 'package:flow_sync/features/board/ui/widgets/task_detailed_view.dart';
-import 'package:flow_sync/features/board/view_model/edit_task_screen_view_model.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
-import 'package:flow_sync/global_widgets/app_drop_downs.dart';
-import 'package:flow_sync/global_widgets/list_spacer.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../architecture/app_parent_widget.dart';
-import '../../../global_widgets/app_buttons.dart';
-import '../../../global_widgets/app_popups.dart';
-import '../../../global_widgets/app_text_fields.dart';
 import '../../../styles_and_themes/app_colors.dart';
-import '../../../styles_and_themes/app_text_styles.dart';
 import '../../home/ui/widgets/custom_app_bar.dart';
 import '../../projects/ui/widgets/project_tabs.dart';
 

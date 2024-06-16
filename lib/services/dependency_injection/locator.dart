@@ -7,6 +7,4 @@ final GetIt locator = GetIt.instance;
 
 void setupLocator() {
   locator.registerLazySingleton<NetworkService>(() => NetworkService());
-  locator.registerLazySingleton<BoardViewModel>(() => BoardViewModel());
-  locator.registerLazySingleton<ProjectViewModel>(() => ProjectViewModel());
 }

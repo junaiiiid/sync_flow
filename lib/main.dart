@@ -1,8 +1,7 @@
-import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/constants/numeric_constants.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/route_service.dart';
-import 'package:flow_sync/styles_and_themes/app_colors.dart';
+import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,17 +29,6 @@ class Start extends StatelessWidget {
         builder: (_, child) {
           return MaterialApp.router(
             theme: ThemeData(
-              brightness: Brightness.light,
-              textTheme:
-                  GoogleFonts.montserratTextTheme(Theme.of(context).textTheme)
-                      .copyWith(
-                bodyMedium: const TextStyle(
-                  color: AppColors.black,
-                ),
-              ),
-            ),
-            darkTheme: ThemeData(
-              brightness: Brightness.dark,
               textTheme:
                   GoogleFonts.montserratTextTheme(Theme.of(context).textTheme)
                       .copyWith(
@@ -61,6 +49,8 @@ class Start extends StatelessWidget {
                 labelSmall: AppTextStyles.labelSmall,
               ),
             ),
+            localizationsDelegates: StateService.localizationDelegates,
+            supportedLocales: StateService.supportedLocales,
             routerConfig: RouteService.router,
             debugShowCheckedModeBanner: false,
           );

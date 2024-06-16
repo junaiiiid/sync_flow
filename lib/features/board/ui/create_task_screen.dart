@@ -1,6 +1,5 @@
 import 'package:flow_sync/architecture/app_parent_widget.dart';
 import 'package:flow_sync/constants/extensions.dart';
-import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/app_drop_downs.dart';

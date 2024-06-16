@@ -11,8 +11,6 @@ import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../features/board/model/section_model.dart';
 import '../features/board/ui/create_task_screen.dart';
 import '../features/home/ui/home_screen.dart';
 import '../features/splash/ui/splash_screen.dart';

@@ -3,10 +3,7 @@ import 'package:flow_sync/global_widgets/app_text_fields.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../../architecture/app_parent_widget.dart';
 import '../../../../global_widgets/no_data_widget.dart';
-import '../../../../styles_and_themes/app_colors.dart';
 import '../../../comments/ui/widgets/comment_card.dart';
 
 class TaskCommentsDetailedView extends ConsumerWidget {

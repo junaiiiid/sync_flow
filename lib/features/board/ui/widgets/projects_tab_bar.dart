@@ -1,11 +1,7 @@
-import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/extensions.dart';
-import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/board/model/tabs_model.dart';
 import 'package:flow_sync/features/board/ui/create_task_screen.dart';
 import 'package:flow_sync/features/board/ui/edit_task_screen.dart';
-import 'package:flow_sync/features/board/view_model/board_view_model.dart';
-import 'package:flow_sync/features/dashboard/view_model/dashboard_view_model.dart';
 import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/app_dismissible.dart';
 import 'package:flow_sync/global_widgets/list_spacer.dart';

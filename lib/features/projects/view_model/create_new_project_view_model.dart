@@ -7,8 +7,6 @@ import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
-import 'package:flow_sync/styles_and_themes/app_colors.dart';
-import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../services/dependency_injection/locator.dart';
