@@ -82,12 +82,10 @@ class _ProjectDetailedScreenState extends ConsumerState<ProjectDetailedScreen>
                       child: TabBarView(
                         controller: _tabController,
                         children: [
-                          Expanded(child: getBoard(vm: viewModel)),
-                          Container(),
-                          //getBoard(vm: viewModel),
-                          /*TaskCommentsDetailedView(
+                          getBoard(vm: viewModel),
+                          TaskCommentsDetailedView(
                             vm: viewModel,
-                          ),*/
+                          ),
                         ],
                       ),
                     ),
@@ -106,11 +104,9 @@ class _ProjectDetailedScreenState extends ConsumerState<ProjectDetailedScreen>
       return ((vm.listOfSections.length == 1) &&
               (vm.listOfSections.first.id == LanguageService.getString.id))
           ? const LoaderWidget()
-          : Expanded(
-              flex: 3,
-              child: ProjectsTabBar(
-                viewModel: vm,
-              ));
+          : ProjectsTabBar(
+            viewModel: vm,
+          );
     } else {
       return Container();
     }
