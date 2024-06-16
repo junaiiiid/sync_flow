@@ -138,6 +138,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "projects": MessageLookupByLibrary.simpleMessage("Projects"),
         "publish": MessageLookupByLibrary.simpleMessage("PUBLISH"),
         "red": MessageLookupByLibrary.simpleMessage("red"),
+        "requestSuccessful":
+            MessageLookupByLibrary.simpleMessage("Request successful."),
         "restart": MessageLookupByLibrary.simpleMessage("RESTART"),
         "resume": MessageLookupByLibrary.simpleMessage("RESUME"),
         "salmon": MessageLookupByLibrary.simpleMessage("salmon"),
@@ -186,6 +188,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "teal": MessageLookupByLibrary.simpleMessage("teal"),
         "theFieldsCanNotBeEmpty": MessageLookupByLibrary.simpleMessage(
             "The fields can not be empty."),
+        "thereWasAnError":
+            MessageLookupByLibrary.simpleMessage("There was an Error."),
         "thisFieldCanNotBeEmpty":
             MessageLookupByLibrary.simpleMessage("This field can not be empty"),
         "timeSpent": MessageLookupByLibrary.simpleMessage("Time Spent"),

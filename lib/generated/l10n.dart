@@ -1519,6 +1519,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Request successful.`
+  String get requestSuccessful {
+    return Intl.message(
+      'Request successful.',
+      name: 'requestSuccessful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There was an Error.`
+  String get thereWasAnError {
+    return Intl.message(
+      'There was an Error.',
+      name: 'thereWasAnError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -6,12 +6,122 @@ import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'dart:developer' as dev;
 import '../features/dashboard/model/comment_model.dart';
 import '../features/dashboard/model/task_model.dart';
 
 class NetworkService {
   final _dio = Dio();
+
+  ///TODO : use this to make API handling more generic
+  Future<T?> request<T>({
+    required String endpoint,
+    required NetworkRequestType method,
+    required bool showSnackBars,
+    required Map<String, dynamic> data,
+    String? successContent,
+    String? failureContent,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? queryParams,
+    required T Function(dynamic) fromJson,
+  }) async {
+    final String requestUrl = "${ApiConstants.baseUrl}$endpoint";
+
+    try {
+      Response response;
+
+      switch (method) {
+        case NetworkRequestType.get:
+          response = await _dio.get(
+            requestUrl,
+            options: Options(headers: headers),
+            queryParameters: queryParams,
+          );
+          break;
+        case NetworkRequestType.post:
+          response = await _dio.post(
+            requestUrl,
+            options: Options(headers: headers),
+            data: data,
+          );
+          break;
+        case NetworkRequestType.put:
+          response = await _dio.put(
+            requestUrl,
+            options: Options(headers: headers),
+            data: data,
+          );
+          break;
+        case NetworkRequestType.delete:
+          response = await _dio.delete(
+            requestUrl,
+            options: Options(headers: headers),
+            data: data,
+          );
+          break;
+        default:
+          throw UnsupportedError('Method $method is not supported');
+      }
+
+      // Handle different response statuses
+      switch (response.statusCode) {
+        case 200:
+        case 201:
+        case 204:
+          AppPopups.showSnackBar(
+              type: SnackBarTypes.success,
+              content: successContent ??
+                  LanguageService.getString.requestSuccessful);
+          return fromJson(response.data);
+        case 400:
+          dev.log('Bad request');
+          break;
+        case 401:
+          dev.log('Unauthorized');
+          break;
+        case 403:
+          dev.log('Forbidden');
+          break;
+        case 404:
+          dev.log('Not found');
+          break;
+        case 429:
+          dev.log('Too many requests');
+          break;
+        case 500:
+        case 502:
+        case 503:
+        case 504:
+          dev.log('Server error');
+          break;
+        default:
+          dev.log('Unexpected error: ${response.statusCode}');
+          AppPopups.showSnackBar(
+              type: SnackBarTypes.error,
+              content:
+                  failureContent ?? LanguageService.getString.thereWasAnError);
+      }
+    } on DioError catch (dioError) {
+      AppPopups.showSnackBar(
+          type: SnackBarTypes.error,
+          content: failureContent ?? LanguageService.getString.thereWasAnError);
+      // Handle Dio errors
+      if (dioError.response != null) {
+        dev.log('Dio error! Status: ${dioError.response?.statusCode}');
+        dev.log('Data: ${dioError.response?.data}');
+        dev.log('Headers: ${dioError.response?.headers}');
+      } else {
+        // Error due to setting up or sending the request
+        dev.log('Error sending request!');
+        dev.log(dioError.message.toString());
+      }
+    } catch (e) {
+      // Handle other errors
+      dev.log('Unexpected error: $e');
+    }
+    return null;
+  }
 
   Future<List<Project>> getAllProjects() async {
     final String requestUrl =
@@ -725,8 +835,7 @@ class NetworkService {
     }
   }
 
-  Future<Task?> createATask(
-      {required Map<String, dynamic> requestBody}) async {
+  Future<Task?> createATask({required Map<String, dynamic> requestBody}) async {
     final String requestUrl =
         "${ApiConstants.baseUrl}${ApiType.createANewTask.getUrl()}";
     try {
@@ -793,7 +902,8 @@ class NetworkService {
   }
 
   Future<Task?> updateATaskById(
-      {required String taskId,required Map<String, dynamic> requestBody}) async {
+      {required String taskId,
+      required Map<String, dynamic> requestBody}) async {
     final String requestUrl =
         "${ApiConstants.baseUrl}${ApiType.createANewTask.getUrl()}/$taskId";
     try {

@@ -145,5 +145,7 @@
   "resume": "RESUME",
   "pause": "PAUSE",
   "stop": "STOP",
-  "restart": "RESTART"
+  "restart": "RESTART",
+  "requestSuccessful": "Request successful.",
+  "thereWasAnError": "There was an Error."
 }

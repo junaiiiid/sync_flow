@@ -1,6 +1,6 @@
 enum NavigationBarItems { home, projects, board, settings }
 
-enum NetworkRequestType { get, post, delete }
+enum NetworkRequestType { get, post, delete,put }
 
 enum ApiType {
   getAUsersProject,
