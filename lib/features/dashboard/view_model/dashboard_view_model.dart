@@ -8,7 +8,8 @@ import 'package:flow_sync/features/comments/ui/comments_screen.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/features/labels/ui/labels_screen.dart';
-import 'package:flow_sync/services/dependency_injection/locator_service.dart';
+import 'package:flow_sync/services/dependency_injection/locator.dart';
+import 'package:flow_sync/services/network_service.dart';
 import '../../../constants/enums.dart';
 import '../../../services/provider_service.dart';
 import '../../../services/state_service.dart';
@@ -101,7 +102,7 @@ class DashboardViewModel extends BaseViewModel {
   Future<void> initialize() async {
     final projectProvider =
         StateService.context.read(ProviderService.projectProvider);
-    final networkService = LocatorService.networkServiceLocator;
+    final networkService = locator<NetworkService>();
     listOfProjects = await networkService.getAllProjects();
     listOfProjects.removeWhere((element) => element.viewStyle == 'list');
     listOfProjects.removeWhere((element) => element.id == 'id');

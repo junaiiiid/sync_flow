@@ -10,7 +10,6 @@ import '../../../constants/app_assets.dart';
 import '../../../constants/enums.dart';
 import '../../../global_widgets/app_popups.dart';
 import '../../../services/dependency_injection/locator.dart';
-import '../../../services/dependency_injection/locator_service.dart';
 import '../../../services/network_service.dart';
 import '../../board/model/section_model.dart';
 import '../../board/model/tabs_model.dart';
@@ -189,7 +188,7 @@ class ProjectDetailsViewModel extends BaseViewModel{
   }
 
   Future<void> getSectionsOfSelectedProject() async {
-    final networkService = LocatorService.networkServiceLocator;
+    final networkService = locator<NetworkService>();
     listOfSections = await networkService.getAllSectionsOfProjectById(
         projectId: selectedProject?.id ?? "");
     if (listOfSections.isNotEmpty) {

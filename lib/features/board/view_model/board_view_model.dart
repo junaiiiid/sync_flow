@@ -6,7 +6,6 @@ import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
-import 'package:flow_sync/services/dependency_injection/locator_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -44,7 +43,7 @@ class BoardViewModel extends BaseViewModel {
       .listOfProjects;
 
   Future<void> getSectionsOfSelectedProject() async {
-    final networkService = LocatorService.networkServiceLocator;
+    final networkService = locator<NetworkService>();
     listOfSections = await networkService.getAllSectionsOfProjectById(
         projectId: selectedProject.id ?? "");
     if (listOfSections.isNotEmpty) {
