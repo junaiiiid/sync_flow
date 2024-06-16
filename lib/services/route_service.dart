@@ -8,7 +8,9 @@ import 'package:flow_sync/features/labels/ui/labels_screen.dart';
 import 'package:flow_sync/features/notifications/ui/notification_screen.dart';
 import 'package:flow_sync/features/projects/ui/create_projects_screen.dart';
 import 'package:flow_sync/features/projects/ui/project_detailed_screen.dart';
+import 'package:flow_sync/features/task_timer/model/timer_task_model.dart';
 import 'package:flow_sync/features/task_timer/ui/task_timer_screen.dart';
+import 'package:flow_sync/features/task_timer/ui/widgets/individual_task_timer_screen.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -62,6 +64,15 @@ class RouteService {
           final projectModel = state.extra as Project;
           return ProjectDetailedScreen(
             model: projectModel,
+          );
+        },
+      ),
+      GoRoute(
+        path: IndividualTaskTimerScreen.id,
+        builder: (context, state) {
+          final model = state.extra as TimerTaskModel;
+          return IndividualTaskTimerScreen(
+            model: model,
           );
         },
       ),

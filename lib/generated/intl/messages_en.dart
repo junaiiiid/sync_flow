@@ -173,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Task Already Exists In History"),
         "taskTimer": MessageLookupByLibrary.simpleMessage("Task Timer"),
         "taskid": MessageLookupByLibrary.simpleMessage("taskId"),
+        "tasknumber": MessageLookupByLibrary.simpleMessage("TASK #"),
         "taupe": MessageLookupByLibrary.simpleMessage("taupe"),
         "teal": MessageLookupByLibrary.simpleMessage("teal"),
         "theFieldsCanNotBeEmpty": MessageLookupByLibrary.simpleMessage(
