@@ -20,7 +20,10 @@ import '../../../dashboard/model/task_model.dart';
 
 class ProjectsTabBar extends StatefulWidget {
   final dynamic viewModel;
-  const ProjectsTabBar({super.key, required this.viewModel});
+  final Color? textColor;
+  final Color? itemsColor;
+  final Color? unselectedItemColor;
+  const ProjectsTabBar({super.key, required this.viewModel, this.textColor, this.itemsColor, this.unselectedItemColor});
 
   @override
   State<ProjectsTabBar> createState() => _ProjectsTabBarState();
@@ -58,7 +61,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
                   indicatorColor: LightModeColors.red,
                   isScrollable: true,
                   physics: const BouncingScrollPhysics(),
-                  unselectedLabelColor: LightModeColors.light,
+                  unselectedLabelColor: widget.unselectedItemColor??LightModeColors.light,
                   labelColor: LightModeColors.red,
                   tabs: widget.viewModel
                       .getTabModel()
@@ -117,7 +120,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
           Text(
             model.tabName,
             style:
-                AppTextStyles.labelSmall?.copyWith(color: LightModeColors.grey),
+                AppTextStyles.labelSmall?.copyWith(color: widget.textColor??LightModeColors.grey),
           )
         ],
       ),
@@ -159,7 +162,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
       required String createdAt}) {
     return Container(
       decoration: BoxDecoration(
-          color: LightModeColors.white,
+          color: widget.itemsColor??LightModeColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(10.r),
           ),
@@ -173,11 +176,11 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
         ),
         title: Text(
           taskName,
-          style: AppTextStyles.labelLarge,
+          style: AppTextStyles.labelLarge?.copyWith(color: widget.textColor),
         ),
         subtitle: Text(
           createdAt,
-          style: AppTextStyles.labelSmall,
+          style: AppTextStyles.labelSmall?.copyWith(color: widget.textColor),
         ),
       ),
     );

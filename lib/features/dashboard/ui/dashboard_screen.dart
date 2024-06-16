@@ -18,6 +18,7 @@ class DashboardScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(ProviderService.dashboardProvider);
+    final themeEngine = ref.watch(ProviderService.themeEngineProvider);
     bool condition = ((viewModel.dashboardItems.length == 1) &&
         (viewModel.dashboardItems.first.type == DashboardItemType.dummy));
     List<DashboardItemsModel> conditionalList =
@@ -36,7 +37,7 @@ class DashboardScreen extends ConsumerWidget {
                 .map<Widget>(
                   (item) => (condition)
                       ? dashboardItemSkeleton(model: item)
-                      : dashboardItemCard(model: item),
+                      : dashboardItemCard(model: item,color: themeEngine.appBarColor),
                 )
                 .toList(),
           ),
@@ -45,7 +46,7 @@ class DashboardScreen extends ConsumerWidget {
     );
   }
 
-  Widget dashboardItemCard({required DashboardItemsModel model}) {
+  Widget dashboardItemCard({required DashboardItemsModel model,Color? color}) {
     return InkWell(
       onTap: () {
         StateService.context
@@ -54,7 +55,7 @@ class DashboardScreen extends ConsumerWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-            color: LightModeColors.grey,
+            color: color??LightModeColors.grey,
             borderRadius: BorderRadius.all(Radius.circular(10.r))),
         child: Center(
           child: Column(

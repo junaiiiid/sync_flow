@@ -18,6 +18,11 @@ class ThemeEngineService extends ChangeNotifier {
     _isDarkModeEnabled = locator<LocalStorageService>().getDarkMode() ?? false;
   }
 
+  Future<void> changeThemeMode({required bool value}) async{
+    await locator<LocalStorageService>().setDarkMode(value: value);
+    _isDarkModeEnabled = value;
+  }
+
   Color get blue =>
       _isDarkModeEnabled ? DarkModeColors.blue : LightModeColors.blue;
   Color get grey =>
@@ -28,6 +33,10 @@ class ThemeEngineService extends ChangeNotifier {
       _isDarkModeEnabled ? DarkModeColors.light : LightModeColors.light;
   Color get black =>
       _isDarkModeEnabled ? DarkModeColors.black : LightModeColors.black;
+  Color get textColor =>
+      _isDarkModeEnabled ? DarkModeColors.white : LightModeColors.black;
+  Color get appBarColor => _isDarkModeEnabled ? DarkModeColors.coolBlack : LightModeColors.grey;
+  Color get backgroundColor => _isDarkModeEnabled ? DarkModeColors.black : LightModeColors.white;
   Color get white =>
       _isDarkModeEnabled ? DarkModeColors.white : LightModeColors.white;
   Color get error =>
