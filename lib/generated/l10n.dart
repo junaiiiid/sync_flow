@@ -1439,6 +1439,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Task Title :`
+  String get taskTitle {
+    return Intl.message(
+      'Task Title :',
+      name: 'taskTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Description :`
+  String get taskDescription {
+    return Intl.message(
+      'Task Description :',
+      name: 'taskDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Section Id :`
+  String get sectionId {
+    return Intl.message(
+      'Section Id :',
+      name: 'sectionId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time Spent`
+  String get timeSpent {
+    return Intl.message(
+      'Time Spent',
+      name: 'timeSpent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RESUME`
+  String get resume {
+    return Intl.message(
+      'RESUME',
+      name: 'resume',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PAUSE`
+  String get pause {
+    return Intl.message(
+      'PAUSE',
+      name: 'pause',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `STOP`
+  String get stop {
+    return Intl.message(
+      'STOP',
+      name: 'stop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `RESTART`
+  String get restart {
+    return Intl.message(
+      'RESTART',
+      name: 'restart',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

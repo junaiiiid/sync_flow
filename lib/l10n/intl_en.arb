@@ -137,5 +137,13 @@
   "timerPausedSuccessfully": "Timer Paused Successfully",
   "timerResumedSuccessfully": "Timer Resumed Successfully",
   "taskAlreadyExistsInHistory": "Task Already Exists In History",
-  "tasknumber": "TASK #"
+  "tasknumber": "TASK #",
+  "taskTitle": "Task Title :",
+  "taskDescription": "Task Description :",
+  "sectionId": "Section Id :",
+  "timeSpent": "Time Spent",
+  "resume": "RESUME",
+  "pause": "PAUSE",
+  "stop": "STOP",
+  "restart": "RESTART"
 }

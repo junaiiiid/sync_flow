@@ -49,7 +49,7 @@ class IndividualTaskTimerScreen extends ConsumerWidget {
                   Padding(
                     padding: spacerPadding,
                     child: Text(
-                      'Task Title :',
+                      LanguageService.getString.taskTitle,
                       style: AppTextStyles.displayLarge,
                     ),
                   ),
@@ -63,7 +63,7 @@ class IndividualTaskTimerScreen extends ConsumerWidget {
                   Padding(
                     padding: spacerPadding,
                     child: Text(
-                      'Task Description :',
+                      LanguageService.getString.taskDescription,
                       style: AppTextStyles.displayLarge,
                     ),
                   ),
@@ -77,7 +77,7 @@ class IndividualTaskTimerScreen extends ConsumerWidget {
                   Padding(
                     padding: spacerPadding,
                     child: Text(
-                      'Section Id :',
+                      LanguageService.getString.sectionId,
                       style: AppTextStyles.displayLarge,
                     ),
                   ),
@@ -91,7 +91,7 @@ class IndividualTaskTimerScreen extends ConsumerWidget {
                   Padding(
                     padding: spacerPadding,
                     child: Text(
-                      'Time Spent',
+                      LanguageService.getString.timeSpent,
                       style: AppTextStyles.displayLarge,
                     ),
                   ),
@@ -99,19 +99,19 @@ class IndividualTaskTimerScreen extends ConsumerWidget {
                   Wrap(
                     children: [
                       if(model.isPaused ?? false)
-                      AppButtons.roundedIconButton(title: "RESUME", iconData: Icons.play_arrow, onTap: ()async{
+                      AppButtons.roundedIconButton(title: LanguageService.getString.resume, iconData: Icons.play_arrow, onTap: ()async{
                         await viewModel.resumeTask(model: model);
                       }),
                       if(model.isResumed ?? false)
-                      AppButtons.roundedIconButton(title: "PAUSE", iconData: Icons.pause, onTap: ()async{
+                      AppButtons.roundedIconButton(title: LanguageService.getString.pause, iconData: Icons.pause, onTap: ()async{
                         await viewModel.pauseTask(model: model);
                       }),
                       if(!(model.isEnded ?? false))
-                      AppButtons.roundedIconButton(title: "STOP", iconData: Icons.stop, onTap: ()async{
+                      AppButtons.roundedIconButton(title: LanguageService.getString.stop, iconData: Icons.stop, onTap: ()async{
                         await viewModel.stopTask(model: model);
                       }),
                       if(model.isEnded ?? false)
-                        AppButtons.roundedIconButton(title: "RESTART", iconData: Icons.refresh, onTap: ()async{
+                        AppButtons.roundedIconButton(title: LanguageService.getString.restart, iconData: Icons.refresh, onTap: ()async{
                           await viewModel.restartTask(model: model);
                         }),
                     ],

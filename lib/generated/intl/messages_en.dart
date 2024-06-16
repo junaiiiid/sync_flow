@@ -122,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "olivegreen": MessageLookupByLibrary.simpleMessage("olive_green"),
         "orange": MessageLookupByLibrary.simpleMessage("orange"),
+        "pause": MessageLookupByLibrary.simpleMessage("PAUSE"),
         "paused": MessageLookupByLibrary.simpleMessage("PAUSED"),
         "pleaseCreateATask":
             MessageLookupByLibrary.simpleMessage("Please Create A Task"),
@@ -137,8 +138,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "projects": MessageLookupByLibrary.simpleMessage("Projects"),
         "publish": MessageLookupByLibrary.simpleMessage("PUBLISH"),
         "red": MessageLookupByLibrary.simpleMessage("red"),
+        "restart": MessageLookupByLibrary.simpleMessage("RESTART"),
+        "resume": MessageLookupByLibrary.simpleMessage("RESUME"),
         "salmon": MessageLookupByLibrary.simpleMessage("salmon"),
         "saveChanges": MessageLookupByLibrary.simpleMessage("SAVE CHANGES"),
+        "sectionId": MessageLookupByLibrary.simpleMessage("Section Id :"),
         "sectionid": MessageLookupByLibrary.simpleMessage("section_id"),
         "select1stSection":
             MessageLookupByLibrary.simpleMessage("Select 1st Section"),
@@ -164,6 +168,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "skyblue": MessageLookupByLibrary.simpleMessage("sky_blue"),
         "startTimer": MessageLookupByLibrary.simpleMessage("START TIMER"),
         "started": MessageLookupByLibrary.simpleMessage("STARTED"),
+        "stop": MessageLookupByLibrary.simpleMessage("STOP"),
         "stopped": MessageLookupByLibrary.simpleMessage("STOPPED"),
         "success": MessageLookupByLibrary.simpleMessage("SUCCESS"),
         "tapToSelectADueDate":
@@ -171,7 +176,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "task": MessageLookupByLibrary.simpleMessage("TASK"),
         "taskAlreadyExistsInHistory": MessageLookupByLibrary.simpleMessage(
             "Task Already Exists In History"),
+        "taskDescription":
+            MessageLookupByLibrary.simpleMessage("Task Description :"),
         "taskTimer": MessageLookupByLibrary.simpleMessage("Task Timer"),
+        "taskTitle": MessageLookupByLibrary.simpleMessage("Task Title :"),
         "taskid": MessageLookupByLibrary.simpleMessage("taskId"),
         "tasknumber": MessageLookupByLibrary.simpleMessage("TASK #"),
         "taupe": MessageLookupByLibrary.simpleMessage("taupe"),
@@ -180,6 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "The fields can not be empty."),
         "thisFieldCanNotBeEmpty":
             MessageLookupByLibrary.simpleMessage("This field can not be empty"),
+        "timeSpent": MessageLookupByLibrary.simpleMessage("Time Spent"),
         "timerPausedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Timer Paused Successfully"),
         "timerResumedSuccessfully":
