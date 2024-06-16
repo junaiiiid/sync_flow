@@ -1359,6 +1359,36 @@ class S {
       args: [],
     );
   }
+
+  /// `STOPPED`
+  String get stopped {
+    return Intl.message(
+      'STOPPED',
+      name: 'stopped',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PAUSED`
+  String get paused {
+    return Intl.message(
+      'PAUSED',
+      name: 'paused',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `STARTED`
+  String get started {
+    return Intl.message(
+      'STARTED',
+      name: 'started',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

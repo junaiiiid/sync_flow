@@ -122,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "olivegreen": MessageLookupByLibrary.simpleMessage("olive_green"),
         "orange": MessageLookupByLibrary.simpleMessage("orange"),
+        "paused": MessageLookupByLibrary.simpleMessage("PAUSED"),
         "pleaseCreateATask":
             MessageLookupByLibrary.simpleMessage("Please Create A Task"),
         "pleaseSelectAnOption":
@@ -162,6 +163,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("Simple"),
         "skyblue": MessageLookupByLibrary.simpleMessage("sky_blue"),
         "startTimer": MessageLookupByLibrary.simpleMessage("START TIMER"),
+        "started": MessageLookupByLibrary.simpleMessage("STARTED"),
+        "stopped": MessageLookupByLibrary.simpleMessage("STOPPED"),
         "success": MessageLookupByLibrary.simpleMessage("SUCCESS"),
         "tapToSelectADueDate":
             MessageLookupByLibrary.simpleMessage("Tap to select a due date"),
