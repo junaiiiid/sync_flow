@@ -10,11 +10,12 @@ import '../../../../styles_and_themes/app_colors.dart';
 import '../../../comments/ui/widgets/comment_card.dart';
 
 class TaskCommentsDetailedView extends ConsumerWidget {
-  const TaskCommentsDetailedView({super.key});
+  final dynamic vm;
+  const TaskCommentsDetailedView({super.key, this.vm});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final viewModel = ref.watch(ProviderService.editTaskProvider);
+    final viewModel = vm ?? ref.watch(ProviderService.editTaskProvider);
     return Flex(
       direction: Axis.vertical,
       children: [
@@ -42,7 +43,7 @@ class TaskCommentsDetailedView extends ConsumerWidget {
             child: AppTextFields.chatTextField(
                 hintText: "write something...",
                 controller: viewModel.commentController,
-                onSend: () async{
+                onSend: () async {
                   await viewModel.addAComment();
                 }),
           ),

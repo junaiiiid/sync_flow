@@ -20,7 +20,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../dashboard/model/task_model.dart';
 
 class ProjectsTabBar extends StatefulWidget {
-  final BoardViewModel viewModel;
+  final dynamic viewModel;
   const ProjectsTabBar({super.key, required this.viewModel});
 
   @override
@@ -43,6 +43,8 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
     _tabController.dispose();
     super.dispose();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
