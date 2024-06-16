@@ -11,6 +11,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../constants/app_assets.dart';
 import '../../../../constants/enums.dart';
+import '../../../../services/language_service.dart';
 import '../../../../styles_and_themes/app_colors.dart';
 import '../../../../styles_and_themes/app_text_styles.dart';
 import 'bubble.dart';
@@ -156,7 +157,7 @@ class CommentCardSkeleton extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: SkeletonEffectWidget(
                       child: Text(
-                        "Loading...",
+                        LanguageService.getString.loading,
                         style: AppTextStyles.labelSmall,
                       ),
                     ),
@@ -175,7 +176,7 @@ class CommentCardSkeleton extends StatelessWidget {
                         ),
                         SkeletonEffectWidget(
                           child: Text(
-                            "Loading...",
+                            LanguageService.getString.loading,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             softWrap: true,
@@ -193,7 +194,7 @@ class CommentCardSkeleton extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: SkeletonEffectWidget(
                     child: Text(
-                      "Please Wait...",
+                      LanguageService.getString.pleaseWait,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       softWrap: true,
@@ -216,11 +217,11 @@ class CommentCardSkeleton extends StatelessWidget {
                           child: SvgPicture.asset(AppAssets.userIcon),
                         ),
                       ),
-                      const Expanded(
+                       Expanded(
                           flex: 3,
                           child: SkeletonEffectWidget(
                             child: Bubble(
-                                text: "Please Wait...",
+                                text: LanguageService.getString.pleaseWait,
                                 color: AppColors.lightGrey),
                           )),
                     ],
@@ -238,7 +239,7 @@ class CommentCardSkeleton extends StatelessWidget {
                       ),
                       SkeletonEffectWidget(
                         child: Text(
-                          "Loading...",
+                          LanguageService.getString.loading,
                           style: AppTextStyles.labelSmall,
                         ),
                       )
@@ -252,7 +253,7 @@ class CommentCardSkeleton extends StatelessWidget {
                       ),
                       SkeletonEffectWidget(
                         child: Text(
-                          "Loading...",
+                          LanguageService.getString.loading,
                           style: AppTextStyles.labelSmall,
                         ),
                       )

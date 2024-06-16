@@ -1,4 +1,6 @@
 import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
@@ -119,13 +121,13 @@ class TaskProjectCommentAction extends StatelessWidget {
     switch (type) {
       case CommentActionType.viewAttachment:
         iconData = Icons.link;
-        title = "View Attachment";
+        title = LanguageService.getString.viewAttachment;
         onTap = () {
           viewModel.openAttachment(url: model.attachment?.fileUrl ?? "");
         };
       case CommentActionType.editComment:
         iconData = Icons.edit;
-        title = "Edit Comment";
+        title = LanguageService.getString.editComment;
         onTap = () {
           viewModel.commentController.text = model.content;
           showModalBottomSheet(

@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../services/language_service.dart';
+
 class CommentsScreen extends ConsumerWidget {
   static const String id = "/comments";
   const CommentsScreen({super.key});
@@ -26,28 +28,40 @@ class CommentsScreen extends ConsumerWidget {
           child: SafeArea(
             child: Scaffold(
               backgroundColor: AppColors.lightGrey,
-              appBar: CustomAppBar.appBarWithBackButton(title: "Total Comments"),
+              appBar: CustomAppBar.appBarWithBackButton(
+                  title: LanguageService.getString.totalComments),
               body: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
                 child: Flex(
                   direction: Axis.vertical,
                   children: [
-                    if(!(viewModel.allComments.length==1 && viewModel.allComments.first.id=="id"))
-                    AppButtons.scaffoldIconButton(title: "ADD A COMMENT", onTap: (){
-                      StateService.pushNamed(routeName: AddCommentScreen.id);
-                    }),
+                    if (!(viewModel.allComments.length == 1 &&
+                        viewModel.allComments.first.id ==
+                            LanguageService.getString.id))
+                      AppButtons.scaffoldIconButton(
+                          title: LanguageService.getString.addAComment,
+                          onTap: () {
+                            StateService.pushNamed(
+                                routeName: AddCommentScreen.id);
+                          }),
                     Expanded(
                       flex: 3,
                       child: ListView(
                         physics: const BouncingScrollPhysics(),
-                        children: (viewModel.allComments.length==1 && viewModel.allComments.first.id=="id")
+                        children: (viewModel.allComments.length == 1 &&
+                                viewModel.allComments.first.id ==
+                                    LanguageService.getString.id)
                             ? [const CommentCardSkeleton()]
-                            :(viewModel.allComments.isEmpty)?[
-                              const NoDataWidget(content: "NO COMMENTS FOUND"),
-                        ]: viewModel.allComments
-                                .map<Widget>((comment) =>
-                                    CommentCard(model: comment, viewModel: viewModel))
-                                .toList(),
+                            : (viewModel.allComments.isEmpty)
+                                ? [
+                                    NoDataWidget(
+                                        content: LanguageService
+                                            .getString.noCommentsFound),
+                                  ]
+                                : viewModel.allComments
+                                    .map<Widget>((comment) => CommentCard(
+                                        model: comment, viewModel: viewModel))
+                                    .toList(),
                       ),
                     ),
                   ],

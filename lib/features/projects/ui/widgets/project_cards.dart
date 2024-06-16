@@ -4,6 +4,8 @@ import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -11,6 +13,7 @@ import '../../../../constants/app_assets.dart';
 import '../../../../constants/enums.dart';
 import '../../../../global_widgets/app_dismissible.dart';
 import '../../../../global_widgets/skeleton_effect_widget.dart';
+import '../../../../services/language_service.dart';
 import '../../../../styles_and_themes/app_colors.dart';
 import '../../../../styles_and_themes/app_text_styles.dart';
 import '../../model/project_card_model.dart';
@@ -153,13 +156,13 @@ class ProjectCardsSkeleton extends StatelessWidget {
               ),
               title: SkeletonEffectWidget(
                 child: Text(
-                  "Loading...",
+                  LanguageService.getString.loading,
                   style: AppTextStyles.labelLarge,
                 ),
               ),
               subtitle: SkeletonEffectWidget(
                 child: Text(
-                  "Loading...",
+                  LanguageService.getString.loading,
                   style: AppTextStyles.labelMedium,
                 ),
               ),

@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../architecture/app_parent_widget.dart';
+import '../../../services/language_service.dart';
 import '../../../styles_and_themes/app_colors.dart';
 import '../../home/ui/widgets/custom_app_bar.dart';
 import '../../projects/ui/widgets/project_tabs.dart';
@@ -21,13 +22,13 @@ class EditTaskScreen extends ConsumerStatefulWidget {
   ConsumerState<EditTaskScreen> createState() => _EditTaskScreenState();
 }
 
-class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTickerProviderStateMixin{
+class _EditTaskScreenState extends ConsumerState<EditTaskScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
   void initState() {
-    _tabController = TabController(
-        length: 2, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
 
@@ -43,8 +44,8 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTick
           child: SafeArea(
             child: Scaffold(
               backgroundColor: AppColors.white,
-              appBar:
-              CustomAppBar.appBarWithBackButton(title: "#${widget.taskModel.id}"),
+              appBar: CustomAppBar.appBarWithBackButton(
+                  title: "#${widget.taskModel.id}"),
               body: Flex(
                 direction: Axis.vertical,
                 children: [
@@ -55,9 +56,13 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTick
                       physics: const BouncingScrollPhysics(),
                       unselectedLabelColor: AppColors.lightGrey,
                       labelColor: AppColors.cherryRed,
-                      tabs: const [
-                        ProjectTabs(assetName: AppAssets.taskTab, title: "TASK"),
-                        ProjectTabs(assetName: AppAssets.commentsTab, title: "Comments"),
+                      tabs: [
+                        ProjectTabs(
+                            assetName: AppAssets.taskTab,
+                            title: LanguageService.getString.task),
+                        ProjectTabs(
+                            assetName: AppAssets.commentsTab,
+                            title: LanguageService.getString.comments),
                       ],
                       controller: _tabController,
                       indicatorSize: TabBarIndicatorSize.tab,
@@ -66,11 +71,14 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTick
                   Expanded(
                     flex: 3,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10.h, horizontal: 10.w),
                       child: TabBarView(
                         controller: _tabController,
                         children: [
-                          TaskDetailedView(viewModel: viewModel, taskModel: widget.taskModel),
+                          TaskDetailedView(
+                              viewModel: viewModel,
+                              taskModel: widget.taskModel),
                           const TaskCommentsDetailedView(),
                         ],
                       ),
@@ -85,5 +93,3 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen> with SingleTick
     );
   }
 }
-
-

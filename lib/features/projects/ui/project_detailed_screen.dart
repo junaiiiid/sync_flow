@@ -2,6 +2,10 @@ import 'package:flow_sync/features/board/ui/widgets/task_comments_detailed_view.
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/features/projects/ui/widgets/project_tabs.dart';
 import 'package:flow_sync/features/projects/view_model/project_details_view_model.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,7 +49,7 @@ class _ProjectDetailedScreenState extends ConsumerState<ProjectDetailedScreen>
           color: AppColors.darkGrey,
           child: SafeArea(
             child: Scaffold(
-              backgroundColor: AppColors.lightGrey,
+              backgroundColor: AppColors.white,
               appBar:
                   CustomAppBar.appBarWithBackButton(title: widget.model.name),
               body: Flex(
@@ -58,12 +62,13 @@ class _ProjectDetailedScreenState extends ConsumerState<ProjectDetailedScreen>
                       physics: const BouncingScrollPhysics(),
                       unselectedLabelColor: AppColors.lightGrey,
                       labelColor: AppColors.cherryRed,
-                      tabs: const [
+                      tabs: [
                         ProjectTabs(
-                            assetName: AppAssets.projectTab, title: "Board"),
+                            assetName: AppAssets.projectTab,
+                            title: LanguageService.getString.board),
                         ProjectTabs(
                             assetName: AppAssets.commentsTab,
-                            title: "Comments"),
+                            title: LanguageService.getString.comments),
                       ],
                       controller: _tabController,
                       indicatorSize: TabBarIndicatorSize.tab,
@@ -78,7 +83,9 @@ class _ProjectDetailedScreenState extends ConsumerState<ProjectDetailedScreen>
                         controller: _tabController,
                         children: [
                           getBoard(vm: viewModel),
-                          TaskCommentsDetailedView(vm: viewModel,),
+                          TaskCommentsDetailedView(
+                            vm: viewModel,
+                          ),
                         ],
                       ),
                     ),
@@ -93,9 +100,9 @@ class _ProjectDetailedScreenState extends ConsumerState<ProjectDetailedScreen>
   }
 
   Widget getBoard({required ProjectDetailsViewModel vm}) {
-    if ((vm.selectedProject.id != 'id')) {
+    if ((vm.selectedProject.id != LanguageService.getString.id)) {
       return ((vm.listOfSections.length == 1) &&
-              (vm.listOfSections.first.id == "id"))
+              (vm.listOfSections.first.id == LanguageService.getString.id))
           ? const LoaderWidget()
           : Expanded(
               flex: 3,

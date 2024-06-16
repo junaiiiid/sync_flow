@@ -5,6 +5,7 @@ import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/app_drop_downs.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/global_widgets/app_text_fields.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class CreateTaskScreen extends ConsumerWidget {
             child: Scaffold(
               backgroundColor: AppColors.white,
               appBar:
-                  CustomAppBar.appBarWithBackButton(title: "Create New Task"),
+                  CustomAppBar.appBarWithBackButton(title: LanguageService.getString.createNewTask),
               body: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
                 child: Form(
@@ -40,27 +41,27 @@ class CreateTaskScreen extends ConsumerWidget {
                   child: ListView(
                     children: [
                       AppTextFields.basicTextField(
-                          title: "Enter Task Title",
-                          hintText: "eg Task title",
+                          title: LanguageService.getString.enterTaskTitle,
+                          hintText: LanguageService.getString.egTaskTitle,
                           controller: viewModel.taskTitleController),
                       AppTextFields.basicTextField(
-                          title: "Enter Task Description",
-                          hintText: "eg Task Description",
+                          title: LanguageService.getString.enterTaskDescription,
+                          hintText: LanguageService.getString.egTaskDescription,
                           maxLines: 5,
                           maxLength: 250,
                           controller: viewModel.taskDescriptionController),
                       (viewModel.listOfLabels.isEmpty)
                           ? AppTextFields.basicTextField(
-                              title: "Enter A Label",
-                              hintText: "eg Label Name",
+                              title: LanguageService.getString.enterALabel,
+                              hintText: LanguageService.getString.egLabelName,
                               controller: viewModel.labelController)
                           : AppDropDowns.customDropDown<Label>(
-                              title: "Select A Label",
+                              title: LanguageService.getString.selectALabel,
                               items: viewModel.listOfLabels,
                               onChanged: (value) {
                                 viewModel.labelController.text = value!.name;
                               },
-                              hint: "eg My label",
+                              hint: LanguageService.getString.egMyLabel,
                               itemBuilder: (value) {
                                 return Row(
                                   children: [
@@ -92,15 +93,15 @@ class CreateTaskScreen extends ConsumerWidget {
                         child: AbsorbPointer(
                           absorbing: true,
                           child: AppTextFields.basicTextField(
-                              title: "Select Due Date",
-                              hintText: "Tap to select a due date",
+                              title: LanguageService.getString.selectDueDate,
+                              hintText: LanguageService.getString.tapToSelectADueDate,
                               maxLines: 1,
                               maxLength: 40,
                               controller: viewModel.dueDateController),
                         ),
                       ),
                       AppButtons.customButton(
-                          title: "CREATE TASK",
+                          title: LanguageService.getString.createTask,
                           onTap: () async {
                             await viewModel.createNewTask();
                           }),

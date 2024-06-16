@@ -49,6 +49,656 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `POWERED BY`
+  String get poweredBy {
+    return Intl.message(
+      'POWERED BY',
+      name: 'poweredBy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Theme`
+  String get darkTheme {
+    return Intl.message(
+      'Dark Theme',
+      name: 'darkTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App Type`
+  String get appType {
+    return Intl.message(
+      'App Type',
+      name: 'appType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Simple`
+  String get simple {
+    return Intl.message(
+      'Simple',
+      name: 'simple',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Advanced`
+  String get advanced {
+    return Intl.message(
+      'Advanced',
+      name: 'advanced',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NO PROJECTS FOUND`
+  String get noProjectsFound {
+    return Intl.message(
+      'NO PROJECTS FOUND',
+      name: 'noProjectsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CREATE NEW`
+  String get createNew {
+    return Intl.message(
+      'CREATE NEW',
+      name: 'createNew',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `id`
+  String get id {
+    return Intl.message(
+      'id',
+      name: 'id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Board`
+  String get board {
+    return Intl.message(
+      'Board',
+      name: 'board',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comments`
+  String get comments {
+    return Intl.message(
+      'Comments',
+      name: 'comments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NEW PROJECT`
+  String get newProject {
+    return Intl.message(
+      'NEW PROJECT',
+      name: 'newProject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Project Name:`
+  String get enterProjectName {
+    return Intl.message(
+      'Enter Project Name:',
+      name: 'enterProjectName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg My Project`
+  String get egMyProject {
+    return Intl.message(
+      'eg My Project',
+      name: 'egMyProject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Project Color`
+  String get selectProjectColor {
+    return Intl.message(
+      'Select Project Color',
+      name: 'selectProjectColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg red`
+  String get egRed {
+    return Intl.message(
+      'eg red',
+      name: 'egRed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Kanban Sections`
+  String get chooseKanbanSections {
+    return Intl.message(
+      'Choose Kanban Sections',
+      name: 'chooseKanbanSections',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select 1st Section`
+  String get select1stSection {
+    return Intl.message(
+      'Select 1st Section',
+      name: 'select1stSection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg first label`
+  String get egFirstLabel {
+    return Intl.message(
+      'eg first label',
+      name: 'egFirstLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select 2nd Section`
+  String get select2ndSection {
+    return Intl.message(
+      'Select 2nd Section',
+      name: 'select2ndSection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg second label`
+  String get egSecondLabel {
+    return Intl.message(
+      'eg second label',
+      name: 'egSecondLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select 3rd Section`
+  String get select3rdSection {
+    return Intl.message(
+      'Select 3rd Section',
+      name: 'select3rdSection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg third label`
+  String get egThirdLabel {
+    return Intl.message(
+      'eg third label',
+      name: 'egThirdLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create`
+  String get create {
+    return Intl.message(
+      'Create',
+      name: 'create',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading...`
+  String get loading {
+    return Intl.message(
+      'Loading...',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Labels`
+  String get labels {
+    return Intl.message(
+      'Labels',
+      name: 'labels',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NO LABELS FOUND`
+  String get noLabelsFound {
+    return Intl.message(
+      'NO LABELS FOUND',
+      name: 'noLabelsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NEW LABEL`
+  String get newLabel {
+    return Intl.message(
+      'NEW LABEL',
+      name: 'newLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Label Name:`
+  String get enterLabelName {
+    return Intl.message(
+      'Enter Label Name:',
+      name: 'enterLabelName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg TO-DO`
+  String get egTodo {
+    return Intl.message(
+      'eg TO-DO',
+      name: 'egTodo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Label Color`
+  String get selectLabelColor {
+    return Intl.message(
+      'Select Label Color',
+      name: 'selectLabelColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please wait...`
+  String get pleaseWait {
+    return Intl.message(
+      'Please wait...',
+      name: 'pleaseWait',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Comments`
+  String get totalComments {
+    return Intl.message(
+      'Total Comments',
+      name: 'totalComments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ADD A COMMENT`
+  String get addAComment {
+    return Intl.message(
+      'ADD A COMMENT',
+      name: 'addAComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NO COMMENTS FOUND`
+  String get noCommentsFound {
+    return Intl.message(
+      'NO COMMENTS FOUND',
+      name: 'noCommentsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Your Project`
+  String get selectYourProject {
+    return Intl.message(
+      'Select Your Project',
+      name: 'selectYourProject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Your Task`
+  String get selectYourTask {
+    return Intl.message(
+      'Select Your Task',
+      name: 'selectYourTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Your Comment`
+  String get addYourComment {
+    return Intl.message(
+      'Add Your Comment',
+      name: 'addYourComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg This is a comment.`
+  String get egThisIsAComment {
+    return Intl.message(
+      'eg This is a comment.',
+      name: 'egThisIsAComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PUBLISH`
+  String get publish {
+    return Intl.message(
+      'PUBLISH',
+      name: 'publish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `TASK`
+  String get task {
+    return Intl.message(
+      'TASK',
+      name: 'task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create New Task`
+  String get createNewTask {
+    return Intl.message(
+      'Create New Task',
+      name: 'createNewTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Task Title`
+  String get enterTaskTitle {
+    return Intl.message(
+      'Enter Task Title',
+      name: 'enterTaskTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg Task title`
+  String get egTaskTitle {
+    return Intl.message(
+      'eg Task title',
+      name: 'egTaskTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Task Description`
+  String get enterTaskDescription {
+    return Intl.message(
+      'Enter Task Description',
+      name: 'enterTaskDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg Task Description`
+  String get egTaskDescription {
+    return Intl.message(
+      'eg Task Description',
+      name: 'egTaskDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter A Label`
+  String get enterALabel {
+    return Intl.message(
+      'Enter A Label',
+      name: 'enterALabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg Label Name`
+  String get egLabelName {
+    return Intl.message(
+      'eg Label Name',
+      name: 'egLabelName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select A Label`
+  String get selectALabel {
+    return Intl.message(
+      'Select A Label',
+      name: 'selectALabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg My label`
+  String get egMyLabel {
+    return Intl.message(
+      'eg My label',
+      name: 'egMyLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Due Date`
+  String get selectDueDate {
+    return Intl.message(
+      'Select Due Date',
+      name: 'selectDueDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to select a due date`
+  String get tapToSelectADueDate {
+    return Intl.message(
+      'Tap to select a due date',
+      name: 'tapToSelectADueDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CREATE TASK`
+  String get createTask {
+    return Intl.message(
+      'CREATE TASK',
+      name: 'createTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Select Your Project`
+  String get pleaseSelectYourProject {
+    return Intl.message(
+      'Please Select Your Project',
+      name: 'pleaseSelectYourProject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Attachment`
+  String get viewAttachment {
+    return Intl.message(
+      'View Attachment',
+      name: 'viewAttachment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Comment`
+  String get editComment {
+    return Intl.message(
+      'Edit Comment',
+      name: 'editComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Task Title`
+  String get editTaskTitle {
+    return Intl.message(
+      'Edit Task Title',
+      name: 'editTaskTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Task Description`
+  String get editTaskDescription {
+    return Intl.message(
+      'Edit Task Description',
+      name: 'editTaskDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Move To`
+  String get moveTo {
+    return Intl.message(
+      'Move To',
+      name: 'moveTo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `eg Choose where to move`
+  String get egChooseWhereToMove {
+    return Intl.message(
+      'eg Choose where to move',
+      name: 'egChooseWhereToMove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SAVE CHANGES`
+  String get saveChanges {
+    return Intl.message(
+      'SAVE CHANGES',
+      name: 'saveChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `write something...`
+  String get writeSomething {
+    return Intl.message(
+      'write something...',
+      name: 'writeSomething',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `NO TASKS FOUND`
+  String get noTasksFound {
+    return Intl.message(
+      'NO TASKS FOUND',
+      name: 'noTasksFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a Project`
+  String get selectAProject {
+    return Intl.message(
+      'Select a Project',
+      name: 'selectAProject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A`
+  String get a {
+    return Intl.message(
+      'A',
+      name: 'a',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `B`
+  String get b {
+    return Intl.message(
+      'B',
+      name: 'b',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

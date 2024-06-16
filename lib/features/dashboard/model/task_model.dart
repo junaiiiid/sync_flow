@@ -89,7 +89,7 @@ class Task {
       assignerId: json['assigner_id'],
       assigneeId: json['assignee_id'],
       projectId: json['project_id'],
-      sectionId: json['section_id'],
+      sectionId: json['section_id'] ?? '',
       parentId: json['parent_id'],
       order: json['order'],
       content: json['content'],

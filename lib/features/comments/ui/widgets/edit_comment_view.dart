@@ -3,6 +3,7 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/comment_model.dart';
 import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/app_text_fields.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
@@ -47,7 +48,7 @@ class EditCommentView extends StatelessWidget {
                   maxLength: 500,
                   maxLines: 5),
               AppButtons.customButton(
-                  title: "PUBLISH",
+                  title: LanguageService.getString.publish,
                   onTap: () async {
                     await vm.editComment(id: model.id);
                   }),

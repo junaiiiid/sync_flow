@@ -1,4 +1,5 @@
 import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../global_widgets/app_buttons.dart';
@@ -29,12 +30,12 @@ class TaskDetailedView extends StatelessWidget {
       child: ListView(
         children: [
           AppTextFields.basicTextField(
-              title: "Edit Task Title",
-              hintText: "eg Task title",
+              title: LanguageService.getString.editTaskTitle,
+              hintText: LanguageService.getString.egTaskTitle,
               controller: viewModel.taskTitleController),
           AppTextFields.basicTextField(
-              title: "Edit Task Description",
-              hintText: "eg Task Description",
+              title: LanguageService.getString.editTaskDescription,
+              hintText: LanguageService.getString.egTaskDescription,
               maxLines: 5,
               maxLength: 250,
               controller: viewModel.taskDescriptionController),
@@ -42,15 +43,15 @@ class TaskDetailedView extends StatelessWidget {
               AppTextFields.basicTextField(
                   title:
                   "Edit Label ${viewModel.labelControllers.indexOf(element) + 1}",
-                  hintText: "eg My Label",
+                  hintText: LanguageService.getString.egMyLabel,
                   controller: element)),
           AppDropDowns.customDropDown<Section>(
-              title: "Move To",
+              title: LanguageService.getString.moveTo,
               items: viewModel.sectionsList,
               onChanged: (value) {
                 viewModel.selectedSection = value;
               },
-              hint: "eg Choose where to move",
+              hint: LanguageService.getString.egChooseWhereToMove,
               selectedItem: viewModel.selectedSection,
               itemBuilder: (value) {
                 return Text(
@@ -70,15 +71,15 @@ class TaskDetailedView extends StatelessWidget {
             child: AbsorbPointer(
               absorbing: true,
               child: AppTextFields.basicTextField(
-                  title: "Select Due Date",
-                  hintText: "Tap to select a due date",
+                  title: LanguageService.getString.selectDueDate,
+                  hintText: LanguageService.getString.tapToSelectADueDate,
                   maxLines: 1,
                   maxLength: 40,
                   controller: viewModel.dueDateController),
             ),
           ),
           AppButtons.customButton(
-              title: "SAVE CHANGES",
+              title: LanguageService.getString.saveChanges,
               onTap: () async {
                 await viewModel.modifyTask(
                     taskId: taskModel.id ?? "");

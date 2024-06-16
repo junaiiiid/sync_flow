@@ -4,6 +4,7 @@ import 'package:flow_sync/features/board/ui/widgets/projects_tab_bar.dart';
 import 'package:flow_sync/global_widgets/loader_widget.dart';
 import 'package:flow_sync/global_widgets/no_data_widget.dart';
 import 'package:flow_sync/global_widgets/skeleton_effect_widget.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
@@ -28,11 +29,11 @@ class BoardScreen extends ConsumerWidget {
               body: Flex(
                 direction: Axis.vertical,
                 children: (dashboardViewModel.listOfProjects.length == 1 &&
-                        dashboardViewModel.listOfProjects.first.id == "id")
+                        dashboardViewModel.listOfProjects.first.id == LanguageService.getString.id)
                     ? skeletonBoard()
                     : (dashboardViewModel.listOfProjects.isEmpty)
                         ? [
-                            const NoDataWidget(content: "NO PROJECTS FOUND"),
+                             NoDataWidget(content: LanguageService.getString.noProjectsFound),
                           ]
                         : [
                             Expanded(
@@ -42,8 +43,8 @@ class BoardScreen extends ConsumerWidget {
                                 children: [
                                   Center(
                                     child: Text(
-                                      (viewModel.selectedProject.id == "id")
-                                          ? "Please Select Your Project"
+                                      (viewModel.selectedProject.id == LanguageService.getString.id)
+                                          ? LanguageService.getString.pleaseSelectYourProject
                                           : 'Selected Project "${viewModel.selectedProject.name}"',
                                       style: AppTextStyles.titleSmall,
                                     ),
@@ -57,8 +58,8 @@ class BoardScreen extends ConsumerWidget {
                                 ],
                               ),
                             ),
-                            if (viewModel.selectedProject.id != "id")
-                              (viewModel.listOfSections.length == 1 && viewModel.listOfSections.first.id =="id")
+                            if (viewModel.selectedProject.id != LanguageService.getString.id)
+                              (viewModel.listOfSections.length == 1 && viewModel.listOfSections.first.id ==LanguageService.getString.id)
                                   ? const LoaderWidget()
                                   : Expanded(
                                       flex: 3,
@@ -78,7 +79,7 @@ class BoardScreen extends ConsumerWidget {
       Center(
           child: SkeletonEffectWidget(
               child: Text(
-        "Loading...",
+        LanguageService.getString.loading,
         style: AppTextStyles.titleSmall,
       ))),
       const ProjectDropDownSkeleton(),

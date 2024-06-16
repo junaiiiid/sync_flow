@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flow_sync/constants/extensions.dart';
@@ -6,6 +12,7 @@ import '../../../architecture/app_parent_widget.dart';
 import '../../../global_widgets/app_buttons.dart';
 import '../../../global_widgets/app_drop_downs.dart';
 import '../../../global_widgets/app_text_fields.dart';
+import '../../../services/language_service.dart';
 import '../../../services/provider_service.dart';
 import '../../../styles_and_themes/app_colors.dart';
 import '../../../styles_and_themes/app_text_styles.dart';
@@ -25,7 +32,7 @@ class CreateNewLabelScreen extends ConsumerWidget {
             color: AppColors.darkGrey,
             child: SafeArea(
               child: Scaffold(
-                appBar: CustomAppBar.appBarWithBackButton(title: "NEW LABEL"),
+                appBar: CustomAppBar.appBarWithBackButton(title: LanguageService.getString.newLabel),
                 body: Padding(
                   padding:
                   EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -34,18 +41,18 @@ class CreateNewLabelScreen extends ConsumerWidget {
                     child: ListView(
                       children: [
                         AppTextFields.basicTextField(
-                          title: "Enter Label Name:",
-                          hintText: "eg TO-DO",
+                          title: LanguageService.getString.enterLabelName,
+                          hintText: LanguageService.getString.egTodo,
                           maxLength: 30,
                           controller: viewModel.labelNameController,
                         ),
                         AppDropDowns.customDropDown<String>(
-                            title: "Select Label Color",
+                            title: LanguageService.getString.selectLabelColor,
                             items: viewModel.colorNames,
                             onChanged: (value) {
                               viewModel.selectedColor = value;
                             },
-                            hint: "eg red",
+                            hint: LanguageService.getString.egRed,
                             itemBuilder: (value) {
                               return Row(
                                 children: [
@@ -66,7 +73,7 @@ class CreateNewLabelScreen extends ConsumerWidget {
                                 ],
                               );
                             }),
-                        AppButtons.customButton(title: "Create", onTap: ()async{
+                        AppButtons.customButton(title: LanguageService.getString.create, onTap: ()async{
                           await viewModel.createNewLabel();
                         }),
                       ],

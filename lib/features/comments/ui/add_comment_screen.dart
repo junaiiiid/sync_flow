@@ -9,6 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../architecture/app_parent_widget.dart';
+import '../../../services/language_service.dart';
 import '../../../styles_and_themes/app_colors.dart';
 import '../../../styles_and_themes/app_text_styles.dart';
 import '../../dashboard/model/task_model.dart';
@@ -29,7 +30,7 @@ class AddCommentScreen extends ConsumerWidget {
             child: SafeArea(
               child: Scaffold(
                 appBar:
-                    CustomAppBar.appBarWithBackButton(title: "ADD A COMMENT"),
+                    CustomAppBar.appBarWithBackButton(title: LanguageService.getString.addAComment),
                 body: Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -39,12 +40,12 @@ class AddCommentScreen extends ConsumerWidget {
                       children: [
                         if (viewModel.listOfProjects.isNotEmpty)
                           AppDropDowns.customDropDown<Project>(
-                              title: "Select Your Project",
+                              title: LanguageService.getString.selectYourProject,
                               items: viewModel.listOfProjects,
                               onChanged: (value) {
                                 viewModel.selectedProject = value;
                               },
-                              hint: "eg My Project",
+                              hint: LanguageService.getString.egMyProject,
                               itemBuilder: (value) {
                                 return Row(
                                   children: [
@@ -68,12 +69,12 @@ class AddCommentScreen extends ConsumerWidget {
                               }),
                         if (viewModel.listOfTasks.isNotEmpty)
                           AppDropDowns.customDropDown<Task>(
-                              title: "Select Your Task",
+                              title: LanguageService.getString.selectYourTask,
                               items: viewModel.listOfTasks,
                               onChanged: (value) {
                                 viewModel.selectedTask = value;
                               },
-                              hint: "eg My Project",
+                              hint: LanguageService.getString.egMyProject,
                               itemBuilder: (value) {
                                 return Text(
                                   "ID# ${value?.id} (${value?.content})",
@@ -83,13 +84,13 @@ class AddCommentScreen extends ConsumerWidget {
                                 );
                               }),
                         AppTextFields.basicTextField(
-                            title: "Add Your Comment",
-                            hintText: "eg This is a comment.",
+                            title: LanguageService.getString.addYourComment,
+                            hintText: LanguageService.getString.egThisIsAComment,
                             controller: viewModel.commentController,
                             maxLength: 500,
                             maxLines: 5),
                         AppButtons.customButton(
-                            title: "PUBLISH",
+                            title: LanguageService.getString.publish,
                             onTap: () async {
                               await viewModel.addAComment();
                             }),

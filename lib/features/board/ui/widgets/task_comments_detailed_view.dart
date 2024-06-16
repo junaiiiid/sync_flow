@@ -1,5 +1,7 @@
 import 'package:flow_sync/features/board/ui/widgets/task_project_comment_card.dart';
 import 'package:flow_sync/global_widgets/app_text_fields.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,7 +27,8 @@ class TaskCommentsDetailedView extends ConsumerWidget {
                 ? [const CommentCardSkeleton()]
                 : (viewModel.allComments.isEmpty)
                     ? [
-                        const NoDataWidget(content: "NO COMMENTS FOUND"),
+                        NoDataWidget(
+                            content: LanguageService.getString.noCommentsFound),
                       ]
                     : viewModel.allComments
                         .map<Widget>(
@@ -38,7 +41,7 @@ class TaskCommentsDetailedView extends ConsumerWidget {
           child: Form(
             key: viewModel.formKey,
             child: AppTextFields.chatTextField(
-                hintText: "write something...",
+                hintText: LanguageService.getString.writeSomething,
                 controller: viewModel.commentController,
                 onSend: () async {
                   await viewModel.addAComment();

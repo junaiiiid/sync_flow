@@ -70,7 +70,7 @@ class CreateNewLabelViewModel extends BaseViewModel {
   @override
   void callDispose() {
     labelNameController.clear();
-    selectedColor = null;
+    _selectedColor = null;
   }
 
   @override

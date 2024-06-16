@@ -7,6 +7,19 @@ import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/app_radio_options.dart';
 import 'package:flow_sync/global_widgets/app_text_fields.dart';
 import 'package:flow_sync/global_widgets/app_drop_downs.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
@@ -31,7 +44,7 @@ class CreateProjectsScreen extends ConsumerWidget {
             color: AppColors.darkGrey,
             child: SafeArea(
               child: Scaffold(
-                appBar: CustomAppBar.appBarWithBackButton(title: "NEW PROJECT"),
+                appBar: CustomAppBar.appBarWithBackButton(title: LanguageService.getString.newProject),
                 body: Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -40,18 +53,18 @@ class CreateProjectsScreen extends ConsumerWidget {
                     child: ListView(
                       children: [
                         AppTextFields.basicTextField(
-                          title: "Enter Project Name:",
-                          hintText: "eg My Project",
+                          title: LanguageService.getString.enterProjectName,
+                          hintText: LanguageService.getString.egMyProject,
                           maxLength: 30,
                           controller: viewModel.projectNameController,
                         ),
                         AppDropDowns.customDropDown<String>(
-                            title: "Select Project Color",
+                            title: LanguageService.getString.selectProjectColor,
                             items: viewModel.colorNames,
                             onChanged: (value) {
                               viewModel.selectedColor = value;
                             },
-                            hint: "eg red",
+                            hint: LanguageService.getString.egRed,
                             itemBuilder: (value) {
                               return Row(
                                 children: [
@@ -85,11 +98,11 @@ class CreateProjectsScreen extends ConsumerWidget {
                                   value.sectionTitle,
                                   style: AppTextStyles.labelMedium,
                                 ),
-                            title: "Choose Kanban Sections"),
+                            title: LanguageService.getString.chooseKanbanSections),
                         if (viewModel.selectedSection.sectionType !=
                             SectionType.defaultSections) ...[
                           AppDropDowns.customDropDown<Label>(
-                              title: "Select 1st Section",
+                              title: LanguageService.getString.select1stSection,
                               items: dashBoardViewModel.listOfLabels,
                               onChanged: (value) {
                                 if (viewModel.selectedLabels.isEmpty) {
@@ -98,7 +111,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                                   viewModel.selectedLabels.first = value!;
                                 }
                               },
-                              hint: "eg first label",
+                              hint: LanguageService.getString.egFirstLabel,
                               itemBuilder: (value) {
                                 return Row(
                                   children: [
@@ -121,7 +134,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                                 );
                               }),
                           AppDropDowns.customDropDown<Label>(
-                              title: "Select 2nd Section",
+                              title: LanguageService.getString.select2ndSection,
                               items: dashBoardViewModel.listOfLabels,
                               onChanged: (value) {
                                 if (viewModel.selectedLabels.length < 2) {
@@ -130,7 +143,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                                   viewModel.selectedLabels[1] = value!;
                                 }
                               },
-                              hint: "eg second label",
+                              hint: LanguageService.getString.egSecondLabel,
                               itemBuilder: (value) {
                                 return Row(
                                   children: [
@@ -153,7 +166,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                                 );
                               }),
                           AppDropDowns.customDropDown<Label>(
-                              title: "Select 3rd Section",
+                              title: LanguageService.getString.select3rdSection,
                               items: dashBoardViewModel.listOfLabels,
                               onChanged: (value) {
                                 if (viewModel.selectedLabels.length < 3) {
@@ -162,7 +175,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                                   viewModel.selectedLabels[2] = value!;
                                 }
                               },
-                              hint: "eg third label",
+                              hint: LanguageService.getString.egThirdLabel,
                               itemBuilder: (value) {
                                 return Row(
                                   children: [
@@ -186,7 +199,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                               }),
                         ],
                         AppButtons.customButton(
-                            title: "Create",
+                            title: LanguageService.getString.create,
                             onTap: () async {
                               await viewModel.createNewProject();
                             }),

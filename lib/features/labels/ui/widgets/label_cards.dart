@@ -2,6 +2,7 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/global_widgets/app_dismissible.dart';
 import 'package:flow_sync/global_widgets/skeleton_effect_widget.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -88,12 +89,12 @@ class LabelCardSkeleton extends StatelessWidget {
             ),
             title: SkeletonEffectWidget(
                 child: Text(
-              "Loading...",
+              LanguageService.getString.loading,
               style: AppTextStyles.labelLarge,
             )),
             subtitle: SkeletonEffectWidget(
                 child: Text(
-              "Please wait...",
+              LanguageService.getString.pleaseWait,
               style: AppTextStyles.labelLarge,
             )),
             trailing: IconButton(

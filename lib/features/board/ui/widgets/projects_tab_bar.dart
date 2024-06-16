@@ -6,6 +6,9 @@ import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/app_dismissible.dart';
 import 'package:flow_sync/global_widgets/list_spacer.dart';
 import 'package:flow_sync/global_widgets/no_data_widget.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
@@ -45,7 +48,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
   @override
   Widget build(BuildContext context) {
     return (widget.viewModel.listOfSections.isEmpty)
-        ? const NoDataWidget(content: "NO TASKS FOUND")
+        ?  NoDataWidget(content: LanguageService.getString.noTasksFound)
         : Flex(
             direction: Axis.vertical,
             children: [
@@ -78,7 +81,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
                             Expanded(
                               flex: 0,
                               child: AppButtons.scaffoldIconButton(
-                                  title: "CREATE NEW TASK",
+                                  title: LanguageService.getString.createNewTask,
                                   onTap: () {
                                     StateService.pushNamedWithArguments<String>(
                                         routeName: CreateTaskScreen.id,
@@ -146,7 +149,7 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
       );
     }
     return (tabBarChildren.isEmpty)
-        ? [const NoDataWidget(content: "NO TASKS FOUND")]
+        ? [ NoDataWidget(content: LanguageService.getString.noTasksFound)]
         : [...tabBarChildren, const ListSpacer()];
   }
 

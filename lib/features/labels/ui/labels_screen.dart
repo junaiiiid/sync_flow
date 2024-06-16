@@ -2,6 +2,7 @@ import 'package:flow_sync/architecture/app_parent_widget.dart';
 import 'package:flow_sync/features/labels/ui/create_new_label_screen.dart';
 import 'package:flow_sync/features/labels/ui/widgets/label_cards.dart';
 import 'package:flow_sync/global_widgets/no_data_widget.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,16 +30,18 @@ class LabelsScreen extends ConsumerWidget {
           child: SafeArea(
             child: Scaffold(
               backgroundColor: AppColors.lightGrey,
-              appBar: CustomAppBar.appBarWithBackButton(title: "Labels"),
+              appBar: CustomAppBar.appBarWithBackButton(
+                  title: LanguageService.getString.labels),
               body: Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
                 child: Flex(
                   direction: Axis.vertical,
                   children: [
                     if (!(viewModel.listOfLabels.length == 1 &&
-                        viewModel.listOfLabels.first.id == "id"))
+                        viewModel.listOfLabels.first.id ==
+                            LanguageService.getString.id))
                       AppButtons.scaffoldIconButton(
-                        title: 'CREATE NEW',
+                        title: LanguageService.getString.createNew,
                         onTap: () {
                           StateService.pushNamed(
                               routeName: CreateNewLabelScreen.id);
@@ -47,12 +50,14 @@ class LabelsScreen extends ConsumerWidget {
                     Expanded(
                       child: ListView(
                         children: (viewModel.listOfLabels.length == 1 &&
-                                viewModel.listOfLabels.first.id == "id")
+                                viewModel.listOfLabels.first.id ==
+                                    LanguageService.getString.id)
                             ? [const LabelCardSkeleton()]
                             : (viewModel.listOfLabels.isEmpty)
                                 ? [
-                                    const NoDataWidget(
-                                        content: "NO LABELS FOUND"),
+                                    NoDataWidget(
+                                        content: LanguageService
+                                            .getString.noLabelsFound),
                                   ]
                                 : [
                                     ...viewModel.listOfLabels.map<Widget>(

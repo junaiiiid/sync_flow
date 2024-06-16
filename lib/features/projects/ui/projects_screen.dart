@@ -2,6 +2,8 @@ import 'package:flow_sync/architecture/app_parent_widget.dart';
 import 'package:flow_sync/features/projects/ui/create_projects_screen.dart';
 import 'package:flow_sync/features/projects/ui/widgets/project_cards.dart';
 import 'package:flow_sync/global_widgets/no_data_widget.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,21 +28,21 @@ class ProjectsScreen extends ConsumerWidget {
             child: Flex(
               direction: Axis.vertical,
               children: [
-                if(!(viewModel.listOfProjectCards.length==1 && viewModel.listOfProjectCards.first.projectData.id=="id"))
+                if(!(viewModel.listOfProjectCards.length==1 && viewModel.listOfProjectCards.first.projectData.id==LanguageService.getString.id))
                 AppButtons.scaffoldIconButton(
-                  title: 'CREATE NEW',
+                  title: LanguageService.getString.createNew,
                   onTap: () {
                     StateService.pushNamed(routeName: CreateProjectsScreen.id);
                   },
                 ),
                 Expanded(
                   child: ListView(
-                    children: (viewModel.listOfProjectCards.length==1 && viewModel.listOfProjectCards.first.projectData.id=="id")
+                    children: (viewModel.listOfProjectCards.length==1 && viewModel.listOfProjectCards.first.projectData.id==LanguageService.getString.id)
                         ? [
                             const ProjectCardsSkeleton(),
                           ]
                         :(viewModel.listOfProjectCards.isEmpty)?[
-                          const NoDataWidget(content: "NO PROJECTS FOUND"),
+                           NoDataWidget(content: LanguageService.getString.noProjectsFound),
                     ]: [
                             ...viewModel.listOfProjectCards.map<Widget>(
                               (element) => ProjectCards(model: element),
