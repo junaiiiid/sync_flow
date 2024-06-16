@@ -61,7 +61,7 @@ class TaskTimerViewModel extends BaseViewModel {
 
   Future<void> _startTask({required TimerTaskModel model}) async{
     model.startTime = DateTime.now();
-    model.isResumed = false;
+    model.isResumed = true;
     model.isPaused = false;
     model.isEnded = false;
     model.pauseTimes = [];
@@ -94,6 +94,11 @@ class TaskTimerViewModel extends BaseViewModel {
     model.isPaused = true;
     model.isEnded = false;
     await locator<LocalStorageService>().modifyATaskTimer(model: model, messageToShow: LanguageService.getString.timerResumedSuccessfully);
+    getTaskHistory();
+  }
+
+  Future<void> restartTask({required TimerTaskModel model}) async{
+    _startTask(model: model);
     getTaskHistory();
   }
 
