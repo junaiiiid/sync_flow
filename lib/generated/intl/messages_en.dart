@@ -174,6 +174,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "The fields can not be empty."),
         "thisFieldCanNotBeEmpty":
             MessageLookupByLibrary.simpleMessage("This field can not be empty"),
+        "timerStartedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Timer Started Successfully"),
         "to": MessageLookupByLibrary.simpleMessage("to"),
         "todo": MessageLookupByLibrary.simpleMessage("TO-DO"),
         "totalComments": MessageLookupByLibrary.simpleMessage("Total Comments"),

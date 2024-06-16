@@ -128,5 +128,6 @@
   "taskTimer": "Task Timer",
   "active": "ACTIVE",
   "pleaseCreateATask": "Please Create A Task",
-  "startTimer": "START TIMER"
+  "startTimer": "START TIMER",
+  "timerStartedSuccessfully": "Timer Started Successfully"
 }

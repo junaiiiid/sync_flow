@@ -3,6 +3,7 @@ import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/global_widgets/app_buttons.dart';
 import 'package:flow_sync/global_widgets/app_drop_downs.dart';
 import 'package:flow_sync/global_widgets/no_data_widget.dart';
+import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,9 @@ class CreateTaskTimerView extends StatelessWidget {
                 ((viewModel.listOfProjects.isEmpty)))
             ? NoDataWidget(content: LanguageService.getString.pleaseCreateATask)
             : AppButtons.customButton(
-                title: LanguageService.getString.startTimer, onTap: () {}),
+                title: LanguageService.getString.startTimer, onTap: () async{
+                  await viewModel.startTimer();
+        }),
       ],
     );
   }

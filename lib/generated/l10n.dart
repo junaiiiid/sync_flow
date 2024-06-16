@@ -1349,6 +1349,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Timer Started Successfully`
+  String get timerStartedSuccessfully {
+    return Intl.message(
+      'Timer Started Successfully',
+      name: 'timerStartedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
