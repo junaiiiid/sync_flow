@@ -71,7 +71,12 @@ class CreateNewTaskViewModel extends BaseViewModel {
         LanguageService.getString.createdat: taskModel.createdAt.toIso8601WithMillis(),
       });
       if (newTask != null) {
-        dashBoardProvider.listOfTasks.add(newTask);
+        Task? updatedLabelsTask = await locator<NetworkService>().updateATaskById(taskId: newTask.id!, requestBody: {
+          LanguageService.getString.labels:labels
+        });
+        if(updatedLabelsTask!=null){
+          dashBoardProvider.listOfTasks.add(updatedLabelsTask);
+        }
       }
       boardProvider.selectedProject = boardProvider.selectedProject;
       setState();
