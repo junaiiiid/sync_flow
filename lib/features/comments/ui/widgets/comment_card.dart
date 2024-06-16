@@ -102,14 +102,14 @@ class CommentCard extends StatelessWidget {
                         Expanded(
                           flex: 0,
                           child: CircleAvatar(
-                            backgroundColor: AppColors.darkGrey,
+                            backgroundColor: LightModeColors.grey,
                             child: SvgPicture.asset(AppAssets.userIcon),
                           ),
                         ),
                         Expanded(
                             flex: 3,
                             child: Bubble(
-                                text: model.content, color: AppColors.lightGrey)),
+                                text: model.content, color: LightModeColors.light)),
                       ],
                     ),
                   ),
@@ -213,7 +213,7 @@ class CommentCardSkeleton extends StatelessWidget {
                       Expanded(
                         flex: 0,
                         child: CircleAvatar(
-                          backgroundColor: AppColors.darkGrey,
+                          backgroundColor: LightModeColors.grey,
                           child: SvgPicture.asset(AppAssets.userIcon),
                         ),
                       ),
@@ -222,7 +222,7 @@ class CommentCardSkeleton extends StatelessWidget {
                           child: SkeletonEffectWidget(
                             child: Bubble(
                                 text: LanguageService.getString.pleaseWait,
-                                color: AppColors.lightGrey),
+                                color: LightModeColors.light),
                           )),
                     ],
                   ),

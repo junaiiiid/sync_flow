@@ -15,7 +15,7 @@ class CustomAppBar {
     return PreferredSize(
       preferredSize: Size.fromHeight(80.h),
       child: Container(
-        color: AppColors.darkGrey,
+        color: LightModeColors.grey,
         padding: NumericConstants.appBarPadding,
         child: Stack(
           children: [
@@ -24,7 +24,7 @@ class CustomAppBar {
                 child: Text(
                   title,
                   style: AppTextStyles.titleMedium
-                      ?.copyWith(color: AppColors.lightGrey),
+                      ?.copyWith(color: LightModeColors.light),
                 )),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,7 +50,7 @@ class CustomAppBar {
     return PreferredSize(
       preferredSize: Size.fromHeight(80.h),
       child: Container(
-        color: color??AppColors.darkGrey,
+        color: color??LightModeColors.grey,
         padding: NumericConstants.appBarPadding,
         child: Stack(
           children: [
@@ -59,7 +59,7 @@ class CustomAppBar {
                 child: Text(
                   title,
                   style: AppTextStyles.titleMedium
-                      ?.copyWith(color: AppColors.lightGrey),
+                      ?.copyWith(color: LightModeColors.light),
                 )),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,7 +73,7 @@ class CustomAppBar {
                       },
                       icon: const Icon(
                         Icons.arrow_back_ios_new,
-                        color: AppColors.lightGrey,
+                        color: LightModeColors.light,
                       )),
                 )
               ],

@@ -41,7 +41,7 @@ class CreateProjectsScreen extends ConsumerWidget {
         viewModel: viewModel,
         buildMethod: (context, ref) {
           return Container(
-            color: AppColors.darkGrey,
+            color: LightModeColors.grey,
             child: SafeArea(
               child: Scaffold(
                 appBar: CustomAppBar.appBarWithBackButton(title: LanguageService.getString.newProject),
@@ -79,7 +79,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                                       value?.toColorName() ?? "",
                                       style:
                                           AppTextStyles.displaySmall?.copyWith(
-                                        color: AppColors.darkGrey,
+                                        color: LightModeColors.grey,
                                       ),
                                     ),
                                   )
@@ -126,7 +126,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                                         value?.name ?? "",
                                         style: AppTextStyles.displaySmall
                                             ?.copyWith(
-                                          color: AppColors.darkGrey,
+                                          color: LightModeColors.grey,
                                         ),
                                       ),
                                     )
@@ -158,7 +158,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                                         value?.name ?? "",
                                         style: AppTextStyles.displaySmall
                                             ?.copyWith(
-                                          color: AppColors.darkGrey,
+                                          color: LightModeColors.grey,
                                         ),
                                       ),
                                     )
@@ -190,7 +190,7 @@ class CreateProjectsScreen extends ConsumerWidget {
                                         value?.name ?? "",
                                         style: AppTextStyles.displaySmall
                                             ?.copyWith(
-                                          color: AppColors.darkGrey,
+                                          color: LightModeColors.grey,
                                         ),
                                       ),
                                     )

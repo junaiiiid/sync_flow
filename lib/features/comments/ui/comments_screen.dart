@@ -24,10 +24,10 @@ class CommentsScreen extends ConsumerWidget {
       viewModel: viewModel,
       buildMethod: (context, ref) {
         return Container(
-          color: AppColors.darkGrey,
+          color: LightModeColors.grey,
           child: SafeArea(
             child: Scaffold(
-              backgroundColor: AppColors.lightGrey,
+              backgroundColor: LightModeColors.light,
               appBar: CustomAppBar.appBarWithBackButton(
                   title: LanguageService.getString.totalComments),
               body: Padding(

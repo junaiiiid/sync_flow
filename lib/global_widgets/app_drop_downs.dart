@@ -39,11 +39,11 @@ class AppDropDowns {
                 selectedValue: selectedItem,
                 onChanged: onChanged,
                 hint: hint,
-                color: color ?? AppColors.lightGrey,
-                iconColor: iconColor ?? AppColors.darkGrey,
+                color: color ?? LightModeColors.light,
+                iconColor: iconColor ?? LightModeColors.grey,
                 hintStyle: textStyle ??
                     AppTextStyles.displaySmall?.copyWith(
-                      color: AppColors.darkGrey.withOpacity(0.5),
+                      color: LightModeColors.grey.withOpacity(0.5),
                     ),
                 itemBuilder: itemBuilder),
           ),
@@ -94,7 +94,7 @@ class _DynamicDropDownState<T> extends State<DynamicDropDown<T>> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: widget.color ?? AppColors.cherryRed,
+        color: widget.color ?? LightModeColors.red,
         borderRadius: BorderRadius.all(Radius.circular(10.r)),
       ),
       margin: EdgeInsets.symmetric(
@@ -118,9 +118,9 @@ class _DynamicDropDownState<T> extends State<DynamicDropDown<T>> {
           hint: Text(
             widget.hint,
             style: widget.hintStyle ??
-                AppTextStyles.labelLarge?.copyWith(color: AppColors.lightGrey),
+                AppTextStyles.labelLarge?.copyWith(color: LightModeColors.light),
           ),
-          dropdownColor: widget.color ?? AppColors.cherryRed,
+          dropdownColor: widget.color ?? LightModeColors.red,
           value: selectedValue,
           onChanged: (T? newValue) {
             if (widget.onChanged != null) {
@@ -132,7 +132,7 @@ class _DynamicDropDownState<T> extends State<DynamicDropDown<T>> {
           },
           icon: Icon(
             CupertinoIcons.arrowtriangle_down_circle_fill,
-            color: widget.iconColor ?? AppColors.lightGrey,
+            color: widget.iconColor ?? LightModeColors.light,
           ),
           items: widget.items.map<DropdownMenuItem<T>>((T value) {
             return DropdownMenuItem<T>(

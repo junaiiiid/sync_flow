@@ -14,8 +14,8 @@ class AppButtons {
       required Function() onTap,
       double? scaleFactor}) {
     return InkWell(
-      highlightColor: AppColors.transparent,
-      splashColor: AppColors.transparent,
+      highlightColor: LightModeColors.transparent,
+      splashColor: LightModeColors.transparent,
       onTap: onTap,
       child: Center(
           child: Transform.scale(
@@ -29,7 +29,7 @@ class AppButtons {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.cherryRed,
+          color: LightModeColors.red,
           borderRadius: BorderRadius.all(
             Radius.circular(10.r),
           ),
@@ -62,7 +62,7 @@ class AppButtons {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: buttonColor ?? AppColors.cherryRed,
+          color: buttonColor ?? LightModeColors.red,
           borderRadius: BorderRadius.all(
             Radius.circular(20.r),
           ),

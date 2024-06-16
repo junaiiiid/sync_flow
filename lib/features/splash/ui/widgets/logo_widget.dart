@@ -1,3 +1,6 @@
+import 'package:flow_sync/constants/extensions.dart';
+import 'package:flow_sync/services/provider_service.dart';
+import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,11 +16,17 @@ class LogoWidget extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Transform.scale(
-            scale: 2,
-            child: SvgPicture.asset(AppAssets.logo)),
-        SizedBox(height: 25.h,),
-        Text("SyncFlow",style: AppTextStyles.titleSmall,),
+        Transform.scale(scale: 2, child: SvgPicture.asset(AppAssets.logo)),
+        SizedBox(
+          height: 25.h,
+        ),
+        Text(
+          "SyncFlow",
+          style: AppTextStyles.titleSmall?.copyWith(
+              color: StateService.context
+                  .read(ProviderService.themeEngineProvider)
+                  .black),
+        ),
       ],
     );
   }

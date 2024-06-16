@@ -26,7 +26,7 @@ class AddCommentScreen extends ConsumerWidget {
         viewModel: viewModel,
         buildMethod: (context, ref) {
           return Container(
-            color: AppColors.darkGrey,
+            color: LightModeColors.grey,
             child: SafeArea(
               child: Scaffold(
                 appBar:
@@ -60,7 +60,7 @@ class AddCommentScreen extends ConsumerWidget {
                                         "ID# ${value?.id} (${value?.name})",
                                         style: AppTextStyles.displaySmall
                                             ?.copyWith(
-                                          color: AppColors.darkGrey,
+                                          color: LightModeColors.grey,
                                         ),
                                       ),
                                     ),
@@ -79,7 +79,7 @@ class AddCommentScreen extends ConsumerWidget {
                                 return Text(
                                   "ID# ${value?.id} (${value?.content})",
                                   style: AppTextStyles.displaySmall?.copyWith(
-                                    color: AppColors.darkGrey,
+                                    color: LightModeColors.grey,
                                   ),
                                 );
                               }),

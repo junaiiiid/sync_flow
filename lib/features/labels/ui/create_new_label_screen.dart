@@ -29,7 +29,7 @@ class CreateNewLabelScreen extends ConsumerWidget {
         viewModel: viewModel,
         buildMethod: (context, ref) {
           return Container(
-            color: AppColors.darkGrey,
+            color: LightModeColors.grey,
             child: SafeArea(
               child: Scaffold(
                 appBar: CustomAppBar.appBarWithBackButton(title: LanguageService.getString.newLabel),
@@ -66,7 +66,7 @@ class CreateNewLabelScreen extends ConsumerWidget {
                                     child: Text(
                                       value?.toColorName() ?? "",
                                       style: AppTextStyles.displaySmall?.copyWith(
-                                        color: AppColors.darkGrey,
+                                        color: LightModeColors.grey,
                                       ),
                                     ),
                                   )

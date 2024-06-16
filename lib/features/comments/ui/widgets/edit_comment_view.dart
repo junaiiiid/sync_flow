@@ -38,7 +38,7 @@ class EditCommentView extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 25.h,
-                backgroundColor: AppColors.darkGrey,
+                backgroundColor: LightModeColors.grey,
                 child: SvgPicture.asset(AppAssets.userIcon),
               ),
               AppTextFields.basicTextField(

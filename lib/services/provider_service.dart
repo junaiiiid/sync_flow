@@ -10,6 +10,7 @@ import 'package:flow_sync/features/projects/view_model/project_details_view_mode
 import 'package:flow_sync/features/projects/view_model/project_view_model.dart';
 import 'package:flow_sync/features/settings/view_model/settings_view_model.dart';
 import 'package:flow_sync/services/state_service.dart';
+import 'package:flow_sync/services/theme_engine_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../features/board/view_model/edit_task_screen_view_model.dart';
@@ -60,6 +61,9 @@ class ProviderService {
 
   static ChangeNotifierProvider<ProjectDetailsViewModel> projectDetailsProvider =
   StateService.createProvider(() => ProjectDetailsViewModel());
+
+  static ChangeNotifierProvider<ThemeEngineService> themeEngineProvider =
+  StateService.createProvider(() => ThemeEngineService());
 }
 
 

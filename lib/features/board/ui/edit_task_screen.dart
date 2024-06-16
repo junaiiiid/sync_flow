@@ -40,10 +40,10 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen>
       viewModel: viewModel,
       buildMethod: (context, ref) {
         return Container(
-          color: AppColors.darkGrey,
+          color: LightModeColors.grey,
           child: SafeArea(
             child: Scaffold(
-              backgroundColor: AppColors.white,
+              backgroundColor: LightModeColors.white,
               appBar: CustomAppBar.appBarWithBackButton(
                   title: "#${widget.taskModel.id}"),
               body: Flex(
@@ -52,10 +52,10 @@ class _EditTaskScreenState extends ConsumerState<EditTaskScreen>
                   Expanded(
                     flex: 0,
                     child: TabBar(
-                      indicatorColor: AppColors.cherryRed,
+                      indicatorColor: LightModeColors.red,
                       physics: const BouncingScrollPhysics(),
-                      unselectedLabelColor: AppColors.lightGrey,
-                      labelColor: AppColors.cherryRed,
+                      unselectedLabelColor: LightModeColors.light,
+                      labelColor: LightModeColors.red,
                       tabs: [
                         ProjectTabs(
                             assetName: AppAssets.taskTab,

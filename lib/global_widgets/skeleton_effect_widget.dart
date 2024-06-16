@@ -10,8 +10,8 @@ class SkeletonEffectWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: AppColors.cherryRed,
-      highlightColor: AppColors.darkGrey,
+      baseColor: LightModeColors.red,
+      highlightColor: LightModeColors.grey,
       child: child,
     );
   }

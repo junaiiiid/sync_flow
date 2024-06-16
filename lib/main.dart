@@ -8,8 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  setupLocator();
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupLocator();
   runApp(
     const ProviderScope(
       child: Start(),

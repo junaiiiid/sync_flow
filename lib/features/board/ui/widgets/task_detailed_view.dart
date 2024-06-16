@@ -57,7 +57,7 @@ class TaskDetailedView extends StatelessWidget {
                 return Text(
                   value?.name ?? "",
                   style: AppTextStyles.displaySmall?.copyWith(
-                    color: AppColors.darkGrey,
+                    color: LightModeColors.grey,
                   ),
                 );
               }),

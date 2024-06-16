@@ -22,7 +22,7 @@ class AppPopups {
           child: Container(
              height: 150.h,
               decoration: BoxDecoration(
-                color: AppColors.darkGrey,
+                color: LightModeColors.grey,
                 borderRadius: BorderRadius.all(Radius.circular(10.r),),
               ),
               child: Lottie.asset(AppAssets.loaderAnimation)),
@@ -39,17 +39,17 @@ class AppPopups {
 
       case SnackBarTypes.error:
         text = content ?? LanguageService.getString.error;
-        color = AppColors.error;
+        color = LightModeColors.error;
       case SnackBarTypes.success:
         text = content ?? LanguageService.getString.success;
-        color = AppColors.success;
+        color = LightModeColors.success;
     }
     ScaffoldMessenger.of(StateService.context).showSnackBar(
       SnackBar(
           backgroundColor: color,
           content: Text(
             text,
-            style: AppTextStyles.labelLarge?.copyWith(color: AppColors.darkGrey),
+            style: AppTextStyles.labelLarge?.copyWith(color: LightModeColors.grey),
           )),
     );
   }

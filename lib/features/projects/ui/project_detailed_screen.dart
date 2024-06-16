@@ -46,10 +46,10 @@ class _ProjectDetailedScreenState extends ConsumerState<ProjectDetailedScreen>
       viewModel: viewModel,
       buildMethod: (context, ref) {
         return Container(
-          color: AppColors.darkGrey,
+          color: LightModeColors.grey,
           child: SafeArea(
             child: Scaffold(
-              backgroundColor: AppColors.white,
+              backgroundColor: LightModeColors.white,
               appBar:
                   CustomAppBar.appBarWithBackButton(title: widget.model.name),
               body: Flex(
@@ -58,10 +58,10 @@ class _ProjectDetailedScreenState extends ConsumerState<ProjectDetailedScreen>
                   Expanded(
                     flex: 0,
                     child: TabBar(
-                      indicatorColor: AppColors.cherryRed,
+                      indicatorColor: LightModeColors.red,
                       physics: const BouncingScrollPhysics(),
-                      unselectedLabelColor: AppColors.lightGrey,
-                      labelColor: AppColors.cherryRed,
+                      unselectedLabelColor: LightModeColors.light,
+                      labelColor: LightModeColors.red,
                       tabs: [
                         ProjectTabs(
                             assetName: AppAssets.projectTab,

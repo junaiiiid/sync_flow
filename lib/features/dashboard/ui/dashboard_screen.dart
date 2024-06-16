@@ -54,7 +54,7 @@ class DashboardScreen extends ConsumerWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-            color: AppColors.darkGrey,
+            color: LightModeColors.grey,
             borderRadius: BorderRadius.all(Radius.circular(10.r))),
         child: Center(
           child: Column(
@@ -63,13 +63,13 @@ class DashboardScreen extends ConsumerWidget {
               Text(
                 model.label,
                 style:
-                    AppTextStyles.labelLarge?.copyWith(color: AppColors.white),
+                    AppTextStyles.labelLarge?.copyWith(color: LightModeColors.white),
               ),
               SvgPicture.asset(model.iconPath),
               Text(
                 model.length.toPaddedString(),
                 style: AppTextStyles.displayLarge
-                    ?.copyWith(color: AppColors.cherryRed),
+                    ?.copyWith(color: LightModeColors.red),
               )
             ],
           ),
@@ -81,7 +81,7 @@ class DashboardScreen extends ConsumerWidget {
   Widget dashboardItemSkeleton({required DashboardItemsModel model}) {
     return Container(
       decoration: BoxDecoration(
-          color: AppColors.darkGrey,
+          color: LightModeColors.grey,
           borderRadius: BorderRadius.all(Radius.circular(10.r))),
       child: Center(
         child: Column(
@@ -91,7 +91,7 @@ class DashboardScreen extends ConsumerWidget {
               child: Text(
                 model.label,
                 style:
-                    AppTextStyles.labelLarge?.copyWith(color: AppColors.white),
+                    AppTextStyles.labelLarge?.copyWith(color: LightModeColors.white),
               ),
             ),
             SkeletonEffectWidget(child: SvgPicture.asset(model.iconPath)),
@@ -99,7 +99,7 @@ class DashboardScreen extends ConsumerWidget {
               child: Text(
                 model.length.toPaddedString(),
                 style: AppTextStyles.displayLarge
-                    ?.copyWith(color: AppColors.cherryRed),
+                    ?.copyWith(color: LightModeColors.red),
               ),
             )
           ],

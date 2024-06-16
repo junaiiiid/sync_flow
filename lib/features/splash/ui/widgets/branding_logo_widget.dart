@@ -1,4 +1,7 @@
+import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/provider_service.dart';
+import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,7 +10,8 @@ import '../../../../constants/app_assets.dart';
 import '../../../../styles_and_themes/app_text_styles.dart';
 
 class BrandingLogoWidget extends StatelessWidget {
-  const BrandingLogoWidget({super.key});
+  final bool isDarkModeEnabled;
+  const BrandingLogoWidget({super.key, required this.isDarkModeEnabled});
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +22,11 @@ class BrandingLogoWidget extends StatelessWidget {
         children: [
           Text(
             LanguageService.getString.poweredBy,
-            style: AppTextStyles.labelSmall,
+            style: AppTextStyles.labelSmall?.copyWith(color: StateService.context.read(ProviderService.themeEngineProvider).black),
           ),
           Transform.scale(
               scale: 0.7,
-              child: SvgPicture.asset(AppAssets.flutterNinjaLogoLight)),
+              child: SvgPicture.asset(isDarkModeEnabled?AppAssets.flutterNinjaLogoDark:AppAssets.flutterNinjaLogoLight)),
         ],
       ),
     );
