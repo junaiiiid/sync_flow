@@ -112,7 +112,7 @@ class IndividualTaskTimerScreen extends ConsumerWidget {
                       }),
                       if(model.isEnded ?? false)
                         AppButtons.roundedIconButton(title: "RESTART", iconData: Icons.refresh, onTap: ()async{
-                          await viewModel.stopTask(model: model);
+                          await viewModel.restartTask(model: model);
                         }),
                     ],
                   ),

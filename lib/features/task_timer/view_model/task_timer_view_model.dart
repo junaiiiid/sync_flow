@@ -7,12 +7,15 @@ import 'package:flow_sync/services/local_storage_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
+import 'package:flutter/material.dart';
 import '../../../constants/enums.dart';
 import '../../../global_widgets/app_popups.dart';
 import '../../dashboard/model/project_model.dart';
 import '../../dashboard/model/task_model.dart';
 
 class TaskTimerViewModel extends BaseViewModel {
+  final formKey = GlobalKey<FormState>();
+
   List<Task> get listOfTasks =>
       StateService.context.read(ProviderService.dashboardProvider).listOfTasks;
 
@@ -48,14 +51,19 @@ class TaskTimerViewModel extends BaseViewModel {
   }
   
   Future<void> startANewTask({required TimerTaskModel model}) async{
-    List<String> listOfTaskIds = locator<LocalStorageService>().getTasksHistory() ?? [];
-    if(listOfTaskIds.contains(model.task!.id)){
-      AppPopups.showSnackBar(
-          type: SnackBarTypes.error,
-          content: LanguageService.getString.taskAlreadyExistsInHistory);
+    if(formKey.currentState?.validate() ?? false){
+      List<String> listOfTaskIds = locator<LocalStorageService>().getTasksHistory() ?? [];
+      if(listOfTaskIds.contains(model.task!.id)){
+        AppPopups.showSnackBar(
+            type: SnackBarTypes.error,
+            content: LanguageService.getString.taskAlreadyExistsInHistory);
+      }
+      else{
+        await _startTask(model: model);
+      }
     }
     else{
-     await _startTask(model: model);
+      AppPopups.showSnackBar(type: SnackBarTypes.error,content: LanguageService.getString.theFieldsCanNotBeEmpty);
     }
   }
 
