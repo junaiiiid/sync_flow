@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "a": MessageLookupByLibrary.simpleMessage("A"),
+        "active": MessageLookupByLibrary.simpleMessage("ACTIVE"),
         "addAComment": MessageLookupByLibrary.simpleMessage("ADD A COMMENT"),
         "addYourComment":
             MessageLookupByLibrary.simpleMessage("Add Your Comment"),
@@ -113,11 +114,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("NO COMMENTS FOUND"),
         "noLabelsFound":
             MessageLookupByLibrary.simpleMessage("NO LABELS FOUND"),
+        "noNotificationsToShow":
+            MessageLookupByLibrary.simpleMessage("No Notifications To Show"),
         "noProjectsFound":
             MessageLookupByLibrary.simpleMessage("NO PROJECTS FOUND"),
         "noTasksFound": MessageLookupByLibrary.simpleMessage("NO TASKS FOUND"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "olivegreen": MessageLookupByLibrary.simpleMessage("olive_green"),
         "orange": MessageLookupByLibrary.simpleMessage("orange"),
+        "pleaseCreateATask":
+            MessageLookupByLibrary.simpleMessage("Please Create A Task"),
         "pleaseSelectAnOption":
             MessageLookupByLibrary.simpleMessage("Please select an option"),
         "pleaseSelectYourProject":
@@ -155,10 +161,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "simple": MessageLookupByLibrary.simpleMessage("Simple"),
         "skyblue": MessageLookupByLibrary.simpleMessage("sky_blue"),
+        "startTimer": MessageLookupByLibrary.simpleMessage("START TIMER"),
         "success": MessageLookupByLibrary.simpleMessage("SUCCESS"),
         "tapToSelectADueDate":
             MessageLookupByLibrary.simpleMessage("Tap to select a due date"),
         "task": MessageLookupByLibrary.simpleMessage("TASK"),
+        "taskTimer": MessageLookupByLibrary.simpleMessage("Task Timer"),
         "taskid": MessageLookupByLibrary.simpleMessage("taskId"),
         "taupe": MessageLookupByLibrary.simpleMessage("taupe"),
         "teal": MessageLookupByLibrary.simpleMessage("teal"),

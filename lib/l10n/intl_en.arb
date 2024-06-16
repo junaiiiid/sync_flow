@@ -122,5 +122,11 @@
   "sectionid": "section_id",
   "description": "description",
   "duedate": "due_date",
-  "createdat": "created_at"
+  "createdat": "created_at",
+  "notifications": "Notifications",
+  "noNotificationsToShow": "No Notifications To Show",
+  "taskTimer": "Task Timer",
+  "active": "ACTIVE",
+  "pleaseCreateATask": "Please Create A Task",
+  "startTimer": "START TIMER"
 }

@@ -26,4 +26,7 @@ class AppAssets {
   static const String commentsTab = "assets/vectors/comments_tab.svg";
   static const String taskTab = "assets/vectors/task_tab.svg";
   static const String projectTab = 'assets/vectors/project_tab.svg';
+  static const String timer = 'assets/vectors/timer.svg';
+  static const String startTimer = 'assets/vectors/start_timer.svg';
+  static const String activeTimer = 'assets/vectors/active_timer.svg';
 }

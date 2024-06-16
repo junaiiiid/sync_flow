@@ -5,8 +5,10 @@ import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
 import 'package:flow_sync/features/labels/ui/create_new_label_screen.dart';
 import 'package:flow_sync/features/labels/ui/labels_screen.dart';
+import 'package:flow_sync/features/notifications/ui/notification_screen.dart';
 import 'package:flow_sync/features/projects/ui/create_projects_screen.dart';
 import 'package:flow_sync/features/projects/ui/project_detailed_screen.dart';
+import 'package:flow_sync/features/task_timer/ui/task_timer_screen.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +38,10 @@ class RouteService {
           page: const CreateNewLabelScreen()),
       RouteNames.getRoute(
           routeName: AddCommentScreen.id, page: const AddCommentScreen()),
+      RouteNames.getRoute(
+          routeName: NotificationScreen.id, page: const NotificationScreen()),
+      RouteNames.getRoute(
+          routeName: TaskTimerScreen.id, page: const TaskTimerScreen()),
       GoRoute(
         path: CreateTaskScreen.id,
         builder: (context, state) {

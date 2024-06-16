@@ -1289,6 +1289,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Notifications`
+  String get notifications {
+    return Intl.message(
+      'Notifications',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Notifications To Show`
+  String get noNotificationsToShow {
+    return Intl.message(
+      'No Notifications To Show',
+      name: 'noNotificationsToShow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Timer`
+  String get taskTimer {
+    return Intl.message(
+      'Task Timer',
+      name: 'taskTimer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ACTIVE`
+  String get active {
+    return Intl.message(
+      'ACTIVE',
+      name: 'active',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Create A Task`
+  String get pleaseCreateATask {
+    return Intl.message(
+      'Please Create A Task',
+      name: 'pleaseCreateATask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `START TIMER`
+  String get startTimer {
+    return Intl.message(
+      'START TIMER',
+      name: 'startTimer',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
