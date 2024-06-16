@@ -15,7 +15,7 @@ class LocalStorageService {
   Future<void> init() async {
     _sharedPreferences = await SharedPreferences.getInstance();
     if (!_sharedPreferences.containsKey(_key)) {
-      _sharedPreferences.setBool(_key, false);
+      _sharedPreferences.setBool(_key, true);
     }
   }
 
