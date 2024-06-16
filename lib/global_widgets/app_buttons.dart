@@ -17,8 +17,8 @@ class AppButtons {
       required Function() onTap,
       double? scaleFactor}) {
     return InkWell(
-      highlightColor: LightModeColors.transparent,
-      splashColor: LightModeColors.transparent,
+      highlightColor: AppColors.transparent,
+      splashColor: AppColors.transparent,
       onTap: onTap,
       child: Center(
           child: Transform.scale(
@@ -32,7 +32,7 @@ class AppButtons {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: LightModeColors.red,
+          color: AppColors.cherryRed,
           borderRadius: BorderRadius.all(
             Radius.circular(10.r),
           ),
@@ -65,7 +65,7 @@ class AppButtons {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: buttonColor ?? LightModeColors.red,
+          color: buttonColor ?? AppColors.cherryRed,
           borderRadius: BorderRadius.all(
             Radius.circular(20.r),
           ),
@@ -87,7 +87,7 @@ class AppButtons {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: LightModeColors.red,
+          color: AppColors.cherryRed,
           borderRadius: BorderRadius.all(
             Radius.circular(50.r),
           ),
@@ -99,10 +99,10 @@ class AppButtons {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              IconButton(onPressed: onTap, icon: Icon(iconData,color: LightModeColors.light,)),
+              IconButton(onPressed: onTap, icon: Icon(iconData,color: AppColors.lightGrey,)),
               Text(
                 title,
-                style: AppTextStyles.labelLarge?.copyWith(color: LightModeColors.light),
+                style: AppTextStyles.labelLarge?.copyWith(color: AppColors.lightGrey),
               )
             ],
           ),

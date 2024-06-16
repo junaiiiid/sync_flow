@@ -26,10 +26,10 @@ class LabelsScreen extends ConsumerWidget {
       viewModel: viewModel,
       buildMethod: (context, ref) {
         return Container(
-          color: LightModeColors.grey,
+          color: AppColors.darkGrey,
           child: SafeArea(
             child: Scaffold(
-              backgroundColor: LightModeColors.light,
+              backgroundColor: AppColors.lightGrey,
               appBar: CustomAppBar.appBarWithBackButton(
                   title: LanguageService.getString.labels),
               body: Padding(

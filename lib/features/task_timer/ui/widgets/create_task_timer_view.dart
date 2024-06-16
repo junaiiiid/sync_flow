@@ -47,7 +47,7 @@ class CreateTaskTimerView extends StatelessWidget {
                         child: Text(
                           "ID# ${value?.id} (${value?.name})",
                           style: AppTextStyles.displaySmall?.copyWith(
-                            color: LightModeColors.grey,
+                            color: AppColors.darkGrey,
                           ),
                         ),
                       ),
@@ -66,7 +66,7 @@ class CreateTaskTimerView extends StatelessWidget {
                   return Text(
                     "ID# ${value?.id} (${value?.content})",
                     style: AppTextStyles.displaySmall?.copyWith(
-                      color: LightModeColors.grey,
+                      color: AppColors.darkGrey,
                     ),
                   );
                 }),

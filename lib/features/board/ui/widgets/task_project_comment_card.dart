@@ -68,7 +68,7 @@ class TaskProjectCommentCard extends StatelessWidget {
                         Expanded(
                           flex: 0,
                           child: CircleAvatar(
-                            backgroundColor: LightModeColors.grey,
+                            backgroundColor: AppColors.darkGrey,
                             child: SvgPicture.asset(AppAssets.userIcon),
                           ),
                         ),
@@ -76,7 +76,7 @@ class TaskProjectCommentCard extends StatelessWidget {
                             flex: 3,
                             child: Bubble(
                                 text: model.content,
-                                color: LightModeColors.light)),
+                                color: AppColors.lightGrey)),
                       ],
                     ),
                   ),

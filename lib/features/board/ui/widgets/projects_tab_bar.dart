@@ -55,11 +55,11 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
               Expanded(
                 flex: 0,
                 child: TabBar(
-                  indicatorColor: LightModeColors.red,
+                  indicatorColor: AppColors.cherryRed,
                   isScrollable: true,
                   physics: const BouncingScrollPhysics(),
-                  unselectedLabelColor: LightModeColors.light,
-                  labelColor: LightModeColors.red,
+                  unselectedLabelColor: AppColors.lightGrey,
+                  labelColor: AppColors.cherryRed,
                   tabs: widget.viewModel
                       .getTabModel()
                       .map<Widget>((item) => getTab(model: item))
@@ -113,12 +113,12 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
         children: [
           SvgPicture.asset(
             model.iconPath,
-            color: LightModeColors.red,
+            color: AppColors.cherryRed,
           ),
           Text(
             model.tabName,
             style:
-                AppTextStyles.labelSmall?.copyWith(color: LightModeColors.grey),
+                AppTextStyles.labelSmall?.copyWith(color: AppColors.cherryRed),
           )
         ],
       ),
@@ -162,17 +162,17 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
       required String createdAt}) {
     return Container(
       decoration: BoxDecoration(
-          color: LightModeColors.white,
+          color: AppColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(10.r),
           ),
-          border: Border.all(color: LightModeColors.light)),
+          border: Border.all(color: AppColors.lightGrey)),
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
       child: ListTile(
         leading: SvgPicture.asset(
           iconPath,
-          color: LightModeColors.grey,
+          color: AppColors.darkGrey,
         ),
         title: Text(
           taskName,

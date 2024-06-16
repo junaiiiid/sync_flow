@@ -18,7 +18,7 @@ class ThemeEngineService extends ChangeNotifier {
     _isDarkModeEnabled = locator<LocalStorageService>().getDarkMode() ?? false;
   }
 
-  Color get blue =>LightModeColors.blue;
+/*  Color get blue =>LightModeColors.blue;
   Color get grey =>LightModeColors.grey;
   Color get red =>LightModeColors.red;
   Color get light =>LightModeColors.light;
@@ -28,5 +28,5 @@ class ThemeEngineService extends ChangeNotifier {
   Color get success =>LightModeColors.success;
   Color get transparent => _isDarkModeEnabled
       ? DarkModeColors.transparent
-      : LightModeColors.transparent;
+      : LightModeColors.transparent;*/
 }

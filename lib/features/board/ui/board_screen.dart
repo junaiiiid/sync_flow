@@ -25,7 +25,7 @@ class BoardScreen extends ConsumerWidget {
           return Padding(
             padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
             child: Scaffold(
-              backgroundColor: LightModeColors.light,
+              backgroundColor: AppColors.lightGrey,
               body: Flex(
                 direction: Axis.vertical,
                 children: (dashboardViewModel.listOfProjects.length == 1 &&

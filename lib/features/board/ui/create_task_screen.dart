@@ -28,10 +28,10 @@ class CreateTaskScreen extends ConsumerWidget {
       viewModel: viewModel,
       buildMethod: (context, ref) {
         return Container(
-          color: LightModeColors.grey,
+          color: AppColors.darkGrey,
           child: SafeArea(
             child: Scaffold(
-              backgroundColor: LightModeColors.white,
+              backgroundColor: AppColors.white,
               appBar:
                   CustomAppBar.appBarWithBackButton(title: LanguageService.getString.createNewTask),
               body: Padding(
@@ -76,7 +76,7 @@ class CreateTaskScreen extends ConsumerWidget {
                                         value?.name ?? "",
                                         style: AppTextStyles.displaySmall
                                             ?.copyWith(
-                                          color: LightModeColors.grey,
+                                          color: AppColors.darkGrey,
                                         ),
                                       ),
                                     )

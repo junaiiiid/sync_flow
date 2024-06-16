@@ -1,93 +1,108 @@
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppTextStyles {
-
   AppTextStyles._();
 
-  static TextStyle? displayLarge = GoogleFonts.montserrat(
+  static const String _fontFamily = 'Montserrat';
+
+  static TextStyle? displayLarge = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 24.sp,
     fontWeight: FontWeight.bold,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? displayMedium = GoogleFonts.montserrat(
+  static TextStyle? displayMedium = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 20.sp,
     fontWeight: FontWeight.bold,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? displaySmall = GoogleFonts.montserrat(
+  static TextStyle? displaySmall = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? headlineLarge = GoogleFonts.montserrat(
+  static TextStyle? headlineLarge = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 22.sp,
     fontWeight: FontWeight.bold,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? headlineMedium = GoogleFonts.montserrat(
+  static TextStyle? headlineMedium = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 18.sp,
     fontWeight: FontWeight.bold,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? headlineSmall = GoogleFonts.montserrat(
+  static TextStyle? headlineSmall = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? titleLarge = GoogleFonts.montserrat(
+  static TextStyle? titleLarge = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 20.sp,
     fontWeight: FontWeight.bold,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? titleMedium = GoogleFonts.montserrat(
+  static TextStyle? titleMedium = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 18.sp,
     fontWeight: FontWeight.bold,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? titleSmall = GoogleFonts.montserrat(
+  static TextStyle? titleSmall = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? bodyLarge = GoogleFonts.montserrat(
+  static TextStyle? bodyLarge = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 18.sp,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? bodyMedium = GoogleFonts.montserrat(
+  static TextStyle? bodyMedium = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 16.sp,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? bodySmall = GoogleFonts.montserrat(
+  static TextStyle? bodySmall = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 14.sp,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? labelLarge = GoogleFonts.montserrat(
+  static TextStyle? labelLarge = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 16.sp,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? labelMedium = GoogleFonts.montserrat(
+  static TextStyle? labelMedium = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 14.sp,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 
-  static TextStyle? labelSmall = GoogleFonts.montserrat(
+  static TextStyle? labelSmall = TextStyle(
+    fontFamily: _fontFamily,
     fontSize: 12.sp,
-    color: LightModeColors.black,
+    color: AppColors.black,
   );
 }

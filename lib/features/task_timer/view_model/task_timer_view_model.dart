@@ -72,6 +72,7 @@ class TaskTimerViewModel extends BaseViewModel {
     model.isResumed = true;
     model.isPaused = false;
     model.isEnded = false;
+    model.endTime = null;
     model.pauseTimes = [];
     model.resumeTimes = [];
     await locator<LocalStorageService>().modifyATaskTimer(model: model, messageToShow: LanguageService.getString.timerStartedSuccessfully);

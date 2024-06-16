@@ -14,7 +14,7 @@ class AppDismissible extends StatelessWidget {
       key: UniqueKey(),
       background: Container(
         decoration: BoxDecoration(
-          color: LightModeColors.error,
+          color: AppColors.error,
           borderRadius: BorderRadius.all(
             Radius.circular(10.r),
           ),

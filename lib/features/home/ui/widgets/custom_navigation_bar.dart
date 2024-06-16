@@ -32,7 +32,7 @@ class CustomNavigationBar extends StatelessWidget {
                   child: NavigationBar(
                     selectedIndex: viewModel.navigationBarItems
                         .indexOf(viewModel.selectedItem),
-                    backgroundColor: LightModeColors.grey,
+                    backgroundColor: AppColors.darkGrey,
                     destinations: viewModel.navigationBarItems
                         .map<Widget>((item) => navigationBarItems(model: item))
                         .toList(),
@@ -57,15 +57,15 @@ class CustomNavigationBar extends StatelessWidget {
 
   Widget navigationBarItems({required NavigationBarModel model}) {
     return InkWell(
-      highlightColor: LightModeColors.transparent,
-      splashColor: LightModeColors.transparent,
+      highlightColor: AppColors.transparent,
+      splashColor: AppColors.transparent,
       onTap: () {
         StateService.context.read(ProviderService.homeProvider).selectedItem =
             model;
       },
       child: SvgPicture.asset(
         model.icon,
-        color: model.isActive ? LightModeColors.red : LightModeColors.light,
+        color: model.isActive ? AppColors.cherryRed : AppColors.lightGrey,
       ),
     );
   }

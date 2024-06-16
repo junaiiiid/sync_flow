@@ -55,14 +55,14 @@ class _TimerWidgetState extends State<TimerWidget> {
       padding: EdgeInsets.symmetric(vertical: 25.h),
       child: Center(
           child: CircleAvatar(
-            backgroundColor: LightModeColors.red,
+            backgroundColor: AppColors.cherryRed,
             radius: 160.r,
             child: CircleAvatar(
-              backgroundColor: LightModeColors.white,
+              backgroundColor: AppColors.white,
               radius: 150.r,
               child: Text(
                     _formatDuration(elapsedTime),
-                    style: AppTextStyles.displayLarge?.copyWith(color: LightModeColors.red,fontSize: 40.sp),
+                    style: AppTextStyles.displayLarge?.copyWith(color: AppColors.cherryRed,fontSize: 40.sp),
                   ),
             ),
           )),

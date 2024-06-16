@@ -29,7 +29,7 @@ class _ProjectDropDownState extends State<ProjectDropDown> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: LightModeColors.red,
+        color: AppColors.cherryRed,
         borderRadius: BorderRadius.all(Radius.circular(10.r)),
       ),
       margin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
@@ -39,9 +39,9 @@ class _ProjectDropDownState extends State<ProjectDropDown> {
           hint: Text(
             LanguageService.getString.selectAProject,
             style:
-                AppTextStyles.labelLarge?.copyWith(color: LightModeColors.light),
+                AppTextStyles.labelLarge?.copyWith(color: AppColors.lightGrey),
           ),
-          dropdownColor: LightModeColors.red,
+          dropdownColor: AppColors.cherryRed,
           value: selectedValue,
           onChanged: (Project? newValue) async {
             widget.viewModel.selectedProject = newValue!;
@@ -55,7 +55,7 @@ class _ProjectDropDownState extends State<ProjectDropDown> {
           },
           icon: const Icon(
             CupertinoIcons.arrowtriangle_down_circle_fill,
-            color: LightModeColors.light,
+            color: AppColors.lightGrey,
           ),
           items: widget.viewModel.listOfProjects
               .map<DropdownMenuItem<Project>>((Project value) {
@@ -64,7 +64,7 @@ class _ProjectDropDownState extends State<ProjectDropDown> {
               child: Text(
                 value.name,
                 style: AppTextStyles.labelLarge
-                    ?.copyWith(color: LightModeColors.light),
+                    ?.copyWith(color: AppColors.lightGrey),
               ),
             );
           }).toList(),
@@ -84,19 +84,19 @@ class ProjectDropDownSkeleton extends StatelessWidget {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: LightModeColors.red,
+          color: AppColors.cherryRed,
           borderRadius: BorderRadius.all(Radius.circular(10.r)),
         ),
         margin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
         padding: EdgeInsets.symmetric(horizontal: 25.w),
         child: DropdownButtonHideUnderline(
           child: DropdownButton<String>(
-            dropdownColor: LightModeColors.red,
+            dropdownColor: AppColors.cherryRed,
             value: LanguageService.getString.loading,
             onChanged: (String? newValue) {},
             icon: const Icon(
               CupertinoIcons.arrowtriangle_down_circle_fill,
-              color: LightModeColors.light,
+              color: AppColors.lightGrey,
             ),
             items: <String>[
               LanguageService.getString.loading,
@@ -109,7 +109,7 @@ class ProjectDropDownSkeleton extends StatelessWidget {
                   child: Text(
                     value,
                     style: AppTextStyles.labelLarge
-                        ?.copyWith(color: LightModeColors.light),
+                        ?.copyWith(color: AppColors.lightGrey),
                   ),
                 ),
               );

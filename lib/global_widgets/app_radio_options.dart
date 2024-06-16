@@ -38,8 +38,8 @@ class AppRadioOptions<T> extends StatelessWidget {
           ),
           ...options.map((option) {
             return RadioListTile<T>(
-              activeColor: activeColor ?? LightModeColors.red,
-              hoverColor: hoverColor ?? LightModeColors.grey,
+              activeColor: activeColor ?? AppColors.cherryRed,
+              hoverColor: hoverColor ?? AppColors.darkGrey,
               value: option,
               groupValue: groupValue,
               onChanged: onChanged,

@@ -29,7 +29,7 @@ class AppTextFields {
           ),
           Container(
               decoration: BoxDecoration(
-                color: LightModeColors.light,
+                color: AppColors.lightGrey,
                 borderRadius: BorderRadius.all(
                   Radius.circular(10.r),
                 ),
@@ -49,7 +49,7 @@ class AppTextFields {
                 style: AppTextStyles.displaySmall,
                 decoration: InputDecoration.collapsed(
                   hintStyle: AppTextStyles.displaySmall?.copyWith(
-                    color: LightModeColors.grey.withOpacity(0.5),
+                    color: AppColors.darkGrey.withOpacity(0.5),
                   ),
                   hintText: hintText,
                 ),
@@ -76,7 +76,7 @@ class AppTextFields {
           flex: 3,
           child: Container(
               decoration: BoxDecoration(
-                color: LightModeColors.light,
+                color: AppColors.lightGrey,
                 borderRadius: BorderRadius.all(
                   Radius.circular(50.r),
                 ),
@@ -97,7 +97,7 @@ class AppTextFields {
                   style: AppTextStyles.displaySmall,
                   decoration: InputDecoration.collapsed(
                     hintStyle: AppTextStyles.displaySmall?.copyWith(
-                      color: LightModeColors.grey.withOpacity(0.5),
+                      color: AppColors.darkGrey.withOpacity(0.5),
                     ),
                     hintText: hintText,
                   ),

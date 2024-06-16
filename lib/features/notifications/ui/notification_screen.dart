@@ -13,7 +13,7 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: LightModeColors.grey,
+      color: AppColors.darkGrey,
       child: SafeArea(
         child: Scaffold(
           appBar: CustomAppBar.appBarWithBackButton(

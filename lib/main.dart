@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
   runApp(
@@ -30,10 +30,8 @@ class Start extends StatelessWidget {
         splitScreenMode: true,
         builder: (_, child) {
           return MaterialApp(
-            theme: ThemeData(
-              textTheme:
-                  GoogleFonts.montserratTextTheme(Theme.of(context).textTheme)
-                      .copyWith(
+            /*theme: ThemeData(
+              textTheme: TextTheme(
                 displayLarge: AppTextStyles.displayLarge,
                 displayMedium: AppTextStyles.displayMedium,
                 displaySmall: AppTextStyles.displaySmall,
@@ -50,7 +48,7 @@ class Start extends StatelessWidget {
                 labelMedium: AppTextStyles.labelMedium,
                 labelSmall: AppTextStyles.labelSmall,
               ),
-            ),
+            ),*/
             localizationsDelegates: StateService.localizationDelegates,
             supportedLocales: StateService.supportedLocales,
             initialRoute: SplashScreen.id,

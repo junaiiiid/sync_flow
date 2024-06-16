@@ -70,8 +70,8 @@ class ProjectCards extends StatelessWidget {
                           ? CupertinoIcons.heart_fill
                           : CupertinoIcons.heart,
                       color: (model.projectData.isFavorite ?? false)
-                          ? LightModeColors.red
-                          : LightModeColors.grey,
+                          ? AppColors.cherryRed
+                          : AppColors.darkGrey,
                     ),
                   ),
                 ),
@@ -148,12 +148,12 @@ class ProjectCardsSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: LightModeColors.white,
+      color: AppColors.white,
       child: Column(
         children: [
           ListTile(
               leading: CircleAvatar(
-                backgroundColor: LightModeColors.grey,
+                backgroundColor: AppColors.darkGrey,
                 child: SvgPicture.asset(AppAssets.projectThumbnail),
               ),
               title: SkeletonEffectWidget(
@@ -172,7 +172,7 @@ class ProjectCardsSkeleton extends StatelessWidget {
                   child: Icon(CupertinoIcons.heart_slash))),
           Container(
             decoration: BoxDecoration(
-              color: LightModeColors.grey,
+              color: AppColors.darkGrey,
               borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(10.r),
                   bottomLeft: Radius.circular(10.r)),

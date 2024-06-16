@@ -2,6 +2,7 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
+import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -22,11 +23,11 @@ class BrandingLogoWidget extends StatelessWidget {
         children: [
           Text(
             LanguageService.getString.poweredBy,
-            style: AppTextStyles.labelSmall?.copyWith(color: StateService.context.read(ProviderService.themeEngineProvider).black),
+            style: AppTextStyles.labelSmall?.copyWith(color: AppColors.white),
           ),
           Transform.scale(
               scale: 0.7,
-              child: SvgPicture.asset(AppAssets.flutterNinjaLogoLight)),
+              child: SvgPicture.asset(AppAssets.flutterNinjaLogoDark)),
         ],
       ),
     );

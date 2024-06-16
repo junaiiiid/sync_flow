@@ -21,7 +21,7 @@ class SplashScreen extends ConsumerWidget {
         viewModel: viewModel,
         buildMethod: (context, ref) {
           return Scaffold(
-            backgroundColor: themeEngine.light,
+            backgroundColor: AppColors.darkGrey,
             body: Stack(
               children: [
                 const Align(alignment: Alignment.center, child: LogoWidget()),

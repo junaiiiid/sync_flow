@@ -24,10 +24,10 @@ class HomeScreen extends ConsumerWidget {
           viewModel: viewModel,
           buildMethod: (context, ref) {
             return Container(
-              color: LightModeColors.grey,
+              color: AppColors.darkGrey,
               child: SafeArea(
                 child: Scaffold(
-                  backgroundColor: LightModeColors.light,
+                  backgroundColor: AppColors.lightGrey,
                   body: Stack(
                     children: [
                       IndexedStack(

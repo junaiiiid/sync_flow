@@ -25,7 +25,7 @@ class IndividualTaskTimerScreen extends ConsumerWidget {
     final EdgeInsetsGeometry spacerPadding =
         EdgeInsets.symmetric(vertical: 10.h);
     return Container(
-      color: LightModeColors.grey,
+      color: AppColors.darkGrey,
       child: SafeArea(
         child: Scaffold(
           appBar: CustomAppBar.appBarWithBackButton(title: model.task!.id!),

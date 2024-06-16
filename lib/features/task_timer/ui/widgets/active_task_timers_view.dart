@@ -61,7 +61,7 @@ class TaskHistoryCards extends StatelessWidget {
         );
       },
       child: Card(
-        color: LightModeColors.light,
+        color: AppColors.lightGrey,
         child: ListTile(
           leading: Icon(iconData),
           title: Text(

@@ -16,12 +16,12 @@ class ProjectTabs extends StatelessWidget {
         children: [
           SvgPicture.asset(
             assetName,
-            color: LightModeColors.red,
+            color: AppColors.cherryRed,
           ),
           Text(
             title,
             style:
-            AppTextStyles.labelSmall?.copyWith(color: LightModeColors.grey),
+            AppTextStyles.labelSmall?.copyWith(color: AppColors.darkGrey),
           )
         ],
       ),

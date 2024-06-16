@@ -56,8 +56,8 @@ class LabelCard extends StatelessWidget {
                       ? CupertinoIcons.heart_fill
                       : CupertinoIcons.heart,
                   color: (model.isFavorite)
-                      ? LightModeColors.red
-                      : LightModeColors.grey,
+                      ? AppColors.cherryRed
+                      : AppColors.darkGrey,
                 ),
               ),
             ),
@@ -102,7 +102,7 @@ class LabelCardSkeleton extends StatelessWidget {
               icon: const SkeletonEffectWidget(
                   child: Icon(
                 CupertinoIcons.heart_slash,
-                color: LightModeColors.grey,
+                color: AppColors.darkGrey,
               )),
             ),
           ),

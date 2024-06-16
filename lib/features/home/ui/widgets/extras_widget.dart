@@ -17,8 +17,8 @@ class ExtrasWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      highlightColor: LightModeColors.transparent,
-      splashColor: LightModeColors.transparent,
+      highlightColor: AppColors.transparent,
+      splashColor: AppColors.transparent,
       onTap: () {
         viewModel.toggleExtraWidget();
       },
@@ -51,12 +51,12 @@ class ExtraBottomSheet extends ConsumerWidget {
           child: Stack(
             children: [
               Container(
-                color: LightModeColors.transparent,
+                color: AppColors.transparent,
                 child: Padding(
                   padding: EdgeInsets.only(top: 15.h),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: LightModeColors.grey,
+                      color: AppColors.darkGrey,
                       borderRadius:
                           BorderRadius.vertical(top: Radius.circular(40.r)),
                     ),
@@ -72,8 +72,8 @@ class ExtraBottomSheet extends ConsumerWidget {
               Align(
                 alignment: Alignment.topCenter,
                 child: InkWell(
-                  highlightColor: LightModeColors.transparent,
-                  splashColor: LightModeColors.transparent,
+                  highlightColor: AppColors.transparent,
+                  splashColor: AppColors.transparent,
                   onTap: () {
                     viewModel.toggleExtraWidget();
                   },
@@ -93,22 +93,22 @@ class ExtraBottomSheet extends ConsumerWidget {
   Widget extrasItemCard({required ExtrasItemModel model}) {
     return Container(
       decoration: BoxDecoration(
-          color: LightModeColors.red,
+          color: AppColors.cherryRed,
           borderRadius: BorderRadius.all(
             Radius.circular(10.r),
           ),
-          border: Border.all(color: LightModeColors.light)),
+          border: Border.all(color: AppColors.lightGrey)),
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
       child: ListTile(
         leading: SvgPicture.asset(model.iconPath),
         title: Text(
           model.title,
-          style: AppTextStyles.labelLarge?.copyWith(color: LightModeColors.light),
+          style: AppTextStyles.labelLarge?.copyWith(color: AppColors.lightGrey),
         ),
         subtitle: Text(
           model.subtitle,
-          style: AppTextStyles.labelSmall?.copyWith(color: LightModeColors.light),
+          style: AppTextStyles.labelSmall?.copyWith(color: AppColors.lightGrey),
         ),
       ),
     );
