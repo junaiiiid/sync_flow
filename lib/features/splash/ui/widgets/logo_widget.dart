@@ -25,7 +25,7 @@ class LogoWidget extends StatelessWidget {
           style: AppTextStyles.titleSmall?.copyWith(
               color: StateService.context
                   .read(ProviderService.themeEngineProvider)
-                  .textColor),
+                  .black),
         ),
       ],
     );

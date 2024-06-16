@@ -22,7 +22,7 @@ class BrandingLogoWidget extends StatelessWidget {
         children: [
           Text(
             LanguageService.getString.poweredBy,
-            style: AppTextStyles.labelSmall?.copyWith(color: StateService.context.read(ProviderService.themeEngineProvider).textColor),
+            style: AppTextStyles.labelSmall?.copyWith(color: StateService.context.read(ProviderService.themeEngineProvider).black),
           ),
           Transform.scale(
               scale: 0.7,

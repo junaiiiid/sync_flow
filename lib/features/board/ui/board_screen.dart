@@ -19,14 +19,13 @@ class BoardScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(ProviderService.boardProvider);
     final dashboardViewModel = ref.watch(ProviderService.dashboardProvider);
-    final themeEngine = ref.watch(ProviderService.themeEngineProvider);
     return AppParentWidget(
         viewModel: viewModel,
         buildMethod: (context, ref) {
           return Padding(
             padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
             child: Scaffold(
-              backgroundColor: themeEngine.backgroundColor,
+              backgroundColor: LightModeColors.light,
               body: Flex(
                 direction: Axis.vertical,
                 children: (dashboardViewModel.listOfProjects.length == 1 &&
@@ -47,7 +46,7 @@ class BoardScreen extends ConsumerWidget {
                                       (viewModel.selectedProject.id == LanguageService.getString.id)
                                           ? LanguageService.getString.pleaseSelectYourProject
                                           : 'Selected Project "${viewModel.selectedProject.name}"',
-                                      style: AppTextStyles.titleSmall?.copyWith(color: themeEngine.textColor),
+                                      style: AppTextStyles.titleSmall,
                                     ),
                                   ),
                                   SizedBox(
@@ -66,9 +65,6 @@ class BoardScreen extends ConsumerWidget {
                                       flex: 3,
                                       child: ProjectsTabBar(
                                         viewModel: viewModel,
-                                        textColor: themeEngine.textColor,
-                                          itemsColor: themeEngine.appBarColor,
-                                        unselectedItemColor: themeEngine.appBarColor,
                                       ),
                                     ),
                           ],

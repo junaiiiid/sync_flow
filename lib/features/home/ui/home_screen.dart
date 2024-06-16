@@ -18,15 +18,14 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(ProviderService.homeProvider);
-    final themeEngine = ref.watch(ProviderService.themeEngineProvider);
     return AppParentWidget(
         viewModel: viewModel,
         buildMethod: (context, ref) {
           return Container(
-            color: themeEngine.appBarColor,
+            color: LightModeColors.grey,
             child: SafeArea(
               child: Scaffold(
-                backgroundColor: themeEngine.backgroundColor,
+                backgroundColor: LightModeColors.light,
                 body: Stack(
                   children: [
                     IndexedStack(
@@ -48,7 +47,7 @@ class HomeScreen extends ConsumerWidget {
                   ],
                 ),
                 appBar:
-                    CustomAppBar.myAppBar(title: viewModel.selectedItem.label,color: themeEngine.appBarColor,textColor: themeEngine.textColor),
+                    CustomAppBar.myAppBar(title: viewModel.selectedItem.label),
               ),
             ),
           );

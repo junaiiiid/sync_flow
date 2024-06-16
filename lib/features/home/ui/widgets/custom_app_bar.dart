@@ -11,11 +11,11 @@ import 'package:go_router/go_router.dart';
 class CustomAppBar {
   CustomAppBar._();
 
-  static PreferredSize myAppBar({required String title,Color? color,Color? textColor}) {
+  static PreferredSize myAppBar({required String title}) {
     return PreferredSize(
       preferredSize: Size.fromHeight(80.h),
       child: Container(
-        color: color??LightModeColors.grey,
+        color: LightModeColors.grey,
         padding: NumericConstants.appBarPadding,
         child: Stack(
           children: [
@@ -24,7 +24,7 @@ class CustomAppBar {
                 child: Text(
                   title,
                   style: AppTextStyles.titleMedium
-                      ?.copyWith(color: textColor??LightModeColors.light),
+                      ?.copyWith(color: LightModeColors.light),
                 )),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -15,6 +15,11 @@ import '../../../services/language_service.dart';
 class SettingsViewModel extends BaseViewModel {
   List<SettingsModel> settingsMenuItems = [
     SettingsModel(title: LanguageService.getString.darkTheme, type: SettingType.boolean, value: false),
+    SettingsModel(
+      title: LanguageService.getString.appType,
+      type: SettingType.multiOption,
+      possibleValues: [LanguageService.getString.simple, LanguageService.getString.advanced],
+    ),
   ];
   @override
   void callDispose() {

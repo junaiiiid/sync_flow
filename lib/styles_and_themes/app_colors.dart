@@ -21,9 +21,8 @@ class DarkModeColors {
   static const grey = Color(0xffEAEAEA); // Same as light mode, good for text on dark backgrounds
   static const red = Color(0xffFF5C77); // Slightly brighter red for dark mode
   static const light = Color(0xff1C1F26); // Darker grey for background elements
-  static const white = Color(0xffffffff); // White for text and icons
-  static const black = Color(0xff000000);
-  static const coolBlack = Color(0xff111111);// Black for the darkest elements
+  static const white = Color(0xff000000); // White for text and icons
+  static const black = Color(0xffffffff); // Black for the darkest elements
   static const error = Color(0xffFF6F61); // Brightened error color
   static const success = Color(0xff1BBF97); // Brighter success color
   static const transparent = Colors.transparent; // Transparent color remains the same
