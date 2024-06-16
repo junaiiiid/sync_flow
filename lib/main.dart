@@ -30,7 +30,7 @@ class Start extends StatelessWidget {
         splitScreenMode: true,
         builder: (_, child) {
           return MaterialApp(
-            /*theme: ThemeData(
+            theme: ThemeData(
               textTheme: TextTheme(
                 displayLarge: AppTextStyles.displayLarge,
                 displayMedium: AppTextStyles.displayMedium,
@@ -48,7 +48,7 @@ class Start extends StatelessWidget {
                 labelMedium: AppTextStyles.labelMedium,
                 labelSmall: AppTextStyles.labelSmall,
               ),
-            ),*/
+            ),
             localizationsDelegates: StateService.localizationDelegates,
             supportedLocales: StateService.supportedLocales,
             initialRoute: SplashScreen.id,

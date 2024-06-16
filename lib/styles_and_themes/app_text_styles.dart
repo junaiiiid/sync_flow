@@ -7,100 +7,100 @@ class AppTextStyles {
 
   static const String _fontFamily = 'Montserrat';
 
-  static TextStyle? displayLarge = TextStyle(
+  static TextStyle displayLarge = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 24.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
 
-  static TextStyle? displayMedium = TextStyle(
+  static TextStyle displayMedium = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 20.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
 
-  static TextStyle? displaySmall = TextStyle(
+  static TextStyle displaySmall = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
 
-  static TextStyle? headlineLarge = TextStyle(
+  static TextStyle headlineLarge = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 22.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
 
-  static TextStyle? headlineMedium = TextStyle(
+  static TextStyle headlineMedium = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 18.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
 
-  static TextStyle? headlineSmall = TextStyle(
+  static TextStyle headlineSmall = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
 
-  static TextStyle? titleLarge = TextStyle(
+  static TextStyle titleLarge = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 20.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
 
-  static TextStyle? titleMedium = TextStyle(
+  static TextStyle titleMedium = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 18.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
 
-  static TextStyle? titleSmall = TextStyle(
+  static TextStyle titleSmall = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
 
-  static TextStyle? bodyLarge = TextStyle(
+  static TextStyle bodyLarge = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 18.sp,
     color: AppColors.black,
   );
 
-  static TextStyle? bodyMedium = TextStyle(
+  static TextStyle bodyMedium = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 16.sp,
     color: AppColors.black,
   );
 
-  static TextStyle? bodySmall = TextStyle(
+  static TextStyle bodySmall = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 14.sp,
     color: AppColors.black,
   );
 
-  static TextStyle? labelLarge = TextStyle(
+  static TextStyle labelLarge = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 16.sp,
     color: AppColors.black,
   );
 
-  static TextStyle? labelMedium = TextStyle(
+  static TextStyle labelMedium = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 14.sp,
     color: AppColors.black,
   );
 
-  static TextStyle? labelSmall = TextStyle(
+  static TextStyle labelSmall = TextStyle(
     fontFamily: _fontFamily,
     fontSize: 12.sp,
     color: AppColors.black,
