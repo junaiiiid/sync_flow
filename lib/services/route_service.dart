@@ -14,7 +14,6 @@ import 'package:flow_sync/features/task_timer/ui/widgets/individual_task_timer_s
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../features/board/ui/create_task_screen.dart';
 import '../features/home/ui/home_screen.dart';
 import '../features/splash/ui/splash_screen.dart';
@@ -22,7 +21,20 @@ import '../features/splash/ui/splash_screen.dart';
 class RouteService {
   RouteService._();
 
-  static GoRouter router = GoRouter(
+  static Map<String, Widget Function(BuildContext)> routeNames = {
+    SplashScreen.id : (context)=> const SplashScreen(),
+    HomeScreen.id : (context)=> const HomeScreen(),
+    CommentsScreen.id:(context)=> const CommentsScreen(),
+    LabelsScreen.id:(context)=> const LabelsScreen(),
+    CreateProjectsScreen.id:(context)=> const CreateProjectsScreen(),
+    CreateNewLabelScreen.id:(context)=> const CreateNewLabelScreen(),
+    AddCommentScreen.id:(context)=> const AddCommentScreen(),
+    NotificationScreen.id:(context)=>const NotificationScreen(),
+    TaskTimerScreen.id:(context)=>const TaskTimerScreen(),
+
+  };
+
+/*  static GoRouter router = GoRouter(
     navigatorKey: StateService.navigatorKey,
     routes: [
       RouteNames.getRoute(
@@ -77,11 +89,11 @@ class RouteService {
         },
       ),
     ],
-  );
+  );*/
 }
 
 class RouteNames {
-  RouteNames._();
+/*  RouteNames._();
   static GoRoute getRoute({required String routeName, required Widget page}) {
     return GoRoute(
       path: routeName,
@@ -93,5 +105,5 @@ class RouteNames {
     return MaterialPageRoute(
       builder: (context) => page,
     );
-  }
+  }*/
 }

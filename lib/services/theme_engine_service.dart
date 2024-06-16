@@ -18,22 +18,14 @@ class ThemeEngineService extends ChangeNotifier {
     _isDarkModeEnabled = locator<LocalStorageService>().getDarkMode() ?? false;
   }
 
-  Color get blue =>
-      _isDarkModeEnabled ? DarkModeColors.blue : LightModeColors.blue;
-  Color get grey =>
-      _isDarkModeEnabled ? DarkModeColors.grey : LightModeColors.grey;
-  Color get red =>
-      _isDarkModeEnabled ? DarkModeColors.red : LightModeColors.red;
-  Color get light =>
-      _isDarkModeEnabled ? DarkModeColors.light : LightModeColors.light;
-  Color get black =>
-      _isDarkModeEnabled ? DarkModeColors.black : LightModeColors.black;
-  Color get white =>
-      _isDarkModeEnabled ? DarkModeColors.white : LightModeColors.white;
-  Color get error =>
-      _isDarkModeEnabled ? DarkModeColors.error : LightModeColors.error;
-  Color get success =>
-      _isDarkModeEnabled ? DarkModeColors.success : LightModeColors.success;
+  Color get blue =>LightModeColors.blue;
+  Color get grey =>LightModeColors.grey;
+  Color get red =>LightModeColors.red;
+  Color get light =>LightModeColors.light;
+  Color get black =>LightModeColors.black;
+  Color get white =>LightModeColors.white;
+  Color get error =>LightModeColors.error;
+  Color get success =>LightModeColors.success;
   Color get transparent => _isDarkModeEnabled
       ? DarkModeColors.transparent
       : LightModeColors.transparent;

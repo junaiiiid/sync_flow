@@ -6,7 +6,6 @@ import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../constants/app_assets.dart';
 import '../../../constants/enums.dart';
@@ -81,8 +80,8 @@ class ProjectDetailsViewModel extends BaseViewModel {
       AppPopups.showLoader();
       final Comment? editedComment = await locator<NetworkService>()
           .updateACommentById(commentId: id, requestBody: {
-        LanguageService.getString.content: commentController.text,
-        LanguageService.getString.postedat:
+        "content": commentController.text,
+        "posted_at":
             DateTime.now().toIso8601WithMillis(),
       });
       if (editedComment != null) {
@@ -111,8 +110,8 @@ class ProjectDetailsViewModel extends BaseViewModel {
       AppPopups.showLoader();
       final Comment? newComment =
           await locator<NetworkService>().createAComment(requestBody: {
-        LanguageService.getString.content: commentController.text,
-        LanguageService.getString.projectid: selectedProject.id,
+        "content": commentController.text,
+        "project_id": selectedProject.id,
       });
       if (newComment != null) {
         allComments.add(newComment);
@@ -200,7 +199,7 @@ class ProjectDetailsViewModel extends BaseViewModel {
     dashboardProvider.listOfTasks
         .removeWhere((element) => element.id == taskId);
     setState();
-    StateService.context.pop();
+    StateService.pop();
   }
 
   Future<void> getSectionsOfSelectedProject() async {

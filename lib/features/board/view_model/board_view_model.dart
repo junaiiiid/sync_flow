@@ -30,7 +30,6 @@ import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
-import 'package:go_router/go_router.dart';
 
 import '../model/tabs_model.dart';
 
@@ -120,7 +119,7 @@ class BoardViewModel extends BaseViewModel {
     dashboardProvider.listOfTasks
         .removeWhere((element) => element.id == taskId);
     setState();
-    StateService.context.pop();
+    StateService.pop();
   }
 
   @override

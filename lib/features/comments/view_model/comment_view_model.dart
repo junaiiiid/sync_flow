@@ -78,8 +78,8 @@ class CommentViewModel extends BaseViewModel {
       AppPopups.showLoader();
       await locator<NetworkService>()
           .updateACommentById(commentId: id, requestBody: {
-        LanguageService.getString.content: commentController.text,
-        LanguageService.getString.postedat:
+        "content": commentController.text,
+        "posted_at":
             DateTime.now().toIso8601WithMillis(),
       });
       await refresh();

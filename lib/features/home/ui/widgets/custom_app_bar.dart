@@ -10,7 +10,6 @@ import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomAppBar {
   CustomAppBar._();
@@ -78,7 +77,7 @@ class CustomAppBar {
                   alignment: Alignment.center,
                   child: IconButton(
                       onPressed: () {
-                        StateService.context.pop();
+                        StateService.pop();
                       },
                       icon: const Icon(
                         Icons.arrow_back_ios_new,

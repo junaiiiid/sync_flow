@@ -22,62 +22,65 @@ class CreateTaskTimerView extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel =
         StateService.context.read(ProviderService.taskTimerProvider);
-    return ListView(
-      children: [
-        if (viewModel.listOfProjects.isNotEmpty)
-          AppDropDowns.customDropDown<Project>(
-              title: LanguageService.getString.selectYourProject,
-              items: viewModel.listOfProjects,
-              onChanged: (value) {
-                viewModel.selectedProject = value;
-              },
-              hint: LanguageService.getString.egMyProject,
-              itemBuilder: (value) {
-                return Row(
-                  children: [
-                    Container(
-                      height: 20.h,
-                      width: 20.w,
-                      color: value?.color.toColor(),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10.w),
-                      child: Text(
-                        "ID# ${value?.id} (${value?.name})",
-                        style: AppTextStyles.displaySmall?.copyWith(
-                          color: LightModeColors.grey,
+    return Form(
+      key: viewModel.formKey,
+      child: ListView(
+        children: [
+          if (viewModel.listOfProjects.isNotEmpty)
+            AppDropDowns.customDropDown<Project>(
+                title: LanguageService.getString.selectYourProject,
+                items: viewModel.listOfProjects,
+                onChanged: (value) {
+                  viewModel.selectedProject = value;
+                },
+                hint: LanguageService.getString.egMyProject,
+                itemBuilder: (value) {
+                  return Row(
+                    children: [
+                      Container(
+                        height: 20.h,
+                        width: 20.w,
+                        color: value?.color.toColor(),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 10.w),
+                        child: Text(
+                          "ID# ${value?.id} (${value?.name})",
+                          style: AppTextStyles.displaySmall?.copyWith(
+                            color: LightModeColors.grey,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                );
-              }),
-        if (viewModel.listOfTasks.isNotEmpty)
-          AppDropDowns.customDropDown<Task>(
-              title: LanguageService.getString.selectYourTask,
-              items: viewModel.listOfTasks,
-              onChanged: (value) {
-                viewModel.selectedTask = value;
-              },
-              hint: LanguageService.getString.egMyProject,
-              itemBuilder: (value) {
-                return Text(
-                  "ID# ${value?.id} (${value?.content})",
-                  style: AppTextStyles.displaySmall?.copyWith(
-                    color: LightModeColors.grey,
-                  ),
-                );
-              }),
-        ((viewModel.listOfTasks.isEmpty) &&
-                ((viewModel.listOfProjects.isEmpty)))
-            ? NoDataWidget(content: LanguageService.getString.pleaseCreateATask)
-            : AppButtons.customButton(
-                title: LanguageService.getString.startTimer,
-                onTap: () async {
-                  await viewModel.startANewTask(
-                      model: TimerTaskModel(task: viewModel.selectedTask));
+                    ],
+                  );
                 }),
-      ],
+          if (viewModel.listOfTasks.isNotEmpty)
+            AppDropDowns.customDropDown<Task>(
+                title: LanguageService.getString.selectYourTask,
+                items: viewModel.listOfTasks,
+                onChanged: (value) {
+                  viewModel.selectedTask = value;
+                },
+                hint: LanguageService.getString.egMyProject,
+                itemBuilder: (value) {
+                  return Text(
+                    "ID# ${value?.id} (${value?.content})",
+                    style: AppTextStyles.displaySmall?.copyWith(
+                      color: LightModeColors.grey,
+                    ),
+                  );
+                }),
+          ((viewModel.listOfTasks.isEmpty) &&
+                  ((viewModel.listOfProjects.isEmpty)))
+              ? NoDataWidget(content: LanguageService.getString.pleaseCreateATask)
+              : AppButtons.customButton(
+                  title: LanguageService.getString.startTimer,
+                  onTap: () async {
+                    await viewModel.startANewTask(
+                        model: TimerTaskModel(task: viewModel.selectedTask));
+                  }),
+        ],
+      ),
     );
   }
 }

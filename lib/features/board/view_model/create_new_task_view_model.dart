@@ -53,7 +53,7 @@ class CreateNewTaskViewModel extends BaseViewModel {
       AppPopups.showLoader();
       List<String> labels = [labelController.text,sectionId??''];
       final Task taskModel = Task(
-          projectId: projectId!,
+          projectId: projectId??'',
           content: taskTitleController.text,
           description: taskDescriptionController.text,
           labels: labels,
@@ -72,7 +72,7 @@ class CreateNewTaskViewModel extends BaseViewModel {
       });
       if (newTask != null) {
         Task? updatedLabelsTask = await locator<NetworkService>().updateATaskById(taskId: newTask.id!, requestBody: {
-          LanguageService.getString.labels:labels
+          'labels':labels
         });
         if(updatedLabelsTask!=null){
           dashBoardProvider.listOfTasks.add(updatedLabelsTask);

@@ -55,9 +55,9 @@ class AddCommentViewModel extends BaseViewModel {
     if(formKey.currentState?.validate() ?? false){
       AppPopups.showLoader();
       await locator<NetworkService>().createAComment(requestBody: {
-        LanguageService.getString.content:commentController.text,
-        if (selectedTask != null) LanguageService.getString.taskid: selectedTask!.id,
-        if (selectedProject != null) LanguageService.getString.projectid: selectedProject!.id,
+        "content":commentController.text,
+        if (selectedTask != null) "task_id": selectedTask!.id,
+        if (selectedProject != null) "project_id": selectedProject!.id,
       });
       await commentProvider.refresh();
       callDispose();

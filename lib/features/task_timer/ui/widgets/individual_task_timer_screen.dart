@@ -14,7 +14,7 @@ import '../../model/timer_task_model.dart';
 
 // Example usage in your UI
 class IndividualTaskTimerScreen extends ConsumerWidget {
-  static const String id = '/task_timer_details';
+  static const String id = '/timer';
   final TimerTaskModel model;
 
   const IndividualTaskTimerScreen({super.key, required this.model});

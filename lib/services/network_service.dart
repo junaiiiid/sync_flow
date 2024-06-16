@@ -905,7 +905,7 @@ class NetworkService {
       {required String taskId,
       required Map<String, dynamic> requestBody}) async {
     final String requestUrl =
-        "${ApiConstants.baseUrl}${ApiType.createANewTask.getUrl()}/$taskId";
+        "${ApiConstants.baseUrl}${ApiType.updateATask.getUrl()}/$taskId";
     try {
       final response = await _dio.post(
         requestUrl,

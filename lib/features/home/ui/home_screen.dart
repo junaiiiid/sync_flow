@@ -18,39 +18,42 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewModel = ref.watch(ProviderService.homeProvider);
-    return AppParentWidget(
-        viewModel: viewModel,
-        buildMethod: (context, ref) {
-          return Container(
-            color: LightModeColors.grey,
-            child: SafeArea(
-              child: Scaffold(
-                backgroundColor: LightModeColors.light,
-                body: Stack(
-                  children: [
-                    IndexedStack(
-                      index: viewModel.navigationBarItems
-                          .indexOf(viewModel.selectedItem),
-                      children: const [
-                        DashboardScreen(),
-                        BoardScreen(),
-                        ProjectsScreen(),
-                        SettingsScreen(),
-                      ],
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: CustomNavigationBar(
-                        viewModel: viewModel,
+    return PopScope(
+      canPop: false,
+      child: AppParentWidget(
+          viewModel: viewModel,
+          buildMethod: (context, ref) {
+            return Container(
+              color: LightModeColors.grey,
+              child: SafeArea(
+                child: Scaffold(
+                  backgroundColor: LightModeColors.light,
+                  body: Stack(
+                    children: [
+                      IndexedStack(
+                        index: viewModel.navigationBarItems
+                            .indexOf(viewModel.selectedItem),
+                        children: const [
+                          DashboardScreen(),
+                          BoardScreen(),
+                          ProjectsScreen(),
+                          SettingsScreen(),
+                        ],
                       ),
-                    )
-                  ],
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: CustomNavigationBar(
+                          viewModel: viewModel,
+                        ),
+                      )
+                    ],
+                  ),
+                  appBar:
+                      CustomAppBar.myAppBar(title: viewModel.selectedItem.label),
                 ),
-                appBar:
-                    CustomAppBar.myAppBar(title: viewModel.selectedItem.label),
               ),
-            ),
-          );
-        });
+            );
+          }),
+    );
   }
 }

@@ -34,8 +34,10 @@ class ProjectCards extends StatelessWidget {
         },
         child: InkWell(
           onTap: (){
-            StateService.context.read(ProviderService.projectDetailsProvider).selectedProject = model.projectData;
-            StateService.pushNamedWithArguments(routeName: ProjectDetailedScreen.id, argument: model.projectData);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>  ProjectDetailedScreen(model: model.projectData,)),
+            );
           },
           child: Card(
             color: model.projectData.color.toColor(),

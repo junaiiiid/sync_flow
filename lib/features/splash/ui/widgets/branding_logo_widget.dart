@@ -26,7 +26,7 @@ class BrandingLogoWidget extends StatelessWidget {
           ),
           Transform.scale(
               scale: 0.7,
-              child: SvgPicture.asset(isDarkModeEnabled?AppAssets.flutterNinjaLogoDark:AppAssets.flutterNinjaLogoLight)),
+              child: SvgPicture.asset(AppAssets.flutterNinjaLogoLight)),
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flow_sync/constants/numeric_constants.dart';
+import 'package:flow_sync/features/splash/ui/splash_screen.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
 import 'package:flow_sync/services/route_service.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -28,7 +29,7 @@ class Start extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
-          return MaterialApp.router(
+          return MaterialApp(
             theme: ThemeData(
               textTheme:
                   GoogleFonts.montserratTextTheme(Theme.of(context).textTheme)
@@ -52,7 +53,9 @@ class Start extends StatelessWidget {
             ),
             localizationsDelegates: StateService.localizationDelegates,
             supportedLocales: StateService.supportedLocales,
-            routerConfig: RouteService.router,
+            initialRoute: SplashScreen.id,
+            routes: RouteService.routeNames,
+            navigatorKey: StateService.navigatorKey,
             debugShowCheckedModeBanner: false,
           );
         });

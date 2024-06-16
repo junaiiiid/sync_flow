@@ -55,7 +55,10 @@ class TaskHistoryCards extends StatelessWidget {
 
     return InkWell(
       onTap: (){
-        StateService.pushNamedWithArguments(routeName: IndividualTaskTimerScreen.id, argument: model);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) =>  IndividualTaskTimerScreen(model: model,)),
+        );
       },
       child: Card(
         color: LightModeColors.light,

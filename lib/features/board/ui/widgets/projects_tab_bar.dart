@@ -83,9 +83,10 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
                               child: AppButtons.scaffoldIconButton(
                                   title: LanguageService.getString.createNewTask,
                                   onTap: () {
-                                    StateService.pushNamedWithArguments<String>(
-                                        routeName: CreateTaskScreen.id,
-                                        argument: item.sectionId);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) =>  CreateTaskScreen(sectionId: item.sectionId,)),
+                                    );
                                   }),
                             ),
                             Expanded(
@@ -136,8 +137,10 @@ class _ProjectsTabBarState extends State<ProjectsTabBar>
           },
           child: InkWell(
             onTap: () {
-              StateService.pushNamedWithArguments<Task>(
-                  routeName: EditTaskScreen.id, argument: task.copyWith());
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>  EditTaskScreen(taskModel: task.copyWith(),)),
+              );
             },
             child: boardCard(
               taskName: task.content,

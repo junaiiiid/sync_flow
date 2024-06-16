@@ -27,7 +27,6 @@ import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constants/enums.dart';
@@ -115,11 +114,11 @@ class EditTaskScreenViewModel extends BaseViewModel {
       Task? updatedTask = await locator<NetworkService>().updateATaskById(
         taskId: taskId,
         requestBody: {
-          LanguageService.getString.sectionid: selectedSection?.id,
-          LanguageService.getString.content: taskTitleController.text,
-          LanguageService.getString.description: taskDescriptionController.text,
-          LanguageService.getString.labels: labels,
-          LanguageService.getString.duedate: dateTimeFormat,
+          'section_id': selectedSection?.id,
+          'content': taskTitleController.text,
+          'description': taskDescriptionController.text,
+          'labels': labels,
+          'due_date': dateTimeFormat,
         },
       );
       if (updatedTask != null) {
@@ -134,7 +133,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
       AppPopups.showSnackBar(
           type: SnackBarTypes.error, content: LanguageService.getString.theFieldsCanNotBeEmpty);
     }
-    StateService.context.pop();
+    StateService.pop();
   }
 
   Future<void> getAllCommentsByTaskId({required String taskId}) async {
@@ -148,8 +147,8 @@ class EditTaskScreenViewModel extends BaseViewModel {
       StateService.pop();
       AppPopups.showLoader();
       final Comment? editedComment = await locator<NetworkService>().updateACommentById(commentId: id, requestBody: {
-        LanguageService.getString.content: commentController.text,
-        LanguageService.getString.postedat: DateTime.now().toIso8601WithMillis(),
+        "content": commentController.text,
+        "posted_at": DateTime.now().toIso8601WithMillis(),
       });
       if(editedComment!=null){
         allComments.removeWhere((element)=>element.id==id);
@@ -175,9 +174,9 @@ class EditTaskScreenViewModel extends BaseViewModel {
     if(formKey.currentState?.validate() ?? false){
       AppPopups.showLoader();
       final Comment? newComment = await locator<NetworkService>().createAComment(requestBody: {
-        LanguageService.getString.content:commentController.text,
-        LanguageService.getString.taskid: taskModel?.id??'',
-        LanguageService.getString.projectid: taskModel?.projectId??'',
+        "content":commentController.text,
+        "task_id": taskModel?.id??'',
+        "project_id": taskModel?.projectId??'',
       });
       if(newComment!=null){
         allComments.add(newComment);

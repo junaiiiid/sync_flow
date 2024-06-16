@@ -178,7 +178,7 @@ class CreateNewProjectViewModel extends BaseViewModel {
     for(Section section in sectionList){
       await locator<NetworkService>().createNewSection(sectionModel: section);
     }
-    dispose();
+    callDispose();
   }
 
   @override
@@ -196,7 +196,7 @@ class CreateNewProjectViewModel extends BaseViewModel {
         url: "",
         viewStyle: "");
     projectNameController.clear();
-    _selectedColor = null;
+    //_selectedColor = null;
     defaultSections = [
       Section(projectId: LanguageService.getString.projectid, order: 1, name: LanguageService.getString.todo),
       Section(projectId: LanguageService.getString.projectid, order: 2, name: LanguageService.getString.inprogress),
