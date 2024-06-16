@@ -36,19 +36,23 @@ class LocalStorageService {
     return _sharedPreferences.getBool(_key);
   }
 
-  Future<void> startStopATaskTimer({required TimerTaskModel model}) async {
+  Future<void> modifyATaskTimer({required TimerTaskModel model,required String messageToShow}) async {
+    ///If the task list does not exist create it
     if (!_sharedPreferences.containsKey(tasks)) {
       await _sharedPreferences.setStringList(tasks, []);
     } else {
       List<String>? activeTasksList = _sharedPreferences.getStringList(tasks);
-      activeTasksList?.add(model.task?.id ?? '');
-      await _sharedPreferences.setStringList(tasks, activeTasksList??[]);
       final key = '${model.task?.id}';
+      ///If the task List does not contain our key then we create it
+      if(activeTasksList!.isEmpty || !(activeTasksList.contains(key))){
+        activeTasksList?.add(model.task?.id ?? '');
+        await _sharedPreferences.setStringList(tasks, activeTasksList??[]);
+      }
       await _sharedPreferences.setString(key, jsonEncode(model).toString());
     }
     AppPopups.showSnackBar(
         type: SnackBarTypes.success,
-        content: LanguageService.getString.timerStartedSuccessfully);
+        content: messageToShow);
   }
 
   List<String>? getTasksHistory(){

@@ -1,8 +1,10 @@
 import 'package:flow_sync/constants/app_assets.dart';
+import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/constants/numeric_constants.dart';
 import 'package:flow_sync/features/notifications/ui/notification_screen.dart';
 import 'package:flow_sync/features/task_timer/ui/task_timer_screen.dart';
 import 'package:flow_sync/global_widgets/app_buttons.dart';
+import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flow_sync/styles_and_themes/app_text_styles.dart';
@@ -35,6 +37,7 @@ class CustomAppBar {
                 AppButtons.customIconButton(
                     iconPath: AppAssets.timer,
                     onTap: () {
+                      StateService.context.read(ProviderService.taskTimerProvider).getTaskHistory(notify: false);
                       StateService.pushNamed(routeName: TaskTimerScreen.id);
                     },
                     scaleFactor: NumericConstants.appBarElementsScaleFactor),

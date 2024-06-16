@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../dashboard/model/task_model.dart';
 
 class TimerTaskModel {
@@ -10,23 +12,36 @@ class TimerTaskModel {
   DateTime? startTime;
   Task? task;
 
-  TimerTaskModel(this.isEnded, this.isPaused, this.isResumed, this.pauseTimes,
-      this.resumeTimes, this.endTime, this.startTime, this.task);
+  TimerTaskModel(
+      {this.isEnded,
+      this.isPaused,
+      this.isResumed,
+      this.pauseTimes,
+      this.resumeTimes,
+      this.endTime,
+      this.startTime,
+      this.task});
 
   factory TimerTaskModel.fromJson(Map<String, dynamic> json) {
     return TimerTaskModel(
-      json['isEnded'] as bool?,
-      json['isPaused'] as bool?,
-      json['isResumed'] as bool?,
-      (json['pauseTimes'] as List<dynamic>?)
+      isEnded: json['isEnded'] as bool?,
+      isPaused: json['isPaused'] as bool?,
+      isResumed: json['isResumed'] as bool?,
+      pauseTimes: (json['pauseTimes'] as List<dynamic>?)
           ?.map((e) => DateTime.parse(e as String))
           .toList(),
-      (json['resumeTimes'] as List<dynamic>?)
+      resumeTimes: (json['resumeTimes'] as List<dynamic>?)
           ?.map((e) => DateTime.parse(e as String))
           .toList(),
-      json['endTime'] != null ? DateTime.parse(json['endTime'] as String) : null,
-      json['startTime'] != null ? DateTime.parse(json['startTime'] as String) : null,
-      json['task'] != null ? Task.fromJson(json['task'] as Map<String, dynamic>) : null,
+      endTime: json['endTime'] != null
+          ? DateTime.parse(json['endTime'] as String)
+          : null,
+      startTime: json['startTime'] != null
+          ? DateTime.parse(json['startTime'] as String)
+          : null,
+      task: json['task'] != null
+          ? Task.fromJson(json['task'] as Map<String, dynamic>)
+          : null,
     );
   }
 
@@ -41,5 +56,20 @@ class TimerTaskModel {
       'startTime': startTime?.toIso8601String(),
       'task': task?.toJson(),
     };
+  }
+
+  Duration get elapsedTime {
+    if (startTime == null) return Duration.zero;
+
+    final endTime = this.endTime ?? DateTime.now();
+    var totalElapsed = endTime.difference(startTime!);
+
+    for (var i = 0; i < pauseTimes!.length; i++) {
+      final pauseStart = pauseTimes![i];
+      final pauseEnd = (i < resumeTimes!.length) ? resumeTimes![i] : endTime;
+      totalElapsed -= pauseEnd.difference(pauseStart);
+    }
+
+    return totalElapsed;
   }
 }

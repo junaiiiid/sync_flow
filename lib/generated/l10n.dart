@@ -1389,6 +1389,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Timer Stopped Successfully`
+  String get timerStoppedSuccessfully {
+    return Intl.message(
+      'Timer Stopped Successfully',
+      name: 'timerStoppedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Timer Paused Successfully`
+  String get timerPausedSuccessfully {
+    return Intl.message(
+      'Timer Paused Successfully',
+      name: 'timerPausedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Timer Resumed Successfully`
+  String get timerResumedSuccessfully {
+    return Intl.message(
+      'Timer Resumed Successfully',
+      name: 'timerResumedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Already Exists In History`
+  String get taskAlreadyExistsInHistory {
+    return Intl.message(
+      'Task Already Exists In History',
+      name: 'taskAlreadyExistsInHistory',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

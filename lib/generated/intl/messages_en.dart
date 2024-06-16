@@ -169,6 +169,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tapToSelectADueDate":
             MessageLookupByLibrary.simpleMessage("Tap to select a due date"),
         "task": MessageLookupByLibrary.simpleMessage("TASK"),
+        "taskAlreadyExistsInHistory": MessageLookupByLibrary.simpleMessage(
+            "Task Already Exists In History"),
         "taskTimer": MessageLookupByLibrary.simpleMessage("Task Timer"),
         "taskid": MessageLookupByLibrary.simpleMessage("taskId"),
         "taupe": MessageLookupByLibrary.simpleMessage("taupe"),
@@ -177,8 +179,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "The fields can not be empty."),
         "thisFieldCanNotBeEmpty":
             MessageLookupByLibrary.simpleMessage("This field can not be empty"),
+        "timerPausedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Timer Paused Successfully"),
+        "timerResumedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Timer Resumed Successfully"),
         "timerStartedSuccessfully":
             MessageLookupByLibrary.simpleMessage("Timer Started Successfully"),
+        "timerStoppedSuccessfully":
+            MessageLookupByLibrary.simpleMessage("Timer Stopped Successfully"),
         "to": MessageLookupByLibrary.simpleMessage("to"),
         "todo": MessageLookupByLibrary.simpleMessage("TO-DO"),
         "totalComments": MessageLookupByLibrary.simpleMessage("Total Comments"),

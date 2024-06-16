@@ -132,5 +132,9 @@
   "timerStartedSuccessfully": "Timer Started Successfully",
   "stopped": "STOPPED",
   "paused": "PAUSED",
-  "started": "STARTED"
+  "started": "STARTED",
+  "timerStoppedSuccessfully": "Timer Stopped Successfully",
+  "timerPausedSuccessfully": "Timer Paused Successfully",
+  "timerResumedSuccessfully": "Timer Resumed Successfully",
+  "taskAlreadyExistsInHistory": "Task Already Exists In History"
 }
