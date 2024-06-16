@@ -34,7 +34,7 @@ class ThemeEngineService extends ChangeNotifier {
   Color get black =>
       _isDarkModeEnabled ? DarkModeColors.black : LightModeColors.black;
   Color get textColor =>
-      _isDarkModeEnabled ? DarkModeColors.white : LightModeColors.white;
+      _isDarkModeEnabled ? DarkModeColors.white : LightModeColors.black;
   Color get appBarColor => _isDarkModeEnabled ? DarkModeColors.coolBlack : LightModeColors.grey;
   Color get backgroundColor => _isDarkModeEnabled ? DarkModeColors.black : LightModeColors.white;
   Color get white =>
