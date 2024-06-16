@@ -1,3 +1,4 @@
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -110,7 +111,7 @@ class _DynamicDropDownState<T> extends State<DynamicDropDown<T>> {
           validator: widget.validator ??
               (value) {
                 if (selectedValue == null) {
-                  return 'Please select an option';
+                  return LanguageService.getString.pleaseSelectAnOption;
                 }
                 return null;
               },

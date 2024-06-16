@@ -1,5 +1,7 @@
 import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/enums.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flow_sync/styles_and_themes/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -36,10 +38,10 @@ class AppPopups {
     switch(type){
 
       case SnackBarTypes.error:
-        text = content ?? "ERROR";
+        text = content ?? LanguageService.getString.error;
         color = AppColors.error;
       case SnackBarTypes.success:
-        text = content ?? "SUCCESS";
+        text = content ?? LanguageService.getString.success;
         color = AppColors.success;
     }
     ScaffoldMessenger.of(StateService.context).showSnackBar(

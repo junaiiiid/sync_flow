@@ -29,16 +29,35 @@ class MessageLookup extends MessageLookupByLibrary {
         "advanced": MessageLookupByLibrary.simpleMessage("Advanced"),
         "appType": MessageLookupByLibrary.simpleMessage("App Type"),
         "b": MessageLookupByLibrary.simpleMessage("B"),
+        "berryred": MessageLookupByLibrary.simpleMessage("berry_red"),
+        "blue": MessageLookupByLibrary.simpleMessage("blue"),
         "board": MessageLookupByLibrary.simpleMessage("Board"),
+        "charcoal": MessageLookupByLibrary.simpleMessage("charcoal"),
         "chooseKanbanSections":
             MessageLookupByLibrary.simpleMessage("Choose Kanban Sections"),
+        "color": MessageLookupByLibrary.simpleMessage("color"),
+        "commentCanNotBeEmpty":
+            MessageLookupByLibrary.simpleMessage("Comment can not be empty."),
         "comments": MessageLookupByLibrary.simpleMessage("Comments"),
+        "complete": MessageLookupByLibrary.simpleMessage("complete"),
+        "completed": MessageLookupByLibrary.simpleMessage("COMPLETED"),
+        "content": MessageLookupByLibrary.simpleMessage("content"),
+        "couldNotLaunchUrl":
+            MessageLookupByLibrary.simpleMessage("Could not launch \$url"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
+        "createDefaultSections":
+            MessageLookupByLibrary.simpleMessage("Create Default Sections"),
         "createNew": MessageLookupByLibrary.simpleMessage("CREATE NEW"),
         "createNewTask":
             MessageLookupByLibrary.simpleMessage("Create New Task"),
+        "createSectionsFromLabels":
+            MessageLookupByLibrary.simpleMessage("Create Sections From Labels"),
         "createTask": MessageLookupByLibrary.simpleMessage("CREATE TASK"),
+        "createdat": MessageLookupByLibrary.simpleMessage("created_at"),
         "darkTheme": MessageLookupByLibrary.simpleMessage("Dark Theme"),
+        "description": MessageLookupByLibrary.simpleMessage("description"),
+        "doKey": MessageLookupByLibrary.simpleMessage("do"),
+        "duedate": MessageLookupByLibrary.simpleMessage("due_date"),
         "editComment": MessageLookupByLibrary.simpleMessage("Edit Comment"),
         "editTaskDescription":
             MessageLookupByLibrary.simpleMessage("Edit Task Description"),
@@ -69,10 +88,25 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter Task Description"),
         "enterTaskTitle":
             MessageLookupByLibrary.simpleMessage("Enter Task Title"),
+        "error": MessageLookupByLibrary.simpleMessage("ERROR"),
+        "falseKey": MessageLookupByLibrary.simpleMessage("false"),
+        "grape": MessageLookupByLibrary.simpleMessage("grape"),
+        "green": MessageLookupByLibrary.simpleMessage("green"),
+        "grey": MessageLookupByLibrary.simpleMessage("grey"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "id": MessageLookupByLibrary.simpleMessage("id"),
+        "inprogress": MessageLookupByLibrary.simpleMessage("IN-PROGRESS"),
+        "isfavorite": MessageLookupByLibrary.simpleMessage("is_favorite"),
         "labels": MessageLookupByLibrary.simpleMessage("Labels"),
+        "lavender": MessageLookupByLibrary.simpleMessage("lavender"),
+        "lightblue": MessageLookupByLibrary.simpleMessage("light_blue"),
+        "limegreen": MessageLookupByLibrary.simpleMessage("lime_green"),
+        "list": MessageLookupByLibrary.simpleMessage("list"),
         "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
+        "magenta": MessageLookupByLibrary.simpleMessage("magenta"),
+        "mintgreen": MessageLookupByLibrary.simpleMessage("mint_green"),
         "moveTo": MessageLookupByLibrary.simpleMessage("Move To"),
+        "name": MessageLookupByLibrary.simpleMessage("name"),
         "newLabel": MessageLookupByLibrary.simpleMessage("NEW LABEL"),
         "newProject": MessageLookupByLibrary.simpleMessage("NEW PROJECT"),
         "noCommentsFound":
@@ -82,12 +116,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "noProjectsFound":
             MessageLookupByLibrary.simpleMessage("NO PROJECTS FOUND"),
         "noTasksFound": MessageLookupByLibrary.simpleMessage("NO TASKS FOUND"),
+        "olivegreen": MessageLookupByLibrary.simpleMessage("olive_green"),
+        "orange": MessageLookupByLibrary.simpleMessage("orange"),
+        "pleaseSelectAnOption":
+            MessageLookupByLibrary.simpleMessage("Please select an option"),
         "pleaseSelectYourProject":
             MessageLookupByLibrary.simpleMessage("Please Select Your Project"),
         "pleaseWait": MessageLookupByLibrary.simpleMessage("Please wait..."),
+        "postedat": MessageLookupByLibrary.simpleMessage("posted_at"),
         "poweredBy": MessageLookupByLibrary.simpleMessage("POWERED BY"),
+        "progress": MessageLookupByLibrary.simpleMessage("progress"),
+        "projectid": MessageLookupByLibrary.simpleMessage("projectId"),
+        "projects": MessageLookupByLibrary.simpleMessage("Projects"),
         "publish": MessageLookupByLibrary.simpleMessage("PUBLISH"),
+        "red": MessageLookupByLibrary.simpleMessage("red"),
+        "salmon": MessageLookupByLibrary.simpleMessage("salmon"),
         "saveChanges": MessageLookupByLibrary.simpleMessage("SAVE CHANGES"),
+        "sectionid": MessageLookupByLibrary.simpleMessage("section_id"),
         "select1stSection":
             MessageLookupByLibrary.simpleMessage("Select 1st Section"),
         "select2ndSection":
@@ -107,14 +152,38 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Select Your Project"),
         "selectYourTask":
             MessageLookupByLibrary.simpleMessage("Select Your Task"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "simple": MessageLookupByLibrary.simpleMessage("Simple"),
+        "skyblue": MessageLookupByLibrary.simpleMessage("sky_blue"),
+        "success": MessageLookupByLibrary.simpleMessage("SUCCESS"),
         "tapToSelectADueDate":
             MessageLookupByLibrary.simpleMessage("Tap to select a due date"),
         "task": MessageLookupByLibrary.simpleMessage("TASK"),
+        "taskid": MessageLookupByLibrary.simpleMessage("taskId"),
+        "taupe": MessageLookupByLibrary.simpleMessage("taupe"),
+        "teal": MessageLookupByLibrary.simpleMessage("teal"),
+        "theFieldsCanNotBeEmpty": MessageLookupByLibrary.simpleMessage(
+            "The fields can not be empty."),
+        "thisFieldCanNotBeEmpty":
+            MessageLookupByLibrary.simpleMessage("This field can not be empty"),
+        "to": MessageLookupByLibrary.simpleMessage("to"),
+        "todo": MessageLookupByLibrary.simpleMessage("TO-DO"),
         "totalComments": MessageLookupByLibrary.simpleMessage("Total Comments"),
+        "totalProjects": MessageLookupByLibrary.simpleMessage("Total Projects"),
+        "totalTasks": MessageLookupByLibrary.simpleMessage("Total Tasks"),
+        "url": MessageLookupByLibrary.simpleMessage("url"),
+        "viewAllTheTasksYouAreWorkingOn": MessageLookupByLibrary.simpleMessage(
+            "View all the tasks you are working on."),
+        "viewAllTheTasksYouHaveCompleted": MessageLookupByLibrary.simpleMessage(
+            "View all the tasks you have completed."),
+        "viewAllTheTasksYouHaveToStart": MessageLookupByLibrary.simpleMessage(
+            "View all the tasks you have to start."),
         "viewAttachment":
             MessageLookupByLibrary.simpleMessage("View Attachment"),
+        "viewstyle": MessageLookupByLibrary.simpleMessage("viewStyle"),
+        "violet": MessageLookupByLibrary.simpleMessage("violet"),
         "writeSomething":
-            MessageLookupByLibrary.simpleMessage("write something...")
+            MessageLookupByLibrary.simpleMessage("write something..."),
+        "yellow": MessageLookupByLibrary.simpleMessage("yellow")
       };
 }

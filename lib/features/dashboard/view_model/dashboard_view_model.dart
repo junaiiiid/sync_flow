@@ -9,6 +9,28 @@ import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/features/labels/ui/labels_screen.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import '../../../constants/enums.dart';
 import '../../../services/provider_service.dart';
@@ -19,17 +41,17 @@ import '../model/task_model.dart';
 class DashboardViewModel extends BaseViewModel {
   List<Project> listOfProjects = [
     Project(
-        id: "id",
+        id: LanguageService.getString.id,
         order: 0,
-        color: "color",
-        name: "name",
+        color: LanguageService.getString.color,
+        name: LanguageService.getString.name,
         commentCount: 0,
         isShared: false,
         isFavorite: false,
         isInboxProject: false,
         isTeamInbox: false,
-        url: "url",
-        viewStyle: "viewStyle"),
+        url: LanguageService.getString.url,
+        viewStyle: LanguageService.getString.viewstyle),
   ];
   List<Task> listOfTasks = [];
   List<Label> listOfLabels = [];
@@ -38,7 +60,7 @@ class DashboardViewModel extends BaseViewModel {
   List<DashboardItemsModel> dashboardItems = [
     DashboardItemsModel(
         iconPath: AppAssets.allProjects,
-        label: "Loading...",
+        label: LanguageService.getString.loading,
         length: 0,
         type: DashboardItemType.dummy),
   ];
@@ -46,22 +68,22 @@ class DashboardViewModel extends BaseViewModel {
   List<DashboardItemsModel> get dashboardItemsSkeleton => [
         DashboardItemsModel(
             iconPath: AppAssets.allProjects,
-            label: "Loading...",
+            label: LanguageService.getString.loading,
             length: 0,
             type: DashboardItemType.totalProjects),
         DashboardItemsModel(
             iconPath: AppAssets.comments,
-            label: "Loading...",
+            label: LanguageService.getString.loading,
             length: 0,
             type: DashboardItemType.totalComments),
         DashboardItemsModel(
             iconPath: AppAssets.personalLabels,
-            label: "Loading...",
+            label: LanguageService.getString.loading,
             length: 0,
             type: DashboardItemType.activeTasks),
         DashboardItemsModel(
             iconPath: AppAssets.labels,
-            label: "Loading...",
+            label: LanguageService.getString.loading,
             length: 0,
             type: DashboardItemType.labels),
       ];
@@ -70,24 +92,24 @@ class DashboardViewModel extends BaseViewModel {
   void callDispose() {
     listOfProjects = [
       Project(
-          id: "id",
+          id: LanguageService.getString.id,
           order: 0,
-          color: "color",
-          name: "name",
+          color: LanguageService.getString.color,
+          name: LanguageService.getString.name,
           commentCount: 0,
           isShared: false,
           isFavorite: false,
           isInboxProject: false,
           isTeamInbox: false,
-          url: "url",
-          viewStyle: "viewStyle"),
+          url: LanguageService.getString.url,
+          viewStyle: LanguageService.getString.viewstyle),
     ];
     listOfTasks = [];
     listOfLabels = [];
     dashboardItems = [
       DashboardItemsModel(
           iconPath: AppAssets.allProjects,
-          label: "Loading...",
+          label: LanguageService.getString.loading,
           length: 0,
           type: DashboardItemType.dummy),
     ];
@@ -104,8 +126,8 @@ class DashboardViewModel extends BaseViewModel {
         StateService.context.read(ProviderService.projectProvider);
     final networkService = locator<NetworkService>();
     listOfProjects = await networkService.getAllProjects();
-    listOfProjects.removeWhere((element) => element.viewStyle == 'list');
-    listOfProjects.removeWhere((element) => element.id == 'id');
+    listOfProjects.removeWhere((element) => element.viewStyle == LanguageService.getString.list);
+    listOfProjects.removeWhere((element) => element.id == LanguageService.getString.id);
     listOfTasks = await networkService.getAllActiveTasks();
     listOfSections = await networkService.getAllSections();
     int commentsCount = 0;
@@ -121,22 +143,22 @@ class DashboardViewModel extends BaseViewModel {
     dashboardItems.clear();
     dashboardItems.add(DashboardItemsModel(
         iconPath: AppAssets.allProjects,
-        label: "Total Projects",
+        label: LanguageService.getString.totalProjects,
         length: listOfProjects.length,
         type: DashboardItemType.totalProjects));
     dashboardItems.add(DashboardItemsModel(
         iconPath: AppAssets.comments,
-        label: "Total Comments",
+        label: LanguageService.getString.totalComments,
         length: commentsCount,
         type: DashboardItemType.totalComments));
     dashboardItems.add(DashboardItemsModel(
         iconPath: AppAssets.labels,
-        label: "Total Tasks",
+        label: LanguageService.getString.totalTasks,
         length: listOfTasks.length,
         type: DashboardItemType.activeTasks));
     dashboardItems.add(DashboardItemsModel(
         iconPath: AppAssets.personalLabels,
-        label: "Labels",
+        label: LanguageService.getString.labels,
         length: listOfLabels.length,
         type: DashboardItemType.labels));
     setState();

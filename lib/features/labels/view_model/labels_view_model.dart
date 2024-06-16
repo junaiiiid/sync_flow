@@ -1,6 +1,14 @@
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -10,7 +18,7 @@ import '../../dashboard/model/label_model.dart';
 
 class LabelsViewModel extends BaseViewModel{
 
-  List<Label> _listOfLabels = [Label(id: "id", name: "name", order: 0, color: "color", isFavorite: false)];
+  List<Label> _listOfLabels = [Label(id: LanguageService.getString.id, name: LanguageService.getString.name, order: 0, color: LanguageService.getString.color, isFavorite: false)];
 
   List<Label> get listOfLabels => _listOfLabels;
 
@@ -21,7 +29,7 @@ class LabelsViewModel extends BaseViewModel{
 
   @override
   void callDispose() {
-    _listOfLabels = [Label(id: "id", name: "name", order: 0, color: "color", isFavorite: false)];
+    _listOfLabels = [Label(id: LanguageService.getString.id, name: LanguageService.getString.name, order: 0, color: LanguageService.getString.color, isFavorite: false)];
   }
 
   @override
@@ -34,7 +42,7 @@ class LabelsViewModel extends BaseViewModel{
     final dashBoardProvider = StateService.context.read(ProviderService.dashboardProvider);
     AppPopups.showLoader();
     await locator<NetworkService>().updateALabelById(labelId: labelId, requestBody: {
-      "is_favorite":(!isFavourite)?true:"false",
+      LanguageService.getString.isfavorite:(!isFavourite)?true:LanguageService.getString.falseKey,
     });
     final Label selectedLabel = dashBoardProvider.listOfLabels.firstWhere((element)=>element.id==labelId);
     selectedLabel.isFavorite = !isFavourite;

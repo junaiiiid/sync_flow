@@ -3,6 +3,17 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -18,54 +29,69 @@ class CommentViewModel extends BaseViewModel {
 
   TextEditingController commentController = TextEditingController();
 
-  List<Comment> allComments = [Comment(id: "id", taskId: "taskId", content: "content", postedAt: DateTime.now(), projectId: '')];
+  List<Comment> allComments = [
+    Comment(
+        id: LanguageService.getString.id,
+        taskId: LanguageService.getString.taskid,
+        content: LanguageService.getString.content,
+        postedAt: DateTime.now(),
+        projectId: '')
+  ];
 
-  List<Task> get listOfTasks => StateService.context.read(ProviderService.dashboardProvider).listOfTasks;
+  List<Task> get listOfTasks =>
+      StateService.context.read(ProviderService.dashboardProvider).listOfTasks;
 
-  List<Project> get listOfProjects => StateService.context.read(ProviderService.dashboardProvider).listOfProjects;
+  List<Project> get listOfProjects => StateService.context
+      .read(ProviderService.dashboardProvider)
+      .listOfProjects;
 
-  Project getProjectByTaskId({required String id}){
+  Project getProjectByTaskId({required String id}) {
     Task task = getTaskById(id: id);
     List<Project> allProjects = List.from(listOfProjects);
-    Project filteredProject = allProjects.firstWhere((element)=>element.id==task.projectId);
+    Project filteredProject =
+        allProjects.firstWhere((element) => element.id == task.projectId);
     return filteredProject;
   }
 
-    Task getTaskById({required String id}) {
+  Task getTaskById({required String id}) {
     List<Task> allTasks = List.from(listOfTasks);
-    Task filteredTasks = allTasks.firstWhere((element)=>element.id==id);
+    Task filteredTasks = allTasks.firstWhere((element) => element.id == id);
     return filteredTasks;
   }
 
-  Project getProjectById({required String id}){
+  Project getProjectById({required String id}) {
     List<Project> allProjects = List.from(listOfProjects);
-    Project filteredProject = allProjects.firstWhere((element)=>element.id==id);
+    Project filteredProject =
+        allProjects.firstWhere((element) => element.id == id);
     return filteredProject;
   }
 
   Future<void> openAttachment({required String url}) async {
     if (!await launchUrl(Uri.parse(url))) {
-      throw Exception('Could not launch $url');
+      throw Exception(LanguageService.getString.couldNotLaunchUrl);
     }
   }
 
-  Future<void> editComment({required String id}) async{
-    if(formKey.currentState?.validate()??false){
+  Future<void> editComment({required String id}) async {
+    if (formKey.currentState?.validate() ?? false) {
       StateService.pop();
       AppPopups.showLoader();
-      await locator<NetworkService>().updateACommentById(commentId: id, requestBody: {
-        "content": commentController.text,
-        "posted_at": DateTime.now().toIso8601WithMillis(),
+      await locator<NetworkService>()
+          .updateACommentById(commentId: id, requestBody: {
+        LanguageService.getString.content: commentController.text,
+        LanguageService.getString.postedat:
+            DateTime.now().toIso8601WithMillis(),
       });
       await refresh();
       StateService.pop();
-    }else{
+    } else {
       AppPopups.showSnackBar(
-          type: SnackBarTypes.error, content: "Comment can not be empty.");
+          type: SnackBarTypes.error,
+          content: LanguageService.getString.commentCanNotBeEmpty);
     }
   }
 
-  Future<void> deleteComment({required String id}) async{
+  Future<void> deleteComment({required String id}) async {
     AppPopups.showLoader();
     await locator<NetworkService>().deleteACommentById(commentId: id);
     await refresh();
@@ -74,14 +100,21 @@ class CommentViewModel extends BaseViewModel {
   }
 
   @override
-  Future<void> refresh() async{
+  Future<void> refresh() async {
     callDispose();
     await initialize();
   }
 
   @override
   void callDispose() {
-    allComments = [Comment(id: "id", taskId: "taskId", content: "content", postedAt: DateTime.now(), projectId: '')];
+    allComments = [
+      Comment(
+          id: LanguageService.getString.id,
+          taskId: LanguageService.getString.taskid,
+          content: LanguageService.getString.content,
+          postedAt: DateTime.now(),
+          projectId: '')
+    ];
     commentController.clear();
   }
 
@@ -90,16 +123,19 @@ class CommentViewModel extends BaseViewModel {
     initialize();
   }
 
-  Future<void> initialize() async{
-    for(Task task in listOfTasks){
-      List<Comment> comments = await locator<NetworkService>().getCommentByTaskId(taskId: task.id!);
+  Future<void> initialize() async {
+    for (Task task in listOfTasks) {
+      List<Comment> comments =
+          await locator<NetworkService>().getCommentByTaskId(taskId: task.id!);
       allComments.addAll(comments);
     }
-    for(Project project in listOfProjects){
-      List<Comment> comments = await locator<NetworkService>().getCommentByProjectId(projectId: project.id);
+    for (Project project in listOfProjects) {
+      List<Comment> comments = await locator<NetworkService>()
+          .getCommentByProjectId(projectId: project.id);
       allComments.addAll(comments);
     }
-    allComments.removeWhere((element)=>element.id=="id");
+    allComments
+        .removeWhere((element) => element.id == LanguageService.getString.id);
     setState();
   }
 }

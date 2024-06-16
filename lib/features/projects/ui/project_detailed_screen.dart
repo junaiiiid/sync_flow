@@ -82,10 +82,12 @@ class _ProjectDetailedScreenState extends ConsumerState<ProjectDetailedScreen>
                       child: TabBarView(
                         controller: _tabController,
                         children: [
-                          getBoard(vm: viewModel),
-                          TaskCommentsDetailedView(
+                          Expanded(child: getBoard(vm: viewModel)),
+                          Container(),
+                          //getBoard(vm: viewModel),
+                          /*TaskCommentsDetailedView(
                             vm: viewModel,
-                          ),
+                          ),*/
                         ],
                       ),
                     ),

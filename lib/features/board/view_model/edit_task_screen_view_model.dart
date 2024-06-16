@@ -3,6 +3,26 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -35,9 +55,9 @@ class EditTaskScreenViewModel extends BaseViewModel {
 
   List<Comment> allComments = [
     Comment(
-        id: "id",
-        projectId: "projectId",
-        content: "content",
+        id: LanguageService.getString.id,
+        projectId: LanguageService.getString.projectid,
+        content: LanguageService.getString.content,
         postedAt: DateTime.now())
   ];
 
@@ -71,7 +91,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
 
   Future<void> openAttachment({required String url}) async {
     if (!await launchUrl(Uri.parse(url))) {
-      throw Exception('Could not launch $url');
+      throw Exception(LanguageService.getString.couldNotLaunchUrl);
     }
   }
 
@@ -95,11 +115,11 @@ class EditTaskScreenViewModel extends BaseViewModel {
       Task? updatedTask = await locator<NetworkService>().updateATaskById(
         taskId: taskId,
         requestBody: {
-          "section_id": selectedSection?.id,
-          "content": taskTitleController.text,
-          "description": taskDescriptionController.text,
-          "labels": labels,
-          "due_date": dateTimeFormat,
+          LanguageService.getString.sectionid: selectedSection?.id,
+          LanguageService.getString.content: taskTitleController.text,
+          LanguageService.getString.description: taskDescriptionController.text,
+          LanguageService.getString.labels: labels,
+          LanguageService.getString.duedate: dateTimeFormat,
         },
       );
       if (updatedTask != null) {
@@ -112,7 +132,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
       }
     } else {
       AppPopups.showSnackBar(
-          type: SnackBarTypes.error, content: "The fields can not be empty.");
+          type: SnackBarTypes.error, content: LanguageService.getString.theFieldsCanNotBeEmpty);
     }
     StateService.context.pop();
   }
@@ -128,8 +148,8 @@ class EditTaskScreenViewModel extends BaseViewModel {
       StateService.pop();
       AppPopups.showLoader();
       final Comment? editedComment = await locator<NetworkService>().updateACommentById(commentId: id, requestBody: {
-        "content": commentController.text,
-        "posted_at": DateTime.now().toIso8601WithMillis(),
+        LanguageService.getString.content: commentController.text,
+        LanguageService.getString.postedat: DateTime.now().toIso8601WithMillis(),
       });
       if(editedComment!=null){
         allComments.removeWhere((element)=>element.id==id);
@@ -139,7 +159,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
       StateService.pop();
     }else{
       AppPopups.showSnackBar(
-          type: SnackBarTypes.error, content: "Comment can not be empty.");
+          type: SnackBarTypes.error, content: LanguageService.getString.commentCanNotBeEmpty);
     }
   }
 
@@ -155,9 +175,9 @@ class EditTaskScreenViewModel extends BaseViewModel {
     if(formKey.currentState?.validate() ?? false){
       AppPopups.showLoader();
       final Comment? newComment = await locator<NetworkService>().createAComment(requestBody: {
-        "content":commentController.text,
-        "task_id": taskModel?.id??'',
-        "project_id": taskModel?.projectId??'',
+        LanguageService.getString.content:commentController.text,
+        LanguageService.getString.taskid: taskModel?.id??'',
+        LanguageService.getString.projectid: taskModel?.projectId??'',
       });
       if(newComment!=null){
         allComments.add(newComment);
@@ -168,7 +188,7 @@ class EditTaskScreenViewModel extends BaseViewModel {
     }
     else{
       AppPopups.showSnackBar(
-          type: SnackBarTypes.error, content: "The fields can not be empty.");
+          type: SnackBarTypes.error, content: LanguageService.getString.theFieldsCanNotBeEmpty);
     }
   }
 
@@ -184,9 +204,9 @@ class EditTaskScreenViewModel extends BaseViewModel {
     dateTimeFormat = null;
     allComments = [
       Comment(
-          id: "id",
-          projectId: "projectId",
-          content: "content",
+          id: LanguageService.getString.id,
+          projectId: LanguageService.getString.projectid,
+          content: LanguageService.getString.content,
           postedAt: DateTime.now())
     ];
     commentController.clear();

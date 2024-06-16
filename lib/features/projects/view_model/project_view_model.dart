@@ -4,6 +4,7 @@ import 'package:flow_sync/features/board/model/section_model.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -25,17 +26,17 @@ class ProjectViewModel extends BaseViewModel {
   List<ProjectCardModel> listOfProjectCards = [
     ProjectCardModel(
         projectData: Project(
-            id: "id",
+            id: LanguageService.getString.id,
             order: 0,
-            color: "color",
-            name: "name",
+            color: LanguageService.getString.color,
+            name: LanguageService.getString.name,
             commentCount: 0,
             isShared: false,
             isFavorite: false,
             isInboxProject: false,
             isTeamInbox: false,
-            url: "url",
-            viewStyle: "viewStyle"),
+            url: LanguageService.getString.url,
+            viewStyle: LanguageService.getString.viewstyle),
         taskCount: 0, sectionCount: 0)
   ];
 
@@ -50,7 +51,7 @@ class ProjectViewModel extends BaseViewModel {
         taskCount: tasks.length, sectionCount: sectionList.where((element) => element.projectId == project.id).toList().length),
       );
     }
-    listOfProjectCards.removeWhere((element)=>element.projectData.id=="id");
+    listOfProjectCards.removeWhere((element)=>element.projectData.id==LanguageService.getString.id);
     setState();
   }
 
@@ -70,7 +71,7 @@ class ProjectViewModel extends BaseViewModel {
         StateService.context.read(ProviderService.dashboardProvider);
     AppPopups.showLoader();
     await locator<NetworkService>().updateAProjectById(
-        projectId: projectId, requestBody: {"is_favorite": "${!isFavourite}"});
+        projectId: projectId, requestBody: {LanguageService.getString.isfavorite: "${!isFavourite}"});
     callDispose();
     await dashboardProvider.refresh();
     StateService.pop();
@@ -81,17 +82,17 @@ class ProjectViewModel extends BaseViewModel {
     listOfProjectCards = [
       ProjectCardModel(
           projectData: Project(
-              id: "id",
+              id: LanguageService.getString.id,
               order: 0,
-              color: "color",
-              name: "name",
+              color: LanguageService.getString.color,
+              name: LanguageService.getString.name,
               commentCount: 0,
               isShared: false,
               isFavorite: false,
               isInboxProject: false,
               isTeamInbox: false,
-              url: "url",
-              viewStyle: "viewStyle"),
+              url: LanguageService.getString.url,
+              viewStyle: LanguageService.getString.viewstyle),
           taskCount: 0, sectionCount: 0)
     ];
   }

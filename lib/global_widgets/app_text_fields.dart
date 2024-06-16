@@ -1,3 +1,4 @@
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +41,7 @@ class AppTextFields {
                 validator: validator ??
                     (value) {
                       if (value == null || value.isEmpty) {
-                        return 'This field can not be empty';
+                        return LanguageService.getString.thisFieldCanNotBeEmpty;
                       }
                       return null;
                     },
@@ -88,7 +89,7 @@ class AppTextFields {
                   validator: validator ??
                       (value) {
                         if (value == null || value.isEmpty) {
-                          return 'This field can not be empty';
+                          return LanguageService.getString.thisFieldCanNotBeEmpty;
                         }
                         return null;
                       },

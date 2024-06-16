@@ -1,6 +1,28 @@
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/app_assets.dart';
 import 'package:flow_sync/constants/enums.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flutter/material.dart';
 
 import '../model/extras_item_model.dart';
@@ -34,29 +56,29 @@ class HomeViewModel extends BaseViewModel {
         isActive: true,
         type: NavigationBarItems.home,
         icon: AppAssets.home,
-        label: 'Home'),
+        label: LanguageService.getString.home),
     NavigationBarModel(
         isActive: false,
         type: NavigationBarItems.board,
         icon: AppAssets.board,
-        label: 'Board'),
+        label: LanguageService.getString.board),
     NavigationBarModel(
         isActive: false,
         type: NavigationBarItems.projects,
         icon: AppAssets.projects,
-        label: 'Projects'),
+        label: LanguageService.getString.projects),
     NavigationBarModel(
         isActive: false,
         type: NavigationBarItems.settings,
         icon: AppAssets.settings,
-        label: 'Settings'),
+        label: LanguageService.getString.settings),
   ];
 
   NavigationBarModel _selectedItem = NavigationBarModel(
       isActive: true,
       type: NavigationBarItems.home,
       icon: AppAssets.home,
-      label: 'Home');
+      label: LanguageService.getString.home);
 
   NavigationBarModel get selectedItem => _selectedItem;
 
@@ -74,18 +96,18 @@ class HomeViewModel extends BaseViewModel {
 
   List<ExtrasItemModel> extrasMenuItems = [
     ExtrasItemModel(
-        title: "TO-DO",
-        subtitle: "View all the tasks you have to start.",
+        title: LanguageService.getString.todo,
+        subtitle: LanguageService.getString.viewAllTheTasksYouHaveToStart,
         iconPath: AppAssets.todo,
         path: "/todo"),
     ExtrasItemModel(
-        title: "IN-PROGRESS",
-        subtitle: "View all the tasks you are working on.",
+        title: LanguageService.getString.inprogress,
+        subtitle: LanguageService.getString.viewAllTheTasksYouAreWorkingOn,
         iconPath: AppAssets.inProgress,
         path: "/in-progress"),
     ExtrasItemModel(
-        title: "COMPLETED",
-        subtitle: "View all the tasks you have completed.",
+        title: LanguageService.getString.completed,
+        subtitle: LanguageService.getString.viewAllTheTasksYouHaveCompleted,
         iconPath: AppAssets.completed,
         path: "/completed"),
   ];
@@ -98,42 +120,42 @@ class HomeViewModel extends BaseViewModel {
           isActive: true,
           type: NavigationBarItems.home,
           icon: AppAssets.home,
-          label: 'Home'),
+          label: LanguageService.getString.home),
       NavigationBarModel(
           isActive: false,
           type: NavigationBarItems.board,
           icon: AppAssets.board,
-          label: 'Board'),
+          label: LanguageService.getString.board),
       NavigationBarModel(
           isActive: false,
           type: NavigationBarItems.projects,
           icon: AppAssets.projects,
-          label: 'Projects'),
+          label: LanguageService.getString.projects),
       NavigationBarModel(
           isActive: false,
           type: NavigationBarItems.settings,
           icon: AppAssets.settings,
-          label: 'Settings'),
+          label: LanguageService.getString.settings),
     ];
     _selectedItem = NavigationBarModel(
         isActive: true,
         type: NavigationBarItems.home,
         icon: AppAssets.home,
-        label: 'Home');
+        label: LanguageService.getString.home);
     extrasMenuItems = [
       ExtrasItemModel(
-          title: "TO-DO",
-          subtitle: "View all the tasks you have to start.",
+          title: LanguageService.getString.todo,
+          subtitle: LanguageService.getString.viewAllTheTasksYouHaveToStart,
           iconPath: AppAssets.todo,
           path: "/todo"),
       ExtrasItemModel(
-          title: "IN-PROGRESS",
-          subtitle: "View all the tasks you are working on.",
+          title: LanguageService.getString.inprogress,
+          subtitle: LanguageService.getString.viewAllTheTasksYouAreWorkingOn,
           iconPath: AppAssets.inProgress,
           path: "/in-progress"),
       ExtrasItemModel(
-          title: "COMPLETED",
-          subtitle: "View all the tasks you have completed.",
+          title: LanguageService.getString.completed,
+          subtitle: LanguageService.getString.viewAllTheTasksYouHaveCompleted,
           iconPath: AppAssets.completed,
           path: "/completed"),
     ];

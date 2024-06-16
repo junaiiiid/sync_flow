@@ -699,6 +699,596 @@ class S {
       args: [],
     );
   }
+
+  /// `This field can not be empty`
+  String get thisFieldCanNotBeEmpty {
+    return Intl.message(
+      'This field can not be empty',
+      name: 'thisFieldCanNotBeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ERROR`
+  String get error {
+    return Intl.message(
+      'ERROR',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SUCCESS`
+  String get success {
+    return Intl.message(
+      'SUCCESS',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select an option`
+  String get pleaseSelectAnOption {
+    return Intl.message(
+      'Please select an option',
+      name: 'pleaseSelectAnOption',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `color`
+  String get color {
+    return Intl.message(
+      'color',
+      name: 'color',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `name`
+  String get name {
+    return Intl.message(
+      'name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `url`
+  String get url {
+    return Intl.message(
+      'url',
+      name: 'url',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `viewStyle`
+  String get viewstyle {
+    return Intl.message(
+      'viewStyle',
+      name: 'viewstyle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `is_favorite`
+  String get isfavorite {
+    return Intl.message(
+      'is_favorite',
+      name: 'isfavorite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `projectId`
+  String get projectid {
+    return Intl.message(
+      'projectId',
+      name: 'projectid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `content`
+  String get content {
+    return Intl.message(
+      'content',
+      name: 'content',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `posted_at`
+  String get postedat {
+    return Intl.message(
+      'posted_at',
+      name: 'postedat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment can not be empty.`
+  String get commentCanNotBeEmpty {
+    return Intl.message(
+      'Comment can not be empty.',
+      name: 'commentCanNotBeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The fields can not be empty.`
+  String get theFieldsCanNotBeEmpty {
+    return Intl.message(
+      'The fields can not be empty.',
+      name: 'theFieldsCanNotBeEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `to`
+  String get to {
+    return Intl.message(
+      'to',
+      name: 'to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `do`
+  String get doKey {
+    return Intl.message(
+      'do',
+      name: 'doKey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `progress`
+  String get progress {
+    return Intl.message(
+      'progress',
+      name: 'progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `complete`
+  String get complete {
+    return Intl.message(
+      'complete',
+      name: 'complete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Default Sections`
+  String get createDefaultSections {
+    return Intl.message(
+      'Create Default Sections',
+      name: 'createDefaultSections',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Sections From Labels`
+  String get createSectionsFromLabels {
+    return Intl.message(
+      'Create Sections From Labels',
+      name: 'createSectionsFromLabels',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `TO-DO`
+  String get todo {
+    return Intl.message(
+      'TO-DO',
+      name: 'todo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `IN-PROGRESS`
+  String get inprogress {
+    return Intl.message(
+      'IN-PROGRESS',
+      name: 'inprogress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `COMPLETED`
+  String get completed {
+    return Intl.message(
+      'COMPLETED',
+      name: 'completed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `berry_red`
+  String get berryred {
+    return Intl.message(
+      'berry_red',
+      name: 'berryred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `red`
+  String get red {
+    return Intl.message(
+      'red',
+      name: 'red',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `orange`
+  String get orange {
+    return Intl.message(
+      'orange',
+      name: 'orange',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `yellow`
+  String get yellow {
+    return Intl.message(
+      'yellow',
+      name: 'yellow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `olive_green`
+  String get olivegreen {
+    return Intl.message(
+      'olive_green',
+      name: 'olivegreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `lime_green`
+  String get limegreen {
+    return Intl.message(
+      'lime_green',
+      name: 'limegreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `green`
+  String get green {
+    return Intl.message(
+      'green',
+      name: 'green',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `mint_green`
+  String get mintgreen {
+    return Intl.message(
+      'mint_green',
+      name: 'mintgreen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `teal`
+  String get teal {
+    return Intl.message(
+      'teal',
+      name: 'teal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `sky_blue`
+  String get skyblue {
+    return Intl.message(
+      'sky_blue',
+      name: 'skyblue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `light_blue`
+  String get lightblue {
+    return Intl.message(
+      'light_blue',
+      name: 'lightblue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `blue`
+  String get blue {
+    return Intl.message(
+      'blue',
+      name: 'blue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `grape`
+  String get grape {
+    return Intl.message(
+      'grape',
+      name: 'grape',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `violet`
+  String get violet {
+    return Intl.message(
+      'violet',
+      name: 'violet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `lavender`
+  String get lavender {
+    return Intl.message(
+      'lavender',
+      name: 'lavender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `magenta`
+  String get magenta {
+    return Intl.message(
+      'magenta',
+      name: 'magenta',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `salmon`
+  String get salmon {
+    return Intl.message(
+      'salmon',
+      name: 'salmon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `charcoal`
+  String get charcoal {
+    return Intl.message(
+      'charcoal',
+      name: 'charcoal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `grey`
+  String get grey {
+    return Intl.message(
+      'grey',
+      name: 'grey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `taupe`
+  String get taupe {
+    return Intl.message(
+      'taupe',
+      name: 'taupe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `false`
+  String get falseKey {
+    return Intl.message(
+      'false',
+      name: 'falseKey',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get home {
+    return Intl.message(
+      'Home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Projects`
+  String get projects {
+    return Intl.message(
+      'Projects',
+      name: 'projects',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View all the tasks you have to start.`
+  String get viewAllTheTasksYouHaveToStart {
+    return Intl.message(
+      'View all the tasks you have to start.',
+      name: 'viewAllTheTasksYouHaveToStart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View all the tasks you are working on.`
+  String get viewAllTheTasksYouAreWorkingOn {
+    return Intl.message(
+      'View all the tasks you are working on.',
+      name: 'viewAllTheTasksYouAreWorkingOn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View all the tasks you have completed.`
+  String get viewAllTheTasksYouHaveCompleted {
+    return Intl.message(
+      'View all the tasks you have completed.',
+      name: 'viewAllTheTasksYouHaveCompleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `list`
+  String get list {
+    return Intl.message(
+      'list',
+      name: 'list',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Projects`
+  String get totalProjects {
+    return Intl.message(
+      'Total Projects',
+      name: 'totalProjects',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Tasks`
+  String get totalTasks {
+    return Intl.message(
+      'Total Tasks',
+      name: 'totalTasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `taskId`
+  String get taskid {
+    return Intl.message(
+      'taskId',
+      name: 'taskid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not launch $url`
+  String get couldNotLaunchUrl {
+    return Intl.message(
+      'Could not launch \$url',
+      name: 'couldNotLaunchUrl',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `section_id`
+  String get sectionid {
+    return Intl.message(
+      'section_id',
+      name: 'sectionid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `description`
+  String get description {
+    return Intl.message(
+      'description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `due_date`
+  String get duedate {
+    return Intl.message(
+      'due_date',
+      name: 'duedate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `created_at`
+  String get createdat {
+    return Intl.message(
+      'created_at',
+      name: 'createdat',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,6 +1,10 @@
 import 'package:flow_sync/architecture/base_view_model.dart';
 import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -51,9 +55,9 @@ class AddCommentViewModel extends BaseViewModel {
     if(formKey.currentState?.validate() ?? false){
       AppPopups.showLoader();
       await locator<NetworkService>().createAComment(requestBody: {
-        "content":commentController.text,
-        if (selectedTask != null) "task_id": selectedTask!.id,
-        if (selectedProject != null) "project_id": selectedProject!.id,
+        LanguageService.getString.content:commentController.text,
+        if (selectedTask != null) LanguageService.getString.taskid: selectedTask!.id,
+        if (selectedProject != null) LanguageService.getString.projectid: selectedProject!.id,
       });
       await commentProvider.refresh();
       callDispose();
@@ -61,7 +65,7 @@ class AddCommentViewModel extends BaseViewModel {
     }
     else{
       AppPopups.showSnackBar(
-          type: SnackBarTypes.error, content: "The fields can not be empty.");
+          type: SnackBarTypes.error, content: LanguageService.getString.theFieldsCanNotBeEmpty);
     }
   }
 

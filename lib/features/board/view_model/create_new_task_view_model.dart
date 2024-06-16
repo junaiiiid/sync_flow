@@ -3,6 +3,14 @@ import 'package:flow_sync/constants/extensions.dart';
 import 'package:flow_sync/features/dashboard/model/label_model.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -54,13 +62,13 @@ class CreateNewTaskViewModel extends BaseViewModel {
           createdAt: DateTime.now());
       final Task? newTask =
           await locator<NetworkService>().createATask(requestBody: {
-        "project_id": taskModel.projectId,
-        "section_id": taskModel.sectionId,
-        "content": taskModel.content,
-        "labels": taskModel.labels,
-        "description": taskModel.description,
-        "due_date": taskModel.due,
-        "created_at": taskModel.createdAt.toIso8601WithMillis(),
+        LanguageService.getString.projectid: taskModel.projectId,
+        LanguageService.getString.sectionid: taskModel.sectionId,
+        LanguageService.getString.content: taskModel.content,
+        LanguageService.getString.labels: taskModel.labels,
+        LanguageService.getString.description: taskModel.description,
+        LanguageService.getString.duedate: taskModel.due,
+        LanguageService.getString.createdat: taskModel.createdAt.toIso8601WithMillis(),
       });
       if (newTask != null) {
         dashBoardProvider.listOfTasks.add(newTask);
@@ -71,7 +79,7 @@ class CreateNewTaskViewModel extends BaseViewModel {
       StateService.pop();
     } else {
       AppPopups.showSnackBar(
-          type: SnackBarTypes.error, content: "The fields can not be empty.");
+          type: SnackBarTypes.error, content: LanguageService.getString.theFieldsCanNotBeEmpty);
     }
   }
 

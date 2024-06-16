@@ -6,6 +6,27 @@ import 'package:flow_sync/features/dashboard/model/project_model.dart';
 import 'package:flow_sync/features/dashboard/model/task_model.dart';
 import 'package:flow_sync/global_widgets/app_popups.dart';
 import 'package:flow_sync/services/dependency_injection/locator.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
+import 'package:flow_sync/services/language_service.dart';
 import 'package:flow_sync/services/network_service.dart';
 import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
@@ -15,21 +36,21 @@ import '../model/tabs_model.dart';
 
 class BoardViewModel extends BaseViewModel {
   List<Section> listOfSections = [
-    Section(id: "id", projectId: "projectId", order: 0, name: "name")
+    Section(id: LanguageService.getString.id, projectId: LanguageService.getString.projectid, order: 0, name: LanguageService.getString.name)
   ];
 
   Project _selectedProject = Project(
-      id: "id",
+      id: LanguageService.getString.id,
       order: 0,
-      color: "color",
-      name: "name",
+      color: LanguageService.getString.color,
+      name: LanguageService.getString.name,
       commentCount: 0,
       isShared: false,
       isFavorite: false,
       isInboxProject: false,
       isTeamInbox: false,
-      url: "url",
-      viewStyle: "viewStyle");
+      url: LanguageService.getString.url,
+      viewStyle: LanguageService.getString.viewstyle);
 
   Project get selectedProject => _selectedProject;
 
@@ -47,7 +68,7 @@ class BoardViewModel extends BaseViewModel {
     listOfSections = await networkService.getAllSectionsOfProjectById(
         projectId: selectedProject.id ?? "");
     if (listOfSections.isNotEmpty) {
-      listOfSections.removeWhere((element) => element.id == "id");
+      listOfSections.removeWhere((element) => element.id == LanguageService.getString.id);
     }
     setState();
   }
@@ -56,17 +77,17 @@ class BoardViewModel extends BaseViewModel {
     List<TabsModel> tabsModel = [];
     for (Section section in listOfSections) {
       String sectionName = section.name.toLowerCase();
-      if (sectionName.contains("to") || sectionName.contains("do")) {
+      if (sectionName.contains(LanguageService.getString.to) || sectionName.contains(LanguageService.getString.doKey)) {
         tabsModel.add(TabsModel(
             tabName: section.name,
             iconPath: AppAssets.todo,
             sectionId: section.id!));
-      } else if (sectionName.contains("progress")) {
+      } else if (sectionName.contains(LanguageService.getString.progress)) {
         tabsModel.add(TabsModel(
             tabName: section.name,
             iconPath: AppAssets.inProgress,
             sectionId: section.id!));
-      } else if (sectionName.contains("complete")) {
+      } else if (sectionName.contains(LanguageService.getString.complete)) {
         tabsModel.add(TabsModel(
             tabName: section.name,
             iconPath: AppAssets.completed,
@@ -105,19 +126,19 @@ class BoardViewModel extends BaseViewModel {
   @override
   void callDispose() {
     _selectedProject = Project(
-        id: "id",
+        id: LanguageService.getString.id,
         order: 0,
-        color: "color",
-        name: "name",
+        color: LanguageService.getString.color,
+        name: LanguageService.getString.name,
         commentCount: 0,
         isShared: false,
         isFavorite: false,
         isInboxProject: false,
         isTeamInbox: false,
-        url: "url",
-        viewStyle: "viewStyle");
+        url: LanguageService.getString.url,
+        viewStyle: LanguageService.getString.viewstyle);
     listOfSections = [
-      Section(id: "id", projectId: "projectId", order: 0, name: "name")
+      Section(id: LanguageService.getString.id, projectId: LanguageService.getString.projectid, order: 0, name: LanguageService.getString.name)
     ];
   }
 

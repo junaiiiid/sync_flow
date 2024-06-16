@@ -9,7 +9,47 @@ import 'package:flow_sync/services/provider_service.dart';
 import 'package:flow_sync/services/state_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import '../../../services/dependency_injection/locator.dart';
+import '../../../services/language_service.dart';
 import '../../board/model/section_model.dart';
 import '../model/project_section_model.dart';
 
@@ -17,7 +57,7 @@ class CreateNewProjectViewModel extends BaseViewModel {
   final formKey = GlobalKey<FormState>();
 
   Project project = Project(
-      id: "id",
+      id: LanguageService.getString.id,
       order: 0,
       color: "",
       name: "",
@@ -32,16 +72,16 @@ class CreateNewProjectViewModel extends BaseViewModel {
   List<ProjectSectionModel> listOfProjectSections = [
     ProjectSectionModel(
         sectionType: SectionType.defaultSections,
-        sectionTitle: "Create Default Sections"),
+        sectionTitle: LanguageService.getString.createDefaultSections),
     ProjectSectionModel(
         sectionType: SectionType.fromLabels,
-        sectionTitle: "Create Sections From Labels"),
+        sectionTitle: LanguageService.getString.createSectionsFromLabels),
   ];
 
   List<Section> defaultSections = [
-    Section(projectId: 'projectId', order: 1, name: "TO-DO"),
-    Section(projectId: 'projectId', order: 2, name: "IN-PROGRESS"),
-    Section(projectId: 'projectId', order: 3, name: "COMPLETED"),
+    Section(projectId: LanguageService.getString.projectid, order: 1, name: LanguageService.getString.todo),
+    Section(projectId: LanguageService.getString.projectid, order: 2, name: LanguageService.getString.inprogress),
+    Section(projectId: LanguageService.getString.projectid, order: 3, name: LanguageService.getString.completed),
   ];
 
   List<Section> sectionsFromLabels = [];
@@ -69,26 +109,26 @@ class CreateNewProjectViewModel extends BaseViewModel {
   }
 
   final List<String> colorNames = [
-    'berry_red',
-    'red',
-    'orange',
-    'yellow',
-    'olive_green',
-    'lime_green',
-    'green',
-    'mint_green',
-    'teal',
-    'sky_blue',
-    'light_blue',
-    'blue',
-    'grape',
-    'violet',
-    'lavender',
-    'magenta',
-    'salmon',
-    'charcoal',
-    'grey',
-    'taupe',
+    LanguageService.getString.berryred,
+    LanguageService.getString.red,
+    LanguageService.getString.orange,
+    LanguageService.getString.yellow,
+    LanguageService.getString.olivegreen,
+    LanguageService.getString.limegreen,
+    LanguageService.getString.green,
+    LanguageService.getString.mintgreen,
+    LanguageService.getString.teal,
+    LanguageService.getString.skyblue,
+    LanguageService.getString.lightblue,
+    LanguageService.getString.blue,
+    LanguageService.getString.grape,
+    LanguageService.getString.violet,
+    LanguageService.getString.lavender,
+    LanguageService.getString.magenta,
+    LanguageService.getString.salmon,
+    LanguageService.getString.charcoal,
+    LanguageService.getString.grey,
+    LanguageService.getString.taupe,
   ];
 
   Future<void> createNewProject() async {
@@ -110,7 +150,7 @@ class CreateNewProjectViewModel extends BaseViewModel {
       callDispose();
     } else {
       AppPopups.showSnackBar(
-          type: SnackBarTypes.error, content: "The fields can not be empty.");
+          type: SnackBarTypes.error, content: LanguageService.getString.theFieldsCanNotBeEmpty);
     }
   }
 
@@ -144,7 +184,7 @@ class CreateNewProjectViewModel extends BaseViewModel {
   @override
   void callDispose() {
     project = Project(
-        id: "id",
+        id: LanguageService.getString.id,
         order: 0,
         color: "",
         name: "",
@@ -158,17 +198,17 @@ class CreateNewProjectViewModel extends BaseViewModel {
     projectNameController.clear();
     _selectedColor = null;
     defaultSections = [
-      Section(projectId: 'projectId', order: 1, name: "TO-DO"),
-      Section(projectId: 'projectId', order: 2, name: "IN-PROGRESS"),
-      Section(projectId: 'projectId', order: 3, name: "COMPLETED"),
+      Section(projectId: LanguageService.getString.projectid, order: 1, name: LanguageService.getString.todo),
+      Section(projectId: LanguageService.getString.projectid, order: 2, name: LanguageService.getString.inprogress),
+      Section(projectId: LanguageService.getString.projectid, order: 3, name: LanguageService.getString.completed),
     ];
     listOfProjectSections = [
       ProjectSectionModel(
           sectionType: SectionType.defaultSections,
-          sectionTitle: "Create Default Sections"),
+          sectionTitle: LanguageService.getString.createDefaultSections),
       ProjectSectionModel(
           sectionType: SectionType.fromLabels,
-          sectionTitle: "Create Sections From Labels"),
+          sectionTitle: LanguageService.getString.createSectionsFromLabels),
     ];
     sectionsFromLabels = [];
     selectedLabels = [];
