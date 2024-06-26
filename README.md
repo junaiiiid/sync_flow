@@ -1,5 +1,5 @@
 # App Demo Video
 
-Here is demo video of app:
+Here is the demo video of the app:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KQHl2kYEV9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Watch the video](https://img.youtube.com/vi/KQHl2kYEV9I/0.jpg)](https://www.youtube.com/watch?v=KQHl2kYEV9I)
